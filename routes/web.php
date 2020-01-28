@@ -12,11 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('Login');
 });
+/**
+ * Del index a una pagina de Prueba para probar el pagination
+ */
+//Route::get('pagination','ControladorPrueba@paginacion');
 
-Route::get('pagination','ControladorPrueba@paginacion');
-
-Route::post('oliii', function () {
+/**
+ * Del index a una pagina de Prueba para probar el delay del speech y el submit
+ */
+Route::post('prueba', function () {
     return view('envio');
 });
+
+/**
+ * Funcion para saber si eres admin o Usuario o si no existes
+ */
+Route::post('comprobar','ControladorPrueba@comprobarUsuario');
+
+
+Route::post('registrar','ControladorPrueba@registrarUsuario');

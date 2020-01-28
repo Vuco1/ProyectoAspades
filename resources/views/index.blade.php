@@ -114,7 +114,7 @@ function sleep(ms) {
         </FORM>
         -->
         <div>
-            <form id="form" action="oliii" method="post" onclick="hablar()">
+            <form id="form" action="prueba" method="post" onclick="hablar()">
                 {{csrf_field()}}
                 <button type="submit"><img id="img1" src="Imagenes/victor.jpg" alt="Victor" style="width: 200px"></button>                             
                 <input id="leer" type="hidden" value="Victor">
