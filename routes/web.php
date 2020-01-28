@@ -29,7 +29,7 @@ Route::post('prueba', function () {
 /**
  * Funcion para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar','ControladorPrueba@comprobarUsuario');
+Route::post('comprobar','ControladorGeneral@comprobarUsuario');
 
 
-Route::post('registrar','ControladorPrueba@registrarUsuario');
+Route::post('registrar','ControladorAdmin@registrarUsuario');
