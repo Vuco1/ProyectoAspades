@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('pagination','ControladorPrueba@paginacion');
+
 Route::post('oliii', function () {
     return view('envio');
 });
