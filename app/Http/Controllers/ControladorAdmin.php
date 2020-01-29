@@ -97,7 +97,7 @@ class ControladorPrueba extends Controller {
 
     private function selectUsuarios() {
         $miusuario = \Session::get('usuario');
-        $usuarios = where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
+        $usuarios = Usuario::where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
         $datos = [];
         foreach ($usuarios as $usu) {
             $datos[] = [

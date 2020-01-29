@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Usuario;
+use App\Usuario_Rol;
 
-class ControladorGeneral extends Controller
-{
+class ControladorGeneral extends Controller {
+
     /**
      * Funcion de Login, se comprueba el nick y la clave introducida por el usuario y si es correcta
      * @param Request $req
@@ -25,17 +27,13 @@ class ControladorGeneral extends Controller
             $rol = $usurol->Id_rol;
             \Session::put('usuario', $usuario);
             \Session::put('rol', $usurol);
-            $datos = [
-                'usuario' => $usuario,
-                'rol' => $rol
-            ];
             if ($rol == 1) {
-                return view('envio', $datos);
+                return view('InicioAdmin', $datos);
             }
             if ($rol == 0) {
                 return view('usuario', $datos);
             }
         }
     }
-    
+
 }

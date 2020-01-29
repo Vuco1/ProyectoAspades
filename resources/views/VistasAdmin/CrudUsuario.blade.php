@@ -12,15 +12,15 @@
     <body>
         <?php foreach ($datos as $dato) { ?>
             <form action="crudUsu" method="post">
-                @csrf_field
-                <input type="text" name="Nick"  value="<?php echo $dato->nick ?>" >
-                <input type="text" name="Nombre" value="<?php echo $dato->nombre ?>" >
-                <input type="checkbox" name="Rol"  value="<?php echo $coche->rol ?>" >
-                <input type="submit" name="eliminarUsuario" value="Eliminar">
-                <input type="submit" name="modificarCoche" value="Modificar"><br/>
-            </form>
-            <?php
-        }
+                @csrf
+                <input type="text" name="Nick"  value="<?php echo $dato['nick'] ?>" >
+                <input type="text" name="Nombre" value="<?php echo $dato['nombre'] ?>" >
+                <input type="checkbox" name="Rol" <?php if ($dato['rol'] === 1) { ?>checked<?php } ?> value="">
+                    <input type="submit" name="eliminarUsuario" value="Eliminar">
+                    <input type="submit" name="modificarCoche" value="Modificar"><br/>
+                </form>
+                <?php
+            }
         ?>
     </body>
 </html>
