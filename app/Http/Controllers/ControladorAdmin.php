@@ -74,17 +74,34 @@ class ControladorPrueba extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->save();
-        
+
         $usuarioadd = Persona::where('Nick', '=', $nick)->where('Clave', '=', $clave)->get();
-        
+
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
         $usurol->Id_persona = $usuarioadd->Id_usuario;
         $usurol->save();
-        
+
         $usuarios = Persona::where('Nick', '!=', $miusuario->Nick)->get();
         $datos = [
             'usuarios' => $usuarios,
+        ];
+        return view('crudUsuarios', $datos);
+    }
+
+    public function verCrud(Request $req) {
+        $usurol = Usuario_Rol::all();
+        $vectorDatos = [];
+        foreach ($usurol as $ur) {
+            $usuario = Usuario::where('Id_usuario', $ur->Id_usuario)->first();
+            $vectorDatos[] = ['Id' => $usuario->Id_usuario,
+                'Nombre' => $usuario->Nombre,
+                'Nick' => $usuario->Nick,
+                'Rol' => $ur->Id_rol
+            ];
+        }
+        $datos = [
+            'usuarios' => $vectorDatos,
         ];
         return view('crudUsuarios', $datos);
     }

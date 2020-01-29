@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('Login');
 });
+
 /**
  * Del index a una pagina de Prueba para probar el pagination
  */
@@ -27,9 +28,13 @@ Route::post('prueba', function () {
 });
 
 /**
- * Funcion para saber si eres admin o Usuario o si no existes
+ * Ruta para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar','ControladorGeneral@comprobarUsuario');
+Route::post('comprobar','ControladorAdmin@comprobarUsuario');
 
-
+/**
+ * Ruta para registrar un Usuario
+ */
 Route::post('registrar','ControladorAdmin@registrarUsuario');
+
+
