@@ -41,3 +41,15 @@ Route::post('registrar','ControladorAdmin@registrarUsuario');
  * Editar el perfil del administrador.
  */
 Route::post('editar_perfil','ControladorPrueba@editarPerfil');
+
+Route::get('Inicio', function () {
+    return view('InicioAdmin');
+});
+
+Route::get('Perfil', function () {
+    return view('PerfilAdmin');
+});
+
+Route::get('Ajustes', 'ControladorPrueba@crudUsuarios');
+
+Route::get('cerrarSesion', 'ControladorPrueba@cerrarSesion');
