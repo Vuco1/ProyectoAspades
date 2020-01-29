@@ -28,12 +28,13 @@ class ControladorPrueba extends Controller {
             $rol = $usurol->Id_rol;
             \Session::put('usuario', $usuario);
             \Session::put('rol', $usurol);
+            
             $datos = [
                 'usuario' => $usuario,
-                'rol' => $rol
+                'rol' => $rol      
             ];
             if ($rol == 1) {
-                return view('envio', $datos);
+                return view('VistasAdmin/InicioAdmin', $datos);
             }
             if ($rol == 0) {
                 return view('usuario', $datos);
@@ -87,6 +88,40 @@ class ControladorPrueba extends Controller {
             'usuarios' => $usuarios,
         ];
         return view('crudUsuarios', $datos);
+    }
+    
+    /**
+     * Edita los datos de perfil del administrador. En caso de querer cambiar la 
+     * contraseña no se requerirá la contraseña anterior.
+     * @param Request $req
+     */
+    public function editarPerfil(Request $req) {
+        $id = $req->get('id');
+        $nick = $req->get('nick');
+        $nombre = $req->get('nombre');
+        $clave = $req->get('clave');
+        
+        $mensaje = 'Perfil modificado con éxito';
+            try {
+                $user = Usuario::where('Id_usuario', $id)->first();
+                $user->Nombre = $nombre;
+                $user->Nick = $nick;
+                if ($clave != null){
+                    $user->Clave = $clave;
+                }
+                $user->save();
+            } catch (Exception $ex) {
+                $mensaje = 'Error al modificar el perfil';
+            }
+            
+            $user = Usuario::where('Id_usuario', $id)->first();
+            
+            $datos = [
+            'usuario' => $user,
+            'mensaje' => $mensaje
+        ];
+
+        return view('VistasAdmin/PerfilAdmin', $datos);
     }
 
 }
