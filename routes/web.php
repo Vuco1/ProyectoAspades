@@ -30,11 +30,14 @@ Route::post('prueba', function () {
 /**
  * Ruta para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar','ControladorAdmin@comprobarUsuario');
+Route::post('comprobar','ControladorPrueba@comprobarUsuario');
 
 /**
  * Ruta para registrar un Usuario
  */
 Route::post('registrar','ControladorAdmin@registrarUsuario');
 
-
+/**
+ * Editar el perfil del administrador.
+ */
+Route::post('editar_perfil','ControladorPrueba@editarPerfil');

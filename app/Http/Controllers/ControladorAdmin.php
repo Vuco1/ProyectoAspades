@@ -16,6 +16,33 @@ class ControladorPrueba extends Controller {
       }
       /**
 
+    function comprobarUsuario(Request $req) {
+        $usuario = $req->get('usuario');
+        $clave = $req->get('clave');
+        //$clave = md5($clave);
+        $usuario = Usuario::where('Nick', $usuario)
+                ->where('Clave', $clave)
+                ->first();
+        if ($usuario == null) {
+            return view('error');
+        } else {
+            $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
+            $rol = $usurol->Id_rol;
+            \Session::put('usuario', $usuario);
+            \Session::put('rol', $usurol);
+            
+            $datos = [
+                'usuario' => $usuario,
+                'rol' => $rol      
+            ];
+            if ($rol == 1) {
+                return view('VistasAdmin/InicioAdmin', $datos);
+            }
+            if ($rol == 0) {
+                return view('usuario', $datos);
+            }
+        }
+    }
 
       /**
      * Funcion que recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
@@ -70,6 +97,40 @@ class ControladorPrueba extends Controller {
 
         $datos = self::selectUsuarios();
         return view('crudUsuarios', $datos);
+    }
+    
+    /**
+     * Edita los datos de perfil del administrador. En caso de querer cambiar la 
+     * contraseña no se requerirá la contraseña anterior.
+     * @param Request $req
+     */
+    public function editarPerfil(Request $req) {
+        $id = $req->get('id');
+        $nick = $req->get('nick');
+        $nombre = $req->get('nombre');
+        $clave = $req->get('clave');
+        
+        $mensaje = 'Perfil modificado con éxito';
+            try {
+                $user = Usuario::where('Id_usuario', $id)->first();
+                $user->Nombre = $nombre;
+                $user->Nick = $nick;
+                if ($clave != null){
+                    $user->Clave = $clave;
+                }
+                $user->save();
+            } catch (Exception $ex) {
+                $mensaje = 'Error al modificar el perfil';
+            }
+            
+            $user = Usuario::where('Id_usuario', $id)->first();
+            
+            $datos = [
+            'usuario' => $user,
+            'mensaje' => $mensaje
+        ];
+
+        return view('VistasAdmin/PerfilAdmin', $datos);
     }
 
     public function eliminarUsuario($req) {
