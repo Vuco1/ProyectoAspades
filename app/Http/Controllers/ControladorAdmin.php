@@ -61,7 +61,7 @@ class ControladorPrueba extends Controller {
         $usuario->Clave = $clave;
         $usuario->save();
 
-        $usuarioadd = Usuario::where('Nick',$nick)->get();
+        $usuarioadd = Usuario::where('Nick', $nick)->get();
 
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
@@ -86,7 +86,7 @@ class ControladorPrueba extends Controller {
         $nick = $req->get('Nick');
         $usuario->Nick = $nick;
         $usuario->save();
-        //Discutir sobre la base de datos mañana
+//Discutir sobre la base de datos mañana
         $rol = Usuario_Rol::where('Id_usuario', $req->get('id'))->first();
         $role = $req->get('Id_rol');
         $rol->Id_rol = $role;
@@ -97,16 +97,20 @@ class ControladorPrueba extends Controller {
 
     private function selectUsuarios() {
         $miusuario = \Session::get('usuario');
-        $usuarios = where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
-        $datos = [];
-        foreach ($usuarios as $usu) {
+        $users = where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
+        $usuarios = [];
+        foreach ($users as $usu) {
+            $rol = Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
             $datos[] = [
                 'id' => $usu->Id_usuario,
                 'nick' => $usu->Nick,
                 'nombre' => $usu->Nombre,
-                'rol' => Usuario_Rol::where('Id_usuario', $usu->Id_usuario)
+                'rol' => $rol->Id_rol
             ];
         }
+        $datos = [
+            'datos' => $usuarios
+        ];
         return $datos;
     }
 
