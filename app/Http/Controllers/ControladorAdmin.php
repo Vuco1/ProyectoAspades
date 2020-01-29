@@ -58,7 +58,7 @@ class ControladorPrueba extends Controller {
         return view('CrudUsuarios', $datos);
     }
 
-    public function addUsuario(Request $req) {
+    public function addUsuario (Request $req) {
         $miusuario = \Session::get('usuario');
 
         $nick = $req->get('usuario');
@@ -74,14 +74,14 @@ class ControladorPrueba extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->save();
-        
+
         $usuarioadd = Persona::where('Nick', '=', $nick)->where('Clave', '=', $clave)->get();
-        
+
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
         $usurol->Id_persona = $usuarioadd->Id_usuario;
         $usurol->save();
-        
+
         $usuarios = Persona::where('Nick', '!=', $miusuario->Nick)->get();
         $datos = [
             'usuarios' => $usuarios,
@@ -89,4 +89,14 @@ class ControladorPrueba extends Controller {
         return view('crudUsuarios', $datos);
     }
 
+    public function cerrarSesion () {
+        Session::invalidate();
+        Session::regenerate();
+        return view('Login');
+    }
+
+    public function crudUsuarios () {
+        $datos = self::selectUsuarios();
+        return view('crudUsuarios', $datos);
+    }
 }

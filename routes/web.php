@@ -33,3 +33,15 @@ Route::post('comprobar','ControladorGeneral@comprobarUsuario');
 
 
 Route::post('registrar','ControladorAdmin@registrarUsuario');
+
+Route::get('Inicio', function () {
+    return view('InicioAdmin');
+});
+
+Route::get('Perfil', function () {
+    return view('PerfilAdmin');
+});
+
+Route::get('Ajustes', 'ControladorPrueba@crudUsuarios');
+
+Route::get('cerrarSesion', 'ControladorPrueba@cerrarSesion');
