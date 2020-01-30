@@ -30,7 +30,7 @@ Route::post('prueba', function () {
 /**
  * Ruta para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar','ControladorPrueba@comprobarUsuario');
+Route::post('comprobar','ControladorGeneral@comprobarUsuario');
 
 /**
  * Ruta para registrar un Usuario
@@ -43,11 +43,11 @@ Route::post('registrar','ControladorAdmin@registrarUsuario');
 Route::post('editar_perfil','ControladorPrueba@editarPerfil');
 
 Route::get('Inicio', function () {
-    return view('InicioAdmin');
+    return view('VistasAdmin/InicioAdmin');
 });
 
 Route::get('Perfil', function () {
-    return view('PerfilAdmin');
+    return view('VistasAdmin/PerfilAdmin');
 });
 
 Route::get('Ajustes', 'ControladorPrueba@crudUsuarios');

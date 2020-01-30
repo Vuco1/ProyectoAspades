@@ -10,8 +10,8 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        @if (Session::has ('usuario'))
-        $usuario = Session::get ('usuario')
+        @if (\Session::has ('usuario'))
+        {!!$usuario = \Session::get ('usuario')!!}
         <h1>Mi perfil</h1>
         <form action="editar_perfil" method="post">
             @csrf

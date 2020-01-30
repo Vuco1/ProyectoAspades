@@ -161,11 +161,10 @@ class ControladorPrueba extends Controller {
 
     private function selectUsuarios() {
         $miusuario = \Session::get('usuario');
-        $users = where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
-        $usuarios = [];
+        $users = Usuario::where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
         foreach ($users as $usu) {
             $rol = Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
-            $datos[] = [
+            $usuarios[] = [
                 'id' => $usu->Id_usuario,
                 'nick' => $usu->Nick,
                 'nombre' => $usu->Nombre,
@@ -179,13 +178,13 @@ class ControladorPrueba extends Controller {
     }
 
     public function cerrarSesion () {
-        Session::invalidate();
-        Session::regenerate();
+        \Session::invalidate();
+        \Session::regenerate();
         return view('Login');
     }
 
     public function crudUsuarios () {
         $datos = self::selectUsuarios();
-        return view('crudUsuarios', $datos);
+        return view('VistasAdmin/CrudUsuario', $datos);
     }
 }

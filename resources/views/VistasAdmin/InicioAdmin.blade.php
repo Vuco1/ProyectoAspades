@@ -11,8 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         @include('Header')
-        @if (Session::has ('usuario'))
-        <!--$usuario = Session::get ('usuario')-->
+        @if (\Session::has ('usuario'))
+        {!!$usuario = \Session::get ('usuario')!!}
         <h1>Hola <?php echo $usuario->Nick ?></h1>
         @endif
     </body>

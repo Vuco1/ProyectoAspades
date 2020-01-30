@@ -16,7 +16,7 @@ class ControladorGeneral extends Controller {
     function comprobarUsuario(Request $req) {
         $usuario = $req->get('usuario');
         $clave = $req->get('clave');
-        //$clave = md5($clave);
+//        $clave2 = md5($clave);
         $usuario = Usuario::where('Nick', $usuario)
                 ->where('Clave', $clave)
                 ->first();
@@ -27,11 +27,12 @@ class ControladorGeneral extends Controller {
             $rol = $usurol->Id_rol;
             \Session::put('usuario', $usuario);
             \Session::put('rol', $usurol);
+//            dd($rol);
             if ($rol == 1) {
-                return view('InicioAdmin', $datos);
+                return view('VistasAdmin/InicioAdmin');
             }
             if ($rol == 0) {
-                return view('usuario', $datos);
+                return view('usuario');
             }
         }
     }
