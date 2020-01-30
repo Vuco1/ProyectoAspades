@@ -54,6 +54,8 @@ Route::get('Perfil', function () {
 
 Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
 
+Route::get('kabum', 'ControladorAdmin@llenarBase');
+
 Route::get('cerrarSesion', 'ControladorAdmin@cerrarSesion');
 
 Route::get('addUsuario', function () {

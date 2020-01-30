@@ -16,33 +16,33 @@ class ControladorAdmin extends Controller {
       }
       /**
 
-    function comprobarUsuario(Request $req) {
-        $usuario = $req->get('usuario');
-        $clave = $req->get('clave');
-        //$clave = md5($clave);
-        $usuario = Usuario::where('Nick', $usuario)
-                ->where('Clave', $clave)
-                ->first();
-        if ($usuario == null) {
-            return view('error');
-        } else {
-            $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
-            $rol = $usurol->Id_rol;
-            \Session::put('usuario', $usuario);
-            \Session::put('rol', $usurol);
-            
-            $datos = [
-                'usuario' => $usuario,
-                'rol' => $rol      
-            ];
-            if ($rol == 1) {
-                return view('VistasAdmin/InicioAdmin', $datos);
-            }
-            if ($rol == 0) {
-                return view('usuario', $datos);
-            }
-        }
-    }
+      function comprobarUsuario(Request $req) {
+      $usuario = $req->get('usuario');
+      $clave = $req->get('clave');
+      //$clave = md5($clave);
+      $usuario = Usuario::where('Nick', $usuario)
+      ->where('Clave', $clave)
+      ->first();
+      if ($usuario == null) {
+      return view('error');
+      } else {
+      $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
+      $rol = $usurol->Id_rol;
+      \Session::put('usuario', $usuario);
+      \Session::put('rol', $usurol);
+
+      $datos = [
+      'usuario' => $usuario,
+      'rol' => $rol
+      ];
+      if ($rol == 1) {
+      return view('VistasAdmin/InicioAdmin', $datos);
+      }
+      if ($rol == 0) {
+      return view('usuario', $datos);
+      }
+      }
+      }
 
       /**
      * Funcion que recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
@@ -59,7 +59,7 @@ class ControladorAdmin extends Controller {
             $this->eliminarUsuario($req);
         }
 
-       $datos = self::selectUsuarios();
+        $datos = self::selectUsuarios();
         return view('vistasadmin/crudusuario', $datos);
     }
 
@@ -84,11 +84,11 @@ class ControladorAdmin extends Controller {
         $usuario = new Usuario;
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
-        $usuario->Nombre=$nombre;
+        $usuario->Nombre = $nombre;
         $usuario->save();
 
         $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
-        
+
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
         $usurol->Id_usuario = $usuarioadd->Id_usuario;
@@ -97,7 +97,29 @@ class ControladorAdmin extends Controller {
         $datos = self::selectUsuarios();
         return view('vistasadmin/crudusuario', $datos);
     }
-    
+
+    public function llenarBase() {
+        for ($i = 0; $i < 20; $i++) {
+        $nick =str::random(10);
+        $clave = md5(str::random(10));
+        $nombre = str::random(10);
+        $rol=0;
+
+        $usuario = new Usuario;
+        $usuario->Nick = $nick;
+        $usuario->Clave = $clave;
+        $usuario->Nombre = $nombre;
+        $usuario->save();
+
+        $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
+
+        $usurol = new Usuario_Rol;
+        $usurol->Id_rol = $rol;
+        $usurol->Id_usuario = $usuarioadd->Id_usuario;
+        $usurol->save();
+        }
+    }
+
     /**
      * Edita los datos de perfil del administrador. En caso de querer cambiar la 
      * contraseña no se requerirá la contraseña anterior.
@@ -108,23 +130,23 @@ class ControladorAdmin extends Controller {
         $nick = $req->get('nick');
         $nombre = $req->get('nombre');
         $clave = $req->get('clave');
-        
+
         $mensaje = 'Perfil modificado con éxito';
-            try {
-                $user = Usuario::where('Id_usuario', $id)->first();
-                $user->Nombre = $nombre;
-                $user->Nick = $nick;
-                if ($clave != null){
-                    $user->Clave = $clave;
-                }
-                $user->save();
-            } catch (Exception $ex) {
-                $mensaje = 'Error al modificar el perfil';
-            }
-            
+        try {
             $user = Usuario::where('Id_usuario', $id)->first();
-            
-            $datos = [
+            $user->Nombre = $nombre;
+            $user->Nick = $nick;
+            if ($clave != null) {
+                $user->Clave = $clave;
+            }
+            $user->save();
+        } catch (Exception $ex) {
+            $mensaje = 'Error al modificar el perfil';
+        }
+
+        $user = Usuario::where('Id_usuario', $id)->first();
+
+        $datos = [
             'usuario' => $user,
             'mensaje' => $mensaje
         ];
@@ -149,9 +171,9 @@ class ControladorAdmin extends Controller {
 //Discutir sobre la base de datos mañana
         $rol = Usuario_Rol::where('Id_usuario', $req->get('Id'))->first();
         if ($req->has('Rol')) {
-            $role=1;
+            $role = 1;
         } else {
-            $role=0;
+            $role = 0;
         }
         $rol->Id_rol = $role;
         $rol->save();
@@ -175,14 +197,15 @@ class ControladorAdmin extends Controller {
         return $datos;
     }
 
-    public function cerrarSesion () {
+    public function cerrarSesion() {
         \Session::invalidate();
         \Session::regenerate();
         return view('index');
     }
 
-    public function crudUsuarios () {
+    public function crudUsuarios() {
         $datos = self::selectUsuarios();
         return view('vistasadmin/crudusuario', $datos);
     }
+
 }
