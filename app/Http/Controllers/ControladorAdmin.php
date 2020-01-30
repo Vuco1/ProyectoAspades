@@ -158,11 +158,11 @@ class ControladorAdmin extends Controller {
 
     private function selectUsuarios() {
         $miusuario = \Session::get('usuario');
-        $users = where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
+        $users = Usuario::where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
         $usuarios = [];
         foreach ($users as $usu) {
             $rol = Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
-            $datos[] = [
+            $usuarios[] = [
                 'id' => $usu->Id_usuario,
                 'nick' => $usu->Nick,
                 'nombre' => $usu->Nombre,

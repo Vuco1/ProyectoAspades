@@ -27,8 +27,22 @@ class ControladorGeneral extends Controller {
             $rol = $usurol->Id_rol;
             \Session::put('usuario', $usuario2);
             \Session::put('rol', $usurol);
+            
+            $usuarios = Usuario::where('Id_usuario', '!=', $usuario2->Id_usuario)->get();
+            foreach ($usuarios as $usu) {
+                $rol2= Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
+                $datos[] = [
+                    'id' => $usu->Id_usuario,
+                    'nick' => $usu->Nick,
+                    'nombre' => $usu->Nombre,
+                    'rol' => $rol2->Id_rol
+                ];
+            }
+            $datos2 = [
+                'datos' => $datos
+            ];
             if ($rol == 1) {
-                return view('InicioAdmin');
+                return view('VistasAdmin/crudusuario',$datos2);
             }
             if ($rol == 0) {
                 return view('usuario');

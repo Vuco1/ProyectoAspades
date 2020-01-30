@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-        @include('Header')
+        @include('Plantillas/Header')
         <p><img src="{{asset("imagenes/Victor.jpg")}}" style="width: 100px">Aspades</p>
         <form action="comprobar" method="post">
             @csrf
@@ -72,6 +72,6 @@
             <input type="password" name="clave">
             <input type="submit" value="Entrar">
         </form>
-         @include('Footer')
+         @include('Plantillas/Footer')
     </body>
 </html>
