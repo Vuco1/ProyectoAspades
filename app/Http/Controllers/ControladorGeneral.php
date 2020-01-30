@@ -28,10 +28,10 @@ class ControladorGeneral extends Controller {
             \Session::put('usuario', $usuario2);
             \Session::put('rol', $usurol);
             if ($rol == 1) {
-                return view('InicioAdmin');
+                return view('vistasadmin/inicioadmin');
             }
             if ($rol == 0) {
-                return view('usuario');
+                return view('vistasusuario/usuario');
             }
         }
     }
