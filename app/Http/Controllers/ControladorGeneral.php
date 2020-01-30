@@ -16,22 +16,22 @@ class ControladorGeneral extends Controller {
     function comprobarUsuario(Request $req) {
         $usuario = $req->get('usuario');
         $clave = $req->get('clave');
-        //$clave = md5($clave);
-        $usuario = Usuario::where('Nick', $usuario)
-                ->where('Clave', $clave)
+        $clave2 = md5($clave);
+        $usuario2 = Usuario::where('Nick', $usuario)
+                ->where('Clave', $clave2)
                 ->first();
-        if ($usuario == null) {
+        if ($usuario2 == null) {
             return view('error');
         } else {
-            $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
+            $usurol = Usuario_Rol::where('Id_usuario', $usuario2->Id_usuario)->first();
             $rol = $usurol->Id_rol;
-            \Session::put('usuario', $usuario);
+            \Session::put('usuario', $usuario2);
             \Session::put('rol', $usurol);
             if ($rol == 1) {
-                return view('InicioAdmin', $datos);
+                return view('InicioAdmin');
             }
             if ($rol == 0) {
-                return view('usuario', $datos);
+                return view('usuario');
             }
         }
     }
