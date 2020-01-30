@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Usuario_Rol;
 
-class ControladorPrueba extends Controller {
+class ControladorAdmin extends Controller {
 
     /**
       function paginacion() {
