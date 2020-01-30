@@ -16,23 +16,36 @@ class ControladorGeneral extends Controller {
     function comprobarUsuario(Request $req) {
         $usuario = $req->get('usuario');
         $clave = $req->get('clave');
-//        $clave2 = md5($clave);
-        $usuario = Usuario::where('Nick', $usuario)
-                ->where('Clave', $clave)
+        $clave2 = md5($clave);
+        $usuario2 = Usuario::where('Nick', $usuario)
+                ->where('Clave', $clave2)
                 ->first();
-        if ($usuario == null) {
+        if ($usuario2 == null) {
             return view('error');
         } else {
-            $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
+            $usurol = Usuario_Rol::where('Id_usuario', $usuario2->Id_usuario)->first();
             $rol = $usurol->Id_rol;
-            \Session::put('usuario', $usuario);
+            \Session::put('usuario', $usuario2);
             \Session::put('rol', $usurol);
-//            dd($rol);
+            
+            $usuarios = Usuario::where('Id_usuario', '!=', $usuario2->Id_usuario)->get();
+            foreach ($usuarios as $usu) {
+                $rol2= Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
+                $datos[] = [
+                    'id' => $usu->Id_usuario,
+                    'nick' => $usu->Nick,
+                    'nombre' => $usu->Nombre,
+                    'rol' => $rol2->Id_rol
+                ];
+            }
+            $datos2 = [
+                'datos' => $datos
+            ];
             if ($rol == 1) {
-                return view('VistasAdmin/InicioAdmin');
+                return view('vistasadmin/crudusuario',$datos2);
             }
             if ($rol == 0) {
-                return view('usuario');
+                return view('vistasusuario/usuario',$datos2);
             }
         }
     }

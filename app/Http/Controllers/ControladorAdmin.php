@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Usuario;
 use App\Usuario_Rol;
 
-class ControladorPrueba extends Controller {
+class ControladorAdmin extends Controller {
 
     /**
       function paginacion() {
@@ -63,7 +63,7 @@ class ControladorPrueba extends Controller {
         $datos = [
             'usuarios' => $usuarios,
         ];
-        return view('CrudUsuarios', $datos);
+        return view('vistasadmin/crudusuario', $datos);
     }
 
     /**
@@ -95,11 +95,8 @@ class ControladorPrueba extends Controller {
         $usurol->Id_usuario = $usuarioadd->Id_usuario;
         $usurol->save();
 
-        $usuarios = Persona::where('Nick', '!=', $miusuario->Nick)->get();
-        $datos = [
-            'usuarios' => $usuarios,
-        ];
-        return view('crudUsuarios', $datos);
+        $datos = self::selectUsuarios();
+        return view('vistasadmin/crudusuarios', $datos);
     }
     
     /**
@@ -133,7 +130,7 @@ class ControladorPrueba extends Controller {
             'mensaje' => $mensaje
         ];
 
-        return view('VistasAdmin/PerfilAdmin', $datos);
+        return view('vistasadmin//perfiladmin', $datos);
     }
 
     public function eliminarUsuario($req) {
@@ -142,7 +139,7 @@ class ControladorPrueba extends Controller {
         Usuario::where('Id_usuario', $matricula)->delete();
         $usuarios = Usuario::where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
         $datos = self::selectUsuarios();
-        return view('crudUsuarios', $datos);
+        return view('vistasadmin/crudusuario', $datos);
     }
 
     public function modificarUsuario($req) {
@@ -156,7 +153,7 @@ class ControladorPrueba extends Controller {
         $rol->Id_rol = $role;
         $rol->save();
         $datos = self::selectUsuarios();
-        return view('crudUsuarios', $datos);
+        return view('vistasadmin/crudusuario', $datos);
     }
 
     private function selectUsuarios() {
@@ -180,11 +177,11 @@ class ControladorPrueba extends Controller {
     public function cerrarSesion () {
         \Session::invalidate();
         \Session::regenerate();
-        return view('Login');
+        return view('index');
     }
 
     public function crudUsuarios () {
         $datos = self::selectUsuarios();
-        return view('VistasAdmin/CrudUsuario', $datos);
+        return view('vistasadmin/crudusuario', $datos);
     }
 }
