@@ -75,7 +75,8 @@ class ControladorAdmin extends Controller {
         $miusuario = \Session::get('usuario');
 
         $nick = $req->get('usuario');
-        $clave = $req->get('clave');
+        $clave = md5($req->get('clave'));
+        $nombre = $req->get('nombre');
         if ($req->has('rol')) {
             $rol = 1;
         } else {
@@ -86,17 +87,18 @@ class ControladorAdmin extends Controller {
         $usuario = new Usuario;
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
+        $usuario->Nombre=$nombre;
         $usuario->save();
 
-        $usuarioadd = Persona::where('Nick', '=', $nick)->where('Clave', '=', $clave)->get();
-
+        $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
+        
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
         $usurol->Id_usuario = $usuarioadd->Id_usuario;
         $usurol->save();
 
         $datos = self::selectUsuarios();
-        return view('vistasadmin/crudusuarios', $datos);
+        return view('vistasadmin/crudusuario', $datos);
     }
     
     /**

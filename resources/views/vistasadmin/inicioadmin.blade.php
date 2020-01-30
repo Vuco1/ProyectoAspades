@@ -10,7 +10,7 @@ and open the template in the editor.
         <title>Página de inicio de administrador</title>
     </head>
     <body>
-        @include('Header')
+        @include('plantillas/header')
         @if (\Session::has ('usuario'))
         {!!$usuario = \Session::get ('usuario')!!}
         <h1>Hola <?php echo $usuario->Nick ?></h1>

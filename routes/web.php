@@ -35,21 +35,25 @@ Route::post('comprobar','ControladorGeneral@comprobarUsuario');
 /**
  * Ruta para registrar un Usuario
  */
-Route::post('registrar','ControladorAdmin@registrarUsuario');
+Route::post('registrar','ControladorAdmin@addUsuario');
 
 /**
  * Editar el perfil del administrador.
  */
-Route::post('editar_perfil','ControladorPrueba@editarPerfil');
+Route::post('editar_perfil','ControladorAdmin@editarPerfil');
 
 Route::get('Inicio', function () {
-    return view('VistasAdmin/InicioAdmin');
+    return view('vistasadmin/inicioadmin');
 });
 
 Route::get('Perfil', function () {
-    return view('VistasAdmin/PerfilAdmin');
+    return view('vistasAdmin/perfiladmin');
 });
 
-Route::get('Ajustes', 'ControladorPrueba@crudUsuarios');
+Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
 
-Route::get('cerrarSesion', 'ControladorPrueba@cerrarSesion');
+Route::get('cerrarSesion', 'ControladorAdmin@cerrarSesion');
+
+Route::get('addUsuario', function () {
+    return view('vistasadmin/addusuario');
+});

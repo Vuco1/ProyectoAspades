@@ -86,9 +86,10 @@
     <body>
         <form action="registrar" method="post">
             @csrf
-            <input type="text" name="usuario" placeholder="Nombre del Usuario">
+            <input type="text" name="usuario" placeholder="Usuario">
             <input id="clave1" type="password" name="clave" placeholder="Clave" onblur="isValid()">
             <input id="clave2" type="password" name="clave2" placeholder="Repite la Clave" onblur="isValid()">
+            <input type="text" name="nombre" placeholder="Nombre del Usuario">
             <label for="rol">¿Ser Administrador?</label>  
             <input id="rol" type="checkbox" name="rol" value="Admin">
             <input id="validar" type="submit" value="Registrar" disabled>

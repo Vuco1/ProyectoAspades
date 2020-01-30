@@ -42,7 +42,7 @@ class ControladorGeneral extends Controller {
                 'datos' => $datos
             ];
             if ($rol == 1) {
-                return view('vistasadmin/inicoadmin',$datos2);
+                return view('vistasadmin/inicioadmin',$datos2);
             }
             if ($rol == 0) {
                 return view('vistasusuario/usuario',$datos2);

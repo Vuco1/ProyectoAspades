@@ -16,11 +16,14 @@
                 <input type="text" name="Nick"  value="<?php echo $dato['nick'] ?>" >
                 <input type="text" name="Nombre" value="<?php echo $dato['nombre'] ?>" >
                 <input type="checkbox" name="Rol" <?php if ($dato['rol'] === 1) { ?>checked<?php } ?> value="">
-                    <input type="submit" name="eliminarUsuario" value="Eliminar">
-                    <input type="submit" name="modificarCoche" value="Modificar"><br/>
-                </form>
-                <?php
-            }
+                <input type="submit" name="eliminarUsuario" value="Eliminar">
+                <input type="submit" name="modificarCoche" value="Modificar"><br/>
+            </form>
+
+        <a href="addUsuario">add</a>
+
+            <?php
+        }
         ?>
     </body>
 </html>
