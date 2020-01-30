@@ -49,7 +49,7 @@ class ControladorAdmin extends Controller {
      * @param Request $req Recibe los datos del usuario sobre el que se desee que se realicen los cambios.
      * @return type
      */
-    public function eleccionCrudUsuario(Request $req) {
+    public function eleccionCrud(Request $req) {
 
         if ($req->has('modUsuario')) {
             $this->modificarUsuario($req);
@@ -59,10 +59,7 @@ class ControladorAdmin extends Controller {
             $this->eliminarUsuario($req);
         }
 
-        $usuarios = \Session::get('datos');
-        $datos = [
-            'usuarios' => $usuarios,
-        ];
+       $datos = self::selectUsuarios();
         return view('vistasadmin/crudusuario', $datos);
     }
 
@@ -137,25 +134,27 @@ class ControladorAdmin extends Controller {
 
     public function eliminarUsuario($req) {
         $miusuario = \Session::get('usuario');
-        $usuario = $req->get('id');
-        Usuario::where('Id_usuario', $matricula)->delete();
-        $usuarios = Usuario::where('Id_usuario', '!=', $miusuario->Id_usuario)->get();
-        $datos = self::selectUsuarios();
-        return view('vistasadmin/crudusuario', $datos);
+        $id = $req->get('Id');
+        $usuario = Usuario::where('Id_usuario', $id)->first();
+        $usuario->delete();
     }
 
     public function modificarUsuario($req) {
-        $usuario = Usuario::where('Id_usuario', $req->get('id'))->first();
+        $usuario = Usuario::where('Id_usuario', $req->get('Id'))->first();
         $nick = $req->get('Nick');
+        $nombre = $req->get('Nombre');
         $usuario->Nick = $nick;
+        $usuario->Nombre = $nombre;
         $usuario->save();
 //Discutir sobre la base de datos mañana
-        $rol = Usuario_Rol::where('Id_usuario', $req->get('id'))->first();
-        $role = $req->get('Id_rol');
+        $rol = Usuario_Rol::where('Id_usuario', $req->get('Id'))->first();
+        if ($req->has('Rol')) {
+            $role=1;
+        } else {
+            $role=0;
+        }
         $rol->Id_rol = $role;
         $rol->save();
-        $datos = self::selectUsuarios();
-        return view('vistasadmin/crudusuario', $datos);
     }
 
     private function selectUsuarios() {

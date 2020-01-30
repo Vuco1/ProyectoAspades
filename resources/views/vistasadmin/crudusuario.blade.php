@@ -13,17 +13,16 @@
         <?php foreach ($datos as $dato) { ?>
             <form action="crudUsu" method="post">
                 @csrf
+                <input type="hidden" name="Id"  value="<?php echo $dato['id'] ?>" >
                 <input type="text" name="Nick"  value="<?php echo $dato['nick'] ?>" >
                 <input type="text" name="Nombre" value="<?php echo $dato['nombre'] ?>" >
                 <input type="checkbox" name="Rol" <?php if ($dato['rol'] === 1) { ?>checked<?php } ?> value="">
                 <input type="submit" name="eliminarUsuario" value="Eliminar">
-                <input type="submit" name="modificarCoche" value="Modificar"><br/>
+                <input type="submit" name="modUsuario" value="Modificar"><br/>
             </form>
-
-        <a href="addUsuario">add</a>
-
             <?php
         }
         ?>
+        <a href="addUsuario">add</a>
     </body>
 </html>

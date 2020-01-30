@@ -42,6 +42,8 @@ Route::post('registrar','ControladorAdmin@addUsuario');
  */
 Route::post('editar_perfil','ControladorAdmin@editarPerfil');
 
+Route::post('crudUsu', 'ControladorAdmin@eleccionCrud');
+
 Route::get('Inicio', function () {
     return view('vistasadmin/inicioadmin');
 });
