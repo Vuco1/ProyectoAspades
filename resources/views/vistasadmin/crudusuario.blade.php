@@ -13,17 +13,23 @@
         <?php foreach ($datos as $dato) { ?>
             <form action="crudUsu" method="post">
                 @csrf
-                <input type="hidden" name="Id"  value="<?php echo $dato['id'] ?>" >
-                <input type="text" name="Nick"  value="<?php echo $dato['nick'] ?>" >
-                <input type="text" name="Nombre" value="<?php echo $dato['nombre'] ?>" >
-                <input type="checkbox" name="Rol" <?php if ($dato['rol'] === 1) { ?>checked<?php } ?> value="">
+                <input type="hidden" name="Id"  value="<?php echo $dato->Id_usuario ?>" >
+                <input type="text" name="Nick"  value="<?php echo $dato->Nick ?>" >
+                <input type="text" name="Nombre" value="<?php echo $dato->Nombre ?>" >
+                <select name="Rol" id="Rol<?php echo $dato->Id_usuario ?>" class="form-control">
+                    <?php foreach ($datos2 as $da2) { ?>
+                        <option name="" value="<?php echo $da2->Id_rol?>"<?php if ($dato->Id_rol ==$da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
                 <input type="submit" name="eliminarUsuario" value="Eliminar">
                 <input type="submit" name="modUsuario" value="Modificar"><br/>
             </form>
             <?php
         }
         ?>
-        
         <a href="addUsuario">add</a>
+        {{ $datos->links() }}
     </body>
 </html>

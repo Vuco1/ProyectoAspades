@@ -49,5 +49,14 @@ class ControladorGeneral extends Controller {
             }
         }
     }
+    /**
+     * Funcion de Cerrar sesion, elimina todos los elementos de la sesion actual y crea una nueva, devuelve al usuario a la pagina de login.
+     * @return type Devuelve Login
+     */
+     public function cerrarSesion() {
+        \Session::invalidate();
+        \Session::regenerate();
+        return view('index');
+    }
 
 }
