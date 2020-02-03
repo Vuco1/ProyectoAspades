@@ -1,0 +1,11 @@
+/* CSS GENERAL */
+/* Esta hoja contiene los estilos comunes a todas las pantallas */
+
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap');
+
+/* COLORES */
+.bg-orange { background-color: #f39932; }
+
+.text-orange { color: #f39932; }
+

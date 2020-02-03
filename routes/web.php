@@ -44,17 +44,17 @@ Route::post('editar_perfil','ControladorAdmin@editarPerfil');
 
 Route::post('crudUsu', 'ControladorAdmin@eleccionCrud');
 
-Route::get('Inicio', function () {
+Route::get('inicioadmin', function () {
     return view('vistasadmin/inicioadmin');
 });
 
-Route::get('Perfil', function () {
+Route::get('perfil', function () {
     return view('vistasAdmin/perfiladmin');
 });
 
-Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
+Route::get('gestionusuarios', 'ControladorAdmin@crudUsuarios');
 
-Route::get('cerrarSesion', 'ControladorAdmin@cerrarSesion');
+Route::get('cerrarsesion', 'ControladorAdmin@cerrarSesion');
 
 Route::get('addUsuario', function () {
     return view('vistasadmin/addusuario');
