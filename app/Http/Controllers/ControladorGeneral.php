@@ -9,8 +9,8 @@ use App\Usuario_Rol;
 class ControladorGeneral extends Controller {
 
     /**
-     * Funcion de Login, se comprueba el nick y la clave introducida por el usuario y si es correcta
-     * @param Request $req
+     * Login, se comprueba el nick y la clave introducida por el usuario y si es correcta o no.
+     * @param Request $req Recibe los datos del formulario de registro.
      * @return type
      */
     function comprobarUsuario(Request $req) {
@@ -50,7 +50,8 @@ class ControladorGeneral extends Controller {
         }
     }
     /**
-     * Funcion de Cerrar sesion, elimina todos los elementos de la sesion actual y crea una nueva, devuelve al usuario a la pagina de login.
+     * Cerrar sesion, elimina todos los elementos de la sesion actual y crea una nueva, 
+     * devuelve al usuario a la pagina de login.
      * @return type Devuelve Login
      */
      public function cerrarSesion() {

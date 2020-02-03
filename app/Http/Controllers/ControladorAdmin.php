@@ -10,11 +10,10 @@ use App\Usuario_Rol;
 
 class ControladorAdmin extends Controller {
 
-    
     /**
      * Edita los datos de perfil del administrador. En caso de querer cambiar la 
      * contraseña no se requerirá la contraseña anterior.
-     * @param Request $req
+     * @param Request $req Recibe los datos del formulario de registro.
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
@@ -36,6 +35,7 @@ class ControladorAdmin extends Controller {
         }
 
         $user = Usuario::where('Id_usuario', $id)->first();
+        \Session::put('usuario', $user);
 
         $datos = [
             'usuario' => $user,
@@ -44,10 +44,10 @@ class ControladorAdmin extends Controller {
 
         return view('vistasadmin/perfiladmin', $datos);
     }
-    
+
     /**
      * Elimina a un usuario de la base de datos con la id de usuario.
-     * @param Request $req 
+     * @param Request $req Recibe los datos del formulario de registro.
      */
     public function eliminarUsuario($req) {
         $miusuario = \Session::get('usuario');
@@ -55,7 +55,11 @@ class ControladorAdmin extends Controller {
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->delete();
     }
-    
+
+    /**
+     * Modifica los datos de un usuario concreto.
+     * @param type $req Recibe los datos del formulario de registro.
+     */
     public function modificarUsuario($req) {
         $usuario = Usuario::where('Id_usuario', $req->get('Id'))->first();
         $nick = $req->get('Nick');
@@ -70,9 +74,9 @@ class ControladorAdmin extends Controller {
         $rol->Id_rol = $role;
         $rol->save();
     }
-    
-       /**
-     * Funcion para registrar un usuario nuevo.
+
+    /**
+     * Registra un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
      */
@@ -106,7 +110,6 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
-    
     /**
      * Devuelve el listado de usuarios para mostrar en el crud, los resultados aparecen paginados
      * @return LengthAwarePaginator
@@ -120,6 +123,7 @@ class ControladorAdmin extends Controller {
                 ->paginate(5);
         return $datos;
     }
+
     /**
      * Devuelve la lista de los roles en la base de datos.
      * @return type
@@ -129,18 +133,18 @@ class ControladorAdmin extends Controller {
         return $datos2;
     }
 
-   /**
-    * Carga el crud de usuarios con la lista de usuarios y roles.
-    * @return type
-    */
+    /**
+     * Carga el crud de usuarios con la lista de usuarios y roles.
+     * @return type
+     */
     public function crudUsuarios() {
         $datos = self::selectUsuarios();
         $datos2 = self::selectRoles();
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
-    
+
     /**
-     * Funcion que recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
+     * Recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
      * @param Request $req Recibe los datos del usuario sobre el que se desee que se realicen los cambios.
      * @return type
      */
@@ -159,8 +163,8 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
-      /**
-     * Funcion para llenar la base de datos de usuarios random para testeo.
+    /**
+     * Llena la base de datos de usuarios random para testeo.
      */
     public function llenarBase() {
         for ($i = 0; $i < 20; $i++) {
@@ -183,4 +187,5 @@ class ControladorAdmin extends Controller {
             $usurol->save();
         }
     }
+
 }

@@ -12,10 +12,9 @@ and open the template in the editor.
     <body>
         @include('plantillas/header')
         @if (\Session::has ('usuario'))
-        {!! $usuario = \Session::get('usuario') !!}
+        <!--{!! $usuario = \Session::get('usuario') !!}-->
         <h1>Hola <?php echo $usuario->Nick ?></h1>
-        
-     
+
         @endif
     </body>
 </html>

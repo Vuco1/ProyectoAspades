@@ -49,7 +49,7 @@ Route::get('Inicio', function () {
 });
 
 Route::get('Perfil', function () {
-    return view('vistasAdmin/perfiladmin');
+    return view('vistasadmin/perfiladmin');
 });
 
 Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
