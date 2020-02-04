@@ -40,16 +40,16 @@ Route::post('registrar','ControladorAdmin@addUsuario');
 /**
  * Editar el perfil del administrador.
  */
-Route::post('editar_perfil','ControladorAdmin@editarPerfil');
+Route::post('editarperfil','ControladorAdmin@editarPerfil');
 
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
 
 Route::get('inicioadmin', function () {
-    return view('vistasadmin/inicioadmin');
+    return view('vistasadmin/inicioadmin',['usuario'=>session()->get('usuario')]);
 });
 
 Route::get('perfil', function () {
-    return view('vistasAdmin/perfiladmin');
+    return view('vistasadmin/perfiladmin',['usuario'=>session()->get('usuario')]);
 });
 
 Route::get('gestionusuarios', 'ControladorAdmin@crudUsuarios');

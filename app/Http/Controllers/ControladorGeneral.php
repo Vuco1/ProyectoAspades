@@ -13,33 +13,35 @@ class ControladorGeneral extends Controller {
      * @param Request $req Recibe los datos del formulario de registro.
      * @return type
      */
-    function comprobarUsuario(Request $req) {
-        $usuario = $req->get('usuario');
+    public function comprobarUsuario(Request $req) {
+        $nick = $req->get('usuario');
         $clave = $req->get('clave');
-        $clave2 = md5($clave);
-        $usuario2 = Usuario::where('Nick', $usuario)
-                ->where('Clave', $clave2)
+        $claveCod = md5($clave);
+        $usuario = Usuario::where('Nick', $nick)
+                ->where('Clave', $claveCod)
                 ->first();
-        if ($usuario2 == null) {
+        if ($usuario == null) {
             return view('error');
         } else {
-            $usurol = Usuario_Rol::where('Id_usuario', $usuario2->Id_usuario)->first();
+            $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
             $rol = $usurol->Id_rol;
-            \Session::put('usuario', $usuario2);
-            \Session::put('rol', $usurol);
+            session()->put('usuario', $usuario);
+            session()->put('rol', $usurol);
+//            \Session::put('usuario', $usuario);
+//            \Session::put('rol', $usurol);
             
-            $usuarios = Usuario::where('Id_usuario', '!=', $usuario2->Id_usuario)->get();
-            foreach ($usuarios as $usu) {
-                $rol2= Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
-                $datos[] = [
-                    'id' => $usu->Id_usuario,
-                    'nick' => $usu->Nick,
-                    'nombre' => $usu->Nombre,
-                    'rol' => $rol2->Id_rol
-                ];
-            }
+//            $usuarios = Usuario::where('Id_usuario', '!=', $usuario2->Id_usuario)->get();
+//            foreach ($usuarios as $usu) {
+//                $rol2= Usuario_Rol::where('Id_usuario', $usu->Id_usuario)->first();
+//                $datos[] = [
+//                    'id' => $usu->Id_usuario,
+//                    'nick' => $usu->Nick,
+//                    'nombre' => $usu->Nombre,
+//                    'rol' => $rol2->Id_rol
+//                ];
+//            }
             $datos2 = [
-                'datos' => $datos
+                'datos' => $usuario
             ];
             if ($rol == 1) {
                 return view('vistasadmin/inicioadmin',$datos2);

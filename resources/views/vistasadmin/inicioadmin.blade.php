@@ -22,12 +22,12 @@ Login
         </header>
         <!-- MAIN -->
         <main>
-            @if (\Session::has ('usuario'))
-            <!--{!! $usuario = \Session::get('usuario') !!}-->
+            <?php if (session()->has('usuario')) {
+            $usuario = session()->get('usuario'); ?>
             <section class="h-100 d-flex">
                 <h1>Hola <?php echo $usuario->Nick ?></h1>
             </section>     
-            @endif
+            <?php } ?>
         </main>
 @include('plantillas/footer')
 @endsection
