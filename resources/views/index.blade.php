@@ -13,6 +13,7 @@ Login
             <input type="password" name="clave" id="clave" placeholder="Clave">
             <input type="submit" name="login" id="login" value="Iniciar sesión">
         </form>
+        <div id="mensaje"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
     </main>
 @include('plantillas/footer')
 @endsection

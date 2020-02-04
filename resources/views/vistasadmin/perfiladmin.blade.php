@@ -33,7 +33,7 @@ Perfil
                 <input type="password" name="clave" placeholder="Escriba su nueva contraseña">
                 <input type="submit" value="Guardar cambios">
             </form>
-            <div id="mensaje"><?php $mensaje ?></div>
+            <div id="mensaje"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
             <?php } ?>
         </main>
 @include('plantillas/footer')
