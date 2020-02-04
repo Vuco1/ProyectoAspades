@@ -1,4 +1,7 @@
-        <!-- Esta es la plantilla del footer, que contiene la ventana de información. Se incluirá en todas las vistas del administrador -->
+        <!-- FOOTER -->
+        <footer>
+            <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
+        </footer>
         <!-- VENTANA MODAL INFO -->
         <section class="modal fade" id="info">
             <div class="modal-dialog modal-dialog-centered">
@@ -23,8 +26,4 @@
                 </div>
             </div>
         </section>
-        <!-- FOOTER -->
-        <footer>
-            <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
-        </footer>
 

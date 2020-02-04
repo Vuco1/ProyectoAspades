@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <title>@yield('titulo')</title>
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
-        <title>@yield('titulo')</title>
     </head>
     <body>
-        <div>@yield('contenido')</div>
+        <div id="contenido">@yield('contenido')</div>
         <!-- SCRIPTS -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.jquery-3.4.1.slim.min.js') }}"></script>
