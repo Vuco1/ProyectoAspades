@@ -3,9 +3,10 @@
 Login
 @endsection
 @section('contenido')
+    <header></header>
     <!-- MAIN -->
     <main>
-        <img src="{{asset("imagenes/Victor.jpg")}}" class="logo-login"/>
+        <img src="{{asset('images/logo_aspades.svg')}}" class="logo-login"/>
         <form action="comprobar" method="post">
             @csrf
             <input type="text" name="usuario" id="usuario" placeholder="Usuario">
