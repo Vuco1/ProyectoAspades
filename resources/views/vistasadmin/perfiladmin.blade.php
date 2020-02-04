@@ -7,8 +7,9 @@
         <title>@yield('titulo')</title>
     </head>
     <body>
+        @include('plantillas/header')
         @if (Session::has ('usuario'))
-        $usuario = Session::get ('usuario')
+        <?php $usuario = Session::get ('usuario') ?>
         <h1>Mi perfil</h1>
         <form action="editar_perfil" method="post">
             @csrf
