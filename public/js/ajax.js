@@ -14,8 +14,9 @@ $(document).ready(function () {
     
     
     $('form').submit(function (evt) {
-        evt.preventDefault();
+        
         if (buttonpressed === 'modificar') {
+            evt.preventDefault();
             var $id = $(this).find('input[name="Id"]').val();
             var $nombre = $(this).find('input[name="Nombre"]').val();
             var $nick = $(this).find('input[name="Nick"]').val();
@@ -47,6 +48,7 @@ $(document).ready(function () {
             });
         }
         if (buttonpressed === 'eliminar') {
+            evt.preventDefault();
                 var $id = $(this).find('input[name="Id"]').val();
                 $.ajax({
                     url: 'eliminarUsuario',
