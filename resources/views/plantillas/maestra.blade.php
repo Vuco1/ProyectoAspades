@@ -15,7 +15,7 @@
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.jquery-3.4.1.slim.min.js') }}"></script>
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.popper.min.js') }}"></script>
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.min.js') }}"></script>
-        <script src="https://kit.fontawesome.com/686f2338a1.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/686f2338a1.js" crossorigin="anonymous"></script>        
         <script src="{{ asset('js/ajax.js') }}"></script>
     </body>
 </html>
