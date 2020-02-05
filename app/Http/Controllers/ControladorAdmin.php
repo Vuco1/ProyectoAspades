@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use lluminate\Pagination\Paginator;
+use Illuminate\Support\Str;
 //use lluminate\Pagination\LengthAwarePaginator;
 use App\Usuario;
 use App\Usuario_Rol;
 
 class ControladorAdmin extends Controller {
 
-    
     /**
      * Edita los datos de perfil del administrador. En caso de querer cambiar la 
      * contraseña no se requerirá la contraseña anterior.
@@ -44,34 +44,9 @@ class ControladorAdmin extends Controller {
 
         return view('vistasadmin/perfiladmin', $datos);
     }
-    
-    /**
-     * Elimina a un usuario de la base de datos con la id de usuario.
-     * @param Request $req 
-     */
-    public function eliminarUsuario($req) {
-        $miusuario = \Session::get('usuario');
-        $id = $req->get('Id');
-        $usuario = Usuario::where('Id_usuario', $id)->first();
-        $usuario->delete();
-    }
-    
-    public function modificarUsuario($req) {
-        $usuario = Usuario::where('Id_usuario', $req->get('Id'))->first();
-        $nick = $req->get('Nick');
-        $nombre = $req->get('Nombre');
-        $usuario->Nick = $nick;
-        $usuario->Nombre = $nombre;
-        $usuario->save();
-//Discutir sobre la base de datos mañana
-        $rol = Usuario_Rol::where('Id_usuario', $req->get('Id'))->first();
 
-        $role = $req->Rol;
-        $rol->Id_rol = $role;
-        $rol->save();
-    }
-    
-       /**
+   
+    /**
      * Funcion para registrar un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
@@ -106,7 +81,6 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
-    
     /**
      * Devuelve el listado de usuarios para mostrar en el crud, los resultados aparecen paginados
      * @return LengthAwarePaginator
@@ -120,6 +94,7 @@ class ControladorAdmin extends Controller {
                 ->paginate(5);
         return $datos;
     }
+
     /**
      * Devuelve la lista de los roles en la base de datos.
      * @return type
@@ -129,16 +104,16 @@ class ControladorAdmin extends Controller {
         return $datos2;
     }
 
-   /**
-    * Carga el crud de usuarios con la lista de usuarios y roles.
-    * @return type
-    */
+    /**
+     * Carga el crud de usuarios con la lista de usuarios y roles.
+     * @return type
+     */
     public function crudUsuarios() {
         $datos = self::selectUsuarios();
         $datos2 = self::selectRoles();
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
-    
+
     /**
      * Funcion que recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
      * @param Request $req Recibe los datos del usuario sobre el que se desee que se realicen los cambios.
@@ -159,7 +134,7 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
-      /**
+    /**
      * Funcion para llenar la base de datos de usuarios random para testeo.
      */
     public function llenarBase() {
@@ -182,5 +157,29 @@ class ControladorAdmin extends Controller {
             $usurol->Id_usuario = $usuarioadd->Id_usuario;
             $usurol->save();
         }
+    }
+
+    public function updateUsuario(Request $request) {
+        $nombre = $request->input('nombre');
+        $nick = $request->input('nick');
+        $id = $request->input('id');
+        $role = $request->input('rol');
+        $usuario = Usuario::where('Id_usuario', $id)->first();
+        $usuario->Nick = $nick;
+        $usuario->Nombre = $nombre;
+       
+        $usuario->save();
+        
+        $rol = Usuario_Rol::where('Id_usuario', $id)->first();
+        $rol->Id_rol = $role;
+        $rol->save();
+
+        exit;
+    }
+    
+    public function deleteUsuario(Request $request) {
+        $id = $request->input('id');
+        $usuario = Usuario::where('Id_usuario', $id)->delete();
+        exit;
     }
 }

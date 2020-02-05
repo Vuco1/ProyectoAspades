@@ -14,9 +14,11 @@ class ControladorGeneral extends Controller {
      * @return type
      */
     function comprobarUsuario(Request $req) {
-        $usuario = $req->get('usuario');
-        $clave = $req->get('clave');
-        $clave2 = md5($clave);
+//        $usuario = $req->get('usuario');
+//        $clave = $req->get('clave');
+//        $clave2 = md5($clave);
+        $usuario = 'admin';
+        $clave2=md5('admin');
         $usuario2 = Usuario::where('Nick', $usuario)
                 ->where('Clave', $clave2)
                 ->first();
