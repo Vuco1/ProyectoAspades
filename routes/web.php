@@ -42,19 +42,21 @@ Route::post('registrar','ControladorAdmin@addUsuario');
  */
 Route::post('editar_perfil','ControladorAdmin@editarPerfil');
 
-Route::post('crudUsu', 'ControladorAdmin@eleccionCrud');
+Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
 
 Route::get('Inicio', function () {
     return view('vistasadmin/inicioadmin');
 });
 
 Route::get('Perfil', function () {
-    return view('vistasAdmin/perfiladmin');
+    return view('vistasadmin/perfiladmin');
 });
 
 Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
 
-Route::get('cerrarSesion', 'ControladorAdmin@cerrarSesion');
+Route::get('kabum', 'ControladorAdmin@llenarBase');
+
+Route::get('cerrarSesion', 'ControladorGeneral@cerrarSesion');
 
 Route::get('addUsuario', function () {
     return view('vistasadmin/addusuario');
