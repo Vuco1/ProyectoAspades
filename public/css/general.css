@@ -1,0 +1,55 @@
+/* CSS GENERAL */
+/* Esta hoja contiene los estilos comunes a todas las pantallas */
+
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap');
+
+/* GENERAL */
+body {
+    height: 100vh;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+main {
+    height: calc(100vh - 3.5rem - 3.5rem);
+    text-align: center;
+}
+
+header, footer { height: 3.5rem!important; }
+
+h1 {
+    align-self: center;
+    margin: auto;
+    font-size: 5rem;
+}
+
+/* COLORES */
+.bg-orange { background-color: #f39932; }
+
+.text-orange { color: #f39932; }
+
+a.text-orange:hover {
+    color: #ffaf54!important;
+    text-decoration: none!important;
+}
+
+/* IMÁGENES, LOGOS E ICONOS */
+.logo-nav { width: 7.5rem; }
+
+.logo-login { width: 40%; }
+
+.icono { padding-right: 0.5rem; }
+
+/* NAV */
+.navbar-nav .nav-link {
+    padding: 1rem 1.5rem!important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    background-color: #f39932;
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link:hover, .navbar-light .navbar-nav .nav-link.active:hover {
+    background-color: #ffaf54;
+}

@@ -30,7 +30,7 @@ Route::post('prueba', function () {
 /**
  * Ruta para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar','ControladorGeneral@comprobarUsuario');
+Route::post('comprobar','ControladorGeneral@iniciarSesion');
 
 /**
  * Ruta para registrar un Usuario
@@ -40,23 +40,23 @@ Route::post('registrar','ControladorAdmin@addUsuario');
 /**
  * Editar el perfil del administrador.
  */
-Route::post('editar_perfil','ControladorAdmin@editarPerfil');
+Route::post('editarperfil','ControladorAdmin@editarPerfil');
 
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
 
-Route::get('Inicio', function () {
-    return view('vistasadmin/inicioadmin');
+Route::get('inicioadmin', function () {
+    return view('vistasadmin/inicioadmin',['usuario'=>session()->get('usuario')]);
 });
 
-Route::get('Perfil', function () {
-    return view('vistasadmin/perfiladmin');
+Route::get('perfil', function () {
+    return view('vistasadmin/perfiladmin',['usuario'=>session()->get('usuario')]);
 });
 
-Route::get('Ajustes', 'ControladorAdmin@crudUsuarios');
+Route::get('gestionusuarios', 'ControladorAdmin@crudUsuarios');
+
+Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
 Route::get('kabum', 'ControladorAdmin@llenarBase');
-
-Route::get('cerrarSesion', 'ControladorGeneral@cerrarSesion');
 
 Route::get('addUsuario', function () {
     return view('vistasadmin/addusuario');
