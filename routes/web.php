@@ -42,6 +42,11 @@ Route::post('registrar','ControladorAdmin@addUsuario');
  */
 Route::post('editarperfil','ControladorAdmin@editarPerfil');
 
+Route::post('updateUsuario','ControladorAdmin@updateUsuario');
+
+Route::post('eliminarUsuario','ControladorAdmin@deleteUsuario');
+
+
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
 
 Route::get('inicioadmin', function () {

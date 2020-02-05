@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use lluminate\Pagination\Paginator;
+use Illuminate\Support\Str;
 //use lluminate\Pagination\LengthAwarePaginator;
 use App\Usuario;
 use App\Usuario_Rol;
@@ -45,38 +46,9 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/perfiladmin', $datos);
     }
 
+   
     /**
-     * Elimina a un usuario de la base de datos con la id de usuario.
-     * @param Request $req Recibe los datos del formulario de registro.
-     */
-    public function eliminarUsuario($req) {
-        $miusuario = \Session::get('usuario');
-        $id = $req->get('Id');
-        $usuario = Usuario::where('Id_usuario', $id)->first();
-        $usuario->delete();
-    }
-
-    /**
-     * Modifica los datos de un usuario concreto.
-     * @param type $req Recibe los datos del formulario de registro.
-     */
-    public function modificarUsuario($req) {
-        $usuario = Usuario::where('Id_usuario', $req->get('Id'))->first();
-        $nick = $req->get('Nick');
-        $nombre = $req->get('Nombre');
-        $usuario->Nick = $nick;
-        $usuario->Nombre = $nombre;
-        $usuario->save();
-//Discutir sobre la base de datos mañana
-        $rol = Usuario_Rol::where('Id_usuario', $req->get('Id'))->first();
-
-        $role = $req->Rol;
-        $rol->Id_rol = $role;
-        $rol->save();
-    }
-
-    /**
-     * Registra un usuario nuevo.
+     * Funcion para registrar un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
      */
@@ -188,4 +160,27 @@ class ControladorAdmin extends Controller {
         }
     }
 
+    public function updateUsuario(Request $request) {
+        $nombre = $request->input('nombre');
+        $nick = $request->input('nick');
+        $id = $request->input('id');
+        $role = $request->input('rol');
+        $usuario = Usuario::where('Id_usuario', $id)->first();
+        $usuario->Nick = $nick;
+        $usuario->Nombre = $nombre;
+       
+        $usuario->save();
+        
+        $rol = Usuario_Rol::where('Id_usuario', $id)->first();
+        $rol->Id_rol = $role;
+        $rol->save();
+
+        exit;
+    }
+    
+    public function deleteUsuario(Request $request) {
+        $id = $request->input('id');
+        $usuario = Usuario::where('Id_usuario', $id)->delete();
+        exit;
+    }
 }
