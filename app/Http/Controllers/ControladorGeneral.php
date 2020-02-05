@@ -40,8 +40,6 @@ class ControladorGeneral extends Controller {
             $vista = 'index';
         }
 
-        //$datos2 = ['usuario' => $usuario, 'mensaje' => $mensaje];
-
         return view($vista, ['mensaje' => $mensaje]);
     }
 
