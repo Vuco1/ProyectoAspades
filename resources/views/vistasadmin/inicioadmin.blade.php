@@ -21,12 +21,10 @@ Login
             </nav>
         </header>
         <!-- MAIN -->
-        <main>
+        <main class="d-flex">
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
-            <section class="h-100 d-flex">
-                <h1>Hola <?php echo $usuario->Nick ?></h1>
-            </section>     
+            <h1>Hola <?php echo $usuario->Nick ?></h1>  
             <?php } ?>
         </main>
 @include('plantillas/footer')
