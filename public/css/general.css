@@ -48,6 +48,11 @@ a.text-orange:hover {
 
 .icono { padding-right: 0.5rem; }
 
+.icono-crud {
+    height: 1.5rem;
+    width: 2rem;
+}
+
 /* NAV */
 .navbar-nav .nav-link {
     padding: 1rem 1.5rem!important;
@@ -75,13 +80,14 @@ a.text-orange:hover {
     border-color: #ffaf54;
 }
 
-.btn-orange.focus, .btn-orange:focus {
+.btn-orange.focus, .btn-orange:focus, .page-link:focus {
     box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.25);
 }
 
 .btn-orange:not(:disabled):not(.disabled).active:focus, .btn-orange:not(:disabled):not(.disabled):active:focus, .show>.btn-orange.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.5);
 }
+
 
 /* FORMULARIOS */
 .w-8 {
@@ -90,4 +96,21 @@ a.text-orange:hover {
 
 .form-control::-webkit-input-placeholder {
     color: #cccccc;
+}
+
+/* PAGINACIÓN */
+.page-link {
+    color: #f39932;
+}
+
+.page-item.active .page-link {
+    background-color: #f39932;
+    border-color: #f39932;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
 }
