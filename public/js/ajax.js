@@ -8,13 +8,12 @@ $(document).ready(function () {
     });
 
     var buttonpressed;
-    $('.formbutton').click(function () {
+    $('.btn').click(function () {
         buttonpressed = $(this).attr('name');
     });
     
     
     $('form').submit(function (evt) {
-        
         if (buttonpressed === 'modificar') {
             evt.preventDefault();
             var $id = $(this).find('input[name="Id"]').val();
