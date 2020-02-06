@@ -53,7 +53,7 @@ class ControladorAdmin extends Controller {
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
      */
     public function addUsuario(Request $req) {
-        $miusuario = \Session::get('usuario');
+        $miusuario = session()->get('usuario');
 
         $nick = $req->get('usuario');
         $clave = md5($req->get('clave'));

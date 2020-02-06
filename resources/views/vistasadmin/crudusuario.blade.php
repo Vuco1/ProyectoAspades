@@ -23,27 +23,40 @@ Gestión
 </header>
 <!-- MAIN -->
 <main>
-    <?php foreach ($datos as $dato) { ?>
-        <form id="form" name='form' class='form'>
-            @csrf
-            <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>"  value="<?php echo $dato->Id_usuario ?>" >
-            <input type="text" name="Nick"  id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" >
-            <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" >
-            <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="form-control">
-                <?php foreach ($datos2 as $da2) { ?>
-                    <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <button id="eliminar<?php echo $dato->Id_usuario ?>" class="formbutton" name="eliminar">Eliminar</button>
-            <button id='modificar<?php echo $dato->Id_usuario ?>' class="formbutton" name="modificar">Modificar</button><br/>
-        </form>
-        <?php
-    }
-    ?>
-    <a href="addUsuario">add</a>
-    {{ $datos->links() }}
+    <div class="container pt-5">
+        <div class="row py-2 bg-orange text-white rounded">
+            <div class="col">Usuario</div>
+            <div class="col">Nombre</div>
+            <div class="col">Rol</div>
+            <div class="col-1 p-0">Editar</div>
+            <div class="col-1 p-0">Borrar</div>
+        </div>
+        <div class="row">
+            <?php foreach ($datos as $dato) { ?>
+            <form id="form" name="form" class="form container p-0 m-0">
+                @csrf
+                <div class="row py-2 px-3">
+                    <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
+                    <input type="text" name="Nick"  id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" class="form-control col mr-1">
+                    <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" class="form-control col mr-1">
+                    <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="form-control col mr-1">
+                        <?php foreach ($datos2 as $da2) { ?>
+                            <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                    <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
+                    <div class="col-1 p-0"><button name="modificar" id='modificar<?php echo $dato->Id_usuario ?>' class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/></button></div>
+                </div>
+            </form>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+    <div><button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button></div>
+    <div class="d-inline-flex align-content-center mt-5">{{ $datos->links() }}</div>
 </main>
 @include('plantillas/footer')
 @endsection
