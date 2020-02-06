@@ -46,6 +46,8 @@ Route::post('updateUsuario','ControladorAdmin@updateUsuario');
 
 Route::post('eliminarUsuario','ControladorAdmin@deleteUsuario');
 
+Route::post('iniciarContexto','ControladorUsuario@iniciarContextos');
+
 
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
 
