@@ -12,6 +12,7 @@ body {
 
 main {
     height: calc(100vh - 3.5rem - 3.5rem);
+    min-width: 20rem;
     text-align: center;
 }
 
@@ -21,6 +22,11 @@ h1 {
     align-self: center;
     margin: auto;
     font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 3rem 0 1rem;
 }
 
 /* COLORES */
@@ -36,7 +42,10 @@ a.text-orange:hover {
 /* IMÁGENES, LOGOS E ICONOS */
 .logo-nav { width: 7.5rem; }
 
-.logo-login { width: 40%; }
+.logo-login {
+    width: 100%;
+    margin-bottom: 2rem;
+}
 
 .icono { padding-right: 0.5rem; }
 
@@ -52,4 +61,34 @@ a.text-orange:hover {
 
 .navbar-light .navbar-nav .active>.nav-link:hover, .navbar-light .navbar-nav .nav-link.active:hover {
     background-color: #ffaf54;
+}
+
+/* BOTONES */
+.btn-orange {
+    color: #fff;
+    background-color: #f39932;
+    border-color: #f39932;
+}
+
+.btn-orange:hover, .btn-orange:not(:disabled):not(.disabled).active, .btn-orange:not(:disabled):not(.disabled):active, .show>.btn-orange.dropdown-toggle {
+    color: #fff;
+    background-color: #ffaf54;
+    border-color: #ffaf54;
+}
+
+.btn-orange.focus, .btn-orange:focus {
+    box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.25);
+}
+
+.btn-orange:not(:disabled):not(.disabled).active:focus, .btn-orange:not(:disabled):not(.disabled):active:focus, .show>.btn-orange.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.5);
+}
+
+/* FORMULARIOS */
+.w-8 {
+    width: 8.5rem;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #cccccc;
 }

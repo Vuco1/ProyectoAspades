@@ -24,16 +24,49 @@ Perfil
         <main>
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
-            <h1>Mi perfil</h1>
-            <form action="editarperfil" method="post">
+            <h2>Mi perfil</h2>
+            <form action="editarperfil" method="post" class="col-xl-4 col-lg-5 col-md-6 m-auto">
                 @csrf
-                <input type="text" name="id" value="<?= $usuario->Id_usuario?>" hidden>
-                <input type="text" name="nick" value="<?= $usuario->Nick?>" placeholder="Nick">
-                <input type="text" name="nombre" value="<?= $usuario->Nombre?>" placeholder="Nombre">
-                <input type="password" name="clave" placeholder="Escriba su nueva contraseña">
-                <input type="submit" value="Guardar cambios">
+                <input type="text" name="id" value="<?= $usuario->Id_usuario?>" hidden>              
+                <div class="form-group">
+                    <label class="sr-only" for="usuario">Usuario</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                        </div>
+                        <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick?>" placeholder="Usuario" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="nombre">Nombre</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                        </div>
+                        <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre?>" placeholder="Nombre" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="clave">Contraseña</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                        </div>
+                        <input type="password" name="clave" id="clave" placeholder="Escriba su nueva contraseña" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="claverepe">Confirmar</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                        </div>
+                        <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
+                    </div>
+                </div>
+                <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-orange w-100">
             </form>
-            <div id="mensaje"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
+            <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
             <?php } ?>
         </main>
 @include('plantillas/footer')

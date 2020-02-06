@@ -18,28 +18,28 @@ class ControladorAdmin extends Controller {
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
-        $nick = $req->get('nick');
+        $nick = $req->get('usuario');
         $nombre = $req->get('nombre');
-        $clave = $req->get('clave');
+        $clave = md5($req->get('clave'));
 
         $mensaje = 'Perfil modificado con éxito';
         try {
-            $user = Usuario::where('Id_usuario', $id)->first();
-            $user->Nombre = $nombre;
-            $user->Nick = $nick;
+            $usuario = Usuario::where('Id_usuario', $id)->first();
+            $usuario->Nombre = $nombre;
+            $usuario->Nick = $nick;
             if ($clave != null) {
-                $user->Clave = $clave;
+                $usuario->Clave = $clave;
             }
-            $user->save();
+            $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';
         }
 
-        $user = Usuario::where('Id_usuario', $id)->first();
-        \Session::put('usuario', $user);
+        $usuario = Usuario::where('Id_usuario', $id)->first();
+        session()->put('usuario', $usuario);
 
         $datos = [
-            'usuario' => $user,
+            'usuario' => $usuario,
             'mensaje' => $mensaje
         ];
 

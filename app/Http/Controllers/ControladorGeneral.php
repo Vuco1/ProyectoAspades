@@ -16,11 +16,10 @@ class ControladorGeneral extends Controller {
      */
     public function iniciarSesion(Request $req) {
         $nick = $req->get('usuario');
-        $clave = $req->get('clave');
-        $claveCod = md5($clave);
+        $clave = md5($req->get('clave'));
 
         $usuario = Usuario::where('Nick', $nick)
-                ->where('Clave', $claveCod)
+                ->where('Clave', $clave)
                 ->first();
         if ($usuario != null) {
             $usurol = Usuario_Rol::where('Id_usuario', $usuario->Id_usuario)->first();
