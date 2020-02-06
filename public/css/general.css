@@ -79,12 +79,16 @@ a.text-orange:hover {
     border-color: #ffaf54;
 }
 
-.btn-orange.focus, .btn-orange:focus {
+.btn-orange.focus, .btn-orange:focus, .page-link:focus {
     box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.25);
 }
 
 .btn-orange:not(:disabled):not(.disabled).active:focus, .btn-orange:not(:disabled):not(.disabled):active:focus, .show>.btn-orange.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.5);
+}
+
+.page-link:hover{
+    color:#ffaf54;    
 }
 
 /* FORMULARIOS */
@@ -117,9 +121,9 @@ a.text-orange:hover {
 }
 
 /* MEDIA QUERIES */
-@media (min-width: 768px){
+@media (max-width: 768px){
     .container {
-        max-width: 800px;
+        max-width: 768px;
         
     }
 }
