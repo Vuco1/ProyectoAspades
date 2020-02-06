@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\Usuario_Rol;
+use App\Tablero;
+use App\Tablero_Imagen;
+use App\Imagen;
 
 class ControladorUsuario extends Controller {
 
@@ -16,13 +19,11 @@ class ControladorUsuario extends Controller {
             $imgtablero = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
             
             $datos = [
-            'imgtab' => $imgtablero->Ruta,
-            'nombre' => $$imgtablero->Nombre
+            'imgtab' => $imgtablero
             ];
         }
-        session()->put();
 
-        return view(vistausuario/contextosusuario, $datos);
+        return view('vistausuario/contextosusuario', $datos);
     }
 
 }
