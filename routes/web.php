@@ -35,8 +35,9 @@ Route::post('comprobar','ControladorGeneral@iniciarSesion');
 /**
  * Ruta para registrar un Usuario
  */
-Route::post('registrar','ControladorAdmin@addUsuario');
+Route::post('registrar','ControladorAdmin@addUsuario')->name('gestionusuarios');
 
+Route::get('registrar','ControladorAdmin@crudUsuarios');
 /**
  * Editar el perfil del administrador.
  */
@@ -45,6 +46,8 @@ Route::post('editarperfil','ControladorAdmin@editarPerfil');
 Route::post('updateUsuario','ControladorAdmin@updateUsuario');
 
 Route::post('eliminarUsuario','ControladorAdmin@deleteUsuario');
+
+Route::post('iniciarContexto','ControladorUsuario@iniciarContextos');
 
 
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
@@ -63,6 +66,4 @@ Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
 Route::get('kabum', 'ControladorAdmin@llenarBase');
 
-Route::get('addUsuario', function () {
-    return view('vistasadmin/addusuario');
-});
+

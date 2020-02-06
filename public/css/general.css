@@ -48,11 +48,10 @@ a.text-orange:hover {
 
 .icono { padding-right: 0.5rem; }
 
-.icono-crud {
+.icono-crud{
     height: 1.5rem;
     width: 2rem;
 }
-
 /* NAV */
 .navbar-nav .nav-link {
     padding: 1rem 1.5rem!important;
@@ -88,6 +87,10 @@ a.text-orange:hover {
     box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.5);
 }
 
+.page-link:hover{
+    color:#ffaf54;    
+}
+
 
 /* FORMULARIOS */
 .w-8 {
@@ -96,6 +99,16 @@ a.text-orange:hover {
 
 .form-control::-webkit-input-placeholder {
     color: #cccccc;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+    background-color: #ffaf54;
+    border: 1px solid #ffaf54;
+}
+
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before{
+    box-shadow: 0 0 0 0.2rem rgba(243,153,50,0.25);
+    border: 1px solid #ffaf54;
 }
 
 /* PAGINACIÓN */
@@ -109,8 +122,9 @@ a.text-orange:hover {
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 768px) {
+@media (max-width: 768px){
     .container {
         max-width: 768px;
+        
     }
 }
