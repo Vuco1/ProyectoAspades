@@ -11,8 +11,7 @@
     <body>
         <div id="contenido">@yield('contenido')</div>
         <!-- SCRIPTS -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
         <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.popper.min.js') }}"></script>
         <script src="{{ asset('files/bootstrap-4.3.1-dist/js/bootstrap.min.js') }}"></script>
