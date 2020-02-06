@@ -61,7 +61,6 @@ class ControladorAdmin extends Controller {
         if ($req->has('rol')) {
             $rol = 1;
         } else {
-
             $rol = 0;
         }
         $usuario = new Usuario;
@@ -92,7 +91,7 @@ class ControladorAdmin extends Controller {
                 ->join('usuario_rol', 'usuarios.Id_usuario', '=', 'usuario_rol.Id_usuario')
                 ->select('usuarios.*', 'usuario_rol.Id_rol')
                 ->where('usuarios.Id_usuario', '!=', $miusuario->Id_usuario)
-                ->paginate(5);
+                ->paginate(4);
         return $datos;
     }
 

@@ -35,8 +35,9 @@ Route::post('comprobar','ControladorGeneral@iniciarSesion');
 /**
  * Ruta para registrar un Usuario
  */
-Route::post('registrar','ControladorAdmin@addUsuario');
+Route::post('registrar','ControladorAdmin@addUsuario')->name('gestionusuarios');
 
+Route::get('registrar','ControladorAdmin@crudUsuarios');
 /**
  * Editar el perfil del administrador.
  */
@@ -63,6 +64,4 @@ Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
 Route::get('kabum', 'ControladorAdmin@llenarBase');
 
-Route::get('addUsuario', function () {
-    return view('vistasadmin/addusuario');
-});
+

@@ -23,27 +23,45 @@ Gestión
 </header>
 <!-- MAIN -->
 <main>
-    <?php foreach ($datos as $dato) { ?>
-        <form id="form" name='form' class='form'>
-            @csrf
-            <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>"  value="<?php echo $dato->Id_usuario ?>" class="" >
-            <input type="text" name="Nick"  id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>"  class="">
-            <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>"  class="">
-            <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="form-control">
-                <?php foreach ($datos2 as $da2) { ?>
-                    <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?> class=""><?php echo $da2->Descripcion ?></option>
-                    <?php
-                }
-                ?>
-            </select>
-            <button id="eliminar<?php echo $dato->Id_usuario ?>" name="eliminar"  class="formbutton">Eliminar</button>
-            <button id='modificar<?php echo $dato->Id_usuario ?>'  name="modificar"class="formbutton">Modificar</button><br/>
-        </form>
-        <?php
-    }
-    ?>
-    <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
-    {{ $datos->links() }}
+    <div class="container pt-5 ">
+        <div class="row py-2 bg-orange text-white rounded">
+            <div class="col">Usuario</div>            
+            <div class="col">Nombre</div>
+            <div class="col">Rol</div>
+            <div class="col-1 p-0">Editar</div>
+            <div class="col-1 p-0">Borrar</div>
+        </div>
+        <div class="row">
+            <?php foreach ($datos as $dato) { ?>
+                <form id="form" name="form" class="form container p-0 m-0">
+                    @csrf
+                    <div class="row py-2 px-3">
+                        <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
+                        <input type="text" name="Nick"  id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" class="form-control col mr-1">
+                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" class="form-control col mr-1">
+                        <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="form-control col mr-1">
+                            <?php foreach ($datos2 as $da2) { ?>
+                                <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                        <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
+                        <div class="col-1 p-0"><button name="modificar" id='modificar<?php echo $dato->Id_usuario ?>' class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/></button></div>
+                    </div>
+                </form>
+                <hr>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+    <div>
+        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
+    </div>
+    <div class="d-inline-flex align-content-center mt-5">
+        {{ $datos->links() }}
+    </div>
     <!-- VENTANA MODAL AÑADIR USUARIO -->
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
@@ -93,11 +111,12 @@ Gestión
                                 <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
                             </div>
                         </div>   
-                        <div class="custom-control custom-checkbox mb-3">
+                         <div id="mensaje"> </div>
+                        <div class="custom-control custom-checkbox mb-3 mt-3">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
-                        <input type="submit" name="validar" id="validar" value="Añadir" class="btn btn-orange w-100">  
+                       <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
