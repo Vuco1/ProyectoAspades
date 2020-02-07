@@ -68,3 +68,9 @@ Route::get('kabum', 'ControladorAdmin@llenarBase');
 Route::get('addUsuario', function () {
     return view('vistasadmin/addusuario');
 });
+
+Route::post('contextosUsuario','ControladorUsuario@contextosUsuario');
+
+Route::post('subcontextosUsuario', function () {
+    return view('vistasusuario/trabajando');
+});
