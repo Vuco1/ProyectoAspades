@@ -48,7 +48,7 @@ class ControladorAdmin extends Controller {
 
    
     /**
-     * Funcion para registrar un usuario nuevo.
+     * Registra un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
      */
@@ -159,6 +159,10 @@ class ControladorAdmin extends Controller {
         }
     }
 
+    /**
+     * Modifica los datos de un usuario de la BBDD teniendo en cuenta su id único.
+     * @param Request $request
+     */
     public function updateUsuario(Request $request) {
         $nombre = $request->input('nombre');
         $nick = $request->input('nick');
@@ -176,7 +180,10 @@ class ControladorAdmin extends Controller {
 
         exit;
     }
-    
+    /**
+     * Borra los datos de un usuario de la BBDD teniendo en cuenta su id único.
+     * @param Request $request
+     */
     public function deleteUsuario(Request $request) {
         $id = $request->input('id');
         $usuario = Usuario::where('Id_usuario', $id)->delete();

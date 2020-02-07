@@ -13,6 +13,8 @@ class ControladorGeneral extends Controller {
 
     /**
      * Login, se comprueba el nick y la clave introducida por el usuario y si es correcta o no.
+     * En caso de que el rol sea usuario, se localiza el tablero principal de dicho usuario y se obtiene la
+     * imagen de portada del mismo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return $vista Ruta de la vista de destino.
      * @return $mensaje Notificación que se mostrará en el index en caso de error al iniciar sesión.

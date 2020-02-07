@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/general.css') }}">
     </head>
-    <body style="background-image: {{asset('images/construccion.jpg')}}">
+    <body style="background-image:url{{asset('images/construccion.jpg')}}">
         
     </body>
 </html>
