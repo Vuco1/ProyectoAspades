@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tablero_Imagen extends Model
+class Imagen extends Model
 {
-    protected $table = 'tablero_imagen';
-    protected $primaryKey = 'Id_tabimag';
+    protected $table = 'imagenes';
+    protected $primaryKey = 'Id_imagen';
     public $incrementing = true;
     protected $keyType = 'int';
     public $timestamps = false;

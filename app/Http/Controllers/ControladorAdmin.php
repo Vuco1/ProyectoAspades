@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use lluminate\Pagination\Paginator;
 use Illuminate\Support\Str;
 //use lluminate\Pagination\LengthAwarePaginator;
-use App\Usuario;
-use App\Usuario_Rol;
+use App\Models\Usuario;
+use App\Models\Usuario_Rol;
 
 class ControladorAdmin extends Controller {
 

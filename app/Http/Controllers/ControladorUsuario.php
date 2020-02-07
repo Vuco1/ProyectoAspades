@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Usuario;
-use App\Usuario_Rol;
-use App\Imagen;
-use App\Tablero_Imagen;
-use App\Tablero;
+use App\Models\Usuario;
+use App\Models\Usuario_Rol;
+use App\Models\Imagen;
+use App\Models\Tablero_Imagen;
+use App\Models\Tablero;
 
 class ControladorUsuario extends Controller {
 
