@@ -55,4 +55,8 @@ class ControladorUsuario extends Controller {
         return view('vistasusuario/subcontextosusuario', $datos);
     }
 
+    public function modificarFoto (Request $req){
+            
+           
+    }
 }

@@ -13,6 +13,11 @@
             <button><img src="<?php echo $fotoPerfil->Ruta?>" width="500" height="500"/></button>
         </form>
         
+        <form action="cambiarFoto" method="post">
+            @csrf
+            <button>Cambiar foto de perfil</button>
+        </form>
+        <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         <!-- SCRIPTS -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
     </body>

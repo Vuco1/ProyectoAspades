@@ -75,3 +75,9 @@ Route::post('contextosUsuario','ControladorUsuario@contextosUsuario');
 Route::post('subcontextosUsuario', function () {
     return view('vistasusuario/trabajando');
 });
+
+Route::post('cambiarFoto', function () {
+    return view('vistasusuario/cambiarfotoperfil');
+});
+
+Route::post('modificarFoto','ControladorUsuario@modificarFoto');
