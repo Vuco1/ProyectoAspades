@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- CSS -->
-
-    </head>
-    <body>
-        <?php foreach ($imgtab as $imgT) { ?>
+@extends('plantillas/maestra')
+@section('titulo')
+ContextosGenerales
+@endsection
+@section('contenido')
+<main class="container-fluid">
+    <div class="row contextodiv">
+        <?php
+        $cont = 1;
+        foreach ($imgtab as $imgT) {
+            if ($cont % 4 === 0) {
+                $cont = 1;
+                ?>
+            </div>
+            <div class="row contextodiv">
+                <?php
+            }
+            ?>
             <form action="contextosUsuario" method="post">
                 @csrf
                 <input type="hidden" name="id" value="<?= $imgT->Id_imagen ?>">
-                <button><img src="<?php echo $imgT->Ruta ?>" width="500" height="500"/></button>
-                <input type="text" name="contexto" value="<?= $imgT->Nombre ?>">
+                <button class="contextobtn"><img src="<?php echo $imgT->Ruta ?>" width="200" height="200"/></button>
+                <input type="hidden" name="contexto" value="<?= $imgT->Nombre ?>">
             </form>
-        <?php } ?>        
-
-        <!-- SCRIPTS -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
-    </body>
-</html>
+            <?php
+            $cont++;
+        }
+        ?>
+    </div>
+</main>
+@endsection
