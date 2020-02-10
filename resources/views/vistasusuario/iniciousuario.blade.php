@@ -3,10 +3,11 @@
 Login
 @endsection
 @section('contenido')
+<link rel="stylesheet" href="{{ asset('css/css_prueba.css') }}">
     <header></header>
     <main class="d-flex">
         <?php $usuario = session()->get('usuario'); ?>        
-        <form action="iniciarContexto" method="post">
+        <form action="iniciarContexto" method="post" class="centrado">
             @csrf
             <button><img src="<?php echo $usuario->Foto ?>" width="500" height="500"/></button>
         </form>
