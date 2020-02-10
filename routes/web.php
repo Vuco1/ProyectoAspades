@@ -72,6 +72,14 @@ Route::get('addUsuario', function () {
 
 Route::post('contextosUsuario','ControladorUsuario@contextosUsuario');
 
+Route::get('contextosusuario', 'ControladorUsuario@iniciarContexto');
+
 Route::post('subcontextosUsuario', function () {
     return view('vistasusuario/trabajando');
 });
+
+Route::get('addContexto', function () {
+    return view('vistasusuario/addcontexto');
+});
+
+Route::post('subirTablero', 'ControladorUsuario@subirTablero');
