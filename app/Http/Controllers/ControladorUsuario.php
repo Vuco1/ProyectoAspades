@@ -29,6 +29,19 @@ class ControladorUsuario extends Controller {
             ];
         }
 
+        return view('vistasusuario/contextosusuario', $datos);
+    }
+    
+    public function obtenerContextos(Request $req) {
+        $idUsuario = session()->get('usuario')->Id_usuario;
+        $contextos = Tablero::where('Id_usuario', $idUsuario)
+                ->whereNull('Puntero')
+                ->get();
+        
+        $datos = [
+            'contextos' => $contextos
+        ];
+
         $datos = self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
     }
@@ -131,6 +144,12 @@ class ControladorUsuario extends Controller {
             return view('vistasusuario/contextosusuario', $datos);
         }
     }
+    
+    /**
+     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
+     * @param Request $req
+     * @return type
+     */
     public function modificarFoto(Request $req) {
         $req->validate([
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
