@@ -3,17 +3,18 @@
 Login
 @endsection
 @section('contenido')
+<link rel="stylesheet" href="{{ asset('css/css_prueba.css') }}">
     <header></header>
     <main class="d-flex">
         <?php $usuario = session()->get('usuario'); ?>        
-        <form action="iniciarContexto" method="post">
+        <form action="iniciarContexto" method="post" class="centrado">
             @csrf
-            <button><img src="<?php echo $usuario->Foto ?>" width="500" height="500"/></button>
+            <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
         </form>
 
         <form action="cambiarFoto" method="post">
             @csrf
-            <button>Cambiar foto de perfil</button>
+            <button class="btn btn-orange">Cambiar foto de perfil</button>
         </form>
         <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) {
             echo $mensaje;
