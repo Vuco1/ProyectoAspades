@@ -83,3 +83,8 @@ Route::get('addContexto', function () {
 });
 
 Route::post('subirTablero', 'ControladorUsuario@subirTablero');
+Route::post('cambiarFoto', function () {
+    return view('vistasusuario/cambiarfotoperfil');
+});
+
+Route::post('modificarFoto','ControladorUsuario@modificarFoto');
