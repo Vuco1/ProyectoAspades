@@ -4,10 +4,11 @@ InicioUsuario
 @endsection
 @section('contenido')
 <main class="d-flex">
-    <?php $fotoPerfil = session()->get('imgperfil'); ?>        
-    <form action="iniciarContexto" method="post">
+    <?php $usuario = session()->get('usuario'); ?>        
+    <form action="obtenercontextos" method="post">
         @csrf
-        <button class="contextobtn"><img src="<?php echo $fotoPerfil->Ruta ?>" width="500" height="500"/></button>
+        <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <h1>Hola <?php echo $usuario->Nick ?></h1>
     </form>
 </main>
 @endsection

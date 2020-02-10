@@ -12,22 +12,17 @@ use App\Models\Tablero;
 class ControladorUsuario extends Controller {
 
     /**
-     * Coge los datos del tablero de la sesión y con la id del mismo, obtiene los subtableros 
-     * del usuario.
+     * Obtiene los contextos del usuario guardado en la sesión a partir de su Id.
      * @param Request $req
      * @return type
      */
-    public function iniciarContextos(Request $req) {
-        $tablero = session()->get('tablero');
-        $contextos = Tablero::where('Puntero', $tablero->Id_tablero)->get();
-        foreach ($contextos as $contexto) {
-            $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
+    public function obtenerContextos(Request $req) {
+        $idUsuario = session()->get('usuario')->Id_usuario;
+        $contextos = Tablero::where('Id_usuario', $idUsuario)->get();
         
         $datos = [
-            'imgtab' => $imgtablero
+            'contextos' => $contextos
         ];
-        }
 
         return view('vistasusuario/contextosusuario', $datos);
     }
