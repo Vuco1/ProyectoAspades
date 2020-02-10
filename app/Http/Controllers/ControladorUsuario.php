@@ -18,7 +18,9 @@ class ControladorUsuario extends Controller {
      */
     public function obtenerContextos(Request $req) {
         $idUsuario = session()->get('usuario')->Id_usuario;
-        $contextos = Tablero::where('Id_usuario', $idUsuario)->get();
+        $contextos = Tablero::where('Id_usuario', $idUsuario)
+                ->whereNull('Puntero')
+                ->get();
         
         $datos = [
             'contextos' => $contextos

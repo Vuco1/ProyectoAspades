@@ -13,47 +13,29 @@ Contextos
             <div class="carousel-item active">
         <?php 
             $inicio = false;
-        } else { ?><div class="carousel-item"><?php } ?>
-            if (
-        <?php
-        foreach ($contextos as $c) {
-            if ($cont == 3) { ?>
-            
-            <?php } ?>
-            
-            <?php }
-            if ($cont > 0) { ?>
-                    <div class="card-group">
-                        hola
-                    </div>
-            <?php } ?>
+        } else { ?>
+            <div class="carousel-item">
+        <?php } ?>
+                <div class="card-group">
+        <?php foreach ($contextos as $c) { ?>
+                    <form action="contextosUsuario" method="post">
+                        @csrf
+                        <div class="card">
+                            <img src="<?php echo $c->Foto; ?>" class="card-img-top" alt="Imagen del tablero">
+                            <div class="card-body">
+                                <p class="card-text">Tablero 1</p>
+                            </div>
+                        </div>
+                    </form>
+        <?php } ?>
 
                 
 
 
 
 
-                <div class="carousel-item active">
-                    <div class="card-group">
-                        <div class="card">
-                            <img src="images/img1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Tablero 1</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="images/img2.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Tablero 2</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="images/img3.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p class="card-text">Tablero 3</p>
-                            </div>
-                        </div>
-                    </div>
+
+                    
                 </div>
 
                 <div class="carousel-item">
@@ -107,6 +89,7 @@ Contextos
                 $cont--;
             }
             ?>
+                </div>
             </div>
         </div>
     </div>
