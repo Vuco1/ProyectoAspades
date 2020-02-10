@@ -5,7 +5,7 @@ SubContextos
 @section('contenido')
 <main class="container-fluid">
     <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
-        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,10 +21,9 @@ SubContextos
     </nav>
     <input type="button" value="Ocultar" id="c1">
     <input type="button" value="Visualizar" id="c2">
-    <?php
-    if (!$imgtab) {?>
+    <?php if (!$imgtab) { ?>
         <p>Sin Resultados</p><?php
-    } else {
+} else {
         ?>
         <div class="row contextodiv">
             <?php
@@ -38,7 +37,8 @@ SubContextos
                     <?php
                 }
                 ?>
-                <form action="subcontextosUsuario" method="post">
+                    <form action="
+                        <?php if(strnatcmp($imgT->Nombre,'Mentira')===0){echo 'vistaimagen';}else{?> subcontextosUsuario <?php } ?>" method="post">
                     @csrf
                     <input type="hidden" name="id" value="<?= $imgT->Id_imagen ?>">
                     <button><img src="<?php echo $imgT->Ruta ?>" width="200" height="200"/></button>
