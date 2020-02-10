@@ -28,10 +28,6 @@ h2 {
     padding: 3rem 0 1rem;
 }
 
-.contextodiv{
-    margin-bottom: 40px;
-}
-
 /* COLORES */
 .bg-orange { background-color: #f39932; }
 
@@ -106,12 +102,6 @@ a.text-orange:hover {
     color:#ffaf54;    
 }
 
-.contextobtn{
-    padding: 0px;
-    margin-right: 40px;
-}
-
-
 /* FORMULARIOS */
 .w-8 {
     width: 8.5rem;
@@ -147,4 +137,9 @@ a.text-orange:hover {
         max-width: 768px;
         
     }
+}
+
+/* CARDS */
+.card {
+    width: 20rem;
 }
