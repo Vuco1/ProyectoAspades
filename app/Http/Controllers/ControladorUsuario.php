@@ -29,24 +29,44 @@ class ControladorUsuario extends Controller {
             ];
         }
 
+        return view('vistasusuario/contextosusuario', $datos);
+    }
+    
+    public function obtenerContextos(Request $req) {
+        $idUsuario = session()->get('usuario')->Id_usuario;
+        $contextos = Tablero::where('Id_usuario', $idUsuario)
+                ->whereNull('Puntero')
+                ->get();
+        
+        $datos = [
+            'contextos' => $contextos
+        ];
+
         $datos = self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
     }
 
     public function cargarContextos() {
+        \Session::forget('id');
         $contextos = Tablero::whereNull('Puntero')->get();
-        foreach ($contextos as $contexto) {
-            $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
-
+        if (!$contextos) {
             $datos = [
-                'imgtab' => $imgtablero
-            ];
+                    'imgtab' => false
+                ];
+        } else {
+            foreach ($contextos as $contexto) {
+                $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
+                $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
+
+                $datos = [
+                    'imgtab' => $imgtablero
+                ];
+            }
         }
+
         return $datos;
     }
-    
- 
+
     /**
      * Obtiene el id de la imagen elegida y nos devuelve los tableros o galería de imágenes asignados
      * a la misma.
@@ -55,19 +75,30 @@ class ControladorUsuario extends Controller {
      */
     public function contextosUsuario(Request $req) {
         $id = $req->get('id');
-        \Session::put('id',$id);
-        $idtablero = Tablero_Imagen::where('Id_tablero', $id)->first();
-
-        $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
-        foreach ($contextos as $contexto) {
-            $idtablero2 = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgtablero[] = Imagen::where('Id_imagen', $idtablero2->Id_imagen)->first();
-
-            $datos = [
-                'imgtab' => $imgtablero
-            ];
-        } 
+        \Session::put('id', $id);
+        $datos = self::cargarSubcontextos($id);
         return view('vistasusuario/subcontextosusuario', $datos);
+    }
+
+    public function cargarSubcontextos($id) {
+        $idtablero = Tablero_Imagen::where('Id_tablero', $id)->first();
+        $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
+        if ($contextos->IsEmpty()) {
+            $datos = [
+                'imgtab' => false
+            ];
+        } else {
+            
+            foreach ($contextos as $contexto) {
+                $idtablero2 = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
+                $imgtablero[] = Imagen::where('Id_imagen', $idtablero2->Id_imagen)->first();
+
+                $datos = [
+                    'imgtab' => $imgtablero
+                ];
+            }
+        }
+        return $datos;
     }
 
     /**
@@ -89,14 +120,15 @@ class ControladorUsuario extends Controller {
         $id = $usuario->Id_usuario;
         $tablero->Id_usuario = $id;
         $tablero->Nombre = $req->nombre;
+
         if (\Session::has('id')) {
-            $id=\Session::get('id');
+            $id = \Session::get('id');
         } else {
-           $id=0;
+            $id = null;
         }
-        $tablero->Puntero = 0;
+        $tablero->Puntero = $id;
         $tablero->save();
-        
+
         //Es un poco crispy, si meten dos a la vez a saber que pasa
         $auxtablero = Tablero::max('Id_tablero');
         $auximagen = Imagen::max('Id_imagen');
@@ -104,10 +136,20 @@ class ControladorUsuario extends Controller {
         $union->Id_tablero = $auxtablero;
         $union->Id_imagen = $auximagen;
         $union->save();
-        $datos = self::cargarContextos();
-        return view('vistasusuario/contextosusuario', $datos);
+        if (\Session::has('id')) {
+            $datos = self::cargarSubcontextos();
+            return view('vistasusuario/subcontextosusuario', $datos);
+        } else {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        }
     }
     
+    /**
+     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
+     * @param Request $req
+     * @return type
+     */
     public function modificarFoto(Request $req) {
         $req->validate([
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
