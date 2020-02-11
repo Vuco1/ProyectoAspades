@@ -31,13 +31,7 @@ class ControladorGeneral extends Controller {
             $rol = $usurol->Id_rol;
             switch ($rol) {
                 case 0:
-                    $tablero= Tablero::where('Id_usuario', $usuario->Id_usuario)->first();
-                    $imagentablero= Tablero_Imagen::where('Id_tablero', $tablero->Id_tablero)->first();
-                    $imgperfil= Imagen::where('Id_imagen', $imagentablero->Id_imagen)->first();
                     $vista = 'vistasusuario/iniciousuario';
-                    
-                    session()->put('imgperfil', $imgperfil);
-                    session()->put('tablero', $tablero);
                     break;
                 case 1:
                     $vista = 'vistasadmin/inicioadmin';

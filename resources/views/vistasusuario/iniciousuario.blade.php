@@ -7,7 +7,7 @@ Login
     <header></header>
     <main class="d-flex">
         <?php $usuario = session()->get('usuario'); ?>        
-        <form action="iniciarContexto" method="post" class="centrado">
+        <form action="obtenercontextos" method="post" class="centrado">
             @csrf
             <button><img src="<?php echo $usuario->Foto ?>" width="500" height="500"/></button>
         </form>
