@@ -3,7 +3,6 @@
 Login
 @endsection
 @section('contenido')
-<link rel="stylesheet" href="{{ asset('css/css_prueba.css') }}">
     <header></header>
     <main class="d-flex">
         <?php $usuario = session()->get('usuario'); ?>        
