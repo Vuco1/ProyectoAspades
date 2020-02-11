@@ -12,39 +12,40 @@ use App\Models\Tablero;
 class ControladorUsuario extends Controller {
 
     /**
-     * Coge los datos del tablero de la sesión y con la id del mismo, obtiene los subtableros 
-     * del usuario.
+     * Obtiene los contextos del usuario guardado en la sesión a partir de su Id.
      * @param Request $req
      * @return type
      */
-    public function iniciarContextos(Request $req) {
-        $tablero = session()->get('tablero');
-        $contextos = Tablero::where('Puntero', $tablero->Id_tablero)->get();
-        foreach ($contextos as $contexto) {
-            $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
-
-            $datos = [
-                'imgtab' => $imgtablero
-            ];
-        }
-
-        return view('vistasusuario/contextosusuario', $datos);
-    }
-    
     public function obtenerContextos(Request $req) {
+        //dd(session()->get('usuario'));
         $idUsuario = session()->get('usuario')->Id_usuario;
         $contextos = Tablero::where('Id_usuario', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
-        
+        foreach ($contextos as $contexto) {
+            $idTablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
+            $imgTablero[] = Imagen::where('Id_imagen', $idTablero->Id_imagen)->first(); 
+        }
         $datos = [
-            'contextos' => $contextos
+                'imgTablero' => $imgTablero
         ];
 
-        $datos = self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
     }
+    
+//    public function obtenerContextos(Request $req) {
+//        $idUsuario = session()->get('usuario')->Id_usuario;
+//        $contextos = Tablero::where('Id_usuario', $idUsuario)
+//                ->whereNull('Puntero')
+//                ->get();
+//        
+//        $datos = [
+//            'contextos' => $contextos
+//        ];
+//
+//        $datos = self::cargarContextos();
+//        return view('vistasusuario/contextosusuario', $datos);
+//    }
 
     public function cargarContextos() {
         \Session::forget('id');
@@ -81,7 +82,7 @@ class ControladorUsuario extends Controller {
     }
 
     public function cargarSubcontextos($id) {
-        $idtablero = Tablero_Imagen::where('Id_tablero', $id)->first();
+        $idtablero = Tablero_Imagen::where('Id_imagen', $id)->first();
         $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
         if ($contextos->IsEmpty()) {
             $datos = [
@@ -123,10 +124,12 @@ class ControladorUsuario extends Controller {
 
         if (\Session::has('id')) {
             $id = \Session::get('id');
+            $contextos = Tablero_Imagen::where('Id_imagen', $id)->first();
+            $idcontexto = $contextos->Id_tablero;
         } else {
             $id = null;
         }
-        $tablero->Puntero = $id;
+        $tablero->Puntero = $idcontexto;
         $tablero->save();
 
         //Es un poco crispy, si meten dos a la vez a saber que pasa
@@ -137,7 +140,7 @@ class ControladorUsuario extends Controller {
         $union->Id_imagen = $auximagen;
         $union->save();
         if (\Session::has('id')) {
-            $datos = self::cargarSubcontextos();
+            $datos = self::cargarSubcontextos($id);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
             $datos = self::cargarContextos();

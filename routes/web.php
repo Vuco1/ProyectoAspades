@@ -47,7 +47,7 @@ Route::post('updateUsuario','ControladorAdmin@updateUsuario');
 
 Route::post('eliminarUsuario','ControladorAdmin@deleteUsuario');
 
-Route::post('iniciarContexto','ControladorUsuario@iniciarContextos');
+Route::post('obtenercontextos','ControladorUsuario@obtenerContextos');
 
 
 Route::any('crudUsu', 'ControladorAdmin@eleccionCrud');
@@ -83,6 +83,10 @@ Route::get('addContexto', function () {
 Route::post('subirTablero', 'ControladorUsuario@subirTablero');
 Route::post('cambiarFoto', function () {
     return view('vistasusuario/cambiarfotoperfil');
+});
+
+Route::post('vistaimagen', function () {
+    return view('vistasusuario/vistaimagen');
 });
 
 Route::post('modificarFoto','ControladorUsuario@modificarFoto');

@@ -6,9 +6,10 @@ Login
     <header></header>
     <main class="d-flex">
         <?php $usuario = session()->get('usuario'); ?>        
-        <form action="iniciarContexto" method="post" class="m-auto">
+        <form action="obtenercontextos" method="post" class="m-auto">
             @csrf
-            <button><img src="<?php echo $usuario->Foto ?>" class="btn btn-orange" width="500" height="500"/></button>
+            <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+            <h1>Hola <?php echo $usuario->Nick ?></h1>
         </form>
         <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) {
             echo $mensaje;
