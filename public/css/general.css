@@ -52,6 +52,13 @@ a.text-orange:hover {
     height: 1.5rem;
     width: 2rem;
 }
+
+.img-perfil {
+    height: 22rem;
+    width: 22rem;
+    object-fit: cover;
+}
+
 /* NAV */
 .navbar-nav .nav-link {
     padding: 1rem 1.5rem!important;
@@ -122,6 +129,11 @@ a.text-orange:hover {
 .page-item.active .page-link {
     background-color: #f39932;
     border-color: #f39932;
+}
+
+/* CARDS */
+.card {
+    width: 20rem;
 }
 
 /* MEDIA QUERIES */
