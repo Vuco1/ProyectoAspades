@@ -3,10 +3,9 @@
 Login
 @endsection
 @section('contenido')
-<link rel="stylesheet" href="{{ asset('css/css_prueba.css') }}" class="centrado">
     <header></header>
     <main class="d-flex">
-        <form action="modificarFoto" method="post" enctype="multipart/form-data">
+        <form action="modificarFoto" method="post" class="btn btn-orange" enctype="multipart/form-data">
             @csrf
             <label for="imagen">Imagen </label> 
             <input id="imagen" name="imagen" size="30" type="file" class="form-control-file"/>

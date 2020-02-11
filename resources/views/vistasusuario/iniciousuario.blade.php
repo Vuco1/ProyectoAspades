@@ -9,12 +9,7 @@ Login
         <?php $usuario = session()->get('usuario'); ?>        
         <form action="obtenercontextos" method="post" class="centrado">
             @csrf
-            <button><img src="<?php echo $usuario->Foto ?>" width="500" height="500"/></button>
-        </form>
-
-        <form action="cambiarFoto" method="post">
-            @csrf
-            <button>Cambiar foto de perfil</button>
+            <button><img src="<?php echo $usuario->Foto ?>" class="btn btn-orange" width="500" height="500"/></button>
         </form>
         <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) {
             echo $mensaje;
