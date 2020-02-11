@@ -106,6 +106,8 @@ class ControladorUsuario extends Controller {
         $union->save();
         $datos = self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
+    }
+    
     public function modificarFoto(Request $req) {
         $req->validate([
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
