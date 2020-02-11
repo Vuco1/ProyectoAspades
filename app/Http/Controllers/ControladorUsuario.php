@@ -137,7 +137,7 @@ class ControladorUsuario extends Controller {
         $union->Id_imagen = $auximagen;
         $union->save();
         if (\Session::has('id')) {
-            $datos = self::cargarSubcontextos();
+            $datos = self::cargarSubcontextos($id);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
             $datos = self::cargarContextos();

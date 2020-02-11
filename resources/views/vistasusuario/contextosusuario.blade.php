@@ -3,7 +3,7 @@
 ContextosGenerales
 @endsection
 @section('contenido')
-<main class="container-fluid">
+<header>
     <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
         <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,11 +19,13 @@ ContextosGenerales
             </ul>
         </div>
     </nav>
+</header>
+<main class="container-fluid">
     <input type="button" value="Ocultar" id="c1">
     <input type="button" value="Visualizar" id="c2">
     <?php if (!$imgtab) { ?>
         <p>Sin Resultados</p><?php
-} else {
+    } else {
         ?>
         <div class="row contextodiv">
             <?php

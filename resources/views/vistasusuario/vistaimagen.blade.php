@@ -1,62 +1,47 @@
 @extends('plantillas/maestra')
 @section('titulo')
-SubContextos
+ContextosGenerales
 @endsection
 @section('contenido')
-<main class="container-fluid">
+<header>
     <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
-        <img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/>
+        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><div>
-                        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir SubContexto</button>
+                        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Imagen</button>
                     </div></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Eliminar</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Modificar</a></li>
             </ul>
         </div>
     </nav>
-    <input type="button" value="Ocultar" id="c1">
-    <input type="button" value="Visualizar" id="c2">
-    <?php if (!$imgtab) { ?>
-        <p>Sin Resultados</p><?php
-} else {
-        ?>
-        <div class="row contextodiv">
-            <?php
-            $cont = 1;
-            foreach ($imgtab as $imgT) {
-                if ($cont % 4 === 0) {
-                    $cont = 1;
-                    ?>
-                </div>
-                <div class="row contextodiv">
-                    <?php
-                }
-                ?>
-                    <form action="
-                        <?php if(strnatcmp($imgT->Nombre,'Mentira')===0){echo 'vistaimagen';}else{?> subcontextosUsuario <?php } ?>" method="post">
-                    @csrf
-                    <input type="hidden" name="id" value="<?= $imgT->Id_imagen ?>">
-                    <button><img src="<?php echo $imgT->Ruta ?>" width="200" height="200"/></button>
-                    <input type="hidden" name="contexto" value="<?= $imgT->Nombre ?>">
-                </form>
-                <?php
-                $cont++;
-            }
-            ?>
-        </div>
-        <?php
-    }
-    ?>
+</header>
+<main class="container-fluid">
+    <div>
+        <img src="{{ asset('images/construccion.jpg') }}" alt="Imagen 1" width="400rem" style="float: left;"/>
+    </div>
+
+    <div>
+        <img src="{{ asset('images/construccion.jpg') }}" alt="Imagen 2" width="400rem" style="float: right;"/>
+    </div>
+
+    <div>
+        <img src="{{ asset('images/construccion.jpg') }}" alt="Imagen 2" width="400rem" style="position: fixed; bottom: 0; left: 0;"/>
+    </div>
+
+    <div>
+        <img src="{{ asset('images/construccion.jpg') }}" alt="Imagen 2" width="400rem" style="position: fixed; bottom: 0;right:0;  "/>
+    </div>
+
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Añadir Subcontexto</div>
+                    <div class="modal-title">Añadir Imagen</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -90,4 +75,3 @@ SubContextos
     </section>
 </main>
 @endsection
-
