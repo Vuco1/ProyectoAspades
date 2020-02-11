@@ -82,7 +82,7 @@ class ControladorUsuario extends Controller {
     }
 
     public function cargarSubcontextos($id) {
-        $idtablero = Tablero_Imagen::where('Id_tablero', $id)->first();
+        $idtablero = Tablero_Imagen::where('Id_imagen', $id)->first();
         $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
         if ($contextos->IsEmpty()) {
             $datos = [
@@ -124,10 +124,12 @@ class ControladorUsuario extends Controller {
 
         if (\Session::has('id')) {
             $id = \Session::get('id');
+            $contextos = Tablero_Imagen::where('Id_imagen', $id)->first();
+            $idcontexto = $contextos->Id_tablero;
         } else {
             $id = null;
         }
-        $tablero->Puntero = $id;
+        $tablero->Puntero = $idcontexto;
         $tablero->save();
 
         //Es un poco crispy, si meten dos a la vez a saber que pasa
@@ -138,7 +140,7 @@ class ControladorUsuario extends Controller {
         $union->Id_imagen = $auximagen;
         $union->save();
         if (\Session::has('id')) {
-            $datos = self::cargarSubcontextos();
+            $datos = self::cargarSubcontextos($id);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
             $datos = self::cargarContextos();

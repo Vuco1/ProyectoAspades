@@ -85,4 +85,8 @@ Route::post('cambiarFoto', function () {
     return view('vistasusuario/cambiarfotoperfil');
 });
 
+Route::post('vistaimagen', function () {
+    return view('vistasusuario/vistaimagen');
+});
+
 Route::post('modificarFoto','ControladorUsuario@modificarFoto');
