@@ -41,7 +41,8 @@ Contextos
                     }
                     echo '<div class="card-deck">';
                 } ?>
-                <form action="contextosUsuario" method="post" class="card">
+            <div class="card">
+                <form action="contextosUsuario" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
                     <button class="btn p-0">
@@ -49,8 +50,13 @@ Contextos
                         <div class="card-body p-2">
                             <p class="card-text">{{ $imgT->Nombre }}</p>
                         </div>
-                    </button>                   
+                    </button>                
                 </form>
+                <form class="card-footer">
+                    <button name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/>Editar</button>
+                    <button name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Eliminar</button>
+                </form>
+            </div>
                 <?php if (($cont + 1) % 3 == 0) {
                         echo '</div>'
                         . '</div>';
