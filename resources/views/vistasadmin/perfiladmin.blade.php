@@ -24,8 +24,9 @@ Perfil
         <main>
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
+            <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
             <h2>Mi perfil</h2>
-            <form action="editarperfil" method="post" class="col-xl-4 col-lg-5 col-md-6 m-auto">
+            <form action="editarperfil" method="post" class="col-xl-4 col-lg-5 col-md-6 m-auto" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="id" value="<?= $usuario->Id_usuario?>" hidden>              
                 <div class="form-group">
@@ -44,6 +45,15 @@ Perfil
                             <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                         </div>
                         <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre?>" placeholder="Nombre" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="imagen">Imagen</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
+                        </div>
+                        <input id="imagen" name="imagen" type="file" class="form-control-file"/>
                     </div>
                 </div>
                 <div class="form-group">
