@@ -80,6 +80,8 @@ Route::get('addContexto', function () {
     return view('vistasusuario/addcontexto');
 });
 
+Route::post('modificacionContextos','ControladorUsuario@eleccionFuncion');
+
 Route::post('subirTablero', 'ControladorUsuario@subirTablero');
 
 Route::post('vistaimagen', function () {

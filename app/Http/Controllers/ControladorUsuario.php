@@ -184,4 +184,13 @@ class ControladorUsuario extends Controller {
 //        return view('vistasusuario/iniciousuario');
 //    }
 
+       public function eleccionFuncion(){
+           if($req->has('modificarcontexto')){
+               
+           }
+           if($req->has('eliminarcontexto')){
+               
+           }
+           
+       }
 }

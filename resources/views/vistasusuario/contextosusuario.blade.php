@@ -52,9 +52,11 @@ Contextos
                         </div>
                     </button>                
                 </form>
-                <form class="card-footer">
-                    <button name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/>Editar</button>
-                    <button name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Eliminar</button>
+                <form action="modificarcontextos" class="card-footer">
+                    <div class="row px-3">
+                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-3"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/>Editar</button>
+                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Eliminar</button>
+                    </div>
                 </form>
             </div>
                 <?php if (($cont + 1) % 3 == 0) {
