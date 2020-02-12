@@ -18,7 +18,7 @@ Login
     <input type="button" value="Ocultar" id="c1">
     <input type="button" value="Visualizar" id="c2">
 </header>
-<main class="d-flex">
+<main class="d-flex pt-3">
     <?php $usuario = session()->get('usuario'); ?>        
     <form action="obtenercontextos" method="post" class="m-auto">
         @csrf

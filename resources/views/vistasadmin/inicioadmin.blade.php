@@ -21,7 +21,7 @@ Login
             </nav>
         </header>
         <!-- MAIN -->
-        <main class="d-flex">
+        <main class="d-flex pt-3">
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
             <div class="m-auto">

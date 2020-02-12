@@ -24,7 +24,7 @@ Contextos
     <input type="button" value="Visualizar" id="c2">
 </header>
 <!-- MAIN -->
-<main class="d-flex">
+<main class="d-flex pt-3">
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner">
         <?php
@@ -45,17 +45,19 @@ Contextos
                 <form action="contextosUsuario" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
-                    <button class="btn p-0">
+                    <button class="btn p-0 w-100">
                         <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                         <div class="card-body p-2">
                             <p class="card-text">{{ $imgT->Nombre }}</p>
                         </div>
                     </button>                
                 </form>
-                <form class="card-footer">
-                    <button name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/>Editar</button>
-                    <button name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Eliminar</button>
-                </form>
+                <div class="card-footer">
+                    <div class="row px-2">
+                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                    </div>
+                </div>
             </div>
                 <?php if (($cont + 1) % 3 == 0) {
                         echo '</div>'
