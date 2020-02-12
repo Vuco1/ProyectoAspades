@@ -81,12 +81,11 @@ Route::get('addContexto', function () {
 });
 
 Route::post('subirTablero', 'ControladorUsuario@subirTablero');
-Route::post('cambiarFoto', function () {
-    return view('vistasusuario/cambiarfotoperfil');
-});
 
 Route::post('vistaimagen', function () {
     return view('vistasusuario/vistaimagen');
 });
 
-Route::post('modificarFoto','ControladorUsuario@modificarFoto');
+Route::get('perfilusuario', function () {
+    return view('vistasusuario/perfilusuario');
+});

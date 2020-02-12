@@ -148,40 +148,40 @@ class ControladorUsuario extends Controller {
         }
     }
     
-    /**
-     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
-     * @param Request $req
-     * @return type
-     */
-    public function modificarFoto(Request $req) {
-        $req->validate([
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        try {
-            $imagen = $req->file('imagen');
-            $user = session()->get('usuario');
-
-            $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
-            $nomimagen = $imagen->getClientOriginalName();
-            $usuario->Foto = 'images/' . $nomimagen;
-            $usuario->save();
-
-            $req->imagen->move(public_path('images'), $nomimagen);
-
-            $men = 'Foto de perfil modificada.';
-        } catch (Exception $ex) {
-            $men = 'No se ha podido modificar la foto de perfil.';
-        }
-
-        $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
-        session()->put('usuario', $usuario);
-        session()->put('imgperfil', $nomimagen);
-
-        $datos = [
-            'mensaje' => $men
-        ];
-        return view('vistasusuario/iniciousuario');
-    }
+//    /**
+//     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
+//     * @param Request $req
+//     * @return type
+//     */
+//    public function modificarFoto(Request $req) {
+//        $req->validate([
+//            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//        ]);
+//
+//        try {
+//            $imagen = $req->file('imagen');
+//            $user = session()->get('usuario');
+//
+//            $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
+//            $nomimagen = $imagen->getClientOriginalName();
+//            $usuario->Foto = 'images/' . $nomimagen;
+//            $usuario->save();
+//
+//            $req->imagen->move(public_path('images'), $nomimagen);
+//
+//            $men = 'Foto de perfil modificada.';
+//        } catch (Exception $ex) {
+//            $men = 'No se ha podido modificar la foto de perfil.';
+//        }
+//
+//        $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
+//        session()->put('usuario', $usuario);
+//        session()->put('imgperfil', $nomimagen);
+//
+//        $datos = [
+//            'mensaje' => $men
+//        ];
+//        return view('vistasusuario/iniciousuario');
+//    }
 
 }
