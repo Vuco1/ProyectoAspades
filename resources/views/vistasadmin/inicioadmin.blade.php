@@ -24,7 +24,10 @@ Login
         <main class="d-flex">
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
-            <h1>Hola <?php echo $usuario->Nick ?></h1>  
+            <div class="m-auto">
+                <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+                <h1>Hola <?php echo $usuario->Nick ?></h1>  
+            </div>
             <?php } ?>
         </main>
 @include('plantillas/footer')

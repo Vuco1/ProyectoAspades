@@ -20,15 +20,29 @@ class ControladorAdmin extends Controller {
         $id = $req->get('id');
         $nick = $req->get('usuario');
         $nombre = $req->get('nombre');
-        $clave = md5($req->get('clave'));
-
+        $clave = $req->get('clave');
+        $req->validate([
+                    'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+        $imagen = $req->file('imagen');
+        
+        
         $mensaje = 'Perfil modificado con éxito';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
             $usuario->Nombre = $nombre;
             $usuario->Nick = $nick;
+
             if ($clave != null) {
+                $clave = md5($req->get('clave'));
                 $usuario->Clave = $clave;
+            }
+            if ($imagen != null) {
+                
+                
+                $nomimagen = $imagen->getClientOriginalName();
+                $usuario->Foto = 'images/' . $nomimagen;
+                $req->imagen->move(public_path('images'), $nomimagen);
             }
             $usuario->save();
         } catch (Exception $ex) {
@@ -46,7 +60,6 @@ class ControladorAdmin extends Controller {
         return view('vistasadmin/perfiladmin', $datos);
     }
 
-   
     /**
      * Registra un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
@@ -171,15 +184,16 @@ class ControladorAdmin extends Controller {
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
-       
+
         $usuario->save();
-        
+
         $rol = Usuario_Rol::where('Id_usuario', $id)->first();
         $rol->Id_rol = $role;
         $rol->save();
 
         exit;
     }
+
     /**
      * Borra los datos de un usuario de la BBDD teniendo en cuenta su id único.
      * @param Request $request
@@ -189,4 +203,5 @@ class ControladorAdmin extends Controller {
         $usuario = Usuario::where('Id_usuario', $id)->delete();
         exit;
     }
+
 }
