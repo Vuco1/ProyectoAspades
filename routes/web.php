@@ -14,11 +14,11 @@
 Route::get('/', function () {
     return view('index');
 });
-
-/**
- * Del index a una pagina de Prueba para probar el pagination
+/*
+|--------------------------------------------------------------------------
+| PRUEBAS/TESTING
+|--------------------------------------------------------------------------
  */
-//Route::get('pagination','ControladorPrueba@paginacion');
 
 /**
  * Del index a una pagina de Prueba para probar el delay del speech y el submit
@@ -26,7 +26,11 @@ Route::get('/', function () {
 Route::post('prueba', function () {
     return view('envio');
 });
-
+/*
+|--------------------------------------------------------------------------
+|GENERALES
+|--------------------------------------------------------------------------
+ */
 /**
  * Ruta para saber si eres admin o Usuario o si no existes
  */
