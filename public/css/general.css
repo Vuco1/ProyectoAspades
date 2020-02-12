@@ -132,9 +132,12 @@ a.text-orange:hover {
 }
 
 /* CARDS */
-.card {
-    width: 20rem;
-    height: 30rem;
+.card-img-top {
+    object-fit: cover;
+}
+
+.img-contexto {
+    height: 22rem;
 }
 
 /* MEDIA QUERIES */
