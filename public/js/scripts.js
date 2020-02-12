@@ -29,4 +29,8 @@ $(document).ready(function () {
 
 });
 
+function volver() {
+  window.history.back();
+}
+
 
