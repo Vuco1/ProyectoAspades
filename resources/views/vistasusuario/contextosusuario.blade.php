@@ -45,7 +45,7 @@ Contextos
                 <form action="contextosUsuario" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
-                    <button class="btn p-0">
+                    <button class="btn p-0 w-100">
                         <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                         <div class="card-body p-2">
                             <p class="card-text">{{ $imgT->Nombre }}</p>
@@ -53,7 +53,7 @@ Contextos
                     </button>                
                 </form>
                 <form action="modificarcontextos" class="card-footer">
-                    <div class="row px-3">
+                    <div class="row px-2">
                         <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-3"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/>Editar</button>
                         <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Borrar</button>
                     </div>
