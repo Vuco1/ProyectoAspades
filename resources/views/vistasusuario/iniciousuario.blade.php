@@ -36,4 +36,35 @@ Login
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
 </main>
 @include('plantillas/footer')
+<a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#login"><i class="fas fa-info-circle h2 m-0"></i></a>
+
+<!-- VENTANA MODAL LOGIN -->
+<section class="modal fade" id="login">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-title">Información</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <form action="comprobar" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label class="sr-only" for="clave">Contraseña</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-key"></i></div>
+                            </div>
+                            <input type="password" name="clave" id="clave" placeholder="Contraseña" class="form-control">
+                        </div>
+                    </div>
+                    <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-orange w-100">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection
