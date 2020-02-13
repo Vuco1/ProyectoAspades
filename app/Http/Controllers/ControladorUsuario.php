@@ -15,17 +15,22 @@ class ControladorUsuario extends Controller {
      * Obtiene los contextos del usuario guardado en la sesión a partir de su Id.
      * @param Request $req
      * @return type
-     * @author Laura y Carlos
-     * @version 1.1
+     * @author Laura
+     * @version 2.0
      */
     public function obtenerContextos(Request $req) {
         //dd(session()->get('usuario'));
         $idUsuario = session()->get('usuario')->Id_usuario;
-        $contextos = Tablero::where('Id_usuario', $idUsuario)
-                ->whereNull('Puntero')
-                ->get();
+        $contextos = \DB::table('imagenes')
+                ->join('imagenes.Id_imagen', '=', 'pagina_imagen.Id_imagen')
+                ->join('tablero_pagina.Id_pagina', '=', 'pagina_imgagen.Id_pagina')
+                ->join('Tablero.Id_tablero', '=', 'tablero_pagina.Id_tablero')
+                ->select('Imagenes.Id_imagen', 'Imagenes.Nombre', 'Imagenes.ruta')
+                ->where('Id_usuario', '=', $idUsuario)
+                ->whereNull('Puntero');
+
         foreach ($contextos as $contexto) {
-            $idTablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
+            $idTablero = Tablero_Pagina::where('Id_tablero', $contexto->Id_tablero)->first();
             $imgTablero[] = Imagen::where('Id_imagen', $idTablero->Id_imagen)->first(); 
         }
         $datos = [
@@ -139,50 +144,5 @@ class ControladorUsuario extends Controller {
             return view('vistasusuario/contextosusuario', $datos);
         }
     }
-    
-//    /**
-//     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
-//     * @param Request $req
-//     * @return type
-//     */
-//    public function modificarFoto(Request $req) {
-//        $req->validate([
-//            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-//        ]);
-//
-//        try {
-//            $imagen = $req->file('imagen');
-//            $user = session()->get('usuario');
-//
-//            $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
-//            $nomimagen = $imagen->getClientOriginalName();
-//            $usuario->Foto = 'images/' . $nomimagen;
-//            $usuario->save();
-//
-//            $req->imagen->move(public_path('images'), $nomimagen);
-//
-//            $men = 'Foto de perfil modificada.';
-//        } catch (Exception $ex) {
-//            $men = 'No se ha podido modificar la foto de perfil.';
-//        }
-//
-//        $usuario = Usuario::where('Id_usuario', $user->Id_usuario)->first();
-//        session()->put('usuario', $usuario);
-//        session()->put('imgperfil', $nomimagen);
-//
-//        $datos = [
-//            'mensaje' => $men
-//        ];
-//        return view('vistasusuario/iniciousuario');
-//    }
 
-       public function eleccionFuncion(){
-           if($req->has('modificarcontexto')){
-               
-           }
-           if($req->has('eliminarcontexto')){
-               
-           }
-           
-       }
 }
