@@ -15,6 +15,8 @@ class ControladorUsuario extends Controller {
      * Obtiene los contextos del usuario guardado en la sesión a partir de su Id.
      * @param Request $req
      * @return type
+     * @author Laura y Carlos
+     * @version 1.1
      */
     public function obtenerContextos(Request $req) {
         //dd(session()->get('usuario'));
@@ -32,27 +34,17 @@ class ControladorUsuario extends Controller {
 
         return view('vistasusuario/contextosusuario', $datos);
     }
-    
-//    public function obtenerContextos(Request $req) {
-//        $idUsuario = session()->get('usuario')->Id_usuario;
-//        $contextos = Tablero::where('Id_usuario', $idUsuario)
-//                ->whereNull('Puntero')
-//                ->get();
-//        
-//        $datos = [
-//            'contextos' => $contextos
-//        ];
-//
-//        $datos = self::cargarContextos();
-//        return view('vistasusuario/contextosusuario', $datos);
-//    }
 
+    /**
+     * Obtiene los contextos que no apuntan a ningún otro (Contextos generales).
+     * @return type
+     */
     public function cargarContextos() {
         \Session::forget('id');
         $contextos = Tablero::whereNull('Puntero')->get();
         if (!$contextos) {
             $datos = [
-                    'imgtab' => false
+                    'imgTablero' => false
                 ];
         } else {
             foreach ($contextos as $contexto) {
@@ -60,7 +52,7 @@ class ControladorUsuario extends Controller {
                 $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
 
                 $datos = [
-                    'imgtab' => $imgtablero
+                    'imgTablero' => $imgtablero
                 ];
             }
         }
@@ -86,7 +78,7 @@ class ControladorUsuario extends Controller {
         $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
         if ($contextos->IsEmpty()) {
             $datos = [
-                'imgtab' => false
+                'imgTablero' => false
             ];
         } else {
             
@@ -95,7 +87,7 @@ class ControladorUsuario extends Controller {
                 $imgtablero[] = Imagen::where('Id_imagen', $idtablero2->Id_imagen)->first();
 
                 $datos = [
-                    'imgtab' => $imgtablero
+                    'imgTablero' => $imgtablero
                 ];
             }
         }

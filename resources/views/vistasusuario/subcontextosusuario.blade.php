@@ -24,42 +24,52 @@ SubContextos
     <input type="button" value="Visualizar" id="c2">
 </header>
 <!-- MAIN -->
-<main class="container-fluid">
-    <?php if (!$imgtab) { ?>
+<main class="d-flex pt-3">
+    <div id="carouselSubcontextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
+        <div class="carousel-inner">
+        <?php
+        if (!$imgTablero) { ?>
         <p>Sin Resultados</p><?php
-    } else {
-        ?>
-        <div class="row contextodiv">
-            <?php
-            $cont = 1;
-            foreach ($imgtab as $imgT) {
-                if ($cont % 4 === 0) {
-                    $cont = 1;
-                    ?>
-                </div>
-                <div class="row contextodiv">
-                    <?php
-                }
-                ?>
-                <form action="
-                <?php
-                if (strnatcmp($imgT->Nombre, 'Mentira') === 0) {
-                    echo 'vistaimagen';
-                } else {
-                    ?> subcontextosUsuario <?php } ?>" method="post">
+        } else {
+            $cont = 0;
+            foreach ($imgTablero as $imgT) {
+                if ($cont % 3 == 0) { //Cada 3 contextos se añade un item al carrousel
+                    if ($cont == 0) {
+                        echo '<div class="carousel-item active">';
+                    } else {
+                        echo '<div class="carousel-item">';
+                    }
+                    echo '<div class="card-deck">';
+                } ?>
+            <div class="card">
+                <form action="contextosUsuario" method="post">
                     @csrf
-                    <input type="hidden" name="id" value="<?= $imgT->Id_imagen ?>">
-                    <button><img src="<?php echo $imgT->Ruta ?>" width="200" height="200"/></button>
-                    <input type="hidden" name="contexto" value="<?= $imgT->Nombre ?>">
+                    <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
+                    <button class="btn p-0 w-100">
+                        <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
+                        <div class="card-body p-2">
+                            <p class="card-text">{{ $imgT->Nombre }}</p>
+                        </div>
+                    </button>                
                 </form>
-                <?php
+                <div class="card-footer">
+                    <div class="row px-2">
+                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                    </div>
+                </div>
+            </div>
+                <?php if (($cont + 1) % 3 == 0) {
+                        echo '</div>'
+                        . '</div>';
+                    }
                 $cont++;
             }
-            ?>
+        } ?>
         </div>
-        <?php
-    }
-    ?>
+    </div>
+        
+    <!-- VENTANA MODAL NUEVO SUBCONTEXTO -->
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
