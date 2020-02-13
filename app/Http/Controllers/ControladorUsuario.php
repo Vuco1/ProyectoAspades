@@ -8,6 +8,7 @@ use App\Models\Usuario_Rol;
 use App\Models\Imagen;
 use App\Models\Tablero_Imagen;
 use App\Models\Tablero;
+use Illuminate\Support\Facades\File;
 
 class ControladorUsuario extends Controller {
 
@@ -18,21 +19,11 @@ class ControladorUsuario extends Controller {
      */
     public function obtenerContextos(Request $req) {
         //dd(session()->get('usuario'));
-        $idUsuario = session()->get('usuario')->Id_usuario;
-        $contextos = Tablero::where('Id_usuario', $idUsuario)
-                ->whereNull('Puntero')
-                ->get();
-        foreach ($contextos as $contexto) {
-            $idTablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgTablero[] = Imagen::where('Id_imagen', $idTablero->Id_imagen)->first(); 
-        }
-        $datos = [
-                'imgTablero' => $imgTablero
-        ];
-
+        \Session::forget('id');
+        $datos=self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
     }
-    
+
 //    public function obtenerContextos(Request $req) {
 //        $idUsuario = session()->get('usuario')->Id_usuario;
 //        $contextos = Tablero::where('Id_usuario', $idUsuario)
@@ -49,18 +40,19 @@ class ControladorUsuario extends Controller {
 
     public function cargarContextos() {
         \Session::forget('id');
-        $contextos = Tablero::whereNull('Puntero')->get();
+        //Añadir usuario id
+        $contextos = Tablero::whereNull('Puntero')->where(us)->get();
         if (!$contextos) {
             $datos = [
-                    'imgtab' => false
-                ];
+                'imgtab' => false
+            ];
         } else {
             foreach ($contextos as $contexto) {
                 $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
                 $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
 
                 $datos = [
-                    'imgtab' => $imgtablero
+                    'imgTablero' => $imgtablero
                 ];
             }
         }
@@ -86,16 +78,16 @@ class ControladorUsuario extends Controller {
         $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
         if ($contextos->IsEmpty()) {
             $datos = [
-                'imgtab' => false
+                'imgTablero' => false
             ];
         } else {
-            
+
             foreach ($contextos as $contexto) {
                 $idtablero2 = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
                 $imgtablero[] = Imagen::where('Id_imagen', $idtablero2->Id_imagen)->first();
 
                 $datos = [
-                    'imgtab' => $imgtablero
+                    'imgTablero' => $imgtablero
                 ];
             }
         }
@@ -133,7 +125,7 @@ class ControladorUsuario extends Controller {
         $tablero->save();
 
         //Es un poco crispy, si meten dos a la vez a saber que pasa
-        $auxtablero = Tablero::max('Id_tablero');
+        $auxtablero = Tablero::max('Id_tablero'); //falta poner que sea del usuario
         $auximagen = Imagen::max('Id_imagen');
         $union = new Tablero_Imagen;
         $union->Id_tablero = $auxtablero;
@@ -147,7 +139,61 @@ class ControladorUsuario extends Controller {
             return view('vistasusuario/contextosusuario', $datos);
         }
     }
-    
+
+    public function modificarContexto(Request $req) {
+        $idimg = $req->idimg;
+        $nombre = $req->nombre;
+        $req->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time() . '.' . $req->image->extension();
+        $req->image->move(public_path('images'), $imageName);
+        $imagen = Imagen::where('Id_imagen', $idimg)->first();
+        $image_path = $imagen->Ruta;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        $imagen->Nombre = $nombre;
+        $imagen->Ruta = 'images/' . $imageName;
+        $imagen->save();
+        $tablero = Tablero_Imagen::where('Id_imagen', $idimg)->first();
+        $tableroid = $tablero->Id_tablero;
+        $contexto = Tablero::where('Id_tablero', $tableroid)->first();
+        $contexto->Nombre = $nombre;
+        $contexto->save();
+        if (\Session::has('id')) {
+            $datos = self::cargarSubcontextos($id);
+            return view('vistasusuario/subcontextosusuario', $datos);
+        } else {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        }
+    }
+
+    public function eliminarContexto(Request $req) {
+        $idimg = $req->idelim;
+        $imagen = Imagen::where('Id_imagen', $idimg)->first();
+        $image_path = $imagen->Ruta;
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        $imagen = Imagen::where('Id_imagen', $idimg)->first();
+        
+        $tablero = Tablero_Imagen::where('Id_imagen', $idimg)->first();
+        $tableroid = $tablero->Id_tablero;
+        $contexto = Tablero::where('Id_tablero', $tableroid)->first();
+        $tablero->delete();
+        $contexto->delete();
+        $imagen->delete();
+         if (\Session::has('id')) {
+            $datos = self::cargarSubcontextos($id);
+            return view('vistasusuario/subcontextosusuario', $datos);
+        } else {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        }
+    }
+
 //    /**
 //     * Modifica la foto de perfil del usuario, sube la ruta a la BBDD y la guarda en el servidor.
 //     * @param Request $req
@@ -183,14 +229,4 @@ class ControladorUsuario extends Controller {
 //        ];
 //        return view('vistasusuario/iniciousuario');
 //    }
-
-       public function eleccionFuncion(){
-           if($req->has('modificarcontexto')){
-               
-           }
-           if($req->has('eliminarcontexto')){
-               
-           }
-           
-       }
 }
