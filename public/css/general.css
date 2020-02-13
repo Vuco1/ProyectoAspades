@@ -54,8 +54,14 @@ a.text-orange:hover {
 }
 
 .img-perfil {
+    height: 18rem;
+    width: 18rem;
+    object-fit: cover;
+}
+
+
+.img-contexto {
     height: 22rem;
-    width: 22rem;
     object-fit: cover;
 }
 
@@ -132,12 +138,8 @@ a.text-orange:hover {
 }
 
 /* CARDS */
-.card-img-top {
-    object-fit: cover;
-}
-
-.img-contexto {
-    height: 22rem;
+.card {
+    max-width: 22rem;
 }
 
 /* MEDIA QUERIES */

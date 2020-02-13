@@ -38,4 +38,8 @@ $(document).ready(function () {
         $("#idelim").val(id);
    }
 
+function volver() {
+  window.history.back();
+}
+
 
