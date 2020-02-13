@@ -46,7 +46,7 @@ Gestión
                             }
                             ?>
                         </select>
-                        <div class="col-1 p-0"><button name="modificar" id="modificar"<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
+                        <div class="col-1 p-0"><button name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
                         <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/></button></div>
                     </div>
                 </form>
