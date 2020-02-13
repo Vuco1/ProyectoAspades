@@ -10,7 +10,7 @@ Contextos
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner">
             <?php if (!$imgTablero) { ?>
-                <p>Sin Resultados</p><?php
+                <h1>Sin Resultados</h1><?php
             } else {
                 $cont = 0;
                 foreach ($imgTablero as $imgT) {
