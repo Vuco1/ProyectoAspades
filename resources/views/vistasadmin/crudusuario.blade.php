@@ -7,7 +7,7 @@ Gestión
 <!-- HEADER -->
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,7 +33,7 @@ Gestión
         </div>
         <div class="row">
             <?php foreach ($datos as $dato) { ?>
-                <form id="form" name="form" class="form container p-0 m-0">
+                <form id="form<?php echo $dato->Id_usuario ?>" name="form" class="form container p-0 m-0">
                     @csrf
                     <div class="row py-2 px-3">
                         <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
@@ -46,7 +46,7 @@ Gestión
                             }
                             ?>
                         </select>
-                        <div class="col-1 p-0"><button name="modificar" id="modificar"<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
+                        <div class="col-1 p-0"><button name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
                         <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/></button></div>
                     </div>
                 </form>
