@@ -21,14 +21,14 @@ SubContextos
 <main class="container-fluid">
     <input type="button" value="Ocultar" id="c1">
     <input type="button" value="Visualizar" id="c2">
-    <?php if (!$imgtab) { ?>
+    <?php if (!$imgTablero) { ?>
         <p>Sin Resultados</p><?php
     } else {
         ?>
         <div class="row contextodiv">
             <?php
             $cont = 1;
-            foreach ($imgtab as $imgT) {
+            foreach ($imgTablero as $imgT) {
                 if ($cont % 4 === 0) {
                     $cont = 1;
                     ?>
