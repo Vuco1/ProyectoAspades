@@ -6,7 +6,7 @@ Contextos
 <!-- HEADER -->
 <header>
     <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,8 +55,8 @@ Contextos
                         </form>
                         <div class="card-footer">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-in">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/>Borrar</button>
+                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
                     </div>
