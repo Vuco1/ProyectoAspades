@@ -74,6 +74,10 @@ Route::get('addUsuario', function () {
     return view('vistasadmin/addusuario');
 });
 
+Route::get('iniciousuario', function () {
+    return view('vistasusuario/iniciousuario',['usuario'=>session()->get('usuario')]);
+});
+
 Route::post('contextosUsuario','ControladorUsuario@contextosUsuario');
 
 Route::get('contextosusuario', 'ControladorUsuario@iniciarContexto');
