@@ -18,6 +18,8 @@ class ControladorGeneral extends Controller {
      * @param Request $req Recibe los datos del formulario de registro.
      * @return $vista Ruta de la vista de destino.
      * @return $mensaje Notificación que se mostrará en el index en caso de error al iniciar sesión.
+     * @author Laura y Carlos
+     * @version 1.1
      */
     public function iniciarSesion(Request $req) {
         $nick = $req->get('usuario');
