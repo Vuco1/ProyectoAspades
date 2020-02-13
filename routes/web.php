@@ -47,7 +47,7 @@ Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
 /*
   |--------------------------------------------------------------------------
-  |Administardor
+  |Administrador
   |--------------------------------------------------------------------------
  */
 Route::group(['middleware' => 'Administrador'], function() {
