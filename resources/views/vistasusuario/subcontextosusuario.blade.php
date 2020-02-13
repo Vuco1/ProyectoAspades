@@ -33,13 +33,12 @@ SubContextos
         } else {
             $cont = 0;
             foreach ($imgTablero as $imgT) {
-                if ($cont % 3 == 0) { //Cada 3 contextos se añade un item al carrousel
+                if ($cont % $limite == 0) {
                     if ($cont == 0) {
                         echo '<div class="carousel-item active">';
                     } else {
                         echo '<div class="carousel-item">';
                     }
-                    echo '<div class="card-deck">';
                 } ?>
             <div class="card">
                 <form action="contextosUsuario" method="post">
@@ -59,9 +58,8 @@ SubContextos
                     </div>
                 </div>
             </div>
-                <?php if (($cont + 1) % 3 == 0) {
-                        echo '</div>'
-                        . '</div>';
+                <?php if (($cont + 1) % $limite == 0) {
+                        echo '</div>';
                     }
                 $cont++;
             }
