@@ -33,7 +33,7 @@ Gestión
         </div>
         <div class="row">
             <?php foreach ($datos as $dato) { ?>
-                <form id="form" name="form" class="form container p-0 m-0">
+                <form id="form<?php echo $dato->Id_usuario ?>" name="form" class="form container p-0 m-0">
                     @csrf
                     <div class="row py-2 px-3">
                         <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
