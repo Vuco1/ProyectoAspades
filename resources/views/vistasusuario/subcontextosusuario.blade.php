@@ -12,19 +12,19 @@ SubContextos
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><div>
-                        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir SubContexto</button>
-                    </div></li>
+                <li class="nav-item">
+                    <button data-toggle="modal" data-target="#nuevo" class="nav-link bg-transparent border-0">Añadir Subcontexto</button>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Eliminar</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Modificar</a></li>
             </ul>
         </div>
-    </nav>
+    </nav> 
+    <input type="button" value="Ocultar" id="c1">
+    <input type="button" value="Visualizar" id="c2">
 </header>
 <!-- MAIN -->
 <main class="container-fluid">
-    <input type="button" value="Ocultar" id="c1">
-    <input type="button" value="Visualizar" id="c2">
     <?php if (!$imgtab) { ?>
         <p>Sin Resultados</p><?php
     } else {
