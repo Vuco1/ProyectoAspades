@@ -109,14 +109,20 @@ Route::group(['middleware' => 'Administrador'], function() {
     });
 });
 
-
-
 /*
   |--------------------------------------------------------------------------
   |Usuario
   |--------------------------------------------------------------------------
  */
 Route::group(['middleware' => 'Usuario'], function() {
+    /**
+     * Redirige a la vista de inicio del usuario
+     * @author Laura Mª Fernández Cambronero
+     * @version 1.0
+     */
+    Route::get('iniciousuario', function () {
+        return view('vistasusuario/iniciousuario');
+    });
     /**
      * Carga los subcontextos que tenga ese contexto
      * Estaba con post

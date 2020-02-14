@@ -27,7 +27,16 @@ $(document).ready(function () {
         $("#menuoculto").attr('style', 'display:flex');
     });
 
+  
 });
+ function modificarContexto(id){
+       $("#imgcontexto").attr('src',$('#img'+id).attr('src'));
+        $("#nombrecontexto").val($('#nombre'+id).val());    
+        $("#idimg").val(id);
+   }
+   function eliminarContexto(id){
+        $("#idelim").val(id);
+   }
 
 function volver() {
   window.history.back();
