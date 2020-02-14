@@ -32,16 +32,33 @@ class ControladorUsuario extends Controller {
                 ->whereNull('Puntero')
                 ->distinct()
                 ->get();
-//        dd($contextos);
-//        foreach ($contextos as $contexto) {
-//            $idTablero = Tablero_Pagina::where('Id_tablero', $contexto->Id_tablero)->first();
-//            $imgTablero[] = Imagen::where('Id_imagen', $idTablero->Id_imagen)->first(); 
-//        }
+
         $datos = [
                 'imgTablero' => $contextos
         ];
 
         return view('vistasusuario/contextosusuario', $datos);
+    }
+    
+    public function obtenerSubcontextos(Request $req) {
+        $idUsuario = session()->get('usuario')->Id_usuario;
+        $puntero = session()->get('id');
+        $contextos = \DB::table('imagenes')
+                ->join('pagina_imagen' , 'imagenes.Id_imagen', '=', 'pagina_imagen.Id_imagen')
+                ->join('tablero_pagina', 'pagina_imagen.Id_pagina', '=', 'tablero_pagina.Id_pagina')
+                ->join('paginas', 'tablero_pagina.Id_pagina', '=', 'paginas.Id_pagina')
+                ->join('tableros', 'tableros.Id_tablero', '=', 'tablero_pagina.Id_tablero')
+                ->select('imagenes.Id_imagen', 'imagenes.Nombre', 'imagenes.Ruta')
+                ->where('tableros.Id_usuario', '=', $idUsuario)
+                ->where('Puntero', '=', $puntero)
+                ->distinct()
+                ->get();
+
+        $datos = [
+                'imgTablero' => $contextos
+        ];
+
+        return view('vistasusuario/subcontextosusuario', $datos);
     }
 //    public function obtenerContextos(Request $req) {
 //        //dd(session()->get('usuario'));
