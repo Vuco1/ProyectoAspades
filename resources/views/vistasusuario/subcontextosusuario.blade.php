@@ -27,13 +27,12 @@ SubContextos
 <main class="d-flex pt-3">
     <div id="carouselSubcontextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner">
-        <?php
-        if (!$imgTablero) { ?>
-        <p>Sin Resultados</p><?php
+            <?php if (!$subcontextos) { ?>
+                <h1>Sin Resultados</h1><?php
         } else {
             $cont = 0;
             $limite = 6;
-            foreach ($imgTablero as $imgT) {
+            foreach ($subcontextos as $imgT) {
                 if ($cont % $limite == 0) {
                     if ($cont == 0) {
                         echo '<div class="carousel-item active">';
@@ -42,9 +41,9 @@ SubContextos
                     }
                 } ?>
             <div class="card">
-                <form action="contextosUsuario" method="post">
+                <form action="obtenersubcontextos" method="post">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
+                    <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
                     <button class="btn p-0 w-100">
                         <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                         <div class="card-body p-2">
@@ -62,49 +61,12 @@ SubContextos
                 <?php if (($cont + 1) % $limite == 0) {
                         echo '</div>';
                     }
-                $cont++;
+                    $cont++;
+                }
             }
-        } ?>
+            ?>
         </div>
     </div>
-        
-    <!-- VENTANA MODAL NUEVO SUBCONTEXTO -->
-    <section class="modal fade" id="nuevo">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Añadir Subcontexto</div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body p-4">
-                    <form action="subirTablero" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label class="sr-only" for="Foto">Foto</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
-                                </div>
-                                <input type="file" name="image" id="image" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="nombre">Nombre</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
-                                </div>
-                                <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control">
-                            </div>
-                        </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
 @endsection
 
