@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('CarlosYSusCosas/Prueba1');
+    return view('index');
 });
 /*
   |--------------------------------------------------------------------------

@@ -22,24 +22,51 @@ $(document).ready(function () {
     });
 
     //Mostrar bloque
-    $("#c2").click(function () {        
+    $("#c2").click(function () {
         $("#menuoculto").show(1000);
         $("#menuoculto").attr('style', 'display:flex');
     });
 
-  
+    $("form[name='formtablero']").submit(function (e) {
+        alert('entro');
+        formulario = $(this).attr('id');
+        alert(formulario);
+        e.preventDefault();
+        var id = formulario.substr(4);
+        alert('salgo');
+        alert(id);
+        var speech = new SpeechSynthesisUtterance();
+        // Set the text and voice attributes.
+        speech.text = document.getElementById("leer" + id).value;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.lang = "es";
+        window.speechSynthesis.speak(speech);
+
+        setTimeout(function () {
+            enviar(id);
+        }, 3000);
+    });
+
+    function enviar(id) {
+        document.forms[id].submit();
+        //document.formulario.submit();                
+    }
+
+
 });
- function modificarContexto(id){
-       $("#imgcontexto").attr('src',$('#img'+id).attr('src'));
-        $("#nombrecontexto").val($('#nombre'+id).val());    
-        $("#idimg").val(id);
-   }
-   function eliminarContexto(id){
-        $("#idelim").val(id);
-   }
+function modificarContexto(id) {
+    $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
+    $("#nombrecontexto").val($('#nombre' + id).val());
+    $("#idimg").val(id);
+}
+function eliminarContexto(id) {
+    $("#idelim").val(id);
+}
 
 function volver() {
-  window.history.back();
+    window.history.back();
 }
 
 

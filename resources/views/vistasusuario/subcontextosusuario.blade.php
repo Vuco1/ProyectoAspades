@@ -41,7 +41,7 @@ SubContextos
                     }
                 } ?>
             <div class="card">
-                <form action="contextosUsuario" method="post">
+                <form id="form<?php echo $cont?>" name="formtablero" action="contextosUsuario" method="post">
                     @csrf
                     <input type="hidden" name="id" value="{{ $imgT->Id_imagen }}">
                     <button class="btn p-0 w-100">
