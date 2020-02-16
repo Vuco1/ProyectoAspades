@@ -51,15 +51,22 @@ function comprobar() {
 }
 
 /**
- * Muestra el menú oculto cel usuario normal si la contraseña coincide.
+ * Muestra el menú oculto del usuario normal si la contraseña coincide.
  * @return {undefined}
  */
 function mostrarMenu() {
-    var clave = document.getElementById("clave").value;
+    var clave = document.getElementById("passw").value;
     var estilo = document.getElementById("menuoculto");
 
-    if (clave === 'aspades') {
-        estilo.style.display = "contents";
+    if (estilo.style.display === 'none') {
+        if (clave === 'aspades') {
+            document.getElementById("login").value ="Ocultar menú";
+            estilo.style.display = "contents";
+        }
+    } else {
+        document.getElementById("login").value ="Mostrar menú";
+        estilo.style.display = "none";
+        
     }
 }
 

@@ -50,15 +50,15 @@
             </div>
             <div class="modal-body p-4">
                 <div class="form-group">
-                    <label class="sr-only" for="clave">Contraseña</label>
+                    <label class="sr-only" for="passw">Contraseña</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
-                        <input type="password" name="clave" id="clave" placeholder="Contraseña" class="form-control">
+                        <input type="password" name="passw" id="passw" placeholder="Contraseña" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-orange w-100 simplemodal-close" onclick="comprobar()">
+                <input type="submit" name="login" id="login" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close" onclick="comprobar()">
             </div>
         </div>
     </div>
