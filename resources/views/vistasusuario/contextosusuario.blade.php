@@ -4,7 +4,7 @@ Contextos
 @endsection
 @section('contenido')
 <!-- HEADER -->
-<header id="menuoculto" style="visibility: hidden;">
+<header id="menuoculto" style="display: none;">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
         <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@ Contextos
     </nav>
 </header>
 <!-- MAIN -->
-<main class="d-flex pt-3">
+<main class="d-flex">
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner">
             <?php if (!$contextos) { ?>

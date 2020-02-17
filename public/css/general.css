@@ -14,13 +14,12 @@ main {
     min-height: calc(100vh - 3.5rem);
     min-width: 20rem;
     text-align: center;
-    padding-top: 2rem;
 }
 
 header {
     position: fixed;
-    top: 0;
     width: 100%;
+    z-index: 1020;
 }
 
 footer { height: 3.5rem!important; }
