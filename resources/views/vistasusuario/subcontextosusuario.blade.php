@@ -4,8 +4,8 @@ SubContextos
 @endsection
 @section('contenido')
 <!-- HEADER -->
-<header id="menuoculto" style="display: none">
-    <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
+<header id="menuoculto" style="visibility: hidden;">
+    <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
         <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -67,5 +67,5 @@ SubContextos
         </div>
     </div>
 </main>
+@include('plantillas/footer')
 @endsection
-

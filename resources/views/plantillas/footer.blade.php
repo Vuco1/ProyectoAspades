@@ -1,14 +1,15 @@
 <!-- FOOTER -->
 <footer>
-    <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
     <?php
     if (session()->has('rol')) {
         $rol = session()->get('rol');
-        if ($rol == 0) {
+        if ($rol == 0 || $roll == null) {
             ?>
             <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginOculto"><i class="fas fa-lock h2 m-0"></i></a>
             <?php
-        }
+        } else { ?>
+            <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
+        <?php }
     }
     ?>  
 
