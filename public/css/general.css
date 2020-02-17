@@ -20,7 +20,7 @@ main {
 header {
     position: fixed;
     top: 0;
-    width: 100%
+    width: 100%;
 }
 
 footer { height: 3.5rem!important; }

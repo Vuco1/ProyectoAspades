@@ -124,23 +124,15 @@ Route::group(['middleware' => 'Usuario'], function() {
         return view('vistasusuario/iniciousuario');
     });
     /**
-     * Carga los subcontextos que tenga ese contexto
-     * Estaba con post
-     */
-    Route::any('contextosUsuario', 'ControladorUsuario@contextosUsuario');
-    /**
-     * Estaba con get
-     */
-    Route::any('contextosusuario', 'ControladorUsuario@iniciarContexto');
-    /**
-     * Ruta para obtener los Contextos de el Usuario
+     * Ruta para obtener los Contextos del Usuario
      * Estaba con post
      */
     Route::any('obtenercontextos', 'ControladorUsuario@obtenerContextos');
     /**
+     * Ruta para obtener los Subcontextos del Usuario
      * Estaba con post
      */
-    Route::any('subcontextosUsuario', 'ControladorUsuario@contextosUsuario');
+    Route::any('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
     /**
      * Estaba con get
      */
