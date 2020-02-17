@@ -20,89 +20,63 @@ class ControladorUsuario extends Controller {
      * @version 2.0
      */
     public function obtenerContextos(Request $req) {
-        //dd(session()->get('usuario'));
+        session()->forget('puntero');
         $idUsuario = session()->get('usuario')->Id_usuario;
-        $contextos = \DB::table('imagenes')
-                ->join('imagenes.Id_imagen', '=', 'pagina_imagen.Id_imagen')
-                ->join('tablero_pagina.Id_pagina', '=', 'pagina_imgagen.Id_pagina')
-                ->join('Tablero.Id_tablero', '=', 'tablero_pagina.Id_tablero')
-                ->select('Imagenes.Id_imagen', 'Imagenes.Nombre', 'Imagenes.ruta')
-                ->where('Id_usuario', '=', $idUsuario)
-                ->whereNull('Puntero');
 
-        foreach ($contextos as $contexto) {
-            $idTablero = Tablero_Pagina::where('Id_tablero', $contexto->Id_tablero)->first();
-            $imgTablero[] = Imagen::where('Id_imagen', $idTablero->Id_imagen)->first(); 
+        $contextos = \DB::table('imagenes')
+                ->select('imagenes.Id_imagen', 'imagenes.Nombre', 'imagenes.Ruta')
+                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
+                ->where('tableros.Id_usuario', '=', $idUsuario)
+                ->whereNull('Puntero')
+                ->get();
+
+        if ($contextos->IsEmpty()) {
+            $datos = [
+                'contextos' => false
+            ];
+        } else {
+            $datos = [
+                'contextos' => $contextos
+            ];
         }
-        $datos = [
-                'imgTablero' => $imgTablero
-        ];
 
         return view('vistasusuario/contextosusuario', $datos);
     }
 
     /**
-     * Obtiene los contextos que no apuntan a ningún otro (Contextos generales).
-     * @return type
-     */
-    public function cargarContextos() {
-        \Session::forget('id');
-        //Añadir usuario id
-        $contextos = Tablero::whereNull('Puntero')->where(us)->get();
-        if (!$contextos) {
-            $datos = [
-                    'imgTablero' => false
-                ];
-        } else {
-            foreach ($contextos as $contexto) {
-                $idtablero = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-                $imgtablero[] = Imagen::where('Id_imagen', $idtablero->Id_imagen)->first();
-
-                $datos = [
-                    'imgTablero' => $imgtablero
-                ];
-            }
-        }
-
-        return $datos;
-    }
-
-    /**
-     * Obtiene el id de la imagen elegida y nos devuelve los tableros o galería de imágenes asignados
-     * a la misma.
+     * Obtiene los Subcontextos que contiene un Contexto.
      * @param Request $req
      * @return type
+     * @author Laura
+     * @version 2.0
      */
-    public function contextosUsuario(Request $req) {
-        $id = $req->get('id');
-        \Session::put('id', $id);
-        $datos = self::cargarSubcontextos($id);
+    public function obtenerSubcontextos(Request $req) {
+        $puntero = $req->get('puntero');
+        session()->put('puntero', $puntero);
+
+        $subcontextos = \DB::table('imagenes')
+                ->select('imagenes.Id_imagen', 'imagenes.Nombre', 'imagenes.Ruta')
+                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
+                ->where('Puntero', '=', $puntero)
+                ->get();
+
+        if ($subcontextos->IsEmpty()) {
+            $datos = [
+                'subcontextos' => false
+            ];
+        } else {
+            $datos = [
+                'subcontextos' => $subcontextos
+            ];
+        }
+
         return view('vistasusuario/subcontextosusuario', $datos);
     }
 
-    public function cargarSubcontextos($id) {
-        $idtablero = Tablero_Imagen::where('Id_imagen', $id)->first();
-        $contextos = Tablero::where('Puntero', $idtablero->Id_tablero)->get();
-        if ($contextos->IsEmpty()) {
-            $datos = [
-                'imgTablero' => false
-            ];
-        } else {
-
-            foreach ($contextos as $contexto) {
-                $idtablero2 = Tablero_Imagen::where('Id_tablero', $contexto->Id_tablero)->first();
-                $imgtablero[] = Imagen::where('Id_imagen', $idtablero2->Id_imagen)->first();
-
-                $datos = [
-                    'imgTablero' => $imgtablero
-                ];
-            }
-        }
-        return $datos;
-    }
-
     /**
-     * Sube una imagen a nuestra carpeta de images 
+     * Sube una imagen a nuestra carpeta de images
+     * @author Víctor
+     * @version 1.0
      */
     public function subirTablero(Request $req) {
         $req->validate([

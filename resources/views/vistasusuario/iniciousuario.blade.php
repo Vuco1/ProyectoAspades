@@ -3,22 +3,23 @@
 Login
 @endsection
 @section('contenido')
+
 <!-- HEADER -->
-<header>
-    <nav id="menuoculto" class="navbar navbar-expand-md navbar-light bg-light p-0" style="display: none;">
+<header id="menuoculto" style="display: none">
+    <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
         <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-users-cog icono"></i>Modificar perfil usuario</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
             </ul>
+            <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
     </nav>
-    <input type="button" value="Ocultar" id="c1">
-    <input type="button" value="Visualizar" id="c2">
 </header>
+
 <!-- MAIN -->
 <main class="d-flex pt-3">
     <?php $usuario = session()->get('usuario'); ?>        
@@ -31,7 +32,8 @@ Login
         if (isset($mensaje)) {
             echo $mensaje;
         }
-        ?></div>
+        ?>
+    </div>
     <!-- SCRIPTS -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
 </main>

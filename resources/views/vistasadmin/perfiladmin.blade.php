@@ -6,7 +6,7 @@ Perfil
         <!-- HEADER -->
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-light p-0">
-                <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+                <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -24,9 +24,10 @@ Perfil
         <main>
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
-            <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
             <h2>Mi perfil</h2>
-            <form action="editarperfil" method="post" class="col-xl-4 col-lg-5 col-md-6 m-auto" enctype="multipart/form-data">
+            <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+            
+            <form action="editarperfil" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="id" value="<?= $usuario->Id_usuario?>" hidden>              
                 <div class="form-group">
@@ -53,7 +54,7 @@ Perfil
                         <div class="input-group-prepend">
                             <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
                         </div>
-                        <input id="imagen" name="imagen" type="file" class="form-control-file"/>
+                        <input id="imagen" name="imagen" type="file" class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
