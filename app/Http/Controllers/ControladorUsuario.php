@@ -24,7 +24,7 @@ class ControladorUsuario extends Controller {
         $idUsuario = session()->get('usuario')->Id_usuario;
 
         $contextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'imagenes.Nombre', 'imagenes.Ruta')
+                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta')
                 ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
                 ->where('tableros.Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
@@ -55,7 +55,7 @@ class ControladorUsuario extends Controller {
         session()->put('puntero', $puntero);
 
         $subcontextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'imagenes.Nombre', 'imagenes.Ruta')
+                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta')
                 ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
                 ->where('Puntero', '=', $puntero)
                 ->get();
@@ -103,7 +103,6 @@ class ControladorUsuario extends Controller {
         $imageName = time() . '.' . $req->image->extension();
         $req->image->move(public_path('images'), $imageName);
         $imagen = new Imagen;
-        $imagen->Nombre = $req->nombre;
         $imagen->Ruta = 'images/' . $imageName;
         $imagen->Id_tablero = $auxtablero;
         if (\Session::has('idcontexto')) {
