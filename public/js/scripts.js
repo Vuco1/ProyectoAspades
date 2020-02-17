@@ -16,11 +16,7 @@ $(document).ready(function () {
         }
     });
 
-    //Mostrar bloque
-    $("#c2").click(function () {
-        $("#menuoculto").show(1000);
-        $("#menuoculto").attr('style', 'display:flex');
-    });
+    //------------------------------------------------------------------------//
 
     $("form[name='formtablero']").submit(function (e) {
         alert('entro');
@@ -82,6 +78,7 @@ function volver() {
     window.history.back();
 }
 
+//----------------------------------------------------------------------------//
 //Vista -> Inicio usuario.
 //Author: Isa
 
@@ -103,14 +100,14 @@ function mostrarMenu() {
     var clave = document.getElementById("passw").value;
     var estilo = document.getElementById("menuoculto");
 
-    if (estilo.style.display === 'none') {
+    if (estilo.style.visibility === 'hidden') {
         if (clave === 'aspades') {
             document.getElementById("login").value ="Ocultar menú";
-            estilo.style.display = "contents";
+            estilo.style.visibility = "visible";
         }
     } else {
         document.getElementById("login").value ="Mostrar menú";
-        estilo.style.display = "none";
+        estilo.style.visibility = "hidden";
         
     }
 }
