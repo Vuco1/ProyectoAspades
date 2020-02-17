@@ -3,7 +3,7 @@
     <?php
     if (session()->has('rol')) {
         $rol = session()->get('rol');
-        if ($rol == 0 || $roll == null) {
+        if ($rol == 0 || $rol == null) {
             ?>
             <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginOculto"><i class="fas fa-lock h2 m-0"></i></a>
             <?php
