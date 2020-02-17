@@ -5,17 +5,38 @@
 /*----------------------------------- GRID -----------------------------------*/
 /* Esta es la distribución de la rejilla y el etiquetado de cada una de sus areas 
 para la posterior asignación de los elementos */
-.grid-8-5 {
+
+/* Preset pequeño (4x3) */
+.grid-sm {
     height: 100vh;
     display: grid;
     grid-template-areas:
-        "c1r1   c2r1    c3r1    c4r1    c5r1    c6r1    c7r1    c8r1"
-        "c1r2   c2r2    c3r2    c4r2    c5r2    c6r2    c7r2    c8r2"
-        "c1r3   c2r3    c3r3    c4r3    c5r3    c6r3    c7r3    c8r3"
-        "c1r4   c2r4    c3r4    c4r4    c5r4    c6r4    c7r4    c8r4"
-        "c1r5   c2r5    c3r5    c4r5    c5r5    c6r5    c7r5    c8r5";
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+        "c1r1   c2r1    c3r1    c4r1"
+        "c1r2   c2r2    c3r2    c4r2"
+        "c1r3   c2r3    c3r3    c4r3";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Preset mediano (3x2) */
+.grid-md {
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "c1r1   c2r1    c3r1"
+        "c1r2   c2r2    c3r2";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Preset grande (3x1) */
+.grid-lg {
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "c1r1   c2r1    c3r1";
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
 }
 
 /*----------------------------------------------------------------------------*/
@@ -28,46 +49,16 @@ para la posterior asignación de los elementos */
 .c2r1 { grid-area: c2r1; }
 .c3r1 { grid-area: c3r1; }
 .c4r1 { grid-area: c4r1; }
-.c5r1 { grid-area: c5r1; }
-.c6r1 { grid-area: c6r1; }
-.c7r1 { grid-area: c7r1; }
-.c8r1 { grid-area: c8r1; }
 /* Fila 2 */
 .c1r2 { grid-area: c1r2; }
 .c2r2 { grid-area: c2r2; }
 .c3r2 { grid-area: c3r2; }
 .c4r2 { grid-area: c4r2; }
-.c5r2 { grid-area: c5r2; }
-.c6r2 { grid-area: c6r2; }
-.c7r2 { grid-area: c7r2; }
-.c8r2 { grid-area: c8r2; }
 /* Fila 3 */
 .c1r3 { grid-area: c1r3; }
 .c2r3 { grid-area: c2r3; }
 .c3r3 { grid-area: c3r3; }
 .c4r3 { grid-area: c4r3; }
-.c5r3 { grid-area: c5r3; }
-.c6r3 { grid-area: c6r3; }
-.c7r3 { grid-area: c7r3; }
-.c8r3 { grid-area: c8r3; }
-/* Fila 4 */
-.c1r4 { grid-area: c1r4; }
-.c2r4 { grid-area: c2r4; }
-.c3r4 { grid-area: c3r4; }
-.c4r4 { grid-area: c4r4; }
-.c5r4 { grid-area: c5r4; }
-.c6r4 { grid-area: c6r4; }
-.c7r4 { grid-area: c7r4; }
-.c8r4 { grid-area: c8r4; }
-/* Fila 5 */
-.c1r5 { grid-area: c1r5; }
-.c2r5 { grid-area: c2r5; }
-.c3r5 { grid-area: c3r5; }
-.c4r5 { grid-area: c4r5; }
-.c5r5 { grid-area: c5r5; }
-.c6r5 { grid-area: c6r5; }
-.c7r5 { grid-area: c7r5; }
-.c8r5 { grid-area: c8r5; }
 
 /*----------------------------------------------------------------------------*/
 
@@ -77,82 +68,46 @@ para la posterior asignación de los elementos */
 .col-end-c2r1 { grid-column-end: c2r1; }
 .col-end-c3r1 { grid-column-end: c3r1; }
 .col-end-c4r1 { grid-column-end: c4r1; }
-.col-end-c5r1 { grid-column-end: c5r1; }
-.col-end-c6r1 { grid-column-end: c6r1; }
-.col-end-c7r1 { grid-column-end: c7r1; }
-.col-end-c8r1 { grid-column-end: c8r1; }
 /* Fila 2 */
 .col-end-c2r2 { grid-column-end: c2r2; }
 .col-end-c3r2 { grid-column-end: c3r2; }
 .col-end-c4r2 { grid-column-end: c4r2; }
-.col-end-c5r2 { grid-column-end: c5r2; }
-.col-end-c6r2 { grid-column-end: c6r2; }
-.col-end-c7r2 { grid-column-end: c7r2; }
-.col-end-c8r2 { grid-column-end: c8r2; }
 /* Fila 3 */
 .col-end-c2r3 { grid-column-end: c2r3; }
 .col-end-c3r3 { grid-column-end: c3r3; }
 .col-end-c4r3 { grid-column-end: c4r3; }
-.col-end-c5r3 { grid-column-end: c5r3; }
-.col-end-c6r3 { grid-column-end: c6r3; }
-.col-end-c7r3 { grid-column-end: c7r3; }
-.col-end-c8r3 { grid-column-end: c8r3; }
 /* Fila 4 */
 .col-end-c2r4 { grid-column-end: c2r4; }
 .col-end-c3r4 { grid-column-end: c3r4; }
 .col-end-c4r4 { grid-column-end: c4r4; }
-.col-end-c5r4 { grid-column-end: c5r4; }
-.col-end-c6r4 { grid-column-end: c6r4; }
-.col-end-c7r4 { grid-column-end: c7r4; }
-.col-end-c8r4 { grid-column-end: c8r4; }
 /* Fila 5 */
 .col-end-c2r5 { grid-column-end: c2r5; }
 .col-end-c3r5 { grid-column-end: c3r5; }
 .col-end-c4r5 { grid-column-end: c4r5; }
-.col-end-c5r5 { grid-column-end: c5r5; }
-.col-end-c6r5 { grid-column-end: c6r5; }
-.col-end-c7r5 { grid-column-end: c7r5; }
-.col-end-c8r5 { grid-column-end: c8r5; }
 
 /*-------------------------------- FILA FINAL --------------------------------*/
 /* Indica la fila en la que acaba el elemento */
 /* Columna 1 */
 .row-end-c1r2 { grid-row-end: c1r2; }
 .row-end-c1r3 { grid-row-end: c1r3; }
-.row-end-c1r4 { grid-row-end: c1r4; }
-.row-end-c1r5 { grid-row-end: c1r5; }
 /* Columna 2 */
 .row-end-c2r2 { grid-row-end: c2r2; }
 .row-end-c2r3 { grid-row-end: c2r3; }
-.row-end-c2r4 { grid-row-end: c2r4; }
-.row-end-c2r5 { grid-row-end: c2r5; }
 /* Columna 3 */
 .row-end-c3r2 { grid-row-end: c3r2; }
 .row-end-c3r3 { grid-row-end: c3r3; }
-.row-end-c3r4 { grid-row-end: c3r4; }
-.row-end-c3r5 { grid-row-end: c3r5; }
 /* Columna 4 */
 .row-end-c4r2 { grid-row-end: c4r2; }
 .row-end-c4r3 { grid-row-end: c4r3; }
-.row-end-c4r4 { grid-row-end: c4r4; }
-.row-end-c4r5 { grid-row-end: c4r5; }
 /* Columna 5 */
 .row-end-c5r2 { grid-row-end: c5r2; }
 .row-end-c5r3 { grid-row-end: c5r3; }
-.row-end-c5r4 { grid-row-end: c5r4; }
-.row-end-c5r5 { grid-row-end: c5r5; }
 /* Columna 6 */
 .row-end-c6r2 { grid-row-end: c6r2; }
 .row-end-c6r3 { grid-row-end: c6r3; }
-.row-end-c6r4 { grid-row-end: c6r4; }
-.row-end-c6r5 { grid-row-end: c6r5; }
 /* Columna 7 */
 .row-end-c7r2 { grid-row-end: c7r2; }
 .row-end-c7r3 { grid-row-end: c7r3; }
-.row-end-c7r4 { grid-row-end: c7r4; }
-.row-end-c7r5 { grid-row-end: c7r5; }
 /* Columna 8 */
 .row-end-c8r2 { grid-row-end: c8r2; }
 .row-end-c8r3 { grid-row-end: c8r3; }
-.row-end-c8r4 { grid-row-end: c8r4; }
-.row-end-c8r5 { grid-row-end: c8r5; }

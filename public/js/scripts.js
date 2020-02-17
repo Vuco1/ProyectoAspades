@@ -22,8 +22,53 @@ $(document).ready(function () {
         $("#menuoculto").attr('style', 'display:flex');
     });
 
+    $("form[name='formtablero']").submit(function (e) {
+        alert('entro');
+        formulario = $(this).attr('id');
+        alert(formulario);
+        e.preventDefault();
+        var id = formulario.substr(4);
+        alert('salgo');
+        alert(id);
+        var speech = new SpeechSynthesisUtterance();
+        speech.text = document.getElementById("leer" + id).value;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.lang = "es";
+        window.speechSynthesis.speak(speech);
+
+        setTimeout(function () {
+            enviar(id);
+        }, 3000);
+    });
+
+    function enviar(id) {
+        document.forms[id].submit();
+        //document.formulario.submit();                
+    }
+
+    $("img[name='imagen']").click(function () {
+        var speech = new SpeechSynthesisUtterance();
+        speech.text = this.value;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.lang = "es";
+        window.speechSynthesis.speak(speech);
+    });
 
 });
+
+function modificarContexto(id) {
+    $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
+    $("#nombrecontexto").val($('#nombre' + id).val());
+    $("#idimg").val(id);
+}
+function eliminarContexto(id) {
+    $("#idelim").val(id);
+}
+
 function modificarContexto(id) {
     $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
     $("#nombrecontexto").val($('#nombre' + id).val());
