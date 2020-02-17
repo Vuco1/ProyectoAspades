@@ -36,7 +36,6 @@ $(document).ready(function () {
         alert('salgo');
         alert(id);
         var speech = new SpeechSynthesisUtterance();
-        // Set the text and voice attributes.
         speech.text = document.getElementById("leer" + id).value;
         speech.volume = 1;
         speech.rate = 1;
@@ -54,6 +53,15 @@ $(document).ready(function () {
         //document.formulario.submit();                
     }
 
+    $("img[name='imagen']").click(function () {
+        var speech = new SpeechSynthesisUtterance();
+        speech.text = this.value;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        speech.lang = "es";
+        window.speechSynthesis.speak(speech);
+    });
 
 });
 function modificarContexto(id) {
