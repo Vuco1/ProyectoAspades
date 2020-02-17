@@ -27,7 +27,7 @@ Login
         @csrf
         <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
         <h1>Hola <?php echo $usuario->Nick ?></h1>
-        <input id="leer0"type="hidden" value="<?php echo $usuario->Nick ?>">
+        <input id="leer0" type="hidden" value="Hola <?php echo $usuario->Nick ?>">
     </form>
     <div id="mensaje" class="mt-3"><?php
         if (isset($mensaje)) {

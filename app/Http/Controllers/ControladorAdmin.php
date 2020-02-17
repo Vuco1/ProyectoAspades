@@ -22,11 +22,11 @@ class ControladorAdmin extends Controller {
         $nombre = $req->get('nombre');
         $clave = $req->get('clave');
         $req->validate([
-                    'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                ]);
+            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $imagen = $req->file('imagen');
-        
-        
+
+
         $mensaje = 'Perfil modificado con éxito';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -38,11 +38,11 @@ class ControladorAdmin extends Controller {
                 $usuario->Clave = $clave;
             }
             if ($imagen != null) {
-                
-                
+
+
                 $nomimagen = $imagen->getClientOriginalName();
-                $usuario->Foto = 'images/' . $nomimagen;
-                $req->imagen->move(public_path('images'), $nomimagen);
+                $usuario->Foto = 'images/user' . $nomimagen;
+                $req->imagen->move(public_path('images/users'), $nomimagen);
             }
             $usuario->save();
         } catch (Exception $ex) {
@@ -71,6 +71,17 @@ class ControladorAdmin extends Controller {
         $nick = $req->get('usuario');
         $clave = md5($req->get('clave'));
         $nombre = $req->get('nombre');
+        if ($req->file('imagen')) {
+            $req->validate([
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $foto = $req->file('imagen');
+            $nomimagen = $foto->getClientOriginalName();
+            $req->imagen->move(public_path('images/users'), $nomimagen);
+        } else {
+            $nomimagen = 'general.jpg';
+        }
+
         if ($req->has('rol')) {
             $rol = 1;
         } else {
@@ -80,6 +91,7 @@ class ControladorAdmin extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->Nombre = $nombre;
+        $usuario->Foto = 'images/user/' . $nomimagen;
         $usuario->save();
 
         $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();

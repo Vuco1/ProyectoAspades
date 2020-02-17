@@ -44,23 +44,22 @@ Route::get('comprobar', function () {
  */
 Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
-
 /*
   |--------------------------------------------------------------------------
   |Administrador
   |--------------------------------------------------------------------------
  */
+
+/**
+ * Ruta para registrar un Usuario
+ */
+Route::post('registrar', 'ControladorAdmin@addUsuario')->name('gestionusuarios');
+
 Route::group(['middleware' => 'Administrador'], function() {
     /**
-     * Ruta para registrar un Usuario
-     * Estaba con Post
+     * Ruta para cargar los perfiles del pagination
      */
-    Route::any('registrar', 'ControladorAdmin@addUsuario')->name('gestionusuarios');
-    /**
-     * Ruta para 
-     * Estaba con get
-     */
-    Route::any('registrar', 'ControladorAdmin@crudUsuarios');
+    Route::get('registrar', 'ControladorAdmin@crudUsuarios');
     /**
      * Editar el perfil del administrador.
      * Post
@@ -104,9 +103,6 @@ Route::group(['middleware' => 'Administrador'], function() {
      * Ruta para añadir un Usuario
      * Estaba con get
      */
-    Route::any('addUsuario', function () {
-        return view('vistasadmin/addusuario');
-    });
 });
 
 /*

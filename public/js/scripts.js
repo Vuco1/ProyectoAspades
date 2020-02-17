@@ -23,13 +23,9 @@ $(document).ready(function () {
     });
 
     $("form[name='formtablero']").submit(function (e) {
-        alert('entro');
         formulario = $(this).attr('id');
-        alert(formulario);
         e.preventDefault();
         var id = formulario.substr(4);
-        alert('salgo');
-        alert(id);
         var speech = new SpeechSynthesisUtterance();
         speech.text = document.getElementById("leer" + id).value;
         speech.volume = 1;
@@ -68,7 +64,6 @@ function eliminarContexto(id) {
     $("#idelim").val(id);
 }
 
-});
 function modificarContexto(id) {
     $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
     $("#nombrecontexto").val($('#nombre' + id).val());
