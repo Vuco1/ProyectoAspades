@@ -120,5 +120,10 @@ function cerrarVentana() {
     $('#login').click(function () {
         $('#loginOculto').modal('hide');
     });
+    
+      $('#carouselContextos').on('slide.bs.carousel', function () {
+        currentIndex = $('div.active').index() + 1;
+        $('.num').html('' + currentIndex + '/' + totalItems + '');
+    });
 }
 
