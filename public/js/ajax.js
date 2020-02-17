@@ -11,8 +11,8 @@ $(document).ready(function () {
     $('.btn').click(function () {
         buttonpressed = $(this).attr('name');
     });
-    
-    
+
+
     $('form').submit(function (evt) {
         if (buttonpressed === 'modificar') {
             evt.preventDefault();
@@ -48,34 +48,34 @@ $(document).ready(function () {
         }
         if (buttonpressed === 'eliminar') {
             evt.preventDefault();
-                var $id = $(this).find('input[name="Id"]').val();
-                $.ajax({
-                    url: 'eliminarUsuario',
-                    type: 'post',
-                    data: {_token: CSRF_TOKEN, "id": $id},
-                    success: function (response) {
-                        alert('Usuario eliminado con exito');
-                        location.reload();
-                    }, error: function (jqXHR, exception) {
-                        var msg = '';
-                        if (jqXHR.status === 0) {
-                            msg = 'Not connect.\n Verify Network.';
-                        } else if (jqXHR.status == 404) {
-                            msg = 'Requested page not found. [404]';
-                        } else if (jqXHR.status == 500) {
-                            msg = 'Internal Server Error [500].';
-                        } else if (exception === 'parsererror') {
-                            msg = 'Requested JSON parse failed.';
-                        } else if (exception === 'timeout') {
-                            msg = 'Time out error.';
-                        } else if (exception === 'abort') {
-                            msg = 'Ajax request aborted.';
-                        } else {
-                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                        }
-                        alert(msg);
-                    },
-                });
+            var $id = $(this).find('input[name="Id"]').val();
+            $.ajax({
+                url: 'eliminarUsuario',
+                type: 'post',
+                data: {_token: CSRF_TOKEN, "id": $id},
+                success: function (response) {
+                    alert('Usuario eliminado con exito');
+                    location.reload();
+                }, error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    alert(msg);
+                },
+            });
         }
 
     });

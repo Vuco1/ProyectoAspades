@@ -69,7 +69,7 @@ Contextos
             ?>
         </div>
     </div>
-
+    <div class=".num"></div>
     <!-- VENTANA MODAL NUEVO CONTEXTO -->
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">

@@ -79,6 +79,24 @@ class ControladorUsuario extends Controller {
      * @version 1.0
      */
     public function subirTablero(Request $req) {
+        //Creacion de tablero
+        $tablero = new Tablero;
+        $usuario = session()->get('usuario');
+        $idusuario = $usuario->Id_usuario;
+        $tablero->Id_usuario = $idusuario;
+        $tablero->Nombre = $req->nombre;
+        if (\Session::has('idcontexto')) {
+            $idcontexto = \Session::get('idcontexto');
+        } else {
+            $idcontexto = null;
+        }
+        $tablero->Puntero = $idcontexto;
+        $tablero->save();
+        
+        //Obtencion de la id del tablero recien creado.
+        $auxtablero = Tablero::max('Id_tablero')->where('Id_usuario', $idusuario);
+        
+        //Subida de la imagen.
         $req->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -87,38 +105,34 @@ class ControladorUsuario extends Controller {
         $imagen = new Imagen;
         $imagen->Nombre = $req->nombre;
         $imagen->Ruta = 'images/' . $imageName;
-        $imagen->save();
-
-        $tablero = new Tablero;
-        $usuario = session()->get('usuario');
-        $id = $usuario->Id_usuario;
-        $tablero->Id_usuario = $id;
-        $tablero->Nombre = $req->nombre;
-
-        if (\Session::has('id')) {
-            $id = \Session::get('id');
-            $contextos = Tablero_Imagen::where('Id_imagen', $id)->first();
-            $idcontexto = $contextos->Id_tablero;
+        $imagen->Id_tablero = $auxtablero;
+        if (\Session::has('idcontexto')) {
+            $pagina = $req->pagina; //Decidir como vamos a hacerlo ;
+            $imagen->Pagina = $pagina;
+            $posicion = self::sacarPosicion($req->posicion);
+            $imagen->Columna = $posicion->columna;
+            $imagen->Fila = $posicion->fila;
         } else {
-            $id = null;
+            $imagen->Pagina = 0;
+            $imagen->Columna = 0;
+            $imagen->Fila = 0;
         }
-        $tablero->Puntero = $idcontexto;
-        $tablero->save();
-
-        //Es un poco crispy, si meten dos a la vez a saber que pasa
-        $auxtablero = Tablero::max('Id_tablero'); //falta poner que sea del usuario
-        $auximagen = Imagen::max('Id_imagen');
-        $union = new Tablero_Imagen;
-        $union->Id_tablero = $auxtablero;
-        $union->Id_imagen = $auximagen;
-        $union->save();
+        $imagen->save();
+        
         if (\Session::has('id')) {
-            $datos = self::cargarSubcontextos($id);
+            $datos = self::cargarSubcontextos($idusuario);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
             $datos = self::cargarContextos();
             return view('vistasusuario/contextosusuario', $datos);
         }
+    }
+
+    public function sacarPosicion($posicion) {
+        $columna = substr($posicion, 1, 1);
+        $fila = substr($posicion, 3);
+        $posiciones = ['fila' => $fila, 'columna' => $columna];
+        return $posiciones;
     }
 
 }
