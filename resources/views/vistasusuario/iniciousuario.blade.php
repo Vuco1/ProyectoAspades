@@ -26,8 +26,8 @@ Login
     <form id="form0" name="formtablero" action="obtenercontextos" method="post" class="m-auto">
         @csrf
         <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
-        <h1>Hola <?php echo $usuario->Nick ?></h1>
-        <input id="leer0" type="hidden" value="Hola <?php echo $usuario->Nick ?>">
+        <h1 id="leer0">Hola <?php echo $usuario->Nick ?></h1>
+        <input  type="hidden" value="Hola <?php echo $usuario->Nick ?>">
     </form>
     <div id="mensaje" class="mt-3"><?php
         if (isset($mensaje)) {
