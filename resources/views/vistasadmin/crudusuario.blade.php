@@ -46,8 +46,8 @@ Gestión
                             }
                             ?>
                         </select>
-                        <div class="col-1 p-0"><button name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/check-solid.svg') }}" class="icono-crud"/></button></div>
-                        <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/times-solid.svg') }}" class="icono-crud"/></button></div>
+                        <div class="col-1 p-0"><button name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/></button></div>
+                        <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/></button></div>
                     </div>
                 </form>
                 <hr>
@@ -73,8 +73,17 @@ Gestión
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="registrar" method="post">
+                    <form action="registrar" method="post" enctype="multipart/form-data">
                         @csrf
+                        <div class="form-group">
+                            <label class="sr-only" for="imagen">Foto Perfil</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Perfil</div>
+                                </div>
+                                <input id="imagen" name="imagen" type="file" class="form-control"/>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="sr-only" for="usuario">Usuario</label>
                             <div class="input-group">
@@ -111,12 +120,12 @@ Gestión
                                 <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
                             </div>
                         </div>   
-                         <div id="mensaje"> </div>
+                        <div id="mensaje"> </div>
                         <div class="custom-control custom-checkbox mb-3 mt-3">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
-                       <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
