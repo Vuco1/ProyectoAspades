@@ -59,6 +59,7 @@ $(document).ready(function () {
     });
 
 });
+
 function modificarContexto(id) {
     $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
     $("#nombrecontexto").val($('#nombre' + id).val());
@@ -68,7 +69,6 @@ function eliminarContexto(id) {
     $("#idelim").val(id);
 }
 
-});
 function modificarContexto(id) {
     $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
     $("#nombrecontexto").val($('#nombre' + id).val());
