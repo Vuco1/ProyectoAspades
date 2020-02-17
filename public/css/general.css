@@ -23,7 +23,7 @@ header {
     width: 100%;
 }
 
-header, footer { height: 3.5rem!important; }
+footer { height: 3.5rem!important; }
 
 h1 {
     margin: auto;

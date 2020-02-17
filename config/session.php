@@ -31,8 +31,8 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
-
+    'lifetime' => env('SESSION_LIFETIME', 10512000),
+//10512000-> Número de minutos en 20 años para que la sesión no caduque de forma automática
     'expire_on_close' => false,
 
     /*

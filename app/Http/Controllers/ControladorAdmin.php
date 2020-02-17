@@ -104,6 +104,7 @@ class ControladorAdmin extends Controller {
                 ->join('usuario_rol', 'usuarios.Id_usuario', '=', 'usuario_rol.Id_usuario')
                 ->select('usuarios.*', 'usuario_rol.Id_rol')
                 ->where('usuarios.Id_usuario', '!=', $miusuario->Id_usuario)
+                ->orderBy('Nombre', 'ASC')
                 ->paginate(4);
         return $datos;
     }

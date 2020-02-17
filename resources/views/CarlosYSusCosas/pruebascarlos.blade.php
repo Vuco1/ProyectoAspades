@@ -66,7 +66,7 @@ function sleep(ms) {
             <img id="img1" src="Imagenes/victor.jpg" alt="Victor">
         </div>
 
-
+----------------------------------------------------------------------------------------------------------------------------------------------
         <form method=GET action="http://www.arasaac.org/buscar.php?s=casa&idiomasearch=0&Buscar=Buscar&buscar_por=1&pictogramas_color=1">
             <table bgcolor="#FFFFFF">
                 <tr>
@@ -80,7 +80,7 @@ function sleep(ms) {
                 </tr>
             </table>
         </form>
-
+--------------------------------------------------------------------------------------------------------------------------------
         <hr>
 
         <FORM method=GET action="http://www.google.com/search"> 

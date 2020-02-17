@@ -24,7 +24,7 @@ Route::get('/', function () {
  * Del index a una pagina de Prueba para probar el delay del speech y el submit
  */
 Route::post('prueba', function () {
-    return view('envio');
+    return view('CarlosYSusCosas/envio');
 });
 /*
   |--------------------------------------------------------------------------
