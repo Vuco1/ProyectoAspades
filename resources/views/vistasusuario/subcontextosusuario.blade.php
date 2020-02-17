@@ -40,13 +40,13 @@ SubContextos
                     }
                 } ?>
             <div class="card">
-                <form action="obtenersubcontextos" method="post">
+                <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post">
                     @csrf
                     <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
                     <button class="btn p-0 w-100">
                         <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                         <div class="card-body p-2">
-                            <p class="card-text">{{ $imgT->Nombre }}</p>
+                            <p id="leer<?php echo $cont?>" class="card-text">{{ $imgT->Nombre }}</p>
                         </div>
                     </button>                
                 </form>
