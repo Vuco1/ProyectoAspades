@@ -100,14 +100,14 @@ function mostrarMenu() {
     var clave = document.getElementById("passw").value;
     var estilo = document.getElementById("menuoculto");
 
-    if (estilo.style.visibility === 'hidden') {
+    if (estilo.style.display === 'none') {
         if (clave === 'aspades') {
             document.getElementById("login").value ="Ocultar menú";
-            estilo.style.visibility = "visible";
+            estilo.style.display = "block";
         }
     } else {
         document.getElementById("login").value ="Mostrar menú";
-        estilo.style.visibility = "hidden";
+        estilo.style.display = "none";
         
     }
 }
