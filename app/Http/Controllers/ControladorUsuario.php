@@ -137,12 +137,28 @@ class ControladorUsuario extends Controller {
             return view('vistasusuario/contextosusuario', $datos);
         }
     }
-
+/**
+ * Saca funciones 
+ * @param type $posicion
+ * @return type
+ */
     public function sacarPosicion($posicion) {
         $columna = substr($posicion, 1, 1);
         $fila = substr($posicion, 3);
         $posiciones = ['fila' => $fila, 'columna' => $columna];
         return $posiciones;
     }
-
+    
+    public function modidificarTablero(Request $req){
+        
+    }
+    
+    
+   public function eliminarTablero(Request $req){
+       try{
+            DB::table('tableros')->where('Id_tablero', '=', $req->id_tablero)->delete();
+       } catch (Exception $ex) {
+          echo 'Hostiazo que te crio' ;
+       }
+   }
 }
