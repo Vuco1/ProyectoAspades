@@ -34,9 +34,9 @@ SubContextos
             foreach ($subcontextos as $imgT) {
                 if ($cont % $limite == 0) {
                     if ($cont == 0) {
-                        echo '<div class="carousel-item active">';
+                        echo '<div class="carousel-item '. $imgT->Dimension .' active">';
                     } else {
-                        echo '<div class="carousel-item">';
+                        echo '<div class="carousel-item'. $imgT->Dimension .'">';
                     }
                 } ?>
             <div class="card">

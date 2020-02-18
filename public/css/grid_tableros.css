@@ -9,7 +9,7 @@ para la posterior asignación de los elementos */
 /* Preset pequeño (4x3) */
 .grid-sm {
     height: 100vh;
-    display: grid;
+    display: grid!important;
     grid-template-areas:
         "c1r1   c2r1    c3r1    c4r1"
         "c1r2   c2r2    c3r2    c4r2"
@@ -21,7 +21,7 @@ para la posterior asignación de los elementos */
 /* Preset mediano (3x2) */
 .grid-md {
     height: 100vh;
-    display: grid;
+    display: grid!important;
     grid-template-areas:
         "c1r1   c2r1    c3r1"
         "c1r2   c2r2    c3r2";
@@ -32,7 +32,7 @@ para la posterior asignación de los elementos */
 /* Preset grande (3x1) */
 .grid-lg {
     height: 100vh;
-    display: grid;
+    display: grid!important;
     grid-template-areas:
         "c1r1   c2r1    c3r1";
     grid-template-columns: 2fr 1fr 2fr;
