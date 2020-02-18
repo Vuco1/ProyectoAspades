@@ -38,23 +38,24 @@ Contextos
                             echo '<div class="carousel-item">';
                         }
                         echo '<div class="card-deck">';
-                    } ?>
+                    }
+                    ?>
                     <div class="card">
-                        <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post">
+                        <form id="form<?php echo $cont ?>" name="formtablero" action="obtenersubcontextos" method="post">
                             @csrf
                             <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
                             <button class="btn p-0 w-100">
                                 <img id="img{{ $imgT->Id_imagen }}" src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                                 <div class="card-body p-2">
-                                    <input id="leer<?php echo $cont?>" type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
-                                    <p class="card-text">{{ $imgT->Nombre }}</p>
+                                    <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
+                                    <p id="leer<?php echo $cont ?>" class="card-text">{{ $imgT->Nombre }}</p>
                                 </div>
                             </button>                
                         </form>
                         <div class="card-footer">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT->Id_imagen }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
                     </div>
@@ -69,7 +70,6 @@ Contextos
             ?>
         </div>
     </div>
-    <div class=".num"></div>
     <!-- VENTANA MODAL NUEVO CONTEXTO -->
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
@@ -99,6 +99,7 @@ Contextos
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
                                 <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control">
+                                <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>">
                             </div>
                         </div> 
                         <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
@@ -106,8 +107,8 @@ Contextos
                 </div>
             </div>
         </div>
-        <!-- VENTANA MODAL MODIFICAR CONTEXTO -->
     </section>
+    <!-- VENTANA MODAL MODIFICAR CONTEXTO -->
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

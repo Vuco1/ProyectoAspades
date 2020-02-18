@@ -19,7 +19,7 @@ class ControladorUsuario extends Controller {
      * @author Laura
      * @version 2.0
      */
-    public function obtenerContextos(Request $req) {
+    public function cargarContextos() {
         session()->forget('puntero');
         $idUsuario = session()->get('usuario')->Id_usuario;
 
@@ -39,7 +39,11 @@ class ControladorUsuario extends Controller {
                 'contextos' => $contextos
             ];
         }
+        return $datos;
+    }
 
+    public function obtenerContextos() {
+        $datos = self::cargarContextos();
         return view('vistasusuario/contextosusuario', $datos);
     }
 
@@ -50,7 +54,7 @@ class ControladorUsuario extends Controller {
      * @author Laura
      * @version 2.0
      */
-    public function obtenerSubcontextos(Request $req) {
+    public function cargarSubcontextos($req) {
         $puntero = $req->get('puntero');
         session()->put('puntero', $puntero);
 
@@ -69,7 +73,11 @@ class ControladorUsuario extends Controller {
                 'subcontextos' => $subcontextos
             ];
         }
+        return $datos;
+    }
 
+    public function obtenerSubcontextos(Request $req) {
+        $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
 
@@ -92,10 +100,10 @@ class ControladorUsuario extends Controller {
         }
         $tablero->Puntero = $idcontexto;
         $tablero->save();
-        
+
         //Obtencion de la id del tablero recien creado.
-        $auxtablero = Tablero::max('Id_tablero')->where('Id_usuario', $idusuario);
-        
+        $auxtablero = Tablero::where('Id_usuario', $idusuario)->max('Id_tablero');
+
         //Subida de la imagen.
         $req->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -117,9 +125,9 @@ class ControladorUsuario extends Controller {
             $imagen->Fila = 0;
         }
         $imagen->save();
-        
+
         if (\Session::has('id')) {
-            $datos = self::cargarSubcontextos($idusuario);
+            $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
             $datos = self::cargarContextos();
