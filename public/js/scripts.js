@@ -23,7 +23,7 @@ $(document).ready(function () {
         e.preventDefault();
         var id = formulario.substr(4);
         var speech = new SpeechSynthesisUtterance();
-        speech.text = document.getElementById("leer" + id).value;
+        speech.text = document.getElementById("leer" + id).textContent;
         speech.volume = 1;
         speech.rate = 1;
         speech.pitch = 1;

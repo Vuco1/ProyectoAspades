@@ -47,8 +47,8 @@ Contextos
                             <button class="btn p-0 w-100">
                                 <img id="img{{ $imgT->Id_imagen }}" src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
                                 <div class="card-body p-2">
-                                    <input id="leer<?php echo $cont ?>" type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
-                                    <p class="card-text">{{ $imgT->Nombre }}</p>
+                                    <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
+                                    <p id="leer<?php echo $cont ?>" class="card-text">{{ $imgT->Nombre }}</p>
                                 </div>
                             </button>                
                         </form>
