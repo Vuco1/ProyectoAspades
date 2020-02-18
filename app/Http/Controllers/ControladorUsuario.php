@@ -59,8 +59,10 @@ class ControladorUsuario extends Controller {
         session()->put('puntero', $puntero);
 
         $subcontextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta')
+                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta', 'imagenes.Pagina', 'imagenes.Columna', 'imagenes.Fila', 'dimensiones.Dimension')
                 ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
+                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
+                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=','dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
 
@@ -73,6 +75,7 @@ class ControladorUsuario extends Controller {
                 'subcontextos' => $subcontextos
             ];
         }
+        //dd($subcontextos);
         return $datos;
     }
 

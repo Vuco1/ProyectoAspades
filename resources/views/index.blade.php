@@ -5,7 +5,7 @@ Login
 @section('contenido')
     <header></header>
     <!-- MAIN -->
-    <main>
+    <main class="d-flex">
         <section class="col-lg-4 col-md-5 col-sm-6 m-auto pt-5">
             <img src="{{asset('images/icons/logo_aspades.svg')}}" class="logo-login"/>
             <form action="comprobar" method="post">

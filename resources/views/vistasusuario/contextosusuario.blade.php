@@ -146,8 +146,8 @@ Contextos
                 </div>
             </div>
         </div>
-        <!-- VENTANA MODAL ELIMINAR -->
     </section>
+    <!-- VENTANA MODAL ELIMINAR -->
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
