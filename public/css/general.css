@@ -138,9 +138,9 @@ a.text-orange:hover {
 }
 
 /* CARDS */
-/*.card {
-    
-}*/
+.card {
+    border-radius: 0;
+}
 
 .img-contexto {
     height: 22rem;

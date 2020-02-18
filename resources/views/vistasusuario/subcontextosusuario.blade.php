@@ -5,19 +5,19 @@ SubContextos
 <link rel="stylesheet" href="{{ asset('css/grid_tableros.css') }}">
 @section('contenido')
 <!-- HEADER -->
-<header id="menuoculto" style="display: none;">
+<header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
         <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="divnav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><div>
-                        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Imagen</button>
-                    </div></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Eliminar</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-users-cog icono"></i>Modificar</a></li>
+                <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
+                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a></li>
+                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -51,7 +51,7 @@ SubContextos
                         </div>
                     </button>                
                 </form>
-                <div id="card_footer" class="card-footer" style="display: none;">
+                <div class="card-footer d-none">
                     <div class="row px-2">
                         <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
                         <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>

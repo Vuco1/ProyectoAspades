@@ -10,7 +10,7 @@
         }
         if ($rol == 0) {
             ?>
-            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginOculto"><i class="fas fa-lock h2 m-0"></i></a>
+            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginoculto"><i class="fas fa-lock h2 m-0"></i></a>
             <?php
         }
     } else {
@@ -45,8 +45,8 @@
     </div>
 </section>
 
-<!-- VENTANA MODAL LOGIN -->
-<section class="modal fade" id="loginOculto">
+<!-- VENTANA MODAL LOGIN ADMINISTRADOR DE TABLEROS -->
+<section class="modal fade" id="loginoculto">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
@@ -65,7 +65,7 @@
                         <input type="password" name="passw" id="passw" placeholder="Contraseña" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="login" id="login" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close" onclick="comprobar()">
+                <input type="submit" name="loginadmin" id="loginadmin" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close">
             </div>
         </div>
     </div>
