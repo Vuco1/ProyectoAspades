@@ -3,14 +3,20 @@
     <?php
     if (session()->has('rol')) {
         $rol = session()->get('rol');
-        if ($rol == 0 || $rol == null) {
+        if ($rol == 1) {
+            ?>
+            <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
+            <?php
+        }
+        if ($rol == 0) {
             ?>
             <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginOculto"><i class="fas fa-lock h2 m-0"></i></a>
             <?php
-        } else { ?>
-            <a class="py-2 px-3 text-secondary float-right" data-toggle="modal" data-target="#info"><i class="fas fa-info-circle h2 m-0"></i></a>
-        <?php }
-    }
+        }
+    } else {
+        ?>
+        <a class = "py-2 px-3 text-secondary float-right" data-toggle = "modal" data-target = "#info"><i class = "fas fa-info-circle h2 m-0"></i></a>
+    <?php }
     ?>  
 
 </footer>
@@ -44,7 +50,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Información</div>
+                <div class="modal-title">Login</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
