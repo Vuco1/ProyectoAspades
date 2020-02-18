@@ -65,12 +65,6 @@ a.text-orange:hover {
     object-fit: cover;
 }
 
-
-.img-contexto {
-    height: 22rem;
-    object-fit: cover;
-}
-
 /* NAV */
 .navbar-nav .nav-link {
     padding: 1rem 1.5rem!important;
@@ -144,8 +138,18 @@ a.text-orange:hover {
 }
 
 /* CARDS */
-.card {
+/*.card {
+    
+}*/
+
+.img-contexto {
+    height: 22rem;
     max-width: 22rem;
+    object-fit: cover;
+}
+
+.img-subcontexto {
+    object-fit: cover;
 }
 
 /* MEDIA QUERIES */

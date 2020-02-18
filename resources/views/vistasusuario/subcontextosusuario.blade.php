@@ -2,6 +2,7 @@
 @section('titulo')
 SubContextos
 @endsection
+<link rel="stylesheet" href="{{ asset('css/grid_tableros.css') }}">
 @section('contenido')
 <!-- HEADER -->
 <header id="menuoculto" style="display: none;">
@@ -24,7 +25,7 @@ SubContextos
 </header>
 <!-- MAIN -->
 <main class="d-flex">
-    <div id="carouselSubcontextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
+    <div id="carouselSubcontextos" class="carousel slide w-100" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner">
             <?php if (!$subcontextos) { ?>
                 <h1>Sin Resultados</h1><?php
@@ -40,17 +41,17 @@ SubContextos
                     }
                 } ?>
             <div class="card">
-                <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post">
+                <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
                     <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
                     <button class="btn p-0 w-100">
-                        <img src="{{ $imgT->Ruta }}" class="card-img-top img-contexto" alt="Imagen del contexto">
+                        <img src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $imgT->Total_filas }}) - 2.75rem)">
                         <div class="card-body p-2">
                             <p id="leer<?php echo $cont?>" class="card-text">{{ $imgT->Nombre }}</p>
                         </div>
                     </button>                
                 </form>
-                <div class="card-footer">
+                <div id="card_footer" class="card-footer" style="display: none;">
                     <div class="row px-2">
                         <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
                         <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
