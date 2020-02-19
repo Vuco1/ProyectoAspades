@@ -63,16 +63,19 @@ $(document).ready(function () {
         var clave = $("#passw").val();
         var menu = $("#menuoculto");
         var botones = $(".card-footer");
-
+        var numFilas = $("input[name=numfilas]").val();
+        
         if (clave === "aspades") {
             if (menu.hasClass("d-none")) {
                 $("#loginadmin").val("Ocultar menú");
                 menu.removeClass("d-none").addClass("d-block");
                 botones.removeClass("d-none").addClass("d-block");
+                $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
             } else {
                 $("#loginadmin").val("Mostrar menú");
                 menu.removeClass("d-block").addClass("d-none");
                 botones.removeClass("d-block").addClass("d-none");
+                $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 2.75rem)");
                 $("#passw").val("");
             }
             $("#loginoculto").modal("hide");

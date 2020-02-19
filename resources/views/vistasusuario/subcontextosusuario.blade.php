@@ -44,6 +44,8 @@ SubContextos
                 <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
                     <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
+                    <input type="hidden" name="numfilas" value="{{ $imgT->Total_filas }}">
+                    <input type="hidden" name="accion" value="">
                     <button class="btn p-0 w-100">
                         <img src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $imgT->Total_filas }}) - 2.75rem)">
                         <div class="card-body p-2">
