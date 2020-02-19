@@ -14,9 +14,14 @@ Contextos
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button>
+                        <a class="dropdown-item" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a>
+                    </div>
+                </li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -25,9 +30,9 @@ Contextos
 <!-- MAIN -->
 <main class="d-flex">
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
-        <div class="carousel-inner">
+        <div class="carousel-inner h-100 d-flex">
             <?php if (!$contextos) { ?>
-                <h1>Sin Resultados</h1><?php
+                <h1 class="m-auto">Sin Resultados</h1><?php
             } else {
                 $cont = 0;
                 foreach ($contextos as $imgT) {
