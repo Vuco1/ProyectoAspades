@@ -144,5 +144,22 @@ class ControladorUsuario extends Controller {
         $posiciones = ['fila' => $fila, 'columna' => $columna];
         return $posiciones;
     }
-
+    
+    public function modidificarTablero(Request $req){
+        $tablero=Tablero::where('Id_tablero', '=', $req->id_tablero);
+        $imagen=Imagen::where('Id_tablero', $req->id_tablero);
+        $tablero->Nombre=$req->nombre;
+        $imagen->Ruta=$req->ruta;
+        $tablero->save();
+        $imagen->save();
+    }
+    
+    
+   public function eliminarTablero(Request $req){
+       try{
+            DB::table('tableros')->where('Id_tablero', '=', $req->id_tablero)->delete();
+       } catch (Exception $ex) {
+          echo 'Hostiazo que te crio' ;
+       }
+   }
 }
