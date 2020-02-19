@@ -159,4 +159,10 @@ Route::group(['middleware' => 'Usuario'], function() {
     Route::any('perfilusuario', function () {
         return view('vistasusuario/perfilusuario');
     });
+    
+    /**
+     * Ruta para ir al tablero anterior
+     * @author Victor
+     */
+     Route::post('irAnterior', 'ControladorUsuario@tableroAnterior');
 });

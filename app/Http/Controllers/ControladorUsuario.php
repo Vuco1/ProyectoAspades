@@ -62,7 +62,7 @@ class ControladorUsuario extends Controller {
                 ->select('imagenes.Id_imagen', 'imagenes.Ruta', 'imagenes.Pagina', 'imagenes.Columna', 'imagenes.Fila', 'tableros.Nombre', 'dimensiones.Dimension', 'dimensiones.Total_filas', 'dimensiones.Total_columnas')
                 ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
-                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=','dimensiones.Id_dimension')
+                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
 
@@ -138,28 +138,59 @@ class ControladorUsuario extends Controller {
         }
     }
 
+    /**
+     * Obtiene la fila y la columna del string de posicion que se le pase a la funcion
+     * @param type $posicion
+     * @return type
+     * @author Victor
+     */
     public function sacarPosicion($posicion) {
         $columna = substr($posicion, 1, 1);
         $fila = substr($posicion, 3);
         $posiciones = ['fila' => $fila, 'columna' => $columna];
         return $posiciones;
     }
-    
-    public function modidificarTablero(Request $req){
-        $tablero=Tablero::where('Id_tablero', '=', $req->id_tablero);
-        $imagen=Imagen::where('Id_tablero', $req->id_tablero);
-        $tablero->Nombre=$req->nombre;
-        $imagen->Ruta=$req->ruta;
+
+    /**
+     * Modifica el tablero seleccionado.
+     * @author Victor
+     */
+    public function modidificarTablero(Request $req) {
+        $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero);
+        $imagen = Imagen::where('Id_tablero', $req->id_tablero);
+        $tablero->Nombre = $req->nombre;
+        $imagen->Ruta = $req->ruta;
         $tablero->save();
         $imagen->save();
     }
-    
-    
-   public function eliminarTablero(Request $req){
-       try{
+
+    /**
+     * Elimina el tablero seleccionado.
+     * @author Victor
+     */
+    public function eliminarTablero(Request $req) {
+        try {
             DB::table('tableros')->where('Id_tablero', '=', $req->id_tablero)->delete();
-       } catch (Exception $ex) {
-          echo 'Hostiazo que te crio' ;
-       }
-   }
+        } catch (Exception $ex) {
+            echo 'Hostiazo que te crio';
+        }
+    }
+    
+    /**
+     * Comprueba que es el tablero anterior y carga ese tablero
+     * @param Request $req
+     * @return type
+     * @author Victor
+     */
+    public function tableroAnterior(Request $req) {
+        $tablero = Tablero::where('Id_tablero', $req->puntero);
+
+        if ($tablero->Puntero == null) {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        } else {
+            $datos = self::cargarSubcontextos($req);
+            return view('vistasusuario/subcontextosusuario', $datos);
+        }
+    }
 }

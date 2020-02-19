@@ -12,8 +12,112 @@ $(document).ready(function () {
         buttonpressed = $(this).attr('name');
     });
 
-
+    /**
+     * Todas las funciones que usamos con ajax.
+     * @author Victor;
+     */
     $('form').submit(function (evt) {
+        //Funciones de las imagenes
+        if (button==='btnsubcon'){
+            //Para el submit de una imagen normal.
+            if($(this).find('input[name="accion"]').val()===''){
+               evt.preventDefault();
+           }
+//           //Deja que el submit continue.
+//           if($(this).find('input[name="accion"]').val()===1){
+//           }
+           //Va hacia el subcontexto/contexto padre/anterior
+           if($(this).find('input[name="accion"]').val()===2){
+               evt.preventDefault();
+               $puntero = $(this).find('input[name="puntero"]').val();
+               $.ajax({
+                url: 'irAnterior',
+                type: 'post',
+                data: {_token: CSRF_TOKEN, "puntero": $puntero},
+                success: function (response) {
+                    alert('Usuario actualizado con exito');
+                }, error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                },
+            });
+               
+           }
+           //Vuelve al inicio
+           if($(this).find('input[name="accion"]').val()===3){
+               evt.preventDefault();
+               $.ajax({
+                url: 'obtenercontextos',
+                type: 'post',
+                data: {_token: CSRF_TOKEN},
+                success: function (response) {
+                    alert('Usuario actualizado con exito');
+                }, error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                },
+            });
+           }
+           //Va hacia otro contexto
+           if($(this).find('input[name="accion"]').val()===4){
+               evt.preventDefault();
+               var $id = $(this).find('input[name="contexto"]').val();
+                $.ajax({
+                url: 'updateUsuario',
+                type: 'post',
+                data: {_token: CSRF_TOKEN, "puntero": $id},
+                success: function (response) {
+                    alert('Usuario actualizado con exito');
+                }, error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                },
+            });
+           }
+        }
+        //Modificar usuarios en el CRUD de usuarios
         if (buttonpressed === 'modificar') {
             evt.preventDefault();
             var $id = $(this).find('input[name="Id"]').val();
@@ -46,6 +150,7 @@ $(document).ready(function () {
                 },
             });
         }
+        //Eliminar elementos del CRUD de usuarios
         if (buttonpressed === 'eliminar') {
             evt.preventDefault();
             var $id = $(this).find('input[name="Id"]').val();
