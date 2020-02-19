@@ -20,6 +20,7 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1020;
+    height: 3.5rem!important;
 }
 
 footer { height: 3.5rem!important; }
