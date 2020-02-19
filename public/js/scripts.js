@@ -70,7 +70,7 @@ $(document).ready(function () {
                 $("#loginadmin").val("Ocultar menú");
                 menu.removeClass("d-none").addClass("d-block");
                 botones.removeClass("d-none").addClass("d-block");
-                $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 9.525rem)");
+                $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
             } else {
                 $("#loginadmin").val("Mostrar menú");
                 menu.removeClass("d-block").addClass("d-none");
