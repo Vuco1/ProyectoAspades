@@ -57,7 +57,7 @@ $(document).ready(function () {
     /**
      * Muestra el menú y los botones de administración de tableros si la contraseña es correcta.
      * @author Ampliado y adaptado a jquery por Laura.
-     * @version 2.0
+     * @version 3.0
      */
     $("#loginadmin").click(function mostrarMenu() {
         var clave = $("#passw").val();

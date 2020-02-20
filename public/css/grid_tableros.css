@@ -11,9 +11,9 @@ para la posterior asignación de los elementos */
     height: 100vh;
     display: grid!important;
     grid-template-areas:
-        "c1r1   c2r1    c3r1    c4r1"
-        "c1r2   c2r2    c3r2    c4r2"
-        "c1r3   c2r3    c3r3    c4r3";
+        "pos1   pos2    pos3    pos4"
+        "pos5   pos6    pos7    pos8"
+        "pos9   pos10   pos11   pos12";
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }
@@ -23,8 +23,8 @@ para la posterior asignación de los elementos */
     height: 100vh;
     display: grid!important;
     grid-template-areas:
-        "c1r1   c2r1    c3r1"
-        "c1r2   c2r2    c3r2";
+        "pos1   pos2    pos3"
+        "pos4   pos5    pos6";
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
@@ -34,7 +34,7 @@ para la posterior asignación de los elementos */
     height: 100vh;
     display: grid!important;
     grid-template-areas:
-        "c1r1   c2r1    c3r1";
+        "pos1   pos2    pos3";
     grid-template-columns: 2fr 1fr 2fr;
     grid-template-rows: 1fr;
 }

@@ -14,9 +14,14 @@ Contextos
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button>
+                        <a class="dropdown-item" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a>
+                    </div>
+                </li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -25,9 +30,9 @@ Contextos
 <!-- MAIN -->
 <main class="d-flex">
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
-        <div class="carousel-inner">
+        <div class="carousel-inner h-100 d-flex">
             <?php if (!$contextos) { ?>
-                <h1>Sin Resultados</h1><?php
+                <h1 class="m-auto">Sin Resultados</h1><?php
             } else {
                 $cont = 0;
                 foreach ($contextos as $imgT) {
@@ -43,9 +48,9 @@ Contextos
                     <div class="card">
                         <form id="form<?php echo $cont ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                             @csrf
-                            <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
+                            <input type="hidden" name="puntero" value="{{ $imgT->Id_tablero }}">
                             <button name="btnsubcon" class="btn p-0 w-100">
-                                <img id="img{{ $imgT->Id_imagen }}" src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-contexto">
+                                <img id="img{{ $imgT->Id_tablero }}" src="{{ $imgT->Imagen }}" alt="Imagen del contexto" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
                                     <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
                                     <input  type="hidden" name="idtablero" value="{{ $imgT->Id_tablero }}" id="idtablero{{ $imgT->Id_imagen }}">
@@ -55,8 +60,8 @@ Contextos
                         </form>
                         <div class="card-footer d-none">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_tablero }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT->Id_tablero }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_tablero }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT->Id_tablero }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
                     </div>
