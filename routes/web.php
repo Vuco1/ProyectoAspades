@@ -165,4 +165,9 @@ Route::group(['middleware' => 'Usuario'], function() {
      * @author Victor
      */
      Route::post('irAnterior', 'ControladorUsuario@tableroAnterior');
+     
+     Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
+     
+     Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
+     
 });

@@ -23,9 +23,10 @@ class ControladorUsuario extends Controller {
         session()->forget('puntero');
         $idUsuario = session()->get('usuario')->Id_usuario;
 
-        $contextos = \DB::table('tableros')
-                ->select('Id_tablero', 'Nombre', 'Imagen')
-                ->where('Id_usuario', '=', $idUsuario)
+        $contextos = \DB::table('imagenes')
+                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta', 'tableros.Id_tablero')
+                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
+                ->where('tableros.Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
 
@@ -153,13 +154,29 @@ class ControladorUsuario extends Controller {
      * Modifica el tablero seleccionado.
      * @author Victor
      */
-    public function modidificarTablero(Request $req) {
-        $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero);
-        $imagen = Imagen::where('Id_tablero', $req->id_tablero);
+    public function modificarTablero(Request $req) {
+        $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
+        $imagen = Imagen::where('Id_imagen', $req->id_imagen)->first();
         $tablero->Nombre = $req->nombre;
-        $imagen->Ruta = $req->ruta;
+        $image_path = $imagen->Ruta;  // the value is : localhost/project/image/filename.format
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+        }
+        $req->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $imageName = time() . '.' . $req->image->extension();
+        $req->image->move(public_path('images'), $imageName);
+        $imagen->Ruta = 'images/' . $imageName;
         $tablero->save();
         $imagen->save();
+        if (\Session::has('id')) {
+            $datos = self::cargarSubcontextos($req);
+            return view('vistasusuario/subcontextosusuario', $datos);
+        } else {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        }
     }
 
     /**
@@ -168,12 +185,19 @@ class ControladorUsuario extends Controller {
      */
     public function eliminarTablero(Request $req) {
         try {
-            DB::table('tableros')->where('Id_tablero', '=', $req->id_tablero)->delete();
+            \DB::table('tableros')->where('Id_tablero', '=', $req->idelim)->delete();
         } catch (Exception $ex) {
             echo 'Hostiazo que te crio';
         }
+        if (\Session::has('id')) {
+            $datos = self::cargarSubcontextos($req);
+            return view('vistasusuario/subcontextosusuario', $datos);
+        } else {
+            $datos = self::cargarContextos();
+            return view('vistasusuario/contextosusuario', $datos);
+        }
     }
-    
+
     /**
      * Comprueba que es el tablero anterior y carga ese tablero
      * @param Request $req
@@ -191,4 +215,5 @@ class ControladorUsuario extends Controller {
             return view('vistasusuario/subcontextosusuario', $datos);
         }
     }
+
 }
