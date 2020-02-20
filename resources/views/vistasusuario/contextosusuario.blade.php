@@ -16,10 +16,8 @@ Contextos
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <button class="dropdown-item" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button>
-                        <a class="dropdown-item" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a>
+                    <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                        <button class="dropdown-item" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir contexto</button>
                     </div>
                 </li>
             </ul>
@@ -103,11 +101,11 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control">
-                                <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>">
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
+                                <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
                             </div>
                         </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
