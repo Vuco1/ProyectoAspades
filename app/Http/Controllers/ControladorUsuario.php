@@ -64,14 +64,15 @@ class ControladorUsuario extends Controller {
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
-
+                 $max = \DB::table('tableros')>where('Puntero', '=', $puntero)->max('Pagina');
         if ($subcontextos->IsEmpty()) {
             $datos = [
                 'subcontextos' => false
             ];
         } else {
             $datos = [
-                'subcontextos' => $subcontextos
+                'subcontextos' => $subcontextos,
+                'maxpagina'=>$max
             ];
         }
         //dd($subcontextos);
@@ -101,33 +102,25 @@ class ControladorUsuario extends Controller {
             $idcontexto = null;
         }
         $tablero->Puntero = $idcontexto;
-        $tablero->save();
-
-        //Obtencion de la id del tablero recien creado.
-        $auxtablero = Tablero::where('Id_usuario', $idusuario)->max('Id_tablero');
-
         //Subida de la imagen.
         $req->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $imageName = time() . '.' . $req->image->extension();
         $req->image->move(public_path('images'), $imageName);
-        $imagen = new Imagen;
         $imagen->Ruta = 'images/' . $imageName;
-        $imagen->Id_tablero = $auxtablero;
+        
         if (\Session::has('idcontexto')) {
             $pagina = $req->pagina; //Decidir como vamos a hacerlo ;
-            $imagen->Pagina = $pagina;
-            $posicion = self::sacarPosicion($req->posicion);
-            $imagen->Columna = $posicion->columna;
-            $imagen->Fila = $posicion->fila;
+            $tablero->Pagina = $pagina;
+            $posicion = $req->posicion;
+           
         } else {
-            $imagen->Pagina = 0;
-            $imagen->Columna = 0;
-            $imagen->Fila = 0;
+            $tablero->Pagina = 0;
+            $tablero->Posicion = 0;
         }
-        $imagen->save();
-
+        $tablero->save();
+        
         if (\Session::has('id')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
