@@ -48,6 +48,7 @@ Contextos
                                 <img id="img{{ $imgT->Id_imagen }}" src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
                                     <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
+                                    <input  type="hidden" name="idtablero" value="{{ $imgT->Id_tablero }}" id="idtablero{{ $imgT->Id_imagen }}">
                                     <p id="leer<?php echo $cont ?>" class="card-text">{{ $imgT->Nombre }}</p>
                                 </div>
                             </button>                
@@ -120,7 +121,7 @@ Contextos
                 </div>
                 <div class="modal-body p-4">
                     <img id="imgcontexto" src="" class="img-perfil" alt="Imagen del contexto">
-                    <form action="modificarContexto" method="post" enctype="multipart/form-data">
+                    <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label class="sr-only" for="Foto">Foto</label>
@@ -137,7 +138,8 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="hidden" id="idimg" name="idimg" value="">
+                                <input type="hidden" id="idimg" name="id_imagen" value="">
+                                <input type="hidden" id="idtablero" name="id_tablero" value="">
                                 <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
                             </div>
                         </div> 
@@ -158,7 +160,7 @@ Contextos
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="eliminarContexto" method="post" enctype="multipart/form-data">
+                    <form action="eliminarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <p>Estas seguro de que deseas elimar este contexto </p>
                         <input type="hidden" name="idelim" id="idelim" value="">
