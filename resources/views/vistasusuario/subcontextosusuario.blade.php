@@ -36,13 +36,13 @@ SubContextos
             <h1 class="m-auto">Sin Resultados</h1><?php
         } else {
             $cont = 0;
-            $limite = 6;
             foreach ($subcontextos as $imgT) {
-                if ($cont % $limite == 0) {
+            $casillas = $imgT->Total_filas * $imgT->Total_columnas;
+                if ($cont % $casillas == 0) {
                     if ($cont == 0) {
                         echo '<div class="carousel-item '. $imgT->Dimension .' active">';
                     } else {
-                        echo '<div class="carousel-item'. $imgT->Dimension .'">';
+                        echo '<div class="carousel-item '. $imgT->Dimension .'">';
                     }
                 } ?>
             <div class="card">
@@ -65,7 +65,7 @@ SubContextos
                     </div>
                 </div>
             </div>
-                <?php if (($cont + 1) % $limite == 0) {
+                <?php if (($cont + 1) % $casillas == 0) {
                         echo '</div>';
                     }
                     $cont++;
