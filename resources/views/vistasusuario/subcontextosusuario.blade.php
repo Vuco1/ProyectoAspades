@@ -74,8 +74,8 @@ SubContextos
                 </form>
                 <div class="card-footer d-none">
                     <div class="row px-2">
-                        <button type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                        <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                     </div>
                 </div>
             </div>
@@ -91,6 +91,67 @@ SubContextos
         } ?>
         </div>
     </div>
+    <!-- VENTANA MODAL MODIFICAR SUBCONTEXTO -->
+    <section class="modal fade" id="modificar">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Modificar Subcontexto</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <img id="imgcontexto" src="" class="img-perfil" alt="Imagen del contexto">
+                    <form action="modificarTablero" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label class="sr-only" for="Foto">Foto</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                </div>
+                                <input type="file" name="image" id="imagecontexto" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="nombre">Nombre</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                </div>
+                                <input type="hidden" id="idimg" name="id_imagen" value="">
+                                <input type="hidden" id="idtablero" name="id_tablero" value="">
+                                <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
+                            </div>
+                        </div> 
+                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- VENTANA MODAL ELIMINAR -->
+    <section class="modal fade" id="eliminar">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Eliminar Subcontexto</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="eliminarTablero" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <p>Estas seguro de que deseas elimar este subcontexto </p>
+                        <input type="hidden" name="idelim" id="idelim" value="">
+                        <input type="submit" name="delete" id="delete" value="eliminar" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 @include('plantillas/footer')
 @endsection
