@@ -91,7 +91,8 @@ class ControladorUsuario extends Controller {
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
-                'dimension' => $dimension
+                'dimension' => $dimension,
+                'paginas' => $numPags->Paginas
             ];
         } else {
             $datos = [

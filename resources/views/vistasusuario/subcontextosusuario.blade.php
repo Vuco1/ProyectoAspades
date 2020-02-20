@@ -31,10 +31,18 @@ SubContextos
 <!-- MAIN -->
 <main class="d-flex">
     <div id="carouselSubcontextos" class="carousel slide w-100" data-ride="carousel" data-interval="false" data-touch="true">
+        <?php if (isset($paginas)) {?>
         <ol class="carousel-indicators">
-            <li data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselSubcontextos" data-slide-to="1"></li>
+            <?php 
+            for ($i = 0; $i < $paginas; $i++) {
+                if ($i == 0) {
+                    echo '<li data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>';
+                } else {
+                    echo '<li data-target="#carouselSubcontextos" data-slide-to="'. $i .'"></li>';
+                }
+            } ?>
         </ol>
+        <?php } ?>
         <div class="carousel-inner h-100 d-flex">
             <?php if (!$subcontextos) { ?>
             <h1 class="m-auto">Sin Resultados</h1><?php
