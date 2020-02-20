@@ -40,13 +40,14 @@ SubContextos
             <h1 class="m-auto">Sin Resultados</h1><?php
         } else {
             $cont = 0;           
-            for ($i = 1; $i <= $totalCasillas; $i++) {
-                if ($cont % $casillas == 0) {
+            for ($i = 1; $i <= $casTotal; $i++) {
+                if ($cont % $casPorPag == 0) {
                     if ($cont == 0) {
-                        echo '<div class="carousel-item '. $subcontextos[$i]->Dimension .' active">';
+                        echo '<div class="carousel-item active">';
                     } else {
-                        echo '<div class="carousel-item '. $subcontextos[$i]->Dimension .'">';
+                        echo '<div class="carousel-item">';
                     }
+                    echo '<div class="'. $dimension .'">';
                 }
                 ?>
             <div class="card">
@@ -54,7 +55,7 @@ SubContextos
                     @csrf
                     <input type="hidden" name="puntero" value="{{ $subcontextos[$i]->Puntero }}">
                     <input type="hidden" name="numfilas" value="{{ $subcontextos[$i]->Filas }}">
-                    <input type="hidden" name="accion" value="">
+                    <input type="hidden" name="accion" value="0">
                     <button class="btn p-0 w-100">
                         <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $subcontextos[$i]->Filas }}) - 2.75rem)">
                         <div class="card-body p-2">
@@ -70,11 +71,11 @@ SubContextos
                 </div>
             </div>
             <?php
-                if (($cont + 1) % $casillas == 0) {
-                    echo '</div>';
+                if (($cont + 1) % $casPorPag == 0) {
+                    echo '</div></div>';
                 }
                 $cont++;
-                if ($cont == $casillas + 1) {
+                if ($cont == $casPorPag + 1) {
                     $cont = 1;
                 }
             }
