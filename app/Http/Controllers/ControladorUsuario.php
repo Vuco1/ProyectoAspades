@@ -52,26 +52,31 @@ class ControladorUsuario extends Controller {
      * @param Request $req
      * @return type
      * @author Laura
-     * @version 2.1
+     * @version 2.2
      */
     public function cargarSubcontextos($req) {
         $puntero = $req->get('puntero');
         session()->put('puntero', $puntero);
 
         $subcontextos = \DB::table('tableros')
-                ->select('tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Total_filas', 'dimensiones.Total_columnas')
+                ->select('tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
-                ->get();
-
+                ->get();     
+        $maxPag = \DB::table('tableros')->where('Puntero', '=', $puntero)->max('Pagina');    
+        $casillas = $subcontextos[1]->Filas * $subcontextos[1]->Columnas;
+        $totalPags = $maxPag * $casillas;
+        
         if ($subcontextos->IsEmpty()) {
             $datos = [
                 'subcontextos' => false
             ];
         } else {
             $datos = [
-                'subcontextos' => $subcontextos
+                'subcontextos' => $subcontextos,
+                'totalPags' => $totalPags,
+                'casillas' => $casillas
             ];
         }
         //dd($subcontextos);
