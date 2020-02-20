@@ -23,10 +23,9 @@ class ControladorUsuario extends Controller {
         session()->forget('puntero');
         $idUsuario = session()->get('usuario')->Id_usuario;
 
-        $contextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta', 'tableros.Id_tablero')
-                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
-                ->where('tableros.Id_usuario', '=', $idUsuario)
+        $contextos = \DB::table('tableros')
+                ->select('Id_tablero', 'Nombre', 'Imagen')
+                ->where('Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
 
@@ -59,7 +58,7 @@ class ControladorUsuario extends Controller {
         session()->put('puntero', $puntero);
 
         $aux = \DB::table('tableros')
-                ->select('tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
@@ -68,16 +67,22 @@ class ControladorUsuario extends Controller {
         $casillas = $aux[1]->Filas * $aux[1]->Columnas;
         $totalCasillas = $maxPag * $casillas;
         
+        $blanco = new Tablero;
+        $blanco->Imagen = "images/tabs/blanco.jpg";
+        $blanco->Puntero = $puntero;
+        $blanco->Filas = $aux[1]->Filas;
+        
+        //dd($blanco);
+        
         $subcontextos = array();
         for ($i = 1; $i <= $totalCasillas; $i++) {
-            $subcontextos[$i] = "vacio";
+            $subcontextos[$i] = $blanco;
         }
-        
-        
+                
         foreach ($aux as $s) {
             $subcontextos[$s->Posicion] = $s;
         }
-        dd($subcontextos);
+        //dd($subcontextos);
         
         
         if ($aux->IsEmpty()) {

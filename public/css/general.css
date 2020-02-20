@@ -152,6 +152,8 @@ a.text-orange:hover {
     object-fit: cover;
 }
 
+.card-body { min-height: 2.5rem; }
+
 /* MEDIA QUERIES */
 @media (max-width: 768px){
     .container {
