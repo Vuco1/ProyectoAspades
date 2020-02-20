@@ -57,34 +57,37 @@ class ControladorUsuario extends Controller {
         $puntero = $req->get('puntero');
         session()->put('puntero', $puntero);
 
+        //Se obtienen todos los subcontextos que apuntan al contexto padre.
         $aux = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
-                ->get();     
-        $maxPag = \DB::table('tableros')->where('Puntero', '=', $puntero)->max('Pagina');    
-        $casillas = $aux[1]->Filas * $aux[1]->Columnas;
-        $totalCasillas = $maxPag * $casillas;
+                ->get();
         
+        //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
+        $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
+        //dd($numPags);
+        $casPorPag = $aux[1]->Filas * $aux[1]->Columnas;
+        $casTotal = $numPags->Paginas * $casPorPag;
+        $dimension = $aux[1]->Dimension;
+        
+        //Se crea un objeto Tablero por defecto.
         $blanco = new Tablero;
         $blanco->Imagen = "images/tabs/blanco.jpg";
         $blanco->Puntero = $puntero;
         $blanco->Filas = $aux[1]->Filas;
         
-        //dd($blanco);
-        
+        //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
         $subcontextos = array();
-        for ($i = 1; $i <= $totalCasillas; $i++) {
+        for ($i = 1; $i <= $casTotal; $i++) {
             $subcontextos[$i] = $blanco;
         }
-                
+        //Se asigna cada Tablero del array aux a la posición que le corresponde en el array subcontextos.
         foreach ($aux as $s) {
             $subcontextos[$s->Posicion] = $s;
         }
-        //dd($subcontextos);
-        
-        
+
         if ($aux->IsEmpty()) {
             $datos = [
                 'subcontextos' => false
@@ -92,11 +95,11 @@ class ControladorUsuario extends Controller {
         } else {
             $datos = [
                 'subcontextos' => $subcontextos,
-                'totalCasillas' => $totalCasillas,
-                'casillas' => $casillas
+                'casTotal' => $casTotal,
+                'casPorPag' => $casPorPag,
+                'dimension' => $dimension
             ];
         }
-        //dd($subcontextos);
         return $datos;
     }
 

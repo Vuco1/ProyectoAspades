@@ -137,6 +137,16 @@ a.text-orange:hover {
     border-color: #f39932;
 }
 
+.carousel-indicators {
+    bottom: -4.2rem;
+}
+
+.carousel-indicators li {
+    background-color: #f39932;
+    border-radius: 100%;
+    height: 30px;
+}
+
 /* CARDS */
 .card {
     border-radius: 0;
