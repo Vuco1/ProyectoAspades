@@ -48,19 +48,19 @@ Contextos
                     <div class="card">
                         <form id="form<?php echo $cont ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                             @csrf
-                            <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
+                            <input type="hidden" name="puntero" value="{{ $imgT->Id_tablero }}">
                             <button name="btnsubcon" class="btn p-0 w-100">
-                                <img id="img{{ $imgT->Id_imagen }}" src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-contexto">
+                                <img id="img{{ $imgT->Id_tablero }}" src="{{ $imgT->Imagen }}" alt="Imagen del contexto" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
-                                    <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_imagen }}">
+                                    <input  type="hidden" name="nombre" value="{{ $imgT->Nombre }}" id="nombre{{ $imgT->Id_tablero }}">
                                     <p id="leer<?php echo $cont ?>" class="card-text">{{ $imgT->Nombre }}</p>
                                 </div>
                             </button>                
                         </form>
                         <div class="card-footer d-none">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT -> Id_imagen }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" id="modificar{{ $imgT->Id_tablero }}" class="btn btn-success col mr-md-3" onclick="modificarContexto({{ $imgT->Id_tablero }})"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" id="eliminar{{ $imgT->Id_tablero }}" class="btn btn-danger col" onclick="eliminarContexto({{ $imgT->Id_tablero }})"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
                     </div>

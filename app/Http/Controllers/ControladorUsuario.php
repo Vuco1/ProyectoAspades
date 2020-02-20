@@ -17,16 +17,15 @@ class ControladorUsuario extends Controller {
      * @param Request $req
      * @return type
      * @author Laura
-     * @version 2.0
+     * @version 2.1
      */
     public function cargarContextos() {
         session()->forget('puntero');
         $idUsuario = session()->get('usuario')->Id_usuario;
 
-        $contextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'tableros.Nombre', 'imagenes.Ruta')
-                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
-                ->where('tableros.Id_usuario', '=', $idUsuario)
+        $contextos = \DB::table('tableros')
+                ->select('Id_tablero', 'Nombre', 'Imagen')
+                ->where('Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
 
@@ -52,15 +51,14 @@ class ControladorUsuario extends Controller {
      * @param Request $req
      * @return type
      * @author Laura
-     * @version 2.0
+     * @version 2.1
      */
     public function cargarSubcontextos($req) {
         $puntero = $req->get('puntero');
         session()->put('puntero', $puntero);
 
-        $subcontextos = \DB::table('imagenes')
-                ->select('imagenes.Id_imagen', 'imagenes.Ruta', 'imagenes.Pagina', 'imagenes.Columna', 'imagenes.Fila', 'tableros.Nombre', 'dimensiones.Dimension', 'dimensiones.Total_filas', 'dimensiones.Total_columnas')
-                ->join('tableros', 'tableros.Id_tablero', '=', 'imagenes.Id_tablero')
+        $subcontextos = \DB::table('tableros')
+                ->select('tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Total_filas', 'dimensiones.Total_columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)

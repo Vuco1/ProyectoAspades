@@ -48,11 +48,11 @@ SubContextos
             <div class="card">
                 <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
-                    <input type="hidden" name="puntero" value="{{ $imgT->Id_imagen }}">
+                    <input type="hidden" name="puntero" value="{{ $imgT->Id_tablero }}">
                     <input type="hidden" name="numfilas" value="{{ $imgT->Total_filas }}">
                     <input type="hidden" name="accion" value="">
                     <button class="btn p-0 w-100">
-                        <img src="{{ $imgT->Ruta }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $imgT->Total_filas }}) - 2.75rem)">
+                        <img src="{{ $imgT->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $imgT->Total_filas }}) - 2.75rem)">
                         <div class="card-body p-2">
                             <p id="leer<?php echo $cont?>" class="card-text">{{ $imgT->Nombre }}</p>
                         </div>
@@ -60,8 +60,8 @@ SubContextos
                 </form>
                 <div class="card-footer d-none">
                     <div class="row px-2">
-                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_imagen }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_imagen }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_tablero }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                     </div>
                 </div>
             </div>
