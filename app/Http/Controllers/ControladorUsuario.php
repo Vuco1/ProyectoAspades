@@ -58,24 +58,36 @@ class ControladorUsuario extends Controller {
         $puntero = $req->get('puntero');
         session()->put('puntero', $puntero);
 
-        $subcontextos = \DB::table('tableros')
+        $aux = \DB::table('tableros')
                 ->select('tableros.Id_tablero', 'Imagen', 'Nombre', 'Pagina', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();     
         $maxPag = \DB::table('tableros')->where('Puntero', '=', $puntero)->max('Pagina');    
-        $casillas = $subcontextos[1]->Filas * $subcontextos[1]->Columnas;
-        $totalPags = $maxPag * $casillas;
+        $casillas = $aux[1]->Filas * $aux[1]->Columnas;
+        $totalCasillas = $maxPag * $casillas;
         
-        if ($subcontextos->IsEmpty()) {
+        $subcontextos = array();
+        for ($i = 1; $i <= $totalCasillas; $i++) {
+            $subcontextos[$i] = "vacio";
+        }
+        
+        
+        foreach ($aux as $s) {
+            $subcontextos[$s->Posicion] = $s;
+        }
+        dd($subcontextos);
+        
+        
+        if ($aux->IsEmpty()) {
             $datos = [
                 'subcontextos' => false
             ];
         } else {
             $datos = [
                 'subcontextos' => $subcontextos,
-                'totalPags' => $totalPags,
+                'totalCasillas' => $totalCasillas,
                 'casillas' => $casillas
             ];
         }
