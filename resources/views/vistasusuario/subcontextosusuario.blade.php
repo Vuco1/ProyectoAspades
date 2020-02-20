@@ -31,47 +31,54 @@ SubContextos
 <!-- MAIN -->
 <main class="d-flex">
     <div id="carouselSubcontextos" class="carousel slide w-100" data-ride="carousel" data-interval="false" data-touch="true">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselSubcontextos" data-slide-to="1"></li>
+        </ol>
         <div class="carousel-inner h-100 d-flex">
             <?php if (!$subcontextos) { ?>
             <h1 class="m-auto">Sin Resultados</h1><?php
         } else {
-            $cont = 0;
-            foreach ($subcontextos as $imgT) {
-            $casillas = $imgT->Total_filas * $imgT->Total_columnas;
+            $cont = 0;           
+            for ($i = 1; $i <= $totalCasillas; $i++) {
                 if ($cont % $casillas == 0) {
                     if ($cont == 0) {
-                        echo '<div class="carousel-item '. $imgT->Dimension .' active">';
+                        echo '<div class="carousel-item '. $subcontextos[$i]->Dimension .' active">';
                     } else {
-                        echo '<div class="carousel-item '. $imgT->Dimension .'">';
+                        echo '<div class="carousel-item '. $subcontextos[$i]->Dimension .'">';
                     }
-                } ?>
+                }
+                ?>
             <div class="card">
-                <form id="form<?php echo $cont?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
+                <form id="form<?php echo $i?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
-                    <input type="hidden" name="puntero" value="{{ $imgT->Id_tablero }}">
-                    <input type="hidden" name="numfilas" value="{{ $imgT->Total_filas }}">
+                    <input type="hidden" name="puntero" value="{{ $subcontextos[$i]->Puntero }}">
+                    <input type="hidden" name="numfilas" value="{{ $subcontextos[$i]->Filas }}">
                     <input type="hidden" name="accion" value="">
                     <button class="btn p-0 w-100">
-                        <img src="{{ $imgT->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $imgT->Total_filas }}) - 2.75rem)">
+                        <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $subcontextos[$i]->Filas }}) - 2.75rem)">
                         <div class="card-body p-2">
-                            <p id="leer<?php echo $cont?>" class="card-text">{{ $imgT->Nombre }}</p>
+                            <p id="leer<?php echo $i?>" class="card-text">{{ $subcontextos[$i]->Nombre }}</p>
                         </div>
                     </button>                
                 </form>
                 <div class="card-footer d-none">
                     <div class="row px-2">
-                        <button type="submit" name="modificarcontexto" id="modificar{{ $imgT->Id_tablero }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $imgT->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                        <button type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                     </div>
                 </div>
             </div>
-                <?php if (($cont + 1) % $casillas == 0) {
-                        echo '</div>';
-                    }
-                    $cont++;
+            <?php
+                if (($cont + 1) % $casillas == 0) {
+                    echo '</div>';
+                }
+                $cont++;
+                if ($cont == $casillas + 1) {
+                    $cont = 1;
                 }
             }
-            ?>
+        } ?>
         </div>
     </div>
 </main>
