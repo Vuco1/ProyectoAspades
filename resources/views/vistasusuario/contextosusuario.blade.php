@@ -46,7 +46,7 @@ Contextos
                     <div class="card">
                         <form id="form<?php echo $cont ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                             @csrf
-                            <input type="hidden" name="puntero" value="{{ $c->Id_tablero }}">
+                            <input type="hidden" name="actual" value="{{ $c->Id_tablero }}">
                             <button name="btnsubcon" class="btn p-0 w-100">
                                 <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Imagen del contexto" class="card-img-top img-contexto">
                                 <div class="card-body p-2">

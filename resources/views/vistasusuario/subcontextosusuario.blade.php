@@ -53,7 +53,8 @@ SubContextos
             <div class="card">
                 <form id="form<?php echo $i?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
-                    <input type="hidden" name="puntero" value="{{ $subcontextos[$i]->Puntero }}">
+                    <input type="hidden" name="anterior" value="{{ $subcontextos[$i]->Puntero }}">
+                    <input type="hidden" name="actual" value="{{ $subcontextos[$i]->Id_tablero }}">
                     <input type="hidden" name="numfilas" value="{{ $subcontextos[$i]->Filas }}">
                     <input type="hidden" name="accion" value="0">
                     <button class="btn p-0 w-100">
