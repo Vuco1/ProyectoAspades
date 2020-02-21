@@ -2,7 +2,6 @@
 @section('titulo')
 SubContextos
 @endsection
-<link rel="stylesheet" href="{{ asset('css/grid_tableros.css') }}">
 @section('contenido')
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">

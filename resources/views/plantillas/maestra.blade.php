@@ -6,7 +6,7 @@
         <title>@yield('titulo')</title>
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     </head>
     <body>
         <div id="contenido">@yield('contenido')</div>
