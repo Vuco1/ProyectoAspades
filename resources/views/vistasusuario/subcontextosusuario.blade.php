@@ -17,9 +17,9 @@ SubContextos
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
                     <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                        <button class="dropdown-item" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-square icono"></i>Añadir Tablero</button>
-                        <a class="dropdown-item" href="#"><i class="fas fa-pen-square icono"></i>Modificar actual</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-minus-square icono"></i>Eliminar actual</a>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#nueva"><i class="fas fa-plus-circle icono"></i>Añadir página</button>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#eliminar"><i class="fas fa-minus-circle icono"></i>Eliminar página</button>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#vaciar"><i class="fas fa-times-circle icono"></i>Vaciar tablero</button>
                     </div>
                 </li>
             </ul>
