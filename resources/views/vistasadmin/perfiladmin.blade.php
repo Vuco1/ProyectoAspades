@@ -53,7 +53,7 @@ Perfil
                 <label class="sr-only" for="imagen">Imagen</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
+                        <div class="input-group-text w-8"><i class="fas fa-check-double "></i>Imagen</div>
                     </div>
                     <input id="imagen" name="imagen" type="file" class="form-control p-1"/>
                 </div>
@@ -71,7 +71,7 @@ Perfil
                 <label class="sr-only" for="claverepe">Confirmar</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                        <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                     </div>
                     <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
                 </div>
