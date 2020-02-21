@@ -135,7 +135,21 @@ SubContextos
                                 <input type="hidden" id="idtablero" name="id_tablero" value="">
                                 <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
                             </div>
-                        </div> 
+                        </div>
+                        
+                        <div class="form-group">
+                           <div class="input-group-prepend">
+                               <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acciones</div>
+                           </div>
+                               <?php foreach ($acciones as $accion){ ?>
+                                   <label class="sr-only" for="acciones">Acciones</label>
+                                   <div class="input-group form-check">
+                                       <input type="hidden" class="form-check-input" id="idaccion" name="idaccion[]" value="">
+                                       <input type="checkbox" class="form-check-input" id="acciones" name="acciones[]" value=""><?=$accion->Nombre?>
+                                   </div>
+                               <?php } ?>
+                       </div> 
+                        
                         <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>

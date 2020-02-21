@@ -8,6 +8,7 @@ use App\Models\Usuario_Rol;
 use App\Models\Imagen;
 use App\Models\Tablero_Imagen;
 use App\Models\Tablero;
+use App\Models\Accion;
 use Illuminate\Support\Facades\File;
 
 class ControladorUsuario extends Controller {
@@ -87,12 +88,16 @@ class ControladorUsuario extends Controller {
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
             }
+            
+            $acciones = Accion::all();
+            
             $datos = [
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
                 'dimension' => $dimension,
-                'paginas' => $numPags->Paginas
+                'paginas' => $numPags->Paginas,
+                'acciones' => $acciones
             ];
         } else {
             $datos = [
