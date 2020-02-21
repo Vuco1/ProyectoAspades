@@ -6,7 +6,7 @@ Perfil
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,7 +19,7 @@ Perfil
     </nav>
 </header>
 <!-- MAIN -->
-<main>
+<main class="pt-5">
     <?php
     if (session()->has('usuario')) {
         $usuario = session()->get('usuario');?>
