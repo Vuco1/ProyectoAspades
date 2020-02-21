@@ -170,7 +170,6 @@ class ControladorUsuario extends Controller {
      */
     public function modificarTablero(Request $req) {
         $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
-        $imagen = Imagen::where('Id_imagen', $req->id_imagen)->first();
         $tablero->Nombre = $req->nombre;
         $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
         if (File::exists($image_path)) {
