@@ -53,7 +53,7 @@ Perfil
                     <div class="input-group-prepend">
                         <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
                     </div>
-                    <input id="imagen" name="imagen" type="file" class="form-control"/>
+                    <input id="imagen" name="imagen" type="file" class="form-control p-1"/>
                 </div>
             </div>
             <div class="form-group">
