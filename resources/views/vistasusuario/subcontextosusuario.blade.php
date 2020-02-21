@@ -155,9 +155,9 @@ SubContextos
                 <div class="modal-body p-4">
                     <form action="eliminarTablero" method="post" enctype="multipart/form-data">
                         @csrf
-                        <p>Estas seguro de que deseas elimar este subcontexto </p>
+                        <p>¿Estas seguro de que deseas elimar este subcontexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
-                        <input type="submit" name="delete" id="delete" value="eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>

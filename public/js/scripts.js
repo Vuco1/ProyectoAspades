@@ -93,58 +93,9 @@ function modificarContexto(id) {
 function eliminarContexto(id) {
     $("#idelim").val($('#idtablero' + id).val());
 }
-function addContexto(id){l
+function addContexto(id){}
 
 function volver() {
     window.history.back();
 }
-
-//----------------------------------------------------------------------------//
-//Vista -> Inicio usuario.
-//Author: Isa
-
-/**
- * En el inicio de sesión del usuario normal, al meter la contraseña en la ventana modal, 
- * redirecciona a las dos funciones que se recogen aquí.
- * @author Isabel
- */
-//function comprobar() {
-//    mostrarMenu();
-//    cerrarVentana();
-//}
-
-///**
-// * Muestra el menú oculto del usuario normal si la contraseña coincide.
-// * @author Isabel
-// * @deprecated
-// */
-//function mostrarMenu() {
-//    var clave = document.getElementById("passw").value;
-//    var estilo = document.getElementById("menuoculto");
-//
-//    if (estilo.style.display === 'none') {
-//        if (clave === 'aspades') {
-//            document.getElementById("login").value ="Ocultar menú";
-//            estilo.style.display = "block";
-//        }
-//    } else {
-//        document.getElementById("login").value ="Mostrar menú";
-//        estilo.style.display = "none";       
-//    }
-//}
-
-///**
-// * Cierra la ventana modal del usuario normal tras comprobar que la contraseña coincide.
-// * @return {undefined}
-// */
-//function cerrarVentana() {
-//    $('#login').click(function () {
-//        $('#loginOculto').modal('hide');
-//    });
-//
-//    $('#carouselContextos').on('slide.bs.carousel', function () {
-//        currentIndex = $('div.active').index() + 1;
-//        $('.num').html('' + currentIndex + '/' + totalItems + '');
-//    });
-//}
 
