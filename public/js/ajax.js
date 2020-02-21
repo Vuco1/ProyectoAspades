@@ -18,7 +18,7 @@ $(document).ready(function () {
      */
     $('form').submit(function (evt) {
         //Funciones de las imagenes
-        if (button==='btnsubcon'){
+        if (buttonpressed==='btnsubcon'){
             //Para el submit de una imagen normal.
             if($(this).find('input[name="accion"]').val()==='0'){
                evt.preventDefault();
