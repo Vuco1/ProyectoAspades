@@ -25,8 +25,8 @@ Contextos
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
         <div class="carousel-inner h-100 d-flex">
             <?php if (!$contextos) { ?>
-                <h1 class="m-auto">Sin Resultados</h1><?php
-            } else {
+                <h1 class="m-auto">Sin Resultados</h1>
+            <?php } else {
                 $cont = 0;
                 foreach ($contextos as $c) {
                     if ($cont % 3 == 0) { //Cada 3 contextos se añade un item al carrousel

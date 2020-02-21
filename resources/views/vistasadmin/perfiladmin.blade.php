@@ -21,7 +21,7 @@ Perfil
     </nav>
 </header>
 <!-- MAIN -->
-<main>
+<main class="pt-5">
     <?php if (session()->has('usuario')) {
         $usuario = session()->get('usuario');
         ?>
@@ -53,7 +53,7 @@ Perfil
                 <label class="sr-only" for="imagen">Imagen</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text w-8"><i class="fas fa-check-double "></i>Imagen</div>
+                        <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
                     </div>
                     <input id="imagen" name="imagen" type="file" class="form-control p-1"/>
                 </div>
