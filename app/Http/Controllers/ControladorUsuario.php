@@ -82,7 +82,6 @@ class ControladorUsuario extends Controller {
             $subcontextos = array();
             for ($i = 1; $i <= $casTotal; $i++) {
                 $subcontextos[$i] = $blanco;
-                $subcontextos[$i]->Posicion = $i;
             }
             //Se asigna cada Tablero del array aux a la posición que le corresponde en el array subcontextos.
             foreach ($aux as $s) {

@@ -79,14 +79,14 @@ SubContextos
                 <div class="card-footer d-none">
                     <div class="row px-2">
                 <?php if ($subcontextos[$i]->Imagen != "images/tabs/blanco.jpg") { ?>
-                        <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
-                        <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
+                        <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><img src="{{ asset('images/icons/pen-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Editar</span></button>
+                        <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><img src="{{ asset('images/icons/minus-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Borrar</span></button>
                 <?php } else { ?>
-                        <button data-toggle="modal" data-target="#nuevo" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Añadir</span></button>
-                <?php }
-                    } ?>
+                        <button data-toggle="modal" data-target="#nuevo" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><img src="{{ asset('images/icons/plus-solid.svg') }}" class="icono-crud"/><span class="d-none d-md-inline">Añadir</span></button>
+                <?php } ?>
                     </div>
                 </div>
+                <?php } ?>
             </div>
             <?php
                 if (($cont + 1) % $casPorPag == 0) {
