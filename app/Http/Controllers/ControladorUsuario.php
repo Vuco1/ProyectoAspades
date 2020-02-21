@@ -120,8 +120,8 @@ class ControladorUsuario extends Controller {
         $idusuario = $usuario->Id_usuario;
         $tablero->Id_usuario = $idusuario;
         $tablero->Nombre = $req->nombre;
-        if (\Session::has('idcontexto')) {
-            $idcontexto = \Session::get('idcontexto');
+        if (\Session::has('actual')) {
+            $idcontexto = \Session::get('actual');
         } else {
             $idcontexto = null;
         }
@@ -132,20 +132,17 @@ class ControladorUsuario extends Controller {
         ]);
         $imageName = time() . '.' . $req->image->extension();
         $req->image->move(public_path('images'), $imageName);
-        $imagen->Ruta = 'images/' . $imageName;
-        
-        if (\Session::has('idcontexto')) {
-            $pagina = $req->pagina; //Decidir como vamos a hacerlo ;
-            $tablero->Pagina = $pagina;
+        $tablero->Imagen = 'images/tabs' . $imageName;
+        $tablero->Pagina = 0;
+        if (\Session::has('actual')) {
             $posicion = $req->posicion;
-           
         } else {
-            $tablero->Pagina = 0;
+            $tablero->Pagina = 1;
             $tablero->Posicion = 0;
         }
         $tablero->save();
-        
-        if (\Session::has('id')) {
+
+        if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
@@ -175,7 +172,7 @@ class ControladorUsuario extends Controller {
         $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
         $imagen = Imagen::where('Id_imagen', $req->id_imagen)->first();
         $tablero->Nombre = $req->nombre;
-        $image_path = $imagen->Ruta;  // the value is : localhost/project/image/filename.format
+        $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
         if (File::exists($image_path)) {
             File::delete($image_path);
         }
@@ -184,9 +181,8 @@ class ControladorUsuario extends Controller {
         ]);
         $imageName = time() . '.' . $req->image->extension();
         $req->image->move(public_path('images'), $imageName);
-        $imagen->Ruta = 'images/' . $imageName;
+        $tablero->Imagen = 'images/' . $imageName;
         $tablero->save();
-        $imagen->save();
         if (\Session::has('id')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);

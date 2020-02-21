@@ -20,7 +20,7 @@ $(document).ready(function () {
         //Funciones de las imagenes
         if (button==='btnsubcon'){
             //Para el submit de una imagen normal.
-            if($(this).find('input[name="accion"]').val()===''){
+            if($(this).find('input[name="accion"]').val()==='0'){
                evt.preventDefault();
            }
 //           //Deja que el submit continue.

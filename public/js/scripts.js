@@ -93,7 +93,7 @@ function modificarContexto(id) {
 function eliminarContexto(id) {
     $("#idelim").val($('#idtablero' + id).val());
 }
-
+function addContexto(id){l
 
 function volver() {
     window.history.back();
