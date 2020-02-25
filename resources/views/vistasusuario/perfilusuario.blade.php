@@ -6,7 +6,7 @@ Perfil
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,7 +19,7 @@ Perfil
     </nav>
 </header>
 <!-- MAIN -->
-<main>
+<main class="pt-5">
     <?php
     if (session()->has('usuario')) {
         $usuario = session()->get('usuario');?>
@@ -53,7 +53,7 @@ Perfil
                     <div class="input-group-prepend">
                         <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</div>
                     </div>
-                    <input id="imagen" name="imagen" type="file" class="form-control"/>
+                    <input id="imagen" name="imagen" type="file" class="form-control p-1"/>
                 </div>
             </div>
             <div class="form-group">
@@ -69,7 +69,7 @@ Perfil
                 <label class="sr-only" for="claverepe">Confirmar</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                        <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                     </div>
                     <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
                 </div>

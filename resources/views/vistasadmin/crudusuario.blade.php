@@ -22,7 +22,7 @@ Gestión
     </nav>
 </header>
 <!-- MAIN -->
-<main>
+<main class="pt-5">
     <div class="container pt-5 ">
         <div class="row py-2 bg-orange text-white rounded">
             <div class="col">Usuario</div>            

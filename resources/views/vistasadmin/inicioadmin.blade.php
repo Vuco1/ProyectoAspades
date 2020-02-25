@@ -25,7 +25,7 @@ Login
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
             <div class="m-auto">
-                <button class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+                <a href="gestionusuarios" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></a>
                 <h1>Hola <?php echo $usuario->Nick ?></h1>  
             </div>
             <?php } ?>
