@@ -56,27 +56,28 @@ class ControladorUsuario extends Controller {
     public function cargarSubcontextos($req) {
         $puntero = $req->get('actual');
         session()->put('actual', $puntero);
-
+        //dd($puntero);
+        $dimension = \DB::table('dimensiones')
+                ->select('dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')                
+                ->join('tablero_dimension', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
+                ->where('Id_tablero', '=', $puntero)
+                ->first();
+        
         //Se obtienen todos los subcontextos que apuntan al contexto padre.
         $aux = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
-                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
-                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion')
                 ->where('Puntero', '=', $puntero)
                 ->get();
         if (!$aux->IsEmpty()) {
-            //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
-            $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
-            //dd($numPags);
-            $casPorPag = $aux[1]->Filas * $aux[1]->Columnas;
+            //Se obtiene el número de páginas, las casillas por página, el número total de casillas y la dimensión del preset.
+            $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();           
+            $casPorPag = $dimension->Filas * $dimension->Columnas;
             $casTotal = $numPags->Paginas * $casPorPag;
-            $dimension = $aux[1]->Dimension;
 
             //Se crea un objeto Tablero por defecto.
             $blanco = new Tablero;
             $blanco->Imagen = "images/tabs/blanco.jpg";
             $blanco->Puntero = $puntero;
-            $blanco->Filas = $aux[1]->Filas;
 
             //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
             $subcontextos = array();
