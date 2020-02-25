@@ -44,7 +44,7 @@ SubContextos
         </ol>
         <?php } ?>
         <div class="carousel-inner h-100 d-flex">
-            <?php if (!$subcontextos) { ?>
+            <?php if (!$subcontexto) { ?>
             <h1 class="m-auto">Sin Resultados</h1><?php
         } else {
             $cont = 0;

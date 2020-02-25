@@ -65,7 +65,7 @@ Contextos
                     </div>
                     <?php
                     if (($cont + 1) % 3 == 0) {
-                        echo '</div>'
+                         echo '</div>'
                         . '</div>';
                     }
                     $cont++;

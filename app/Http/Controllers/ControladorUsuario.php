@@ -20,7 +20,7 @@ class ControladorUsuario extends Controller {
      * @version 2.1
      */
     public function cargarContextos() {
-        session()->forget('puntero');
+        session()->forget('actual');
         $idUsuario = session()->get('usuario')->Id_usuario;
 
         $contextos = \DB::table('tableros')
@@ -55,8 +55,14 @@ class ControladorUsuario extends Controller {
      */
     public function cargarSubcontextos($req) {
         $puntero = $req->get('actual');
+        dd($puntero);
         session()->put('actual', $puntero);
-
+        $dimensiones = \DB::table('tablero_dimension')
+                ->select('dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
+                ->where('tablero_dimension.Id_tablero', '=', $puntero)
+                ->first();
+        dd($dimensiones);
         //Se obtienen todos los subcontextos que apuntan al contexto padre.
         $aux = \DB::table('tableros')
                 ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
@@ -64,20 +70,20 @@ class ControladorUsuario extends Controller {
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
+
+        $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
+        
+        //Se crea un objeto Tablero por defecto.
+        $blanco = new Tablero;
+        $blanco->Imagen = "images/tabs/blanco.jpg";
+        $blanco->Puntero = $puntero;
+        $blanco->Filas = $aux[1]->Filas;
         if (!$aux->IsEmpty()) {
             //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
-            $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
             //dd($numPags);
             $casPorPag = $aux[1]->Filas * $aux[1]->Columnas;
             $casTotal = $numPags->Paginas * $casPorPag;
             $dimension = $aux[1]->Dimension;
-
-            //Se crea un objeto Tablero por defecto.
-            $blanco = new Tablero;
-            $blanco->Imagen = "images/tabs/blanco.jpg";
-            $blanco->Puntero = $puntero;
-            $blanco->Filas = $aux[1]->Filas;
-
             //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
             $subcontextos = array();
             for ($i = 1; $i <= $casTotal; $i++) {
@@ -96,7 +102,8 @@ class ControladorUsuario extends Controller {
             ];
         } else {
             $datos = [
-                'subcontextos' => false
+                'subcontextos' => false,
+                'paginas' => $numPags->Paginas
             ];
         }
 
@@ -131,13 +138,13 @@ class ControladorUsuario extends Controller {
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $imageName = time() . '.' . $req->image->extension();
-        $req->image->move(public_path('images'), $imageName);
-        $tablero->Imagen = 'images/tabs' . $imageName;
-        $tablero->Pagina = 0;
+        $req->image->move(public_path('images/tabs/'), $imageName);
+        $tablero->Imagen = 'images/tabs/' . $imageName;
         if (\Session::has('actual')) {
+            $tablero->Paginas = 0;
             $posicion = $req->posicion;
         } else {
-            $tablero->Pagina = 1;
+            $tablero->Paginas = 1;
             $tablero->Posicion = 0;
         }
         $tablero->save();
@@ -226,6 +233,45 @@ class ControladorUsuario extends Controller {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
         }
+    }
+
+    /**
+     * Borrar pagina
+     * @author Victor  Carlos 
+     */
+    public function eliminarPagina(Request $req) {
+        $tablero = \DB::table('tableros')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
+                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
+                ->where('Id_tablero', '=', \Session::get('actual'))
+                ->get();
+        $pagina = $req->pagina; // pag atual
+        $casPorPag = $tablero->Filas * $tablero->Columnas; // 3 6 12
+        $maximoPaginaBorrar = $pagina * $casPorPag;
+        $minimoPaginaBorrar = ($pagina - 1) * $casPorPag;
+        DB::table('tableros')
+                ->where('Posicion', '<=', $maximoPaginaBorrar) //12
+                ->where('Posicion', '>', $minimoPaginaBorrar)//7
+                ->where('Puntero', $tablero->Id_tablero)
+                ->delete();
+        DB::table('tableros')
+                ->where('Posicion', '>', $maximoPaginaBorrar)
+                ->where('Puntero', $tablero->Id_tablero)
+                ->decrement('Posicion', $casPorPag);
+        DB::table('tableros')
+                ->where('Id_tablero', \Session::get('actual'))
+                ->decrement('Paginas', 1);
+    }
+
+    /**
+     * Añade una agina en blanco
+     * @author Victor
+     */
+    public function addPagina() {
+        DB::table('tableros')
+                ->where('Id_tablero', \Session::get('actual'))
+                ->increment('Paginas', 1);
     }
 
 }
