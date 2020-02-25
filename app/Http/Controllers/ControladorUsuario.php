@@ -149,16 +149,19 @@ class ControladorUsuario extends Controller {
         $imageName = time() . '.' . $req->image->extension();
         $req->image->move(public_path('images/tabs/'), $imageName);
         $tablero->Imagen = 'images/tabs/' . $imageName;
+        $tablero->Paginas = 1;
         if (\Session::has('actual')) {
-            $tablero->Paginas = 0;
             $posicion = $req->posicion;
         } else {
-            $tablero->Paginas = 1;
             $tablero->Posicion = 0;
         }
         $tablero->save();
         //Cosas para mañana
-        
+        $idtablero = DB::table('tableros')->max('Id_tablero')->where('Id_usuario', $idusuario);
+        $tadi = new Tablero_Dimension;
+        $tadi->Id_tablero = $idtablero;
+        $tadi->Id_dimension = $req->dimension;
+        $tadi->save();
         if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
