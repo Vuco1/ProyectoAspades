@@ -55,35 +55,37 @@ class ControladorUsuario extends Controller {
      */
     public function cargarSubcontextos($req) {
         $puntero = $req->get('actual');
-        dd($puntero);
+        //dd($puntero);
         session()->put('actual', $puntero);
-        $dimensiones = \DB::table('tablero_dimension')
-                ->select('dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
-                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
-                ->where('tablero_dimension.Id_tablero', '=', $puntero)
+        $dimensiones = \DB::table('dimensiones')
+                ->select('dimensiones.Filas', 'dimensiones.Dimension', 'dimensiones.Columnas')
+                ->join('tablero_dimension', 'tablero_dimension.Id_dimension', 'dimensiones.Id_dimension')
+                ->where('tablero_dimension.Id_tablero', $puntero)
                 ->first();
-        dd($dimensiones);
+//        $dimensiones = \DB::select(\DB::raw('SELECT dimensiones.Dimension, dimensiones.Filas, dimensiones.Columnas
+//        FROM dimensiones, tablero_dimension WHERE dimensiones.Id_dimension = tablero_dimension.Id_dimension AND tablero_dimension.Id_tablero = ' . $puntero ));
         //Se obtienen todos los subcontextos que apuntan al contexto padre.
         $aux = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
-                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
-                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'Accion')
+//                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
+//                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
 
         $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
-        
+
         //Se crea un objeto Tablero por defecto.
         $blanco = new Tablero;
         $blanco->Imagen = "images/tabs/blanco.jpg";
         $blanco->Puntero = $puntero;
-        $blanco->Filas = $aux[1]->Filas;
+
+
+        $casPorPag = $dimensiones->Filas * $dimensiones->Columnas;
+        $casTotal = $numPags->Paginas * $casPorPag;
+
         if (!$aux->IsEmpty()) {
             //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
             //dd($numPags);
-            $casPorPag = $aux[1]->Filas * $aux[1]->Columnas;
-            $casTotal = $numPags->Paginas * $casPorPag;
-            $dimension = $aux[1]->Dimension;
             //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
             $subcontextos = array();
             for ($i = 1; $i <= $casTotal; $i++) {
@@ -97,13 +99,19 @@ class ControladorUsuario extends Controller {
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
-                'dimension' => $dimension,
+                'dimensiones' => $dimensiones,
                 'paginas' => $numPags->Paginas
             ];
         } else {
+            for ($i = 1; $i <= $casTotal; $i++) {
+                $subcontextos[$i] = $blanco;
+            }
             $datos = [
-                'subcontextos' => false,
-                'paginas' => $numPags->Paginas
+                'subcontextos' => $subcontextos,
+                'paginas' => $numPags->Paginas,
+                'casTotal' => $casTotal,
+                'casPorPag' => $casPorPag,
+                'dimensiones' => $dimensiones,
             ];
         }
 
@@ -111,6 +119,7 @@ class ControladorUsuario extends Controller {
     }
 
     public function obtenerSubcontextos(Request $req) {
+        $cosa = $req->actual;
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
@@ -148,7 +157,8 @@ class ControladorUsuario extends Controller {
             $tablero->Posicion = 0;
         }
         $tablero->save();
-
+        //Cosas para mañana
+        
         if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);

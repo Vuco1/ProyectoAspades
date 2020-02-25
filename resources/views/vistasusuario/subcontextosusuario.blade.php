@@ -43,9 +43,7 @@ SubContextos
         </ol>
         <?php } ?>
         <div class="carousel-inner h-100 d-flex">
-            <?php if (!$subcontexto) { ?>
-            <h1 class="m-auto">Sin Resultados</h1><?php
-        } else {
+        <?php
             $cont = 0;
             $pagActual = 1;
             for ($i = 1; $i <= $casTotal; $i++) {
@@ -55,25 +53,25 @@ SubContextos
                     } else {
                         echo '<div class="carousel-item">';
                     }
-                    echo '<div class="'. $dimension .'">';
+                    echo '<div class="'. $dimensiones->Dimension .'">';
                 }
                 ?>
             <div class="card">
                 <form id="form<?php echo $i?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                     @csrf
-                    <input type="hidden" name="posicion" value="<?php echo $i ?>">
+                    <button name="btnsubcon" class="btn p-0 w-100">                    
+                        <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimensiones->Filas }}) - 2.75rem)">
+                        <div class="card-body p-2">
+                            <input type="hidden" name="posicion" value="<?php echo $i ?>">
                     <input type="hidden" name="anterior" value="{{ $subcontextos[$i]->Puntero }}">
                     <input type="hidden" name="actual" value="{{ $subcontextos[$i]->Id_tablero }}">
-                    <input type="hidden" name="numfilas" value="{{ $subcontextos[$i]->Filas }}">
-                    <input type="hidden" name="accion" value="0">
-                    <button class="btn p-0 w-100">
-                        <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $subcontextos[$i]->Filas }}) - 2.75rem)">
-                        <div class="card-body p-2">
+                    <input type="hidden" name="numfilas" value="{{$dimensiones->Filas }}">
+                    <input type="hidden" name="accion" value="{{ $subcontextos[$i]->Accion }}">
                             <p id="leer<?php echo $i?>" class="card-text">{{ $subcontextos[$i]->Nombre }}</p>
                         </div>
                     </button>                
                 </form>
-                <?php if ($dimension == "grid-lg" && (3 * $pagActual - 1) == $i) { ?>
+                <?php if ($dimensiones->Dimension == "grid-lg" && (3 * $pagActual - 1) == $i) { ?>
                 <div></div>
                 <?php } else { ?>            
                 <div class="card-footer d-none">
@@ -98,7 +96,7 @@ SubContextos
                     $pagActual++;
                 }
             }
-        } ?>
+         ?>
         </div>
     </div>
     <!-- VENTANA MODAL MODIFICAR SUBCONTEXTO -->

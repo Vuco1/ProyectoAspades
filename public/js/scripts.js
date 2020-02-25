@@ -37,37 +37,6 @@ $(document).ready(function () {
         }
     });
 
-    $("form[name='formtablero']").submit(function (e) {
-        formulario = $(this).attr('id');
-        e.preventDefault();
-        var id = formulario.substr(4);
-        var speech = new SpeechSynthesisUtterance();
-        speech.text = document.getElementById("leer" + id).textContent;
-        speech.volume = 1;
-        speech.rate = 1;
-        speech.pitch = 1;
-        speech.lang = "es";
-        window.speechSynthesis.speak(speech);
-
-        setTimeout(function () {
-            enviar(id);
-        }, 1800);
-    });
-
-    function enviar(id) {
-        document.forms[id].submit();
-        //document.formulario.submit();                
-    }
-
-    $("img[name='imagen']").click(function () {
-        var speech = new SpeechSynthesisUtterance();
-        speech.text = this.value;
-        speech.volume = 1;
-        speech.rate = 1;
-        speech.pitch = 1;
-        speech.lang = "es";
-        window.speechSynthesis.speak(speech);
-    });
 
     //------------------------------------------------------------------------//
     /**
