@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="card">
+            <form id="form1" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
+                <input type="hidden" name="_token" value="0Io41oHUTzUQw5Z2HuhRxHaJVob6anq6Wpsf9k45">                 
+                <button class="btn p-0 w-100">                    
+                    <img src="images/tabs/img3.jpg" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / 3) - 2.75rem)">
+                    <div class="card-body p-2">
+                        <input type="hidden" name="posicion" value="1">
+                        <input type="hidden" name="anterior" value="2">
+                        <input type="hidden" name="actual" value="41">
+                        <input type="hidden" name="numfilas" value="3">
+                        <input type="hidden" name="accion" value="0">
+                        <p id="leer1" class="card-text">Tablero 2.1</p>
+                    </div>
+                </button>                
+            </form>
+            <div class="card-footer d-none">
+                <div class="row px-2">
+                    <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto(41)" type="submit" name="modificarcontexto" id="modificar41" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
+                    <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto(41)" type="submit" name="eliminarcontexto" id="eliminar41" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
