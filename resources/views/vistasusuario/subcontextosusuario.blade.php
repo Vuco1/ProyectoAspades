@@ -55,7 +55,7 @@ SubContextos
                     } else {
                         echo '<div class="carousel-item">';
                     }
-                    echo '<div class="'. $dimension .'">';
+                    echo '<div class="'. $dimension->Dimension .'">';
                 }
                 ?>
             <div class="card">
@@ -63,10 +63,10 @@ SubContextos
                     @csrf
                     <input type="hidden" name="anterior" value="{{ $subcontextos[$i]->Puntero }}">
                     <input type="hidden" name="actual" value="{{ $subcontextos[$i]->Id_tablero }}">
-                    <input type="hidden" name="numfilas" value="{{ $subcontextos[$i]->Filas }}">
+                    <input type="hidden" name="numfilas" value="{{ $dimension->Filas }}">
                     <input type="hidden" name="accion" value="0">
                     <button class="btn p-0 w-100">
-                        <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $subcontextos[$i]->Filas }}) - 2.75rem)">
+                        <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimension->Filas }}) - 2.75rem)">
                         <div class="card-body p-2">
                             <p id="leer<?php echo $i?>" class="card-text">{{ $subcontextos[$i]->Nombre }}</p>
                         </div>
