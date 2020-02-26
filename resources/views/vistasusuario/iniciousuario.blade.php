@@ -35,9 +35,7 @@ Login
             echo $mensaje;
         }
         ?>
-    </div>
-    <!-- SCRIPTS -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
+    </div>      
 </main>
 @include('plantillas/footer')
 @endsection
