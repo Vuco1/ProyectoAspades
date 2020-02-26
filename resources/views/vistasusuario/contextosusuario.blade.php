@@ -140,7 +140,7 @@ Contextos
                                 </div>
                                 <input type="hidden" id="idimg" name="id_imagen" value="">
                                 <input type="hidden" id="idtablero" name="id_tablero" value="">
-                                <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombrecontexto" placeholder="Nombre" class="form-control">
                             </div>
                         </div> 
                         <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
