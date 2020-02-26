@@ -119,7 +119,7 @@ class ControladorUsuario extends Controller {
     }
 
     public function obtenerSubcontextos(Request $req) {
-        $cosa = $req->actual;
+        $cosa = $req->get('actual');
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }

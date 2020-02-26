@@ -13,10 +13,11 @@ $(document).ready(function () {
         alert(buttonpressed);
     });
 
-    function leer(e) {
-        formulario = $(this).attr('id');
+    function leer(e, form) {
+        var formulario = $(form).attr('id');
         e.preventDefault();
         var id = formulario.substr(4);
+        localStorage.setItem('id', id);
         var speech = new SpeechSynthesisUtterance();
         speech.text = document.getElementById("leer" + id).textContent;
         speech.volume = 1;
@@ -26,9 +27,19 @@ $(document).ready(function () {
         window.speechSynthesis.speak(speech);
     }
     ;
+    
+    function enviar() {
+        var id = localStorage.getItem('id');
+        localStorage.removeItem('id');
+        document.forms[id].submit();
+        //document.formulario.submit();                
+    }
 
 
-    function enviar(id) {
+    function enviarsubcontextos() {
+        var id = localStorage.getItem('id');
+        localStorage.removeItem('id');
+        id = id - 1;
         document.forms[id].submit();
         //document.formulario.submit();                
     }
@@ -40,26 +51,24 @@ $(document).ready(function () {
     $('form').submit(function (evt) {
         //Funciones de las imagenes
         if (buttonpressed === 'btnsubcon') {
-            alert('me cago en los muertos de ajax')
             //Para el submit de una imagen normal.
             if ($(this).find('input[name="accion"]').val() == 0) {
-                alert('me cago en los muertos de ajax2')
-                leer(evt);
+                leer(evt,this);
                 evt.preventDefault();
 
             }
             //Deja que el submit continue.
-            if ($(this).find('input[name="accion"]').val() === 1) {
-                leer(evt);
+            if ($(this).find('input[name="accion"]').val() == 1) {
+                leer(evt, this);
                 setTimeout(function () {
-                    enviar(id);
+                    enviarsubcontextos();
                 }, 1800);
             }
             //Va hacia el subcontexto/contexto padre/anterior
-            if ($(this).find('input[name="accion"]').val() === 2) {
+            if ($(this).find('input[name="accion"]').val() == 2) {
+                leer(evt,this);
                 evt.preventDefault();
                 $puntero = $(this).find('input[name="puntero"]').val();
-                leer(evt);
                 setTimeout(function () {
                     $.ajax({
                         url: 'irAnterior',
@@ -90,9 +99,9 @@ $(document).ready(function () {
 
             }
             //Vuelve al inicio
-            if ($(this).find('input[name="accion"]').val() === 3) {
+            if ($(this).find('input[name="accion"]').val() == 3) {
                 evt.preventDefault();
-                leer(evt);
+                leer(evt,this);
                 setTimeout(function () {
                     $.ajax({
                         url: 'obtenercontextos',
@@ -151,6 +160,12 @@ $(document).ready(function () {
                     },
                 });
             }
+        }
+        if (buttonpressed === 'btncon' || buttonpressed === 'btninicio') {
+            leer(evt, this);
+            setTimeout(function () {
+                enviar();
+            }, 1800);
         }
         //Modificar usuarios en el CRUD de usuarios
         if (buttonpressed === 'modificar') {
