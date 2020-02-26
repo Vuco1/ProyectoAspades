@@ -51,20 +51,20 @@ $(document).ready(function () {
         //Funciones de las imagenes
         if (buttonpressed === 'btnsubcon') {
             //Para el submit de una imagen normal.
-            if ($(this).find('input[name="accion"]').val() == 0) {
+            if ($(this).find('input[name="accion"]').val() == 1) {
                 leer(evt,this);
                 evt.preventDefault();
 
             }
             //Deja que el submit continue.
-            if ($(this).find('input[name="accion"]').val() == 1) {
+            if ($(this).find('input[name="accion"]').val() == 2) {
                 leer(evt, this);
                 setTimeout(function () {
                     enviarsubcontextos();
                 }, 1800);
             }
             //Va hacia el subcontexto/contexto padre/anterior
-            if ($(this).find('input[name="accion"]').val() == 2) {
+            if ($(this).find('input[name="accion"]').val() == 3) {
                 leer(evt,this);
                 evt.preventDefault();
                 $puntero = $(this).find('input[name="puntero"]').val();
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
             }
             //Vuelve al inicio
-            if ($(this).find('input[name="accion"]').val() == 3) {
+            if ($(this).find('input[name="accion"]').val() == 4) {
                 evt.preventDefault();
                 leer(evt,this);
                 setTimeout(function () {
@@ -130,7 +130,7 @@ $(document).ready(function () {
                 }, 1800);
             }
             //Va hacia otro contexto
-            if ($(this).find('input[name="accion"]').val() === 4) {
+            if ($(this).find('input[name="accion"]').val() === 5) {
                 evt.preventDefault();
                 var $id = $(this).find('input[name="contexto"]').val();
                 $.ajax({
