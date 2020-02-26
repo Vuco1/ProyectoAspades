@@ -96,14 +96,12 @@ class ControladorUsuario extends Controller {
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
             }
-            
             $acciones = Accion::all();
-            
             $datos = [
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
-                'dimension' => $dimension,
+                'dimensiones' => $dimensiones,
                 'paginas' => $numPags->Paginas,
                 'acciones' => $acciones
             ];
@@ -141,7 +139,7 @@ class ControladorUsuario extends Controller {
         $idusuario = $usuario->Id_usuario;
         $tablero->Id_usuario = $idusuario;
         $tablero->Nombre = $req->nombre;
-        $tablero->Accion = $req->idaccion;
+        $tablero->Accion = $req->accion;
         if (\Session::has('actual')) {
             $idcontexto = \Session::get('actual');
         } else {
@@ -197,7 +195,7 @@ class ControladorUsuario extends Controller {
     public function modificarTablero(Request $req) {
         $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
         $tablero->Nombre = $req->nombre;
-        $tablero->Accion = $req->idaccion;
+        $tablero->Accion = $req->accion;
         $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
         if (File::exists($image_path)) {
             File::delete($image_path);

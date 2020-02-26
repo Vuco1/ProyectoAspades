@@ -80,7 +80,7 @@ SubContextos
                         <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
                         <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
                 <?php } else { ?>
-                        <button data-toggle="modal" data-target="#nuevo" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><i class="fas fa-plus pr-md-2"></i><span class="d-none d-md-inline">Añadir</span></button>
+                        <button data-toggle="modal" data-target="#nuevosub" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><i class="fas fa-plus pr-md-2"></i><span class="d-none d-md-inline">Añadir</span></button>
                 <?php } ?>
                     </div>
                     <?php
