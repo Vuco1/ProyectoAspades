@@ -140,7 +140,7 @@ SubContextos
                             <label class="sr-only" for="dimension">Tamaño</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Tamaño</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>Tamaño</div>
                                 </div>
                                 <select name="dimension" class="form-control" id="dimension">
                                     <?php foreach ($dimensiones as $d) { ?>
@@ -153,7 +153,7 @@ SubContextos
                             <label class="sr-only" for="accion">Acción</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acción</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>Acción</div>
                                 </div>
                                 <select name="accion" class="form-control" id="accion">
                                     <?php foreach ($acciones as $accion) { ?>
@@ -207,7 +207,7 @@ SubContextos
                             <label class="sr-only" for="accion">Acción</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acción</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>Acción</div>
                                 </div>
                                 <select name="accionlist" class="form-control" id="accionlist">
                                     <?php foreach ($acciones as $accion) { ?>
