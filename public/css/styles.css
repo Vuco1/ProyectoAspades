@@ -128,6 +128,8 @@ a.text-orange:hover {
 /*------------------------------- PAGINACIÓN ---------------------------------*/
 /*----------------------------------------------------------------------------*/
 /* Crud de usuarios */
+#paginacion nav { margin: auto; }
+
 .page-link { color: #f39932; }
 
 .page-item.active .page-link {

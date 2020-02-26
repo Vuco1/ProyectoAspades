@@ -58,7 +58,7 @@ Gestión
     <div class="text-center">
         <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
     </div>
-    <div class="d-inline-flex align-content-center text-center mt-5">
+    <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-5">
         {{ $datos->links() }}
     </div>
     <!-- VENTANA MODAL AÑADIR USUARIO -->
