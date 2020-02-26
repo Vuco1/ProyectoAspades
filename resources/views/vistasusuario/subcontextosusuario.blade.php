@@ -51,7 +51,7 @@ SubContextos
                     if ($cont == 0) {
                         echo '<div class="carousel-item active">';
                     } else {
-                        echo '<div class="carousel-item">';
+                        echo '<li data-target="#carouselSubcontextos" data-slide-to="' . $i . '"></li>';
                     }
                     echo '<div class="'. $dimensiones->Dimension .'">';
                 }
@@ -80,25 +80,78 @@ SubContextos
                         <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
                         <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
                 <?php } else { ?>
-                        <button data-toggle="modal" data-target="#nuevo" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><i class="fas fa-plus pr-md-2"></i><span class="d-none d-md-inline">Añadir</span></button>
+                        <button data-toggle="modal" data-target="#nuevosub" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><i class="fas fa-plus pr-md-2"></i><span class="d-none d-md-inline">Añadir</span></button>
                 <?php } ?>
                     </div>
-                </div>
-                <?php } ?>
-            </div>
-            <?php
-                if (($cont + 1) % $casPorPag == 0) {
-                    echo '</div></div>';
-                }
-                $cont++;
-                if ($cont == $casPorPag + 1) {
-                    $cont = 1;
-                    $pagActual++;
+                    <?php
+                    if (($cont + 1) % $casPorPag == 0) {
+                        echo '</div></div>';
+                    }
+                    $cont++;
+                    if ($cont == $casPorPag + 1) {
+                        $cont = 1;
+                        $pagActual++;
+                    }
                 }
             }
          ?>
         </div>
     </div>
+    
+    <!-- VENTANA MODAL NUEVO SUBCONTEXTO -->
+    <section class="modal fade" id="nuevosub">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Nuevo Contexto</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="subirTablero" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label class="sr-only" for="Foto">Foto</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                </div>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="nombre">Nombre</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                </div>
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
+                                <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
+                            </div>
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label class="sr-only" for="accion">Acciones</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acciones</div>
+                                </div>
+                                <select class="form-control" id="accion">
+                            <?php foreach ($acciones as $accion) { ?>
+                                    <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
+                            <?php } ?>
+                                </select>
+                            </div> 
+                        </div>
+                        
+                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- VENTANA MODAL MODIFICAR SUBCONTEXTO -->
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
@@ -132,7 +185,22 @@ SubContextos
                                 <input type="hidden" id="idtablero" name="id_tablero" value="">
                                 <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
                             </div>
-                        </div> 
+                        </div>
+
+                        <div class="form-group">
+                            <label class="sr-only" for="accion">Acciones</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acciones</div>
+                                </div>
+                                <select class="form-control" id="accion">
+                            <?php foreach ($acciones as $accion) { ?>
+                                    <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
+                            <?php } ?>
+                                </select>
+                            </div> 
+                        </div>
+                        
                         <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>

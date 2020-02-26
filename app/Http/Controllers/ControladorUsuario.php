@@ -8,6 +8,7 @@ use App\Models\Usuario_Rol;
 use App\Models\Imagen;
 use App\Models\Tablero_Imagen;
 use App\Models\Tablero;
+use App\Models\Accion;
 use Illuminate\Support\Facades\File;
 
 class ControladorUsuario extends Controller {
@@ -95,12 +96,14 @@ class ControladorUsuario extends Controller {
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
             }
+            $acciones = Accion::all();
             $datos = [
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
                 'dimensiones' => $dimensiones,
-                'paginas' => $numPags->Paginas
+                'paginas' => $numPags->Paginas,
+                'acciones' => $acciones
             ];
         } else {
             for ($i = 1; $i <= $casTotal; $i++) {
@@ -136,6 +139,7 @@ class ControladorUsuario extends Controller {
         $idusuario = $usuario->Id_usuario;
         $tablero->Id_usuario = $idusuario;
         $tablero->Nombre = $req->nombre;
+        $tablero->Accion = $req->accion;
         if (\Session::has('actual')) {
             $idcontexto = \Session::get('actual');
         } else {
@@ -191,6 +195,7 @@ class ControladorUsuario extends Controller {
     public function modificarTablero(Request $req) {
         $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
         $tablero->Nombre = $req->nombre;
+        $tablero->Accion = $req->accion;
         $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
         if (File::exists($image_path)) {
             File::delete($image_path);
