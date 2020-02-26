@@ -12,6 +12,7 @@ Perfil
         </button>
         <div class="collapse navbar-collapse" id="divnav">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
             </ul>
             <a class="text-secondary" href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
