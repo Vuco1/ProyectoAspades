@@ -145,10 +145,10 @@ Contextos
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagen">
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod">
                                     <label class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
                                 </div>
                             </div>

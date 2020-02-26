@@ -116,12 +116,14 @@ SubContextos
                     <form action="subirTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="sr-only" for="Foto">Foto</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                    <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
-                                <input type="file" name="image" id="image" class="form-control">
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo">
+                                    <label class="custom-file-label" for="image">Selecciona una imagen...</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -179,16 +181,17 @@ SubContextos
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <img id="imgcontexto" src="" class="img-perfil" alt="Imagen del contexto">
                     <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="sr-only" for="Foto">Foto</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
-                                <input type="file" name="image" id="imagecontexto" class="form-control">
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod">
+                                    <label class="custom-file-label" for="image">Selecciona una imagen...</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
