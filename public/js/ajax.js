@@ -10,7 +10,6 @@ $(document).ready(function () {
     var buttonpressed;
     $('.btn').click(function () {
         buttonpressed = $(this).attr('name');
-        alert(buttonpressed);
     });
 
     function leer(e, form) {
