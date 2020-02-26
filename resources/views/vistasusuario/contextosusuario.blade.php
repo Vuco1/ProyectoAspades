@@ -42,9 +42,10 @@ Contextos
                 ?>
             </ol>
         <?php } ?>
-        <div class="carousel-inner h-100">
+        <div class="carousel-inner h-100 text-center">
             <?php if (!$contextos) { ?>
-                <h1 class="m-auto">Sin Resultados</h1>
+                <h2 class="m-auto">Todavía no tienes ningún contexto</h2>
+                <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir contexto</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
             <?php } else {
                 $cont = 0;
                 foreach ($contextos as $c) {
