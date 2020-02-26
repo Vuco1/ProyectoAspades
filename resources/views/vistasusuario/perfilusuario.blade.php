@@ -56,7 +56,7 @@ Perfil
                 </div>
                 <div class="custom-file">
                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen">
-                    <label class="custom-file-label" for="imagen">Selecciona una imagen...</label>
+                    <label class="custom-file-label" for="imagen">Selecciona tu nueva imagen...</label>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                 </div>
-                <input type="password" name="clave" id="clave" placeholder="Escriba su nueva contraseña" class="form-control">
+                <input type="password" name="clave" id="clave" placeholder="Escribe tu nueva contraseña" class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -75,7 +75,7 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                 </div>
-                <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
+                <input type="password" name="claverep" id="claverepe" placeholder="Repite la nueva contraseña" class="form-control">
             </div>
         </div>
         <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-orange w-100">
