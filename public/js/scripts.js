@@ -100,7 +100,9 @@ $(document).ready(function () {
 });
 
 function modificarContexto(id) {
-    $("#nombremod").val($('#nombre' + id).val());     
+    alert($('#nombre' + id).val());
+    $("#nombremod").val($('#nombre' + id).val());   
+    alert($('#nombremod').val());
     $('#posimo').val(id);   
     $("#actual").val($('#actual' + id).val());
     var idaccion= $('#accion' + id).val() -1;

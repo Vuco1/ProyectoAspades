@@ -169,7 +169,10 @@ Route::group(['middleware' => 'Usuario'], function() {
      Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
      
      Route::any('addpagina','ControladorUsuario@addPagina');
+     
      Route::any('eliminarpagina','ControladorUsuario@eliminarPagina');
+     
+     Route::any('vaciartablero','ControladorUsuario@DOOOOM');
      
      //Todos los any son responsabilidad de carlos, el resto de miembros del grupo saben como funciona un middleware.
 });

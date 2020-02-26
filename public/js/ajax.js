@@ -39,6 +39,7 @@ $(document).ready(function () {
         var id = localStorage.getItem('id');
         localStorage.removeItem('id');
         id = id - 1;
+        alert(id);
         document.forms[id].submit();
         //document.formulario.submit();                
     }

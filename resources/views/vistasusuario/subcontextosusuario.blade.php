@@ -18,6 +18,8 @@ SubContextos
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
                     <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
                         <form action='addpagina' method="post">
+                            @csrf
+                            <input type="hidden" name="anterior" value="{{ \Session::get('actual')}}">
                             <button class="dropdown-item"><i class="fas fa-plus-circle icono"></i>Añadir página</button>
                         </form>
                         <button class="dropdown-item" data-toggle="modal" data-target="#eliminarpagina" onclick="eliminarPagina()"><i class="fas fa-minus-circle icono"></i>Eliminar página</button>
@@ -107,7 +109,7 @@ SubContextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Nuevo Contexto</div>
+                    <div class="modal-title">Nuevo  Subcontexto</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -280,8 +282,8 @@ SubContextos
                 <div class="modal-body p-4">
                     <form action="vaciartablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas eliminar este subcontexto?</p>
-                        <input type="hidden" name="idelim" id="idelim" value="">
+                        <p>¿Estás seguro de que deseas vaciar este subcontexto?
+                            (Esto eliminara todos los tableros dentro de este subcontexto)</p>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>

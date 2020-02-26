@@ -46,7 +46,8 @@ Contextos
             <?php if (!$contextos) { ?>
                 <h2 class="m-auto">Todavía no tienes ningún contexto</h2>
                 <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir contexto</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
-            <?php } else {
+            <?php
+            } else {
                 $cont = 0;
                 foreach ($contextos as $c) {
                     if ($cont % 3 == 0) { //Cada 3 contextos se añade un item al carrousel
@@ -66,7 +67,7 @@ Contextos
                                 <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Imagen del contexto" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
                                     <input  type="hidden" name="nombre" value="{{ $c->Nombre }}" id="nombre{{ $c->Id_tablero }}">
-                                    <input  type="hidden" name="idtablero" value="{{ $c->Id_tablero }}" id="idtablero{{ $c->Id_tablero }}">
+                                    <input  type="hidden" name="actual" value="{{ $c->Id_tablero }}" id="actual{{ $c->Id_tablero }}">
                                     <p id="leer<?php echo $cont ?>" class="card-text">{{ $c->Nombre }}</p>
                                 </div>
                             </button>                
@@ -80,7 +81,7 @@ Contextos
                     </div>
                     <?php
                     if (($cont + 1) % 3 == 0) {
-                         echo '</div>'
+                        echo '</div>'
                         . '</div>';
                     }
                     $cont++;
@@ -122,7 +123,20 @@ Contextos
                                 <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
                                 <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
                             </div>
-                        </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="dimension">Tamaño</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Tamaño</div>
+                                </div>
+                                <select name="dimension" class="form-control" id="dimension">
+                                    <?php foreach ($dimensiones as $d) { ?>
+                                        <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
+<?php } ?>
+                                </select>
+                            </div> 
+                        </div>
                         <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
@@ -159,9 +173,9 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                 <input type="hidden" id="posimo" name="posimo" value="1">
-                                <input type="hidden" id="idtablero" name="id_tablero" value="">
-                                <input type="text" name="nombre" id="nombretablero"  placeholder="Nombre" class="form-control">
+                                <input type="hidden" id="posimo" name="posimo" value="1">
+                                <input type="hidden" id="actual" name="actual" value="">
+                                <input type="text" name="nombremod" id="nombremod"  placeholder="Nombre" class="form-control" value="">
                             </div>
                         </div> 
                         <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
@@ -185,6 +199,7 @@ Contextos
                         @csrf
                         <p>¿Estás seguro de que deseas eliminar este contexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
+                        <input type="hidden" id="actual" name="actual" value="">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>

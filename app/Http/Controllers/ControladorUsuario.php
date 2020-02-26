@@ -29,14 +29,20 @@ class ControladorUsuario extends Controller {
                 ->where('Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
+        
+        $dimensiones = \DB::table('dimensiones')
+                ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
+                ->get();
 
         if ($contextos->IsEmpty()) {
             $datos = [
-                'contextos' => false
+                'contextos' => false,
+                'dimensiones' => $dimensiones
             ];
         } else {
             $datos = [
-                'contextos' => $contextos
+                'contextos' => $contextos,
+                'dimensiones' => $dimensiones
             ];
         }
         return $datos;
@@ -67,7 +73,6 @@ class ControladorUsuario extends Controller {
                 ->join('tablero_dimension', 'tablero_dimension.Id_dimension', 'dimensiones.Id_dimension')
                 ->where('tablero_dimension.Id_tablero', $puntero)
                 ->first();
-
         $dimensiones = \DB::table('dimensiones')
                 ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
                 ->get();
@@ -306,5 +311,20 @@ class ControladorUsuario extends Controller {
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
-
+    
+    /**
+     * Vacia un subcontextio
+     * @author Carlos y Victor
+     */
+    public function DOOOOM(Request $req){
+        \DB::table('tableros')
+                ->where('Puntero', \Session::get('actual'))
+                ->delete();
+        
+        $tablero = Tablero::where('Id_tablero', '=', \Session::get('actual'))->first();
+        $tablero->Paginas = 1;
+        $tablero->save();
+        $datos = self::cargarSubcontextos($req);
+        return view('vistasusuario/subcontextosusuario', $datos);
+        }
 }
