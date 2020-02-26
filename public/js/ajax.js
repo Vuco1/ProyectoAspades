@@ -67,33 +67,34 @@ $(document).ready(function () {
             if ($(this).find('input[name="accion"]').val() == 3) {
                 leer(evt,this);
                 evt.preventDefault();
-                $puntero = $(this).find('input[name="puntero"]').val();
+                var anterior=$(this).find('input[name="anterior"]').val()
                 setTimeout(function () {
-                    $.ajax({
-                        url: 'irAnterior',
-                        type: 'post',
-                        data: {_token: CSRF_TOKEN, "puntero": $puntero},
-                        success: function (response) {
-                            alert('Usuario actualizado con exito');
-                        }, error: function (jqXHR, exception) {
-                            var msg = '';
-                            if (jqXHR.status === 0) {
-                                msg = 'Not connect.\n Verify Network.';
-                            } else if (jqXHR.status === 404) {
-                                msg = 'Requested page not found. [404]';
-                            } else if (jqXHR.status === 500) {
-                                msg = 'Internal Server Error [500].';
-                            } else if (exception === 'parsererror') {
-                                msg = 'Requested JSON parse failed.';
-                            } else if (exception === 'timeout') {
-                                msg = 'Time out error.';
-                            } else if (exception === 'abort') {
-                                msg = 'Ajax request aborted.';
-                            } else {
-                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                            }
-                        },
-                    });
+                     window.history.back();
+//                    $.ajax({
+//                        url: 'irAnterior',
+//                        type: 'post',
+//                        data: {_token: CSRF_TOKEN, "anterior": anterior,},
+//                        success: function (response) {
+//                            
+//                        }, error: function (jqXHR, exception) {
+//                            var msg = '';
+//                            if (jqXHR.status === 0) {
+//                                msg = 'Not connect.\n Verify Network.';
+//                            } else if (jqXHR.status === 404) {
+//                                msg = 'Requested page not found. [404]';
+//                            } else if (jqXHR.status === 500) {
+//                                msg = 'Internal Server Error [500].';
+//                            } else if (exception === 'parsererror') {
+//                                msg = 'Requested JSON parse failed.';
+//                            } else if (exception === 'timeout') {
+//                                msg = 'Time out error.';
+//                            } else if (exception === 'abort') {
+//                                msg = 'Ajax request aborted.';
+//                            } else {
+//                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+//                            }
+//                        },
+//                    });
                 }, 1800);
 
             }
@@ -102,31 +103,32 @@ $(document).ready(function () {
                 evt.preventDefault();
                 leer(evt,this);
                 setTimeout(function () {
-                    $.ajax({
-                        url: 'obtenercontextos',
-                        type: 'post',
-                        data: {_token: CSRF_TOKEN},
-                        success: function (response) {
-                            alert('Usuario actualizado con exito');
-                        }, error: function (jqXHR, exception) {
-                            var msg = '';
-                            if (jqXHR.status === 0) {
-                                msg = 'Not connect.\n Verify Network.';
-                            } else if (jqXHR.status === 404) {
-                                msg = 'Requested page not found. [404]';
-                            } else if (jqXHR.status === 500) {
-                                msg = 'Internal Server Error [500].';
-                            } else if (exception === 'parsererror') {
-                                msg = 'Requested JSON parse failed.';
-                            } else if (exception === 'timeout') {
-                                msg = 'Time out error.';
-                            } else if (exception === 'abort') {
-                                msg = 'Ajax request aborted.';
-                            } else {
-                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                            }
-                        },
-                    });
+                   location.href = "obtenercontextos";
+//                    $.ajax({
+//                        url: 'obtenercontextos',
+//                        type: 'post',
+//                        data: {_token: CSRF_TOKEN},
+//                        success: function (response) {
+//                            alert('Usuario actualizado con exito');
+//                        }, error: function (jqXHR, exception) {
+//                            var msg = '';
+//                            if (jqXHR.status === 0) {
+//                                msg = 'Not connect.\n Verify Network.';
+//                            } else if (jqXHR.status === 404) {
+//                                msg = 'Requested page not found. [404]';
+//                            } else if (jqXHR.status === 500) {
+//                                msg = 'Internal Server Error [500].';
+//                            } else if (exception === 'parsererror') {
+//                                msg = 'Requested JSON parse failed.';
+//                            } else if (exception === 'timeout') {
+//                                msg = 'Time out error.';
+//                            } else if (exception === 'abort') {
+//                                msg = 'Ajax request aborted.';
+//                            } else {
+//                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+//                            }
+//                        },
+//                    });
                 }, 1800);
             }
             //Va hacia otro contexto

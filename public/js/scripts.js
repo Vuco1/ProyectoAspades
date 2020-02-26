@@ -100,15 +100,18 @@ $(document).ready(function () {
 });
 
 function modificarContexto(id) {
-    $("#imgcontexto").attr('src', $('#img' + id).attr('src'));
-    $("#nombrecontexto").val($('#nombre' + id).val());
-    $("#idimg").val(id);
-    $("#idtablero").val($('#idtablero' + id).val());
+    $("#nombremod").val($('#nombre' + id).val());     
+    $('#posimo').val(id);   
+    $("#actual").val($('#actual' + id).val());
+    var idaccion= $('#accion' + id).val() -1;
+    document.getElementById('accionlist').options[idaccion].selected = 'selected';
 }
 function eliminarContexto(id) {
-    $("#idelim").val($('#idtablero' + id).val());
+    $("#idelim").val($('#actual' + id).val());
 }
-function addContexto(id) {}
+function addContexto(id) {
+    $('#posiadd').val(id);
+}
 
 function volver() {
     window.history.back();

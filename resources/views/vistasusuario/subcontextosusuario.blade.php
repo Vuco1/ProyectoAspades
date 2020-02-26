@@ -54,32 +54,32 @@ SubContextos
                     } else {
                         echo '<div class="carousel-item">';
                     }
-                    echo '<div class="' . $dimensiones->Dimension . '">';
+                    echo '<div class="' . $dimension->Dimension . '">';
                 }
                 ?>
                 <div class="card">
                     <form id="form<?php echo $i ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                         @csrf
                         <button name="btnsubcon" class="btn p-0 w-100">                    
-                            <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimensiones->Filas }}) - 2.75rem)">
+                            <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimension->Filas }}) - 2.75rem)">
                             <div class="card-body p-2">
-                                <input type="hidden" name="posicion" value="<?php echo $i ?>">
-                                <input type="hidden" name="anterior" value="{{ $subcontextos[$i]->Puntero }}">
-                                <input type="hidden" name="actual" value="{{ $subcontextos[$i]->Id_tablero }}">
-                                <input type="hidden" name="numfilas" value="{{$dimensiones->Filas }}">
-                                <input type="hidden" name="accion" value="{{ $subcontextos[$i]->Accion }}">
+                                <input  type="hidden" name="nombre" value="{{ $subcontextos[$i]->Nombre }}" id="nombre<?php echo $i ?>">
+                                <input type="hidden" name="posicion" id="posicion<?php echo $i ?>" value="<?php echo $i ?>">
+                                <input type="hidden" name="actual" id="actual<?php echo $i ?>" value="{{ $subcontextos[$i]->Id_tablero }}">
+                                <input type="hidden" name="numfilas" id="numfilas<?php echo $i ?>" value="{{$dimension->Filas }}">
+                                <input type="hidden" name="accion" id="accion<?php echo $i ?>" value="{{ $subcontextos[$i]->Accion }}">
                                 <p id="leer<?php echo $i ?>" class="card-text">{{ $subcontextos[$i]->Nombre }}</p>
                             </div>
                         </button>                
                     </form>
-                    <?php if ($dimensiones->Dimension == "grid-lg" && (3 * $pagActual - 1) == $i) { ?>
+                    <?php if ($dimension->Dimension == "grid-lg" && (3 * $pagActual - 1) == $i) { ?>
                         <div></div>
                     <?php } else { ?>            
                         <div class="card-footer d-none">
                             <div class="row px-2">
                                 <?php if ($subcontextos[$i]->Imagen != "images/tabs/blanco.jpg") { ?>
-                                    <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
-                                    <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $subcontextos[$i]->Id_tablero }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                                    <button data-toggle="modal" data-target="#modificar" onclick="modificarContexto({{ $i }})" type="submit" name="modificarcontexto" id="modificar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
+                                    <button data-toggle="modal" data-target="#eliminar" onclick="eliminarContexto({{ $i }})" type="submit" name="eliminarcontexto" id="eliminar{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
                                 <?php } else { ?>
                                     <button data-toggle="modal" data-target="#nuevosub" onclick="addContexto({{ $i }})" type="submit" name="nuevocontexto" id="nuevo{{ $subcontextos[$i]->Id_tablero }}" class="btn btn-success col"><i class="fas fa-plus pr-md-2"></i><span class="d-none d-md-inline">Añadir</span></button>
                                 <?php } ?>
@@ -131,20 +131,35 @@ SubContextos
                                 <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
                                 <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group">
-                            <label class="sr-only" for="accion">Acciones</label>
+                            <label class="sr-only" for="dimension">Tamaño</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acciones</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Tamaño</div>
                                 </div>
-                                <select class="form-control" id="accion">
+                                <select name="dimension" class="form-control" id="dimension">
+                                    <?php foreach ($dimensiones as $d) { ?>
+                                        <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="accion">Acción</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acción</div>
+                                </div>
+                                <select name="accion" class="form-control" id="accion">
                                     <?php foreach ($acciones as $accion) { ?>
                                         <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
                                     <?php } ?>
                                 </select>
                             </div> 
                         </div>
+                        <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
+                        <input type="hidden" id="posiadd" name="posiadd" value="">
                         <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
@@ -179,13 +194,27 @@ SubContextos
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
-                                </div>
-                                <input type="hidden" id="idimg" name="id_imagen" value="">
-                                <input type="hidden" id="idtablero" name="id_tablero" value="">
-                                <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
+                                </div>                                
+                                <input type="text" name="nombremod" id="nombremod"  placeholder="Nombre" class="form-control">
                             </div>
-                        </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="accion">Acción</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Acción</div>
+                                </div>
+                                <select name="accionlist" class="form-control" id="accionlist">
+                                    <?php foreach ($acciones as $accion) { ?>
+                                        <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div> 
+                        </div>
+                        <input type="hidden" id="actual" name="actual" value="">
+                        <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
+                        <input type="hidden" id="posimo" name="posimo" value="">
+                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -206,6 +235,7 @@ SubContextos
                         @csrf
                         <p>¿Estas seguro de que deseas elimar este subcontexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
+                        <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>

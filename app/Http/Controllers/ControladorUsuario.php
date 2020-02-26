@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Usuario_Rol;
 use App\Models\Imagen;
-use App\Models\Tablero_Imagen;
+use App\Models\Tablero_Dimension;
 use App\Models\Tablero;
 use App\Models\Accion;
 use Illuminate\Support\Facades\File;
@@ -55,21 +55,25 @@ class ControladorUsuario extends Controller {
      * @version 2.2
      */
     public function cargarSubcontextos($req) {
+        if ($req->get('anterior')) {
+            $puntero=$req->get('anterior');
+        }else{
         $puntero = $req->get('actual');
+        }
         //dd($puntero);
         session()->put('actual', $puntero);
-        $dimensiones = \DB::table('dimensiones')
+        $dimension = \DB::table('dimensiones')
                 ->select('dimensiones.Filas', 'dimensiones.Dimension', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tablero_dimension.Id_dimension', 'dimensiones.Id_dimension')
                 ->where('tablero_dimension.Id_tablero', $puntero)
                 ->first();
-//        $dimensiones = \DB::select(\DB::raw('SELECT dimensiones.Dimension, dimensiones.Filas, dimensiones.Columnas
-//        FROM dimensiones, tablero_dimension WHERE dimensiones.Id_dimension = tablero_dimension.Id_dimension AND tablero_dimension.Id_tablero = ' . $puntero ));
-        //Se obtienen todos los subcontextos que apuntan al contexto padre.
+
+        $dimensiones = \DB::table('dimensiones')
+                ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
+                ->get();
+        
         $aux = \DB::table('tableros')
                 ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'Accion')
-//                ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
-//                ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('Puntero', '=', $puntero)
                 ->get();
 
@@ -80,10 +84,10 @@ class ControladorUsuario extends Controller {
         $blanco->Imagen = "images/tabs/blanco.jpg";
         $blanco->Puntero = $puntero;
 
-
-        $casPorPag = $dimensiones->Filas * $dimensiones->Columnas;
+        $casPorPag = $dimension->Filas * $dimension->Columnas;
         $casTotal = $numPags->Paginas * $casPorPag;
 
+        $acciones = Accion::all();
         if (!$aux->IsEmpty()) {
             //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
             //dd($numPags);
@@ -96,11 +100,11 @@ class ControladorUsuario extends Controller {
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
             }
-            $acciones = Accion::all();
             $datos = [
                 'subcontextos' => $subcontextos,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
+                'dimension' => $dimension,
                 'dimensiones' => $dimensiones,
                 'paginas' => $numPags->Paginas,
                 'acciones' => $acciones
@@ -114,7 +118,9 @@ class ControladorUsuario extends Controller {
                 'paginas' => $numPags->Paginas,
                 'casTotal' => $casTotal,
                 'casPorPag' => $casPorPag,
+                'dimension' => $dimension,
                 'dimensiones' => $dimensiones,
+                'acciones' => $acciones
             ];
         }
 
@@ -122,7 +128,6 @@ class ControladorUsuario extends Controller {
     }
 
     public function obtenerSubcontextos(Request $req) {
-        $cosa = $req->get('actual');
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
@@ -155,13 +160,14 @@ class ControladorUsuario extends Controller {
         $tablero->Imagen = 'images/tabs/' . $imageName;
         $tablero->Paginas = 1;
         if (\Session::has('actual')) {
-            $posicion = $req->posicion;
+            $posicion = $req->posiadd;
+            $tablero->Posicion=$posicion;
         } else {
             $tablero->Posicion = 0;
         }
         $tablero->save();
         //Cosas para mañana
-        $idtablero = DB::table('tableros')->max('Id_tablero')->where('Id_usuario', $idusuario);
+        $idtablero = \DB::table('tableros')->where('Id_usuario', $idusuario)->max('Id_tablero');
         $tadi = new Tablero_Dimension;
         $tadi->Id_tablero = $idtablero;
         $tadi->Id_dimension = $req->dimension;
@@ -193,21 +199,24 @@ class ControladorUsuario extends Controller {
      * @author Victor
      */
     public function modificarTablero(Request $req) {
-        $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
-        $tablero->Nombre = $req->nombre;
-        $tablero->Accion = $req->accion;
-        $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
-        if (File::exists($image_path)) {
-            File::delete($image_path);
+        $tablero = Tablero::where('Id_tablero', '=', $req->actual)->first();
+        $tablero->Nombre = $req->nombremod;
+        $tablero->Accion = $req->accionlist;
+        $tablero->Posicion = $req->posimo;
+        $image_path = $tablero->Imagen; // the value is : localhost/project/image/filename.format
+        if ($req->file('image')) {
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $req->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $imageName = time() . '.' . $req->image->extension();
+            $req->image->move(public_path('images/tabs/'), $imageName);
+            $tablero->Imagen = 'images/tabs/' . $imageName;
         }
-        $req->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $imageName = time() . '.' . $req->image->extension();
-        $req->image->move(public_path('images'), $imageName);
-        $tablero->Imagen = 'images/' . $imageName;
         $tablero->save();
-        if (\Session::has('id')) {
+        if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {
@@ -226,7 +235,7 @@ class ControladorUsuario extends Controller {
         } catch (Exception $ex) {
             echo 'Hostiazo que te crio';
         }
-        if (\Session::has('id')) {
+        if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
             return view('vistasusuario/subcontextosusuario', $datos);
         } else {

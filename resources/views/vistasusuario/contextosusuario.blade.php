@@ -118,7 +118,6 @@ Contextos
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <img id="imgcontexto" src="" class="img-perfil" alt="Imagen del contexto">
                     <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -136,9 +135,9 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="hidden" id="idimg" name="id_imagen" value="">
+                                 <input type="hidden" id="posimo" name="posimo" value="1">
                                 <input type="hidden" id="idtablero" name="id_tablero" value="">
-                                <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombretablero"  placeholder="Nombre" class="form-control">
                             </div>
                         </div> 
                         <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
