@@ -24,7 +24,7 @@ Login
 <!-- MAIN -->
 <main class="d-flex pt-3">
     <?php $usuario = session()->get('usuario'); ?>        
-    <form id="form0" name="formtablero" action="obtenercontextos" method="post" class="m-auto">
+    <form id="form0" name="formtablero" action="obtenercontextos" method="post" class="m-auto text-center">
         @csrf
         <button name="btninicio" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
         <h1 id="leer0">Hola <?php echo $usuario->Nick ?></h1>
@@ -35,9 +35,7 @@ Login
             echo $mensaje;
         }
         ?>
-    </div>
-    <!-- SCRIPTS -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->        
+    </div>      
 </main>
 @include('plantillas/footer')
 @endsection

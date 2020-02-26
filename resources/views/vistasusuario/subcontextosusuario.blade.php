@@ -231,9 +231,9 @@ SubContextos
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="eliminarTablero" method="post" enctype="multipart/form-data">
+                    <form action="eliminarTablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estas seguro de que deseas elimar este subcontexto?</p>
+                        <p>¿Estás seguro de que deseas eliminar este subcontexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  

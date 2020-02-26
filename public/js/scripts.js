@@ -87,6 +87,9 @@ $(document).ready(function () {
         }
     });
     
+    function cambiarTextoBoton() {
+        $(".custom-file-text").val("Hola");
+    }
     /**
      * Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
      * @author Laura

@@ -124,10 +124,14 @@ a.text-orange:hover {
     border: 1px solid #ffaf54;
 }
 
+.custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+
 /*----------------------------------------------------------------------------*/
 /*------------------------------- PAGINACIÓN ---------------------------------*/
 /*----------------------------------------------------------------------------*/
 /* Crud de usuarios */
+#paginacion nav { margin: auto; }
+
 .page-link { color: #f39932; }
 
 .page-item.active .page-link {
@@ -151,9 +155,10 @@ a.text-orange:hover {
 
 .card-body { min-height: 2.5rem; }
 
+.card-contexto { max-width: 20rem; }
+
 .img-contexto {
     height: 22rem;
-    max-width: 22rem;
     object-fit: cover;
 }
 

@@ -12,9 +12,8 @@ use App\Models\Usuario_Rol;
 class ControladorAdmin extends Controller {
 
     /**
-     * Edita los datos de perfil del administrador. En caso de querer cambiar la 
-     * contraseña no se requerirá la contraseña anterior.
-     * @param Request $req Recibe los datos del formulario de registro.
+     * Edita los datos de perfil del administrador.
+     * @param Request $req Recibe los datos del formulario del perfil.
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
@@ -25,7 +24,6 @@ class ControladorAdmin extends Controller {
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $imagen = $req->file('imagen');
-
 
         $mensaje = 'Perfil modificado con éxito';
         try {
@@ -38,8 +36,6 @@ class ControladorAdmin extends Controller {
                 $usuario->Clave = $clave;
             }
             if ($imagen != null) {
-
-
                 $nomimagen = $imagen->getClientOriginalName();
                 $usuario->Foto = 'images/users/' . $nomimagen;
                 $req->imagen->move(public_path('images/users'), $nomimagen);
