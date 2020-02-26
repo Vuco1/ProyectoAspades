@@ -23,7 +23,26 @@ Contextos
 <!-- MAIN -->
 <main class="d-flex">
     <div id="carouselContextos" class="carousel slide m-auto px-5" data-ride="carousel" data-interval="false" data-touch="true">
-        <div class="carousel-inner h-100 d-flex">
+        <?php if ($contextos) { ?>
+            <ol class="carousel-indicators">
+                <?php
+                $i = 0;
+                $pag = 1;
+                foreach ($contextos as $c) {
+                    if ($i % 3 == 0) {
+                        if ($i == 0) {
+                            echo '<li data-target="#carouselContextos" data-slide-to="0" class="active"></li>';
+                        } else {
+                            echo '<li data-target="#carouselContextos" data-slide-to="' . $pag . '"></li>';
+                            $pag++;
+                        }
+                    }
+                    $i++;
+                }
+                ?>
+            </ol>
+        <?php } ?>
+        <div class="carousel-inner h-100">
             <?php if (!$contextos) { ?>
                 <h1 class="m-auto">Sin Resultados</h1>
             <?php } else {
@@ -38,7 +57,7 @@ Contextos
                         echo '<div class="card-deck">';
                     }
                     ?>
-                    <div class="card">
+                    <div class="card card-contexto">
                         <form id="form<?php echo $cont ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                             @csrf
                             <input type="hidden" name="actual" value="{{ $c->Id_tablero }}">
@@ -83,12 +102,14 @@ Contextos
                     <form action="subirTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="sr-only" for="Foto">Foto</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                    <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
-                                <input type="file" name="image" id="image" class="form-control">
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo">
+                                    <label class="custom-file-label" for="image">Selecciona una imagen...</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -154,17 +175,17 @@ Contextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Nuevo Contexto</div>
+                    <div class="modal-title">Eliminar Contexto</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="eliminarTablero" method="post" enctype="multipart/form-data">
+                    <form action="eliminarTablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas elimar este contexto?</p>
+                        <p>¿Estás seguro de que deseas eliminar este contexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
-                        <input type="submit" name="delete" id="delete" value="eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>

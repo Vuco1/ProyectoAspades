@@ -155,9 +155,10 @@ a.text-orange:hover {
 
 .card-body { min-height: 2.5rem; }
 
+.card-contexto { max-width: 20rem; }
+
 .img-contexto {
     height: 22rem;
-    max-width: 22rem;
     object-fit: cover;
 }
 
