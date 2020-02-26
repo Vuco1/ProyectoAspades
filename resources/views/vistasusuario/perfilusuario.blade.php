@@ -56,7 +56,7 @@ Perfil
                 </div>
                 <div class="custom-file">
                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen">
-                    <label class="custom-file-label" for="imagen">Selecciona una imagen...</label>
+                    <label class="custom-file-label" for="imagen">Selecciona tu nueva imagen...</label>
                 </div>
             </div>
         </div>
