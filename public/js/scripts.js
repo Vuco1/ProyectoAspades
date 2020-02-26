@@ -115,7 +115,13 @@ function eliminarContexto(id) {
 function addContexto(id) {
     $('#posiadd').val(id);
 }
-
+function eliminarPagina(){
+    alert('holi');
+    var cosa= $("ol.carousel-indicators li.active").attr('id');
+    cosa= cosa.substr(3);    
+    alert(cosa);
+    $("#elimpagina").val(cosa);
+}
 function volver() {
     window.history.back();
 }

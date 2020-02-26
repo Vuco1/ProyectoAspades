@@ -268,37 +268,43 @@ class ControladorUsuario extends Controller {
      */
     public function eliminarPagina(Request $req) {
         $tablero = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'tableros.Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
-                ->where('Id_tablero', '=', \Session::get('actual'))
-                ->get();
+                ->where('tableros.Id_tablero', '=', $req->anterior)
+                ->first();
         $pagina = $req->pagina; // pag atual
         $casPorPag = $tablero->Filas * $tablero->Columnas; // 3 6 12
         $maximoPaginaBorrar = $pagina * $casPorPag;
         $minimoPaginaBorrar = ($pagina - 1) * $casPorPag;
-        DB::table('tableros')
+        \DB::table('tableros')
                 ->where('Posicion', '<=', $maximoPaginaBorrar) //12
                 ->where('Posicion', '>', $minimoPaginaBorrar)//7
                 ->where('Puntero', $tablero->Id_tablero)
                 ->delete();
-        DB::table('tableros')
+        \DB::table('tableros')
                 ->where('Posicion', '>', $maximoPaginaBorrar)
                 ->where('Puntero', $tablero->Id_tablero)
                 ->decrement('Posicion', $casPorPag);
-        DB::table('tableros')
+        \DB::table('tableros')
                 ->where('Id_tablero', \Session::get('actual'))
                 ->decrement('Paginas', 1);
+        
+        $datos = self::cargarSubcontextos($req);
+        return view('vistasusuario/subcontextosusuario', $datos);
     }
 
     /**
      * Añade una agina en blanco
      * @author Victor
      */
-    public function addPagina() {
-        DB::table('tableros')
+    public function addPagina(Request $req) {
+        \DB::table('tableros')
                 ->where('Id_tablero', \Session::get('actual'))
                 ->increment('Paginas', 1);
+        
+        $datos = self::cargarSubcontextos($req);
+        return view('vistasusuario/subcontextosusuario', $datos);
     }
 
 }

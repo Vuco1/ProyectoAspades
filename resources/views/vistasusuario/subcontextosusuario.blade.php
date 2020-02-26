@@ -17,9 +17,11 @@ SubContextos
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
                     <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                        <button class="dropdown-item" data-toggle="modal" data-target="#nueva"><i class="fas fa-plus-circle icono"></i>Añadir página</button>
-                        <button class="dropdown-item" data-toggle="modal" data-target="#eliminar"><i class="fas fa-minus-circle icono"></i>Eliminar página</button>
-                        <button class="dropdown-item" data-toggle="modal" data-target="#vaciar"><i class="fas fa-times-circle icono"></i>Vaciar tablero</button>
+                        <form action='addpagina' method="post">
+                            <button class="dropdown-item"><i class="fas fa-plus-circle icono"></i>Añadir página</button>
+                        </form>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#eliminarpagina" onclick="eliminarPagina()"><i class="fas fa-minus-circle icono"></i>Eliminar página</button>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#vaciarpagina"><i class="fas fa-times-circle icono"></i>Vaciar tablero</button>
                     </div>
                 </li>
             </ul>
@@ -35,9 +37,9 @@ SubContextos
                 <?php
                 for ($i = 0; $i < $paginas; $i++) {
                     if ($i == 0) {
-                        echo '<li data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>';
+                        echo '<li id="pag'.($i + 1).'" data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>';
                     } else {
-                        echo '<li data-target="#carouselSubcontextos" data-slide-to="' . $i . '"></li>';
+                        echo '<li id="pag'.($i + 1).'" data-target="#carouselSubcontextos" data-slide-to="' . $i . '"></li>';
                     }
                 }
                 ?>
@@ -220,7 +222,7 @@ SubContextos
             </div>
         </div>
     </section>
-    <!-- VENTANA MODAL ELIMINAR -->
+    <!-- VENTANA MODAL ELIMINAR TABLERO -->
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -232,6 +234,51 @@ SubContextos
                 </div>
                 <div class="modal-body p-4">
                     <form action="eliminarTablero" method="post" enctype="multipart/form-data" class="text-center">
+                        @csrf
+                        <p>¿Estás seguro de que deseas eliminar este subcontexto?</p>
+                        <input type="hidden" name="idelim" id="idelim" value="">
+                        <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- VENTANA MODAL ELIMINAR PAGINA -->
+    <section class="modal fade" id="eliminarpagina">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Eliminar Subcontexto</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="eliminarpagina" method="post" enctype="multipart/form-data" class="text-center">
+                        @csrf
+                        <p>¿Estás seguro de que deseas eliminar esta página?</p>
+                        <input type="hidden" name="anterior" value="{{ \Session::get('actual') }}">
+                        <input type="hidden" id="elimpagina" name="pagina" value="">     
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+      <!-- VENTANA MODAL VACIAR TABLERO -->
+    <section class="modal fade" id="vaciarpagina">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Eliminar Subcontexto</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="vaciartablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
                         <p>¿Estás seguro de que deseas eliminar este subcontexto?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">

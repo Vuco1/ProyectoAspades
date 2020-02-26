@@ -164,10 +164,12 @@ Route::group(['middleware' => 'Usuario'], function() {
      * Ruta para ir al tablero anterior
      * @author Victor
      */
-     Route::post('irAnterior', 'ControladorUsuario@tableroAnterior');
-     
      Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
      
      Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
      
+     Route::any('addpagina','ControladorUsuario@addPagina');
+     Route::any('eliminarpagina','ControladorUsuario@eliminarPagina');
+     
+     //Todos los any son responsabilidad de carlos, el resto de miembros del grupo saben como funciona un middleware.
 });
