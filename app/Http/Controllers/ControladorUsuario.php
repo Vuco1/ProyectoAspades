@@ -125,6 +125,7 @@ class ControladorUsuario extends Controller {
         $idusuario = $usuario->Id_usuario;
         $tablero->Id_usuario = $idusuario;
         $tablero->Nombre = $req->nombre;
+        $tablero->Accion = $req->idaccion;
         if (\Session::has('actual')) {
             $idcontexto = \Session::get('actual');
         } else {
@@ -177,6 +178,7 @@ class ControladorUsuario extends Controller {
         $tablero = Tablero::where('Id_tablero', '=', $req->id_tablero)->first();
         $imagen = Imagen::where('Id_imagen', $req->id_imagen)->first();
         $tablero->Nombre = $req->nombre;
+        $tablero->Accion = $req->idaccion;
         $image_path = $tablero->Ruta;  // the value is : localhost/project/image/filename.format
         if (File::exists($image_path)) {
             File::delete($image_path);
