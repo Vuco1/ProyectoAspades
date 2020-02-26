@@ -23,7 +23,7 @@ Gestión
 </header>
 <!-- MAIN -->
 <main class="pt-5">
-    <div class="container pt-5 ">
+    <div class="container pt-5 text-center">
         <div class="row py-2 bg-orange text-white rounded">
             <div class="col">Usuario</div>            
             <div class="col">Nombre</div>
@@ -31,7 +31,7 @@ Gestión
             <div class="col-1 p-0">Editar</div>
             <div class="col-1 p-0">Borrar</div>
         </div>
-        <div class="row">
+        <div class="row text-center">
             <?php foreach ($datos as $dato) { ?>
                 <form id="form<?php echo $dato->Id_usuario ?>" name="form" class="form container p-0 m-0">
                     @csrf
@@ -50,16 +50,15 @@ Gestión
                         <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/></button></div>
                     </div>
                 </form>
-                <hr>
                 <?php
             }
             ?>
         </div>
     </div>
-    <div>
+    <div class="text-center">
         <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
     </div>
-    <div class="d-inline-flex align-content-center mt-5">
+    <div class="d-inline-flex align-content-center text-center mt-5">
         {{ $datos->links() }}
     </div>
     <!-- VENTANA MODAL AÑADIR USUARIO -->

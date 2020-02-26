@@ -41,7 +41,7 @@ class ControladorAdmin extends Controller {
 
 
                 $nomimagen = $imagen->getClientOriginalName();
-                $usuario->Foto = 'images/user' . $nomimagen;
+                $usuario->Foto = 'images/users/' . $nomimagen;
                 $req->imagen->move(public_path('images/users'), $nomimagen);
             }
             $usuario->save();
@@ -77,7 +77,7 @@ class ControladorAdmin extends Controller {
             ]);
             $foto = $req->file('imagen');
             $nomimagen = $foto->getClientOriginalName();
-            $req->imagen->move(public_path('images/users'), $nomimagen);
+            $req->imagen->move(public_path('images/users/'), $nomimagen);
         } else {
             $nomimagen = 'general.jpg';
         }
@@ -91,7 +91,7 @@ class ControladorAdmin extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->Nombre = $nombre;
-        $usuario->Foto = 'images/user/' . $nomimagen;
+        $usuario->Foto = 'images/users/' . $nomimagen;
         $usuario->save();
 
         $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();

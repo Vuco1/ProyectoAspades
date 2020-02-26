@@ -44,7 +44,7 @@ $(document).ready(function () {
      * @author Ampliado y adaptado a jquery por Laura.
      * @version 3.0
      */
-    $("#loginadmin").click(function mostrarMenu() {
+    function menu() {
         var clave = $("#passw").val();
         var menu = $("#menuoculto");
         var botones = $(".card-footer");
@@ -65,35 +65,36 @@ $(document).ready(function () {
             }
             $("#loginoculto").modal("hide");
         }
-    });
-
+    }
+    
     /**
-     * @author Isabel, Laura y Carlos.
-     * @version 1.0 
+     * Llama a la función menu() al hacer clic en el botón de logueo del administrador de tableros.
+     */
+    $("#loginadmin").click(function mostrarMenu() {
+        menu();
+    });
+    
+    /**
+     * Llama a la función menu() al pulsar intro en el input de la contraseña del administrador de tableros.
+     * @param {event} Nombre del evento. 
+     * @author Carlos
+     * @version 2.0 
      */
     $("#passw").keypress(function mostrarMenuIntro(event) {
         var tecla = event.keyCode;
         if (tecla === 13) {
-            var clave = $("#passw").val();
-            var menu = $("#menuoculto");
-            var botones = $(".card-footer");
-            var numFilas = $("input[name=numfilas]").val();
-            if (clave === "aspades") {
-                if (menu.hasClass("d-none")) {
-                    $("#loginadmin").val("Ocultar menú");
-                    menu.removeClass("d-none").addClass("d-block");
-                    botones.removeClass("d-none").addClass("d-block");
-                    $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
-                } else {
-                    $("#loginadmin").val("Mostrar menú");
-                    menu.removeClass("d-block").addClass("d-none");
-                    botones.removeClass("d-block").addClass("d-none");
-                    $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 2.75rem)");
-                    $("#passw").val("");
-                }
-                $("#loginoculto").modal("hide");
-            }
+            menu();
         }
+    });
+    
+    /**
+     * Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
+     * @author Laura
+     */
+    $(".custom-file-input").change(function cambiarTexto() {
+        var ruta = $(".custom-file-input").val();
+        var texto = jQuery.trim(ruta).substr(12);
+        $(".custom-file-label").text(texto);
     });
 
 });
