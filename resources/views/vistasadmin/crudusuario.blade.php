@@ -75,12 +75,14 @@ Gestión
                     <form action="registrar" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="sr-only" for="imagen">Foto Perfil</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-image icono"></i>Perfil</div>
+                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
                                 </div>
-                                <input id="imagen" name="imagen" type="file" class="form-control"/>
+                                <div class="custom-file">
+                                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen">
+                                    <label class="custom-file-label" for="imagen">Selecciona una imagen...</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,7 +100,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre"  placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -107,7 +109,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                                 </div>
-                                <input type="password" name="clave" id="clave" placeholder="Escriba su nueva contraseña" class="form-control">
+                                <input type="password" name="clave" id="clave" placeholder="Escribe una contraseña" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -116,11 +118,11 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
                                 </div>
-                                <input type="password" name="claverep" id="claverepe" placeholder="Repita la contraseña" class="form-control">
+                                <input type="password" name="claverep" id="claverepe" placeholder="Repite la contraseña" class="form-control">
                             </div>
                         </div>   
                         <div id="mensaje"> </div>
-                        <div class="custom-control custom-checkbox mb-3 mt-3">
+                        <div class="custom-control custom-checkbox mb-3 mt-3 text-center">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
