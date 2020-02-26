@@ -122,12 +122,14 @@ Contextos
                     <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label class="sr-only" for="Foto">Foto</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Foto</div>
+                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
-                                <input type="file" name="image" id="imagecontexto" class="form-control">
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagen">
+                                    <label class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -141,7 +143,7 @@ Contextos
                                 <input type="text" name="nombre" id="nombrecontexto"  placeholder="Nombre" class="form-control">
                             </div>
                         </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
