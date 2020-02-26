@@ -30,7 +30,7 @@ Login
                 </div>
                 <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-orange w-100">
             </form>
-            <div id="mensaje"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
+            <div id="mensaje" class="text-center pt-2 text-danger"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         </section>
     </main>
 @include('plantillas/footer')
