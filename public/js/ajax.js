@@ -68,7 +68,7 @@ $(document).ready(function () {
             if ($(this).find('input[name="accion"]').val() == 3) {
                 leer(evt,this);
                 evt.preventDefault();
-                var anterior=$(this).find('input[name="anterior"]').val()
+                var anterior=$(this).find('input[name="anterior"]').val();
                 setTimeout(function () {
                      window.history.back();
 //                    $.ajax({
@@ -141,7 +141,6 @@ $(document).ready(function () {
                     type: 'post',
                     data: {_token: CSRF_TOKEN, "puntero": $id},
                     success: function (response) {
-                        alert('Usuario actualizado con exito');
                     }, error: function (jqXHR, exception) {
                         var msg = '';
                         if (jqXHR.status === 0) {

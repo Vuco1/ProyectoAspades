@@ -100,9 +100,7 @@ $(document).ready(function () {
 });
 
 function modificarContexto(id) {
-    alert($('#nombre' + id).val());
-    $("#nombremod").val($('#nombre' + id).val());   
-    alert($('#nombremod').val());
+    $("#nombremod").val($('#nombre' + id).val());
     $('#posimo').val(id);   
     $("#actual").val($('#actual' + id).val());
     var idaccion= $('#accion' + id).val() -1;
@@ -115,10 +113,8 @@ function addContexto(id) {
     $('#posiadd').val(id);
 }
 function eliminarPagina(){
-    alert('holi');
     var cosa= $("ol.carousel-indicators li.active").attr('id');
-    cosa= cosa.substr(3);    
-    alert(cosa);
+    cosa= cosa.substr(3);
     $("#elimpagina").val(cosa);
 }
 function volver() {
