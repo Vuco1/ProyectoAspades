@@ -57,77 +57,70 @@ class ControladorUsuario extends Controller {
      * Obtiene los Subcontextos que contiene un Contexto.
      * @param Request $req
      * @return type
-     * @author Laura
-     * @version 2.2
+     * @author Laura y Víctor
+     * @version 3.0
      */
     public function cargarSubcontextos($req) {
+        //Se mete en la sesión el id del tablero padre
         if ($req->get('anterior')) {
-            $puntero=$req->get('anterior');
-        }else{
+            $puntero = $req->get('anterior');
+        } else {
         $puntero = $req->get('actualtablero');
         }
-        //dd($puntero);
         session()->put('actual', $puntero);
+        
+        //Se obtiene una lista de todas las dimensiones de la tabla para los selects de las ventanas modales
+        $dimensiones = \DB::table('dimensiones')
+                ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
+                ->get();
+        
+        //Se obtienen todos los tableros que contiene el tablero padre
+        $aux = \DB::table('tableros')
+                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'Accion')
+                ->where('Puntero', '=', $puntero)
+                ->get();
+        
+        //Se obtiene el número de filas y columnas y la clase de la dimensión del tablero padre
         $dimension = \DB::table('dimensiones')
                 ->select('dimensiones.Filas', 'dimensiones.Dimension', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tablero_dimension.Id_dimension', 'dimensiones.Id_dimension')
                 ->where('tablero_dimension.Id_tablero', $puntero)
                 ->first();
-        $dimensiones = \DB::table('dimensiones')
-                ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
-                ->get();
         
-        $aux = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'Accion')
-                ->where('Puntero', '=', $puntero)
-                ->get();
-
+        //Se obtiene el número de páginas del tablero padre y se calculan las casillas que tendrá cada página y las casillas en total
         $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
+        $casPorPag = $dimension->Filas * $dimension->Columnas;
+        $casTotal = $numPags->Paginas * $casPorPag;
 
-        //Se crea un objeto Tablero por defecto.
+        //Se crea un objeto Tablero auxiliar con datos por defecto
         $blanco = new Tablero;
         $blanco->Imagen = "images/tabs/blanco.jpg";
         $blanco->Puntero = $puntero;
 
-        $casPorPag = $dimension->Filas * $dimension->Columnas;
-        $casTotal = $numPags->Paginas * $casPorPag;
-
+        //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
+        $subcontextos = array();
+        for ($i = 1; $i <= $casTotal; $i++) {
+            $subcontextos[$i] = $blanco;
+        }
+        
         $acciones = Accion::all();
+        
         if (!$aux->IsEmpty()) {
-            //Se obtiene el número de página más alto, las casillas por página, el número total de casillas y la dimensión del preset.
-            //dd($numPags);
-            //Se crea un segundo array con tantas posiciones como número total de casillas habrá y se rellenan con el Tablero por defecto.
-            $subcontextos = array();
-            for ($i = 1; $i <= $casTotal; $i++) {
-                $subcontextos[$i] = $blanco;
-            }
-            //Se asigna cada Tablero del array aux a la posición que le corresponde en el array subcontextos.
+           //Se asigna cada Tablero del array aux a la posición que le corresponde.
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
-            }
-            $datos = [
-                'subcontextos' => $subcontextos,
-                'casTotal' => $casTotal,
-                'casPorPag' => $casPorPag,
-                'dimension' => $dimension,
-                'dimensiones' => $dimensiones,
-                'paginas' => $numPags->Paginas,
-                'acciones' => $acciones
-            ];
-        } else {
-            for ($i = 1; $i <= $casTotal; $i++) {
-                $subcontextos[$i] = $blanco;
-            }
-            $datos = [
-                'subcontextos' => $subcontextos,
-                'paginas' => $numPags->Paginas,
-                'casTotal' => $casTotal,
-                'casPorPag' => $casPorPag,
-                'dimension' => $dimension,
-                'dimensiones' => $dimensiones,
-                'acciones' => $acciones
-            ];
+            } 
         }
+        
+        $datos = [
+            'subcontextos' => $subcontextos,
+            'paginas' => $numPags->Paginas,
+            'casTotal' => $casTotal,
+            'casPorPag' => $casPorPag,
+            'dimension' => $dimension,
+            'dimensiones' => $dimensiones,
+            'acciones' => $acciones
+        ];
 
         return $datos;
     }

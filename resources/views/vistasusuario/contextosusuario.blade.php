@@ -177,7 +177,7 @@ Contextos
                                 </div>
                                 <input type="hidden" id="posimo" name="posimo" value="1">
                                 <input type="hidden" id="actual" name="actual" value="">
-                                <input type="text" name="nombremod" id="nombremod"  placeholder="Nombre" class="form-control" value="">
+                                <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
                             </div>
                         </div> 
                         <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
