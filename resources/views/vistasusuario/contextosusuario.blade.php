@@ -130,12 +130,12 @@ Contextos
                             <label class="sr-only" for="dimension">Tamaño</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Tamaño</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>Tamaño</div>
                                 </div>
                                 <select name="dimension" class="form-control" id="dimension">
                                     <?php foreach ($dimensiones as $d) { ?>
                                         <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
-<?php } ?>
+                                    <?php } ?>
                                 </select>
                             </div> 
                         </div>
