@@ -80,7 +80,7 @@ Perfil
         </div>
         <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-orange w-100">
     </form>
-    <div id="mensaje" class="mt-3"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
+    <div id="mensaje" class="text-center mt-3 <?php if (isset($color)) { echo $color; }?>"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
 <?php } ?>
 </main>
 @include('plantillas/footer')
