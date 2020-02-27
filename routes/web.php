@@ -174,5 +174,5 @@ Route::group(['middleware' => 'Usuario'], function() {
      
      Route::any('vaciartablero','ControladorUsuario@DOOOOM');
      
-     //Todos los any son responsabilidad de carlos, el resto de miembros del grupo saben como funciona un middleware.
+     
 });

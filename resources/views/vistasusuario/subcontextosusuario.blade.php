@@ -39,9 +39,9 @@ SubContextos
                 <?php
                 for ($i = 0; $i < $paginas; $i++) {
                     if ($i == 0) {
-                        echo '<li id="pag'.($i + 1).'" data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>';
+                        echo '<li id="pag' . ($i + 1) . '" data-target="#carouselSubcontextos" data-slide-to="0" class="active"></li>';
                     } else {
-                        echo '<li id="pag'.($i + 1).'" data-target="#carouselSubcontextos" data-slide-to="' . $i . '"></li>';
+                        echo '<li id="pag' . ($i + 1) . '" data-target="#carouselSubcontextos" data-slide-to="' . $i . '"></li>';
                     }
                 }
                 ?>
@@ -249,7 +249,7 @@ SubContextos
             </div>
         </div>
     </section>
-     <!-- VENTANA MODAL ELIMINAR PAGINA -->
+    <!-- VENTANA MODAL ELIMINAR PAGINA -->
     <section class="modal fade" id="eliminarpagina">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -271,8 +271,8 @@ SubContextos
             </div>
         </div>
     </section>
-     
-      <!-- VENTANA MODAL VACIAR TABLERO -->
+
+    <!-- VENTANA MODAL VACIAR TABLERO -->
     <section class="modal fade" id="vaciarpagina">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -285,8 +285,8 @@ SubContextos
                 <div class="modal-body p-4">
                     <form action="vaciartablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas vaciar este subcontexto?
-                            (Esto eliminara todos los tableros dentro de este subcontexto)</p>
+                        <p>¿Estás seguro de que deseas vaciar este subcontexto?</p>
+                        <p>(Esto eliminara todos los tableros dentro de este subcontexto)</p>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
