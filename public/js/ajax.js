@@ -38,8 +38,6 @@ $(document).ready(function () {
     function enviarsubcontextos() {
         var id = localStorage.getItem('id');
         localStorage.removeItem('id');
-        id = id - 1;
-        alert(id);
         document.forms[id].submit();
         //document.formulario.submit();                
     }
@@ -52,7 +50,7 @@ $(document).ready(function () {
         //Funciones de las imagenes
         if (buttonpressed === 'btnsubcon') {
             //Para el submit de una imagen normal.
-            if ($(this).find('input[name="accion"]').val() == 1) {
+            if ($(this).find('input[name="accion"]').val() == 1 ||$(this).find('input[name="accion"]').val() == 0) {
                 leer(evt,this);
                 evt.preventDefault();
 

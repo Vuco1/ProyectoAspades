@@ -69,7 +69,7 @@ SubContextos
                             <div class="card-body p-2">
                                 <input  type="hidden" name="nombre" value="{{ $subcontextos[$i]->Nombre }}" id="nombre<?php echo $i ?>">
                                 <input type="hidden" name="posicion" id="posicion<?php echo $i ?>" value="<?php echo $i ?>">
-                                <input type="hidden" name="actual" id="actual<?php echo $i ?>" value="{{ $subcontextos[$i]->Id_tablero }}">
+                                <input type="hidden" name="actualtablero" id="actual<?php echo $i ?>" value="{{ $subcontextos[$i]->Id_tablero }}">
                                 <input type="hidden" name="numfilas" id="numfilas<?php echo $i ?>" value="{{$dimension->Filas }}">
                                 <input type="hidden" name="accion" id="accion<?php echo $i ?>" value="{{ $subcontextos[$i]->Accion }}">
                                 <p id="leer<?php echo $i ?>" class="card-text">{{ $subcontextos[$i]->Nombre }}</p>

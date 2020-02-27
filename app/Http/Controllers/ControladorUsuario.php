@@ -64,7 +64,7 @@ class ControladorUsuario extends Controller {
         if ($req->get('anterior')) {
             $puntero=$req->get('anterior');
         }else{
-        $puntero = $req->get('actual');
+        $puntero = $req->get('actualtablero');
         }
         //dd($puntero);
         session()->put('actual', $puntero);
