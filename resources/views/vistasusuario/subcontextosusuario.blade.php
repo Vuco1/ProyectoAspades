@@ -123,7 +123,7 @@ SubContextos
                                     <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo">
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" required>
                                     <label class="custom-file-label" for="image">Selecciona una imagen...</label>
                                 </div>
                             </div>
@@ -134,9 +134,22 @@ SubContextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" required>
                                 <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
                             </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="sr-only" for="accion">Acción</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>Acción</div>
+                                </div>
+                                <select name="accion" class="custom-select" id="accion">
+                                    <?php foreach ($acciones as $accion) { ?>
+                                        <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div> 
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="dimension">Tamaño</label>
@@ -144,22 +157,9 @@ SubContextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>Tamaño</div>
                                 </div>
-                                <select name="dimension" class="form-control" id="dimension">
+                                <select name="dimension" class="custom-select" id="dimension">
                                     <?php foreach ($dimensiones as $d) { ?>
                                         <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div> 
-                        </div>
-                        <div class="form-group">
-                            <label class="sr-only" for="accion">Acción</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>Acción</div>
-                                </div>
-                                <select name="accion" class="form-control" id="accion">
-                                    <?php foreach ($acciones as $accion) { ?>
-                                        <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
                                     <?php } ?>
                                 </select>
                             </div> 
@@ -191,7 +191,7 @@ SubContextos
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod">
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" required>
                                     <label class="custom-file-label" for="image">Selecciona una imagen...</label>
                                 </div>
                             </div>
@@ -202,7 +202,7 @@ SubContextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>                                
-                                <input type="text" name="nombremod" id="nombremod"  placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -211,7 +211,7 @@ SubContextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>Acción</div>
                                 </div>
-                                <select name="accionlist" class="form-control" id="accionlist">
+                                <select name="accionlist" class="custom-select" id="accionlist">
                                     <?php foreach ($acciones as $accion) { ?>
                                         <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
                                     <?php } ?>

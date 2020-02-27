@@ -111,7 +111,7 @@ Contextos
                                     <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo">
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" required>
                                     <label class="custom-file-label" for="image">Selecciona una imagen...</label>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" required>
                                 <input type="text" name="puntero" id="id" class="form-control" value="<?php echo session()->get('idcontexto') ?>" hidden>
                             </div>
                         </div>
@@ -132,7 +132,7 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>Tamaño</div>
                                 </div>
-                                <select name="dimension" class="form-control" id="dimension">
+                                <select name="dimension" class="custom-select" id="dimension">
                                     <?php foreach ($dimensiones as $d) { ?>
                                         <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
                                     <?php } ?>
