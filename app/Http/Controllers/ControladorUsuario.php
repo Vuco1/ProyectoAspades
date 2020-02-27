@@ -16,9 +16,9 @@ class ControladorUsuario extends Controller {
     /**
      * Obtiene los contextos del usuario guardado en la sesión a partir de su Id.
      * @param Request $req
-     * @return type
+     * @return array $datos Contextos del usuario e ids y nombres de todas las dimensiones
      * @author Laura
-     * @version 2.1
+     * @version 3.0
      */
     public function cargarContextos() {
         session()->forget('actual');
@@ -54,9 +54,9 @@ class ControladorUsuario extends Controller {
     }
 
     /**
-     * Obtiene los Subcontextos que contiene un Contexto.
+     * Obtiene los Subcontextos que contiene un Tablero padre.
      * @param Request $req
-     * @return type
+     * @return array $datos Datos de los tableros para cargar la vista de subcontextos
      * @author Laura y Víctor
      * @version 3.0
      */
@@ -131,12 +131,12 @@ class ControladorUsuario extends Controller {
     }
 
     /**
-     * Sube una imagen a nuestra carpeta de images
+     * Sube un tablero a la BDD y la imagen que le corresponde a la carpeta images.
      * @author Víctor
      * @version 1.0
      */
     public function subirTablero(Request $req) {
-        //Creacion de tablero
+        //Creación del tablero
         $tablero = new Tablero;
         $usuario = session()->get('usuario');
         $idusuario = $usuario->Id_usuario;
@@ -164,7 +164,7 @@ class ControladorUsuario extends Controller {
             $tablero->Posicion = 0;
         }
         $tablero->save();
-        //Cosas para mañana
+        
         $idtablero = \DB::table('tableros')->where('Id_usuario', $idusuario)->max('Id_tablero');
         $tadi = new Tablero_Dimension;
         $tadi->Id_tablero = $idtablero;
@@ -180,7 +180,7 @@ class ControladorUsuario extends Controller {
     }
 
     /**
-     * Obtiene la fila y la columna del string de posicion que se le pase a la funcion
+     * Obtiene la fila y la columna del string de posicion que se le pase a la funcion.
      * @param type $posicion
      * @return type
      * @author Victor
@@ -198,7 +198,10 @@ class ControladorUsuario extends Controller {
      */
     public function modificarTablero(Request $req) {
         $tablero = Tablero::where('Id_tablero', '=', $req->actual)->first();
-        $tablero->Nombre = $req->nombremod;
+        $nombre = $req->nombremod;
+        if ($nombre != null) { 
+            $tablero->Nombre = $nombre;
+        }
         $tablero->Accion = $req->accionlist;
         $tablero->Posicion = $req->posimo;
         $image_path = $tablero->Imagen; // the value is : localhost/project/image/filename.format
