@@ -26,6 +26,7 @@ class ControladorAdmin extends Controller {
         $imagen = $req->file('imagen');
 
         $mensaje = 'Perfil modificado con éxito';
+        $color = 'text-success';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
             $usuario->Nombre = $nombre;
@@ -36,13 +37,17 @@ class ControladorAdmin extends Controller {
                 $usuario->Clave = $clave;
             }
             if ($imagen != null) {
-                $nomimagen = $imagen->getClientOriginalName();
+                $req->validate([
+                    'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $nomimagen = time() . '.' . $req->imagen->extension();
                 $usuario->Foto = 'images/users/' . $nomimagen;
                 $req->imagen->move(public_path('images/users'), $nomimagen);
             }
             $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';
+            $color = 'text-danger';
         }
 
         $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -50,7 +55,8 @@ class ControladorAdmin extends Controller {
 
         $datos = [
             'usuario' => $usuario,
-            'mensaje' => $mensaje
+            'mensaje' => $mensaje,
+            'color' => $color
         ];
 
         return view('vistasadmin/perfiladmin', $datos);
