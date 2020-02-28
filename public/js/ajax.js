@@ -6,12 +6,22 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
+    /**
+     * Difrerencia el tipo de boton pulsado
+     * @type jQuery
+     * @author Victor y Carlos
+     */
     var buttonpressed;
     $('.btn').click(function () {
         buttonpressed = $(this).attr('name');
     });
-
+    
+/**
+ * Lee el texto de la carta 
+ * @param {type} e
+ * @param {type} form
+ * @author Carlos
+ */
     function leer(e, form) {
         var formulario = $(form).attr('id');
         e.preventDefault();
@@ -24,8 +34,7 @@ $(document).ready(function () {
         speech.pitch = 1;
         speech.lang = "es";
         window.speechSynthesis.speak(speech);
-    }
-    ;
+    };
     
     function enviar() {
         var id = localStorage.getItem('id');
@@ -33,8 +42,6 @@ $(document).ready(function () {
         document.forms[id].submit();
         //document.formulario.submit();                
     }
-
-
     function enviarsubcontextos() {
         var id = localStorage.getItem('id');
         localStorage.removeItem('id');

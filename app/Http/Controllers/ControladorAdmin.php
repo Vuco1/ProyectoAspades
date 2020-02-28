@@ -14,6 +14,7 @@ class ControladorAdmin extends Controller {
     /**
      * Edita los datos de perfil del administrador.
      * @param Request $req Recibe los datos del formulario del perfil.
+     * @author Isabel
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
@@ -66,6 +67,7 @@ class ControladorAdmin extends Controller {
      * Registra un usuario nuevo.
      * @param Request $req Recibe los datos del formulario de registro.
      * @return Lista de usuarios despues de haber realizado la insercion del usuario nuevo.
+     * @author Victor
      */
     public function addUsuario(Request $req) {
         $miusuario = session()->get('usuario');
@@ -111,6 +113,7 @@ class ControladorAdmin extends Controller {
     /**
      * Devuelve el listado de usuarios para mostrar en el crud, los resultados aparecen paginados
      * @return LengthAwarePaginator
+     * @author Victor
      */
     private function selectUsuarios() {
         $miusuario = \Session::get('usuario');
@@ -126,6 +129,7 @@ class ControladorAdmin extends Controller {
     /**
      * Devuelve la lista de los roles en la base de datos.
      * @return type
+     * @author Victor
      */
     private function selectRoles() {
         $datos2 = \DB::Select('Select * from rol');
@@ -135,6 +139,7 @@ class ControladorAdmin extends Controller {
     /**
      * Carga el crud de usuarios con la lista de usuarios y roles.
      * @return type
+     * @author Victor
      */
     public function crudUsuarios() {
         $datos = self::selectUsuarios();
@@ -146,24 +151,27 @@ class ControladorAdmin extends Controller {
      * Recibe la opcion seleccionada en el crud (Modificar/Eliminar) y llama a la funcion correspondiente.
      * @param Request $req Recibe los datos del usuario sobre el que se desee que se realicen los cambios.
      * @return type
+     * @author Victor
+     * En desuso tras cambiarlo a ajax.
      */
-    public function eleccionCrud(Request $req) {
-
-        if ($req->has('modUsuario')) {
-            $this->modificarUsuario($req);
-        }
-
-        if ($req->has('eliminarUsuario')) {
-            $this->eliminarUsuario($req);
-        }
-
-        $datos = self::selectUsuarios();
-        $datos2 = self::selectRoles();
-        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
-    }
+//    public function eleccionCrud(Request $req) {
+//
+//        if ($req->has('modUsuario')) {
+//            $this->modificarUsuario($req);
+//        }
+//
+//        if ($req->has('eliminarUsuario')) {
+//            $this->eliminarUsuario($req);
+//        }
+//
+//        $datos = self::selectUsuarios();
+//        $datos2 = self::selectRoles();
+//        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
+//    }
 
     /**
      * Llena la base de datos de usuarios random para testeo.
+     * @author Victor
      */
     public function llenarBase() {
         for ($i = 0; $i < 20; $i++) {
@@ -190,6 +198,7 @@ class ControladorAdmin extends Controller {
     /**
      * Modifica los datos de un usuario de la BBDD teniendo en cuenta su id único.
      * @param Request $request
+     * @author Victor
      */
     public function updateUsuario(Request $request) {
         $nombre = $request->input('nombre');
@@ -212,6 +221,7 @@ class ControladorAdmin extends Controller {
     /**
      * Borra los datos de un usuario de la BBDD teniendo en cuenta su id único.
      * @param Request $request
+     * @author Victor
      */
     public function deleteUsuario(Request $request) {
         $id = $request->input('id');

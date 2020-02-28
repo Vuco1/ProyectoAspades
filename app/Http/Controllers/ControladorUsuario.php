@@ -133,7 +133,7 @@ class ControladorUsuario extends Controller {
     /**
      * Sube un tablero a la BDD y la imagen que le corresponde a la carpeta images.
      * @author Víctor
-     * @version 1.0
+     * @version 70.0
      */
     public function subirTablero(Request $req) {
         //Creación del tablero
@@ -265,7 +265,7 @@ class ControladorUsuario extends Controller {
 
     /**
      * Borrar pagina
-     * @author Victor  Carlos 
+     * @author Victor,Carlos y Laura
      */
     public function eliminarPagina(Request $req) {
         $tablero = \DB::table('tableros')

@@ -98,7 +98,12 @@ $(document).ready(function () {
     });
 
 });
-
+/**
+ * Modifica el contenido de la ventana modal con los datos que tiene la tarjeta
+ * @param {type} id
+ * @returns {undefined}
+ * @author Victor
+ */
 function modificarContexto(id) {
     $("#nombremod").val($('#nombre' + id).val());
     $('#posimo').val(id);   
@@ -106,17 +111,36 @@ function modificarContexto(id) {
     var idaccion= $('#accion' + id).val() -1;
     document.getElementById('accionlist').options[idaccion].selected = 'selected';
 }
+/**
+ * Pasa la id a la ventana modal de eliminar.
+ * @param {type} id
+ * @returns {undefined}
+ * @author Victor
+ */
 function eliminarContexto(id) {
     $("#idelim").val($('#actual' + id).val());
 }
+/**
+ * Pasa la posicion a la ventana modal de añadir.
+ * @param {type} id
+ * @returns {undefined}
+ * @author Victor
+ */
 function addContexto(id) {
     $('#posiadd').val(id);
 }
+/**
+ * Obtiene la pagina actual
+ * @param {type} id
+ * @returns {undefined}
+ * @author Victor, Carlos, Laura
+ */
 function eliminarPagina(){
     var cosa= $("ol.carousel-indicators li.active").attr('id');
     cosa= cosa.substr(3);
     $("#elimpagina").val(cosa);
 }
+
 function volver() {
     window.history.back();
 }
