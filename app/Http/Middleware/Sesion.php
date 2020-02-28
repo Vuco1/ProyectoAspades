@@ -15,6 +15,11 @@ class Sesion
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(session()){
+            return view('vistasusuario/iniciousuario');
+        }else{
+            return $next($request);
+        }
+        
     }
 }
