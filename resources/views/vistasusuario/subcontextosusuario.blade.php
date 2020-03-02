@@ -115,6 +115,21 @@ SubContextos
                     </button>
                 </div>
                 <div class="modal-body p-4">
+                    <form method=get action="http://www.arasaac.org/buscar.php?s=casa&idiomasearch=0&Buscar=Buscar&buscar_por=1&pictogramas_color=1" target="_blank">
+                        <div class="form-group">
+                            <label class="sr-only" for="buscador">Buscar</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Buscar</div>
+                                </div>
+                                <input type=text name=s size=24 maxlength=255 value="">
+                                <input type="hidden" name="idiomasearch" value="0">
+                                <input type=submit name=Buscar value="Buscar">
+                                <input type="hidden" name="buscar_por" value="1">
+                                <input type="hidden" name="pictogramas_color" value="1">
+                            </div>
+                        </div>
+                    </form>
                     <form action="subirTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
