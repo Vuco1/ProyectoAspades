@@ -122,7 +122,7 @@ SubContextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Buscar</div>
                                 </div>
-                                <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 11.5rem;">
+                                <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.5rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
                                 <div class="custom-file">
                                     <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
