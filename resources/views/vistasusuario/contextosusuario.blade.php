@@ -110,9 +110,12 @@ Contextos
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Buscar</div>
                                 </div>
-                                <input type=text name=s size=24 maxlength=255 value="">
+                                <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 11.5rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
-                                <input type=submit name=Buscar value="Buscar">
+                                <div class="custom-file">
+                                    <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                    <label class="custom-file-label rounded-right" for="image"></label>
+                                </div>
                                 <input type="hidden" name="buscar_por" value="1">
                                 <input type="hidden" name="pictogramas_color" value="1">
                             </div>
