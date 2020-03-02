@@ -124,7 +124,7 @@ a.text-orange:hover {
     border: 1px solid #ffaf54;
 }
 
-.custom-file-input:lang(es) ~ .custom-file-label::after { content: "Elegir"; }
+.custom-file-input:lang(es) ~ .custom-file-label::after { content: "Buscar"; }
 
 /*----------------------------------------------------------------------------*/
 /*------------------------------- PAGINACIÓN ---------------------------------*/
