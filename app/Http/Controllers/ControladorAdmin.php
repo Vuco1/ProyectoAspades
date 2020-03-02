@@ -123,7 +123,7 @@ class ControladorAdmin extends Controller {
                 ->select('usuarios.*', 'usuario_rol.Id_rol')
                 ->where('usuarios.Id_usuario', '!=', $miusuario->Id_usuario)
                 ->orderBy('Nombre', 'ASC')
-                ->paginate(4);
+                ->paginate(3);
         return $datos;
     }
 

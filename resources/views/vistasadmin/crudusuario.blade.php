@@ -24,35 +24,59 @@ Gestión
 <!-- MAIN -->
 <main class="pt-5">
     <div class="container pt-5 text-center">
-        <div class="row py-2 bg-orange text-white rounded">
-            <div class="col">Usuario</div>            
-            <div class="col">Nombre</div>
-            <div class="col">Rol</div>
-            <div class="col-1 p-0">Editar</div>
-            <div class="col-1 p-0">Borrar</div>
-        </div>
-        <div class="row text-center">
-            <?php foreach ($datos as $dato) { ?>
-                <form id="form<?php echo $dato->Id_usuario ?>" name="form" class="form container p-0 m-0">
-                    @csrf
-                    <div class="row py-2 px-3">
-                        <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
-                        <input type="text" name="Nick"  id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" class="form-control col mr-1">
-                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" class="form-control col mr-1">
-                        <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="form-control col mr-1">
-                            <?php foreach ($datos2 as $da2) { ?>
-                                <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                        <div class="col-1 p-0"><button name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-success"><img src="{{ asset('images/icons/check-solid.svg') }}" class="icono-crud"/></button></div>
-                        <div class="col-1 p-0"><button name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger"><img src="{{ asset('images/icons/times-solid.svg') }}" class="icono-crud"/></button></div>
+        <div class="row text-center mb-3">
+            <div class="card-deck m-auto">
+                <?php foreach ($datos as $dato) { ?>
+                    <div class="card card-contexto">
+                        <form id="form<?php echo $dato->Id_usuario ?>" name="form" class="form container p-0 m-0">
+                            @csrf
+                            <input type="hidden" class="id" name="Id" id="id<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Id_usuario ?>">
+                            <img id="img<?php echo $dato->Id_usuario ?>" src="<?php echo $dato->Foto ?>" alt="Foto de perfil" class="card-img-top img-contexto">
+                            <div class="card-body p-2">
+                                <div class="form-group">
+                                    <label class="sr-only" for="nick<?php echo $dato->Id_usuario ?>">Usuario</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                        </div>
+                                        <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Nombre</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                        </div>
+                                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <label class="sr-only" for="rol">Rol</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                        </div>
+                                        <select name="Rol" class="custom-select" id="rol<?php echo $dato->Id_usuario ?>">
+                                             <?php foreach ($datos2 as $da2) { ?>
+                                                <option value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div> 
+                                </div>
+                            </div>               
+                        </form>
+                        <div class="card-footer">
+                            <div class="row px-2">
+                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                            </div>
+                        </div>
                     </div>
-                </form>
-                <?php
-            }
-            ?>
+                    <?php
+                }
+                ?>
+            </div>
         </div>
     </div>
     <div class="text-center">
