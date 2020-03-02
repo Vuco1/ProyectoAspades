@@ -20,12 +20,6 @@ Route::get('/', function () {
   |--------------------------------------------------------------------------
  */
 
-/**
- * Del index a una pagina de Prueba para probar el delay del speech y el submit
- */
-Route::post('prueba', function () {
-    return view('CarlosYSusCosas/envio');
-});
 /*
   |--------------------------------------------------------------------------
   |GENERALES
@@ -179,12 +173,6 @@ Route::group(['middleware' => 'Usuario'], function() {
 });
 
 Route::group(['middleware' => 'RutasGet'], function() {
-    /**
-     * Redirige a la vista de inicio del usuario
-     */
-    Route::get('iniciousuario', function () {
-        return view('vistasusuario/iniciousuario');
-    });
     /**
      * Ruta para obtener los Contextos del Usuario
      * Estaba con post
