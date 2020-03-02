@@ -28,7 +28,7 @@ Perfil
         <h2>Mi perfil</h2>
         <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
-    <form action="editarperfil" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
+    <form action="editarperfilusuario" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
         <input type="text" name="id" value="<?= $usuario->Id_usuario ?>" hidden>              
         <div class="form-group">

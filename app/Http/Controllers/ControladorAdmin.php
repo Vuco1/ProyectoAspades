@@ -21,12 +21,12 @@ class ControladorAdmin extends Controller {
         $nick = $req->get('usuario');
         $nombre = $req->get('nombre');
         $clave = $req->get('clave');
-        $req->validate([
-            'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        if ($req->imagen) {
+            $req->validate([
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        }
         $imagen = $req->file('imagen');
-
-        $mensaje = 'Perfil modificado con éxito';
         $color = 'text-success';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -45,6 +45,7 @@ class ControladorAdmin extends Controller {
                 $usuario->Foto = 'images/users/' . $nomimagen;
                 $req->imagen->move(public_path('images/users'), $nomimagen);
             }
+            $mensaje = 'Perfil modificado con éxito';
             $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';

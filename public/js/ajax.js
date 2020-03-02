@@ -60,7 +60,6 @@ $(document).ready(function () {
             if ($(this).find('input[name="accion"]').val() == 1 ||$(this).find('input[name="accion"]').val() == 0) {
                 leer(evt,this);
                 evt.preventDefault();
-
             }
             //Deja que el submit continue.
             if ($(this).find('input[name="accion"]').val() == 2) {

@@ -29,7 +29,7 @@ class ControladorUsuario extends Controller {
                 ->where('Id_usuario', '=', $idUsuario)
                 ->whereNull('Puntero')
                 ->get();
-        
+
         $dimensiones = \DB::table('dimensiones')
                 ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
                 ->get();
@@ -65,28 +65,28 @@ class ControladorUsuario extends Controller {
         if ($req->get('anterior')) {
             $puntero = $req->get('anterior');
         } else {
-        $puntero = $req->get('actualtablero');
+            $puntero = $req->get('actualtablero');
         }
         session()->put('actual', $puntero);
-        
+
         //Se obtiene una lista de todas las dimensiones de la tabla para los selects de las ventanas modales
         $dimensiones = \DB::table('dimensiones')
                 ->select('dimensiones.Id_dimension', 'dimensiones.Nombre')
                 ->get();
-        
+
         //Se obtienen todos los tableros que contiene el tablero padre
         $aux = \DB::table('tableros')
                 ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'Nombre', 'Posicion', 'Accion')
                 ->where('Puntero', '=', $puntero)
                 ->get();
-        
+
         //Se obtiene el número de filas y columnas y la clase de la dimensión del tablero padre
         $dimension = \DB::table('dimensiones')
                 ->select('dimensiones.Filas', 'dimensiones.Dimension', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tablero_dimension.Id_dimension', 'dimensiones.Id_dimension')
                 ->where('tablero_dimension.Id_tablero', $puntero)
                 ->first();
-        
+
         //Se obtiene el número de páginas del tablero padre y se calculan las casillas que tendrá cada página y las casillas en total
         $numPags = \DB::table('tableros')->select('Paginas')->where('Id_tablero', '=', $puntero)->first();
         $casPorPag = $dimension->Filas * $dimension->Columnas;
@@ -102,16 +102,16 @@ class ControladorUsuario extends Controller {
         for ($i = 1; $i <= $casTotal; $i++) {
             $subcontextos[$i] = $blanco;
         }
-        
+
         $acciones = Accion::all();
-        
+
         if (!$aux->IsEmpty()) {
-           //Se asigna cada Tablero del array aux a la posición que le corresponde.
+            //Se asigna cada Tablero del array aux a la posición que le corresponde.
             foreach ($aux as $s) {
                 $subcontextos[$s->Posicion] = $s;
-            } 
+            }
         }
-        
+
         $datos = [
             'subcontextos' => $subcontextos,
             'paginas' => $numPags->Paginas,
@@ -159,12 +159,12 @@ class ControladorUsuario extends Controller {
         $tablero->Paginas = 1;
         if (\Session::has('actual')) {
             $posicion = $req->posiadd;
-            $tablero->Posicion=$posicion;
+            $tablero->Posicion = $posicion;
         } else {
             $tablero->Posicion = 0;
         }
         $tablero->save();
-        
+
         $idtablero = \DB::table('tableros')->where('Id_usuario', $idusuario)->max('Id_tablero');
         $tadi = new Tablero_Dimension;
         $tadi->Id_tablero = $idtablero;
@@ -199,7 +199,7 @@ class ControladorUsuario extends Controller {
     public function modificarTablero(Request $req) {
         $tablero = Tablero::where('Id_tablero', '=', $req->actual)->first();
         $nombre = $req->nombremod;
-        if ($nombre != null) { 
+        if ($nombre != null) {
             $tablero->Nombre = $nombre;
         }
         $tablero->Accion = $req->accionlist;
@@ -269,28 +269,33 @@ class ControladorUsuario extends Controller {
      */
     public function eliminarPagina(Request $req) {
         $tablero = \DB::table('tableros')
-                ->select('tableros.Puntero', 'tableros.Id_tablero', 'Imagen', 'tableros.Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
+                ->select('tableros.Puntero', 'tableros.Paginas', 'tableros.Id_tablero', 'Imagen', 'tableros.Nombre', 'Posicion', 'dimensiones.Dimension', 'dimensiones.Filas', 'dimensiones.Columnas')
                 ->join('tablero_dimension', 'tableros.Id_tablero', '=', 'tablero_dimension.Id_tablero')
                 ->join('dimensiones', 'tablero_dimension.Id_dimension', '=', 'dimensiones.Id_dimension')
                 ->where('tableros.Id_tablero', '=', $req->anterior)
                 ->first();
-        $pagina = $req->pagina; // pag atual
-        $casPorPag = $tablero->Filas * $tablero->Columnas; // 3 6 12
-        $maximoPaginaBorrar = $pagina * $casPorPag;
-        $minimoPaginaBorrar = ($pagina - 1) * $casPorPag;
-        \DB::table('tableros')
-                ->where('Posicion', '<=', $maximoPaginaBorrar) //12
-                ->where('Posicion', '>', $minimoPaginaBorrar)//7
-                ->where('Puntero', $tablero->Id_tablero)
-                ->delete();
-        \DB::table('tableros')
-                ->where('Posicion', '>', $maximoPaginaBorrar)
-                ->where('Puntero', $tablero->Id_tablero)
-                ->decrement('Posicion', $casPorPag);
-        \DB::table('tableros')
-                ->where('Id_tablero', \Session::get('actual'))
-                ->decrement('Paginas', 1);
-        
+        if ($tablero->Paginas > 1) {
+            $pagina = $req->pagina; // pag atual
+            $casPorPag = $tablero->Filas * $tablero->Columnas; // 3 6 12
+            $maximoPaginaBorrar = $pagina * $casPorPag;
+            $minimoPaginaBorrar = ($pagina - 1) * $casPorPag;
+            \DB::table('tableros')
+                    ->where('Posicion', '<=', $maximoPaginaBorrar) //12
+                    ->where('Posicion', '>', $minimoPaginaBorrar)//7
+                    ->where('Puntero', $tablero->Id_tablero)
+                    ->delete();
+            \DB::table('tableros')
+                    ->where('Posicion', '>', $maximoPaginaBorrar)
+                    ->where('Puntero', $tablero->Id_tablero)
+                    ->decrement('Posicion', $casPorPag);
+            \DB::table('tableros')
+                    ->where('Id_tablero', \Session::get('actual'))
+                    ->decrement('Paginas', 1);
+        } else {
+            \DB::table('tableros')
+                    ->where('Puntero', \Session::get('actual'))
+                    ->delete();
+        }
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
@@ -303,24 +308,73 @@ class ControladorUsuario extends Controller {
         \DB::table('tableros')
                 ->where('Id_tablero', \Session::get('actual'))
                 ->increment('Paginas', 1);
-        
+
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
     }
-    
+
     /**
      * Vacia un subcontextio
      * @author Carlos y Victor
      */
-    public function DOOOOM(Request $req){
+    public function DOOOOM(Request $req) {
         \DB::table('tableros')
                 ->where('Puntero', \Session::get('actual'))
                 ->delete();
-        
+
         $tablero = Tablero::where('Id_tablero', '=', \Session::get('actual'))->first();
         $tablero->Paginas = 1;
         $tablero->save();
         $datos = self::cargarSubcontextos($req);
         return view('vistasusuario/subcontextosusuario', $datos);
+    }
+
+    public function editarPerfilUsuario(Request $req) {
+        $id = $req->get('id');
+        $nick = $req->get('usuario');
+        $nombre = $req->get('nombre');
+        $clave = $req->get('clave');
+        if ($req->imagen) {
+            $req->validate([
+                'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
         }
+        $imagen = $req->file('imagen');
+        $color = 'text-success';
+        try {
+            $usuario = Usuario::where('Id_usuario', $id)->first();
+            $usuario->Nombre = $nombre;
+            $usuario->Nick = $nick;
+
+            if ($clave != null) {
+                $clave = md5($req->get('clave'));
+                $usuario->Clave = $clave;
+            }
+            if ($imagen != null) {
+                $req->validate([
+                    'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $nomimagen = time() . '.' . $req->imagen->extension();
+                $usuario->Foto = 'images/users/' . $nomimagen;
+                $req->imagen->move(public_path('images/users'), $nomimagen);
+            }
+            $mensaje = 'Perfil modificado con éxito';
+            $usuario->save();
+        } catch (Exception $ex) {
+            $mensaje = 'Error al modificar el perfil';
+            $color = 'text-danger';
+        }
+
+        $usuario = Usuario::where('Id_usuario', $id)->first();
+        session()->put('usuario', $usuario);
+
+        $datos = [
+            'usuario' => $usuario,
+            'mensaje' => $mensaje,
+            'color' => $color
+        ];
+
+        return view('vistasusuario/perfilusuario', $datos);
+    }
+
 }

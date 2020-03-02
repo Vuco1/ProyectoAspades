@@ -123,6 +123,11 @@ Route::group(['middleware' => 'Usuario'], function() {
      */
     Route::any('obtenercontextos', 'ControladorUsuario@obtenerContextos');
     /**
+     * Editar el perfil del usuario.
+     * Post
+     */
+    Route::any('editarperfilusuario', 'ControladorUsuario@editarPerfilUsuario');
+    /**
      * Ruta para obtener los Subcontextos del Usuario
      * Estaba con post
      */
