@@ -7,8 +7,9 @@
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <script src="{{ asset('js/sesion.js') }}"></script>
     </head>
-    <body>
+    <body onload="comprobaradmin()">
         <div id="contenido">@yield('contenido')</div>
         <!-- SCRIPTS -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->        

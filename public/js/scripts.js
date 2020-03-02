@@ -51,12 +51,14 @@ $(document).ready(function () {
         var numFilas = $("input[name=numfilas]").val();
 
         if (clave === "aspades") {
+            localStorage.setItem('admin',true);
             if (menu.hasClass("d-none")) {
                 $("#loginadmin").val("Ocultar menú");
                 menu.removeClass("d-none").addClass("d-block");
                 botones.removeClass("d-none").addClass("d-block");
                 $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
             } else {
+                localStorage.removeItem('admin');
                 $("#loginadmin").val("Mostrar menú");
                 menu.removeClass("d-block").addClass("d-none");
                 botones.removeClass("d-block").addClass("d-none");
@@ -66,14 +68,14 @@ $(document).ready(function () {
             $("#loginoculto").modal("hide");
         }
     }
-    
+
     /**
      * Llama a la función menu() al hacer clic en el botón de logueo del administrador de tableros.
      */
     $("#loginadmin").click(function mostrarMenu() {
         menu();
     });
-    
+
     /**
      * Llama a la función menu() al pulsar intro en el input de la contraseña del administrador de tableros.
      * @param {event} Nombre del evento. 
@@ -96,8 +98,8 @@ $(document).ready(function () {
         var texto = jQuery.trim(ruta).substr(12);
         $(".custom-file-label").text(texto);
     });
-
 });
+
 /**
  * Modifica el contenido de la ventana modal con los datos que tiene la tarjeta
  * @param {type} id
@@ -106,9 +108,9 @@ $(document).ready(function () {
  */
 function modificarContexto(id) {
     $("#nombremod").val($('#nombre' + id).val());
-    $('#posimo').val(id);   
+    $('#posimo').val(id);
     $("#actual").val($('#actual' + id).val());
-    var idaccion= $('#accion' + id).val() -1;
+    var idaccion = $('#accion' + id).val() - 1;
     document.getElementById('accionlist').options[idaccion].selected = 'selected';
 }
 /**
@@ -135,9 +137,9 @@ function addContexto(id) {
  * @returns {undefined}
  * @author Victor, Carlos, Laura
  */
-function eliminarPagina(){
-    var cosa= $("ol.carousel-indicators li.active").attr('id');
-    cosa= cosa.substr(3);
+function eliminarPagina() {
+    var cosa = $("ol.carousel-indicators li.active").attr('id');
+    cosa = cosa.substr(3);
     $("#elimpagina").val(cosa);
 }
 
