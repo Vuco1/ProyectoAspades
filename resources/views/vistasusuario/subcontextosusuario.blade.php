@@ -191,7 +191,7 @@ SubContextos
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" required>
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod">
                                     <label class="custom-file-label" for="image">Selecciona una imagen...</label>
                                 </div>
                             </div>
