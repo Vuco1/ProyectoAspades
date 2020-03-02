@@ -55,8 +55,7 @@ class ControladorGeneral extends Controller {
      * @return type Devuelve Login
      */
     public function cerrarSesion() {
-        session()->invalidate();
-        session()->regenerate();
+        session()->flush();
         return view('index');
     }
 

@@ -14,7 +14,7 @@ class Sesion {
      * @return mixed
      */
     public function handle($request, Closure $next) {
-        if (session() != null) {
+        if (session()->exists('usuario')) {
             if (\Session::get('rol') == 1) {
                 return response()->view('vistasadmin/inicioadmin', [], 401);
             } else {
