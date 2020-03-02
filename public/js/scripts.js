@@ -53,11 +53,13 @@ $(document).ready(function () {
         if (clave === "aspades") {
             localStorage.setItem('admin',true);
             if (menu.hasClass("d-none")) {
+                $("#divpass").addClass('d-none');
                 $("#loginadmin").val("Ocultar menú");
                 menu.removeClass("d-none").addClass("d-block");
                 botones.removeClass("d-none").addClass("d-block");
                 $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
             } else {
+                $("#divpass").removeClass('d-none');
                 localStorage.removeItem('admin');
                 $("#loginadmin").val("Mostrar menú");
                 menu.removeClass("d-block").addClass("d-none");

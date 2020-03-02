@@ -10,6 +10,8 @@ function menu() {
     var menu = $("#menuoculto");
     var botones = $(".card-footer");
     var numFilas = $("input[name=numfilas]").val();
+    $("#divpass").addClass('d-none');
+    $("#passw").val("aspades");
     $("#loginadmin").val("Ocultar menú");
     menu.removeClass("d-none").addClass("d-block");
     botones.removeClass("d-none").addClass("d-block");

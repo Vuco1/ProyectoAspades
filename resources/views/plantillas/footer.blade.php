@@ -58,7 +58,7 @@
             <div class="modal-body p-4">
                 <div class="form-group">
                     <label class="sr-only" for="passw">Contraseña</label>
-                    <div class="input-group">
+                    <div id="divpass" class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
