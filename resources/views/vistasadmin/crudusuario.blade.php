@@ -91,7 +91,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
                                 </div>
-                                <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control">
+                                <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -100,7 +100,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control">
+                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,7 +109,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                                 </div>
-                                <input type="password" name="clave" id="clave" placeholder="Escribe una contraseña" class="form-control">
+                                <input type="password" name="clave" id="clave" placeholder="Escribe una contraseña" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -118,7 +118,7 @@ Gestión
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
                                 </div>
-                                <input type="password" name="claverep" id="claverepe" placeholder="Repite la contraseña" class="form-control">
+                                <input type="password" name="claverep" id="claverepe" placeholder="Repite la contraseña" class="form-control" required>
                             </div>
                         </div>   
                         <div id="mensaje"> </div>
