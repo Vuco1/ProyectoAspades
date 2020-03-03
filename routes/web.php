@@ -174,11 +174,6 @@ Route::group(['middleware' => 'Usuario'], function() {
 
 Route::group(['middleware' => 'RutasGet'], function() {
     /**
-     * Ruta para obtener los Contextos del Usuario
-     * Estaba con post
-     */
-    Route::get('obtenercontextos', 'ControladorUsuario@obtenerContextos');
-    /**
      * Ruta para obtener los Subcontextos del Usuario
      * Estaba con post
      */

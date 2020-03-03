@@ -6,6 +6,26 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    /** Muestra el menú y los botones de administración de tableros si ye eras administrador
+     * @author Carlos
+     * @version 3.0
+     */
+    if (localStorage.getItem('admin')) {
+        menu();
+    }
+
+    function menu() {
+        var menu = $("#menuoculto");
+        var botones = $(".card-footer");
+        var numFilas = $("input[name=numfilas]").val();
+        $("#divpass").addClass('d-none');
+        $("#passw").val("aspades");
+        $("#loginadmin").val("Ocultar menú");
+        menu.removeClass("d-none").addClass("d-block");
+        botones.removeClass("d-none").addClass("d-block");
+        $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
+        $("#loginoculto").modal("hide");
+    }
     /**
      * Difrerencia el tipo de boton pulsado
      * @type jQuery
@@ -15,13 +35,13 @@ $(document).ready(function () {
     $('.btn').click(function () {
         buttonpressed = $(this).attr('name');
     });
-    
-/**
- * Lee el texto de la carta 
- * @param {type} e
- * @param {type} form
- * @author Carlos
- */
+
+    /**
+     * Lee el texto de la carta 
+     * @param {type} e
+     * @param {type} form
+     * @author Carlos
+     */
     function leer(e, form) {
         var formulario = $(form).attr('id');
         e.preventDefault();
@@ -34,8 +54,9 @@ $(document).ready(function () {
         speech.pitch = 1;
         speech.lang = "es";
         window.speechSynthesis.speak(speech);
-    };
-    
+    }
+    ;
+
     function enviar() {
         var id = localStorage.getItem('id');
         localStorage.removeItem('id');
@@ -57,8 +78,8 @@ $(document).ready(function () {
         //Funciones de las imagenes
         if (buttonpressed === 'btnsubcon') {
             //Para el submit de una imagen normal.
-            if ($(this).find('input[name="accion"]').val() == 1 ||$(this).find('input[name="accion"]').val() == 0) {
-                leer(evt,this);
+            if ($(this).find('input[name="accion"]').val() == 1 || $(this).find('input[name="accion"]').val() == 0) {
+                leer(evt, this);
                 evt.preventDefault();
             }
             //Deja que el submit continue.
@@ -70,11 +91,11 @@ $(document).ready(function () {
             }
             //Va hacia el subcontexto/contexto padre/anterior
             if ($(this).find('input[name="accion"]').val() == 3) {
-                leer(evt,this);
+                leer(evt, this);
                 evt.preventDefault();
-                var anterior=$(this).find('input[name="anterior"]').val();
+                var anterior = $(this).find('input[name="anterior"]').val();
                 setTimeout(function () {
-                     window.history.back();
+                    window.history.back();
 //                    $.ajax({
 //                        url: 'irAnterior',
 //                        type: 'post',
@@ -106,9 +127,9 @@ $(document).ready(function () {
             //Vuelve al inicio
             if ($(this).find('input[name="accion"]').val() == 4) {
                 evt.preventDefault();
-                leer(evt,this);
+                leer(evt, this);
                 setTimeout(function () {
-                   location.href = "obtenercontextos";
+                    location.href = "obtenercontextos";
 //                    $.ajax({
 //                        url: 'obtenercontextos',
 //                        type: 'post',
@@ -241,3 +262,6 @@ $(document).ready(function () {
     });
 //    
 });
+function vaciarstorage() {
+    localStorage.clear();
+}

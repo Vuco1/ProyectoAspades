@@ -56,6 +56,7 @@ class ControladorGeneral extends Controller {
      */
     public function cerrarSesion() {
         session()->flush();
+        session()->regenerate();
         return view('index');
     }
 
