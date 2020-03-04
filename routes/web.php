@@ -115,7 +115,7 @@ Route::group(['middleware' => 'Usuario'], function() {
      * Ruta para obtener los Contextos del Usuario
      * Estaba con post
      */
-    Route::post('obtenercontextos', 'ControladorUsuario@obtenerContextos');
+    Route::any('obtenercontextos', 'ControladorUsuario@obtenerContextos');
     /**
      * Editar el perfil del usuario.
      * Post
