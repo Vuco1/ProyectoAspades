@@ -41,7 +41,7 @@ $(document).ready(function () {
     //------------------------------------------------------------------------//
     /**
      * Muestra el menú y los botones de administración de tableros si la contraseña es correcta.
-     * @author Ampliado y adaptado a jquery por Laura.
+     * @author Carlos, Isabel y Laura
      * @version 3.0
      */
     function menu() {
