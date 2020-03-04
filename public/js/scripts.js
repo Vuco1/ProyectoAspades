@@ -90,17 +90,19 @@ $(document).ready(function () {
             menu();
         }
     });
-
-    /**
-     * Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
-     * @author Laura
-     */
-    $(".custom-file-input").change(function cambiarTexto() {
-        var ruta = $(".custom-file-input").val();
-        var texto = jQuery.trim(ruta).substr(12);
-        $(".custom-file-label").text(texto);
-    });
+    
 });
+
+/**
+* Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
+* @param id Id del input en el que se produce el evento
+* @author Laura
+*/
+function cambiarTexto(id) {
+    var ruta = $("input[id='" + id + "']").val();
+    var texto = jQuery.trim(ruta).substr(12);
+    $("label[id='"+ id +"label']").text(texto);
+} 
 
 /**
  * Modifica el contenido de la ventana modal con los datos que tiene la tarjeta

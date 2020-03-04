@@ -129,8 +129,8 @@ Contextos
                                     <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" required>
-                                    <label class="custom-file-label" for="image">Selecciona una imagen...</label>
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required>
+                                    <label id="imagelabel" class="custom-file-label" for="image">Selecciona una imagen...</label>
                                 </div>
                             </div>
                         </div>
@@ -182,8 +182,8 @@ Contextos
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod">
-                                    <label class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                    <label id="imagecontextolabel" class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
                                 </div>
                             </div>
                         </div>
