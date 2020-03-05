@@ -35,8 +35,8 @@
                 <ul>
                     <li>Laura Mª Fernández Cambronero</li>
                     <li>Isabel de Marcos López</li>
-                    <li>Víctor Úbeda Castilla</li>
                     <li>Carlos Morales Gallego</li>
+                    <li>Víctor Úbeda Castilla</li>
                 </ul>
                 <hr>
                 Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>
@@ -50,15 +50,15 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Login</div>
+                <div class="modal-title">Login Administración de tableros</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
-                <div class="form-group">
+                <div id="divpass" class="form-group">
                     <label class="sr-only" for="passw">Contraseña</label>
-                    <div id="divpass" class="input-group">
+                    <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
