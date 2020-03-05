@@ -14,6 +14,7 @@ Perfil
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle = "modal" data-target = "#ayuda_perf_usu"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary" href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -82,6 +83,30 @@ Perfil
     </form>
     <div id="mensaje" class="text-center mt-3 <?php if (isset($color)) { echo $color; }?>"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
 <?php } ?>
+    
+    <!--VENTANA MODAL DE AYUDA-->
+    <section class="modal fade" id="ayuda_perf_usu">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-title">Ayuda</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <ul>
+                    <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
+                    <li><p>Podemos cambiar nuestro nombre y nuestro nick de usuario.</p></li>
+                    <li><p>Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.</p></li>
+                    <li><p>Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
+                La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+    
 </main>
 @include('plantillas/footer')
 @endsection
