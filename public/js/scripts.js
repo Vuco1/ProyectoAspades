@@ -152,3 +152,6 @@ function volver() {
     window.history.back();
 }
 
+function eliminarUsuario(id) {
+    $("#idelim").val($('#actual' + id).val());
+}

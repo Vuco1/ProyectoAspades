@@ -42,7 +42,7 @@ class ControladorGeneral extends Controller {
             session()->put('usuario', $usuario);
             session()->put('rol', $rol);
         } else {
-            $mensaje = "Error. Usuario o clave incorrectos";
+            $mensaje = "<p class='m-0'>Error. Usuario o clave incorrectos</p><p class='m-0'>Si has olvidado la clave, contacta con un administrador</p>";
             $vista = 'index';
         }
 

@@ -69,7 +69,7 @@ Gestión
                         <div class="card-footer">
                             <div class="row px-2">
                                 <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
                     </div>
@@ -151,6 +151,69 @@ Gestión
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
                         <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <!-- VENTANA MODAL MODIFICAR USUARIO -->
+    <section class="modal fade" id="modificar">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Modificar panel</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="modificarTablero" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                    <label id="imagecontextolabel" class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="nombre">Nombre</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                </div>
+                                <input type="hidden" id="posimo" name="posimo" value="1">
+                                <input type="hidden" id="actual" name="actual" value="">
+                                <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
+                            </div>
+                        </div> 
+                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- VENTANA MODAL ELIMINAR USUARIO -->
+    <section class="modal fade" id="eliminar">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">Eliminar usuario</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4">
+                    <form action="eliminarUsuario" method="post" enctype="multipart/form-data" class="text-center">
+                        @csrf
+                        <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                        <input type="hidden" name="idelim" id="idelim" value="">
+                        <input type="hidden" id="actual" name="actual" value="">
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
