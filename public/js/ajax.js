@@ -205,7 +205,6 @@ $(document).ready(function () {
                 type: 'post',
                 data: {_token: CSRF_TOKEN, "id": $id, "nombre": $nombre, "nick": $nick, "rol": $rol},
                 success: function (response) {
-                    alert('Usuario actualizado con exito');
                 }, error: function (jqXHR, exception) {
                     var msg = '';
                     if (jqXHR.status === 0) {
@@ -229,13 +228,12 @@ $(document).ready(function () {
         //Eliminar elementos del CRUD de usuarios
         if (buttonpressed === 'eliminar') {
             evt.preventDefault();
-            var $id = $(this).find('input[name="Id"]').val();
+            var $id = $(this).find('input[name="idusuelim"]').val();
             $.ajax({
                 url: 'eliminarUsuario',
                 type: 'post',
                 data: {_token: CSRF_TOKEN, "id": $id},
                 success: function (response) {
-                    alert('Usuario eliminado con exito');
                     location.reload();
                 }, error: function (jqXHR, exception) {
                     var msg = '';

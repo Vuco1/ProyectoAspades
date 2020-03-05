@@ -152,6 +152,11 @@ function volver() {
     window.history.back();
 }
 
+/**
+ * Establece id como valor del input idusuelim del la ventana de confirmación de eliminación de usuario.
+ * @param id Número identificador del usuario
+ * @author Laura
+ */
 function eliminarUsuario(id) {
-    $("#idelim").val($('#actual' + id).val());
+    $("#idusuelim").val(id);
 }

@@ -39,30 +39,17 @@ Gestión
                                         <div class="input-group-prepend">
                                             <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
                                         </div>
-                                        <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control">
+                                        <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control" readonly>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Nombre</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                         </div>
-                                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control">
+                                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control" readonly>
                                     </div>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <label class="sr-only" for="rol">Rol</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
-                                        </div>
-                                        <select name="Rol" class="custom-select" id="rol<?php echo $dato->Id_usuario ?>">
-                                             <?php foreach ($datos2 as $da2) { ?>
-                                                <option value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div> 
                                 </div>
                             </div>               
                         </form>
@@ -82,7 +69,7 @@ Gestión
     <div class="text-center">
         <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
     </div>
-    <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-5">
+    <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-3">
         {{ $datos->links() }}
     </div>
     <!-- VENTANA MODAL AÑADIR USUARIO -->
@@ -211,9 +198,8 @@ Gestión
                     <form action="eliminarUsuario" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
                         <p>¿Estás seguro de que deseas eliminar este usuario?</p>
-                        <input type="hidden" name="idelim" id="idelim" value="">
-                        <input type="hidden" id="actual" name="actual" value="">
-                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="hidden" name="idusuelim" id="idusuelim" value="">
+                        <input type="submit" name="eliminar" id="eliminar" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
