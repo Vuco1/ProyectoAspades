@@ -13,19 +13,13 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('Sesion');
 /*
   |--------------------------------------------------------------------------
   | PRUEBAS/TESTING
   |--------------------------------------------------------------------------
  */
 
-/**
- * Del index a una pagina de Prueba para probar el delay del speech y el submit
- */
-Route::post('prueba', function () {
-    return view('CarlosYSusCosas/envio');
-});
 /*
   |--------------------------------------------------------------------------
   |GENERALES
@@ -131,7 +125,7 @@ Route::group(['middleware' => 'Usuario'], function() {
      * Ruta para obtener los Subcontextos del Usuario
      * Estaba con post
      */
-    Route::any('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
+    Route::post('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
     /**
      * Estaba con get
      */
@@ -142,17 +136,17 @@ Route::group(['middleware' => 'Usuario'], function() {
      * 
      * Estaba con post
      */
-    Route::any('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
+    Route::post('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
     /**
      * Ruta para subir un Tablero
      * Estaba con post
      */
-    Route::any('subirTablero', 'ControladorUsuario@subirTablero');
+    Route::post('subirTablero', 'ControladorUsuario@subirTablero');
     /**
      * 
      * Estaba con post
      */
-    Route::any('vistaimagen', function () {
+    Route::post('vistaimagen', function () {
         return view('vistasusuario/vistaimagen');
     });
     /**
@@ -162,20 +156,50 @@ Route::group(['middleware' => 'Usuario'], function() {
     Route::any('perfilusuario', function () {
         return view('vistasusuario/perfilusuario');
     });
-    
+
     /**
      * Ruta para ir al tablero anterior
      * @author Victor
      */
-     Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
-     
-     Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
-     
-     Route::any('addpagina','ControladorUsuario@addPagina');
-     
-     Route::any('eliminarpagina','ControladorUsuario@eliminarPagina');
-     
-     Route::any('vaciartablero','ControladorUsuario@DOOOOM');
-     
-     
+    Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
+
+    Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
+
+    Route::post('addpagina', 'ControladorUsuario@addPagina');
+
+    Route::post('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+
+    Route::post('vaciartablero', 'ControladorUsuario@DOOOOM');
+});
+
+Route::group(['middleware' => 'RutasGet'], function() {
+    /**
+     * Ruta para obtener los Subcontextos del Usuario
+     * Estaba con post
+     */
+    Route::get('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
+    /**
+     * 
+     * Estaba con post
+     */
+    Route::get('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
+    /**
+     * Ruta para subir un Tablero
+     * Estaba con post
+     */
+    Route::get('subirTablero', 'ControladorUsuario@subirTablero');
+
+    /**
+     * Ruta para ir al tablero anterior
+     * @author Victor
+     */
+    Route::get('modificarTablero', 'ControladorUsuario@modificarTablero');
+
+    Route::get('eliminarTablero', 'ControladorUsuario@eliminarTablero');
+
+    Route::get('addpagina', 'ControladorUsuario@addPagina');
+
+    Route::get('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+
+    Route::get('vaciartablero', 'ControladorUsuario@DOOOOM');
 });

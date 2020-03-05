@@ -14,7 +14,7 @@ Contextos
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir contexto</button></li>
+                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir panel</button></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -45,7 +45,7 @@ Contextos
         <div class="carousel-inner h-100">
             <?php if (!$contextos) { ?>
                 <div class="text-center">
-                    <h2 class="m-auto">Todavía no tienes ningún contexto</h2>
+                    <h2 class="m-auto">Todavía no tienes ningún panel</h2>
                     <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir contexto</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
                 </div>
                 <?php
@@ -66,7 +66,7 @@ Contextos
                             @csrf
                             <input type="hidden" name="actual" value="{{ $c->Id_tablero }}">
                             <button name="btncon" class="btn p-0 w-100">
-                                <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Imagen del contexto" class="card-img-top img-contexto">
+                                <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Imagen del panel" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
                                     <input  type="hidden" name="nombre" value="{{ $c->Nombre }}" id="nombre{{ $c->Id_tablero }}">
                                     <input  type="hidden" name="actualtablero" value="{{ $c->Id_tablero }}" id="actual{{ $c->Id_tablero }}">
@@ -97,7 +97,7 @@ Contextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Nuevo Contexto</div>
+                    <div class="modal-title">Nuevo panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -168,7 +168,7 @@ Contextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Modificar Contexto</div>
+                    <div class="modal-title">Modificar panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -209,7 +209,7 @@ Contextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Eliminar Contexto</div>
+                    <div class="modal-title">Eliminar panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -217,7 +217,7 @@ Contextos
                 <div class="modal-body p-4">
                     <form action="eliminarTablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas eliminar este contexto?</p>
+                        <p>¿Estás seguro de que deseas eliminar este panel?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="actual" name="actual" value="">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
