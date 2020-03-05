@@ -15,7 +15,7 @@ SubContextos
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar tablero</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar panel</a>
                     <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
                         <form action='addpagina' method="post">
                             @csrf
@@ -23,7 +23,7 @@ SubContextos
                             <button class="dropdown-item"><i class="fas fa-plus-circle icono"></i>Añadir página</button>
                         </form>
                         <button class="dropdown-item" data-toggle="modal" data-target="#eliminarpagina" onclick="eliminarPagina()"><i class="fas fa-minus-circle icono"></i>Eliminar página</button>
-                        <button class="dropdown-item" data-toggle="modal" data-target="#vaciarpagina"><i class="fas fa-times-circle icono"></i>Vaciar tablero</button>
+                        <button class="dropdown-item" data-toggle="modal" data-target="#vaciarpagina"><i class="fas fa-times-circle icono"></i>Vaciar panel</button>
                     </div>
                 </li>
             </ul>
@@ -109,7 +109,7 @@ SubContextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Nuevo  Subcontexto</div>
+                    <div class="modal-title">Nuevo tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -117,10 +117,10 @@ SubContextos
                 <div class="modal-body p-4">
                     <form method=get action="http://www.arasaac.org/buscar.php?s=casa&idiomasearch=0&Buscar=Buscar&buscar_por=1&pictogramas_color=1" target="_blank">
                         <div class="form-group">
-                            <label class="sr-only" for="buscador">Buscar</label>
+                            <label class="sr-only" for="buscador">Arasaac</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Buscar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Arasaac</div>
                                 </div>
                                 <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.5rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
@@ -195,12 +195,30 @@ SubContextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Modificar Subcontexto</div>
+                    <div class="modal-title">Modificar tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body p-4">
+                    <form method=get action="http://www.arasaac.org/buscar.php?s=casa&idiomasearch=0&Buscar=Buscar&buscar_por=1&pictogramas_color=1" target="_blank">
+                        <div class="form-group">
+                            <label class="sr-only" for="buscador">Arasaac</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-search icono"></i>Arasaac</div>
+                                </div>
+                                <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.5rem;">
+                                <input type="hidden" name="idiomasearch" value="0">
+                                <div class="custom-file">
+                                    <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                    <label class="custom-file-label rounded-right" for="image"></label>
+                                </div>
+                                <input type="hidden" name="buscar_por" value="1">
+                                <input type="hidden" name="pictogramas_color" value="1">
+                            </div>
+                        </div>
+                    </form>
                     <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -250,7 +268,7 @@ SubContextos
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Eliminar Subcontexto</div>
+                    <div class="modal-title">Eliminar tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -258,7 +276,7 @@ SubContextos
                 <div class="modal-body p-4">
                     <form action="eliminarTablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas eliminar este subcontexto?</p>
+                        <p>¿Estás seguro de que deseas eliminar este tablero?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
