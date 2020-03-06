@@ -73,7 +73,7 @@ ContextosGenerales
                 </div>
             </div>
         </div>
-    </section>
+    </section>   
 </main>
 @include('plantillas/footer')
 @endsection

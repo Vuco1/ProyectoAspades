@@ -98,7 +98,7 @@ Perfil
             <div class="modal-body p-4">
                 <ul>
                     <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
-                    <li><p>Podemos cambiar nuestro nombre y nuestro nick de usuario.</p></li>
+                    <li><p>Podemos cambiar nuestro nombre y nuestro nombre de usuario.</p></li>
                     <li><p>Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.</p></li>
                     <li><p>Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
                 La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>

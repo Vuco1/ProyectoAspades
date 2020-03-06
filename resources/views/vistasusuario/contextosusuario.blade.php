@@ -15,6 +15,7 @@ Contextos
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir panel</button></li>
+                <li class="nav-item"><a class="nav-link" data-toggle = "modal" data-target = "#ayuda_panel"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -226,6 +227,30 @@ Contextos
             </div>
         </div>
     </section>
+    
+              <!--VENTANA MODAL DE AYUDA-->
+    <section class="modal fade" id="ayuda_panel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-title">Ayuda</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <ul>
+                    <li><p>Aquí podemos ver, modificar, añadir y eliminar paneles.</p></li>
+                    <li><p>Para añadir paneles debemos pulsar en "Añadir panel". Eligiremos la foto de portada de nuestra galería de imágenes, su nombre y el tamaño en la ventana.</p></li>
+                    <li><p>También podemos elegir la foto de portada entre los pictogramas de la base de datos de ARASAAC poniendo una palabra clave y descargando el que más nos guste para poder cargarlo desde la galería.</p></li>
+                    <li><p>Para modificar, pulsamos en "Editar" y cambiamos la información que queramos modificar.</p></li>
+                    <li><p>Para eliminar un panel, pulsamos en "Borrar" y se nos recargará la página sin el panel eliminado.</p></li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</section>
+    
 </main>
 @include('plantillas/footer')
 @endsection
