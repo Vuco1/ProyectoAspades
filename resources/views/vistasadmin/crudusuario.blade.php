@@ -167,21 +167,10 @@ Gestión
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="modificarTablero" method="post" enctype="multipart/form-data">
+                    <form action="updateusuario" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="idusumod" id="idusumod" value="">
                         <input type="hidden" name="idrol" id="idrol" value=""/>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" name="image" id="imageusumod" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
-                                    <label id="imageusumodlabel" class="custom-file-label" for="imageusumod">Selecciona una imagen...</label>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="sr-only" for="usuariomod">Usuario</label>
                             <div class="input-group">

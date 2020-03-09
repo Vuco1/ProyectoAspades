@@ -180,6 +180,4 @@ function editarUsuario(id, rol) {
     $("#nombremod").val($("#nombre" + id).val());
     $("#idrol").val(rol);
     $("#rolmod").val(rol);
-//    $("#rolmod").removeAttr("selected", "selected");
-//    $("#rolop" + rol).attr("selected", "selected");
 }

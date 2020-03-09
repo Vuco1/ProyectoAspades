@@ -201,22 +201,32 @@ class ControladorAdmin extends Controller {
      * @param Request $request
      * @author Victor
      */
-    public function updateUsuario(Request $request) {
-        $nombre = $request->input('nombre');
-        $nick = $request->input('nick');
-        $id = $request->input('id');
-        $role = $request->input('rol');
+    public function updateUsuario(Request $req) {
+        $id = $req->get('idusumod');
+        $nick = $req->get('usuariomod');
+        $nombre = $req->get('nombremod');
+        $role = $req->get('rolmod');
+        $clave = $req->get('clavemod');
+//        dd($clave);
+        //dd($id);
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
-
         $usuario->save();
 
         $rol = Usuario_Rol::where('Id_usuario', $id)->first();
         $rol->Id_rol = $role;
         $rol->save();
-
-        exit;
+                
+        if ($clave != null) {
+            $claveCod = md5($clave);
+            $usuario->clave = $claveCod;
+            $clave->save();
+        }
+        
+        $datos = self::selectUsuarios();
+        $datos2 = self::selectRoles();
+        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
     /**

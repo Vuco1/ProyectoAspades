@@ -63,7 +63,8 @@ Route::group(['middleware' => 'Administrador'], function() {
      * Ruta para Modificar los Usuarios
      * Estaba con post
      */
-    Route::any('updateUsuario', 'ControladorAdmin@updateUsuario');
+    Route::post('updateusuario', 'ControladorAdmin@updateUsuario')->name('gestionusuarios');    
+    Route::get('updateusuario', 'ControladorAdmin@crudUsuarios')->name('gestionusuarios');
     /**
      * Ruta para eliminar un Usuario
      * Estaba con post

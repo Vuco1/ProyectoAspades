@@ -194,37 +194,38 @@ $(document).ready(function () {
             }, 1800);
         }
         //Modificar usuarios en el CRUD de usuarios
-        if (buttonpressed === 'modificar') {
-            evt.preventDefault();
-            var $id = $(this).find('input[name="Id"]').val();
-            var $nombre = $(this).find('input[name="Nombre"]').val();
-            var $nick = $(this).find('input[name="Nick"]').val();
-            var $rol = $(this).find('select[name="Rol"]').val();
-            $.ajax({
-                url: 'updateUsuario',
-                type: 'post',
-                data: {_token: CSRF_TOKEN, "id": $id, "nombre": $nombre, "nick": $nick, "rol": $rol},
-                success: function (response) {
-                }, error: function (jqXHR, exception) {
-                    var msg = '';
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXHR.status === 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXHR.status === 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (exception === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (exception === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (exception === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else {
-                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                    }
-                },
-            });
-        }
+//        if (buttonpressed === 'guardarmod') {
+//            evt.preventDefault();           
+//            var $id = $('#idusumod').val();
+//            var $nick = $('#usuariomod').val();
+//            var $nombre = $('#nombremod').val();
+//            var $rol = $('#rolmod').val();
+//            var $clave = $('#clavemod').val();
+//            $.ajax({
+//                url: 'updateUsuario',
+//                type: 'post',
+//                data: {_token: CSRF_TOKEN, "id": $id, "nick": $nick, "nombre": $nombre, "rol": $rol , "clave" : $clave},
+//                success: function (response) {
+//                }, error: function (jqXHR, exception) {
+//                    var msg = '';
+//                    if (jqXHR.status === 0) {
+//                        msg = 'Not connect.\n Verify Network.';
+//                    } else if (jqXHR.status === 404) {
+//                        msg = 'Requested page not found. [404]';
+//                    } else if (jqXHR.status === 500) {
+//                        msg = 'Internal Server Error [500].';
+//                    } else if (exception === 'parsererror') {
+//                        msg = 'Requested JSON parse failed.';
+//                    } else if (exception === 'timeout') {
+//                        msg = 'Time out error.';
+//                    } else if (exception === 'abort') {
+//                        msg = 'Ajax request aborted.';
+//                    } else {
+//                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+//                    }
+//                },
+//            });
+//        }
         //Eliminar elementos del CRUD de usuarios
         if (buttonpressed === 'eliminar') {
             evt.preventDefault();
