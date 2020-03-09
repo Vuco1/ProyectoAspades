@@ -23,7 +23,7 @@ Gestión
 </header>
 <!-- MAIN -->
 <main class="pt-5">
-    <div class="container pt-5 text-center">
+    <div class="pt-5 px-3 text-center">
         <div class="row text-center mb-3">
             <div class="card-deck m-auto">
                 <?php foreach ($datos as $dato) { ?>
@@ -42,7 +42,7 @@ Gestión
                                         <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control" readonly>
                                     </div>
                                 </div>
-                                <div class="form-group mb-0">
+                                <div class="form-group">
                                     <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Nombre</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -51,11 +51,24 @@ Gestión
                                         <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control" readonly>
                                     </div>
                                 </div>
+                                <div class="form-group mb-0">
+                                    <label class="sr-only" for="rol<?php echo $dato->Id_usuario ?>">Rol</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                        </div>
+                                        <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="custom-select" disabled>
+                                            <?php foreach ($datos2 as $da2) { ?>
+                                                <option name="" value="<?php echo $da2->Id_rol ?>"<?php if ($dato->Id_rol == $da2->Id_rol) { ?>selected<?php } ?>><?php echo $da2->Descripcion ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>               
                         </form>
                         <div class="card-footer">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" onclick="editarUsuario(<?php echo ($dato->Id_usuario . ', ' . $dato->Id_rol) ?>)" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
                                 <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
                             </div>
                         </div>
@@ -67,7 +80,7 @@ Gestión
         </div>
     </div>
     <div class="text-center">
-        <button data-toggle="modal" data-target="#nuevo" class="btn btn-orange">Añadir Usuario</button>
+        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</button>
     </div>
     <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-3">
         {{ $datos->links() }}
@@ -115,29 +128,29 @@ Gestión
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="clave">Contraseña</label>
+                            <label class="sr-only" for="clavenuevo">Contraseña</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                                 </div>
-                                <input type="password" name="clave" id="clave" placeholder="Escribe una contraseña" class="form-control" required>
+                                <input type="password" name="clavenuevo" id="clavenuevo" placeholder="Escribe una contraseña" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="claverepe">Confirmar</label>
+                            <label class="sr-only" for="claverepenuevo">Confirmar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
                                 </div>
-                                <input type="password" name="claverep" id="claverepe" placeholder="Repite la contraseña" class="form-control" required>
+                                <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repite la contraseña" class="form-control" onkeyup="validarClave('nuevo')" required>
                             </div>
                         </div>   
-                        <div id="mensaje"> </div>
+                        <div id="mensajenuevo" class="text-center text-danger"></div>
                         <div class="custom-control custom-checkbox mb-3 mt-3 text-center">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
-                        <input type="submit" name="guardar" id="guardar" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Añadir" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -148,7 +161,7 @@ Gestión
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Modificar panel</div>
+                    <div class="modal-title">Editar usuario</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -156,29 +169,70 @@ Gestión
                 <div class="modal-body p-4">
                     <form action="modificarTablero" method="post" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="idusumod" id="idusumod" value="">
+                        <input type="hidden" name="idrol" id="idrol" value=""/>
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
-                                    <label id="imagecontextolabel" class="custom-file-label" for="imagecontexto">Selecciona una imagen...</label>
+                                    <input type="file" name="image" id="imageusumod" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                    <label id="imageusumodlabel" class="custom-file-label" for="imageusumod">Selecciona una imagen...</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="nombre">Nombre</label>
+                            <label class="sr-only" for="usuariomod">Usuario</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                </div>
+                                <input type="text" name="usuariomod" id="usuariomod" placeholder="Usuario" value="" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="nombremod">Nombre</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                                 </div>
-                                <input type="hidden" id="posimo" name="posimo" value="1">
-                                <input type="hidden" id="actual" name="actual" value="">
                                 <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
                             </div>
-                        </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="rolmod">Rol</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                </div>
+                                <select name="rolmod" id="rolmod" class="custom-select">
+                                    <?php foreach ($datos2 as $da2) { ?>
+                                        <option id="rolop<?php echo $da2->Id_rol ?>" value="<?php echo $da2->Id_rol ?>"><?php echo $da2->Descripcion ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="clavemod">Contraseña</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                                </div>
+                                <input type="password" name="clavemod" id="clavemod" placeholder="Escribe la nueva contraseña" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="claverepemod">Confirmar</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
+                                </div>
+                                <input type="password" name="claverepemod" id="claverepemod" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('mod')">
+                            </div>
+                        </div>
+                        <div id="mensajemod" class="text-center text-danger mb-3"></div>
+                        <input type="submit" name="guardarmod" id="guardarmod" value="Guardar" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -189,7 +243,7 @@ Gestión
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Eliminar usuario</div>
+                    <div class="modal-title">Borrar usuario</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>

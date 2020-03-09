@@ -4,28 +4,6 @@
 $(document).ready(function () {
 
     /**
-     * Valida el contenido de los campos de clave y repetir clave del perfil de administrador.
-     * @author Laura
-     */
-    $("#claverepe").keyup(function validarClave() {
-        var mensaje = "Las contraseñas no coinciden";
-        var longitud = $("#clave").val().length;
-        if ($("#clave").val() !== $("#claverepe").val() && $("#claverepe").val().length >= longitud) {
-            $("#mensaje").html(mensaje);
-            $("#guardar").attr('disabled', true);
-        } else {
-            if ($("#clave").val() !== $("#claverepe").val() && $("#claverepe").val().length <= longitud) {
-                $("#guardar").attr('disabled', true);
-            } else {
-                $("#mensaje").empty();
-                $("#guardar").attr('disabled', false);
-            }
-        }
-    });
-
-    //------------------------------------------------------------------------//
-
-    /**
      * Borrar el contenido de las ventana modal
      * @author Carlos.
      * @version 1.0 
@@ -51,7 +29,7 @@ $(document).ready(function () {
         var numFilas = $("input[name=numfilas]").val();
 
         if (clave === "aspades") {
-            localStorage.setItem('admin',true);
+            localStorage.setItem('admin', true);
             if (menu.hasClass("d-none")) {
                 $("#divpass").addClass('d-none');
                 $("#loginadmin").val("Ocultar menú");
@@ -91,19 +69,48 @@ $(document).ready(function () {
         }
     });
 
-    
+
 });
 
 /**
-* Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
-* @param id Id del input en el que se produce el evento
-* @author Laura
-*/
+ * Valida el contenido de los campos de clave y repetir clave del perfil de administrador.
+ * @author Laura
+ * @version 2.0
+ */
+function validarClave(accion) {
+    var mensaje = "Las contraseñas no coinciden";
+    var longitud = $("#clave" + accion).val().length;
+    var clave = $("#clave" + accion).val();
+    var claverepe = $("#claverepe" + accion).val();
+    
+    if (clave !== claverepe && claverepe.length >= longitud) {
+        $("#mensaje" + accion).html(mensaje);
+        $("#guardar" + accion).attr('disabled', true);
+    } else {
+        if (clave !== claverepe && claverepe.length <= longitud) {
+            $("#guardar" + accion).attr('disabled', true);
+        } else {
+            $("#mensaje" + accion).empty();
+            $("#guardar" + accion).attr('disabled', false);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------//
+
+/**
+ * Sustituye el texto por defecto de los inputs de tipo file personalizados cuando se selecciona una imagen por el nombre de ésta.
+ * @param id Id del input en el que se produce el evento
+ * @author Laura
+ * @version 2.0
+ */
 function cambiarTexto(id) {
     var ruta = $("input[id='" + id + "']").val();
     var texto = jQuery.trim(ruta).substr(12);
-    $("label[id='"+ id +"label']").text(texto);
-}  
+    $("label[id='" + id + "label']").text(texto);
+}
+
+//----------------------------------------------------------------------------//
 
 /**
  * Modifica el contenido de la ventana modal con los datos que tiene la tarjeta
@@ -159,4 +166,20 @@ function volver() {
  */
 function eliminarUsuario(id) {
     $("#idusuelim").val(id);
+}
+
+/**
+ * Establece id como valor del input idusuelim del la ventana de confirmación de eliminación de usuario.
+ * @param id Número identificador del usuario
+ * @param rol Tipo de permisos del usuario   
+ * @author Laura
+ */
+function editarUsuario(id, rol) {
+    $("#idusumod").val(id);
+    $("#usuariomod").val($("#nick" + id).val());
+    $("#nombremod").val($("#nombre" + id).val());
+    $("#idrol").val(rol);
+    $("#rolmod").val(rol);
+//    $("#rolmod").removeAttr("selected", "selected");
+//    $("#rolop" + rol).attr("selected", "selected");
 }
