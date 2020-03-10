@@ -206,15 +206,7 @@ $(document).ready(function () {
                 type: 'post',
                 data: {_token: CSRF_TOKEN, "id": id, "nick": nick, "nombre": nombre, "rol": rol, "clave": clave},
                 success: function (response) {
-                    alert(response);
                     location.reload();
-//                    if (response === "ok") {
-//                        var mensaje = "Usuario editado con éxito";
-//                        alert("entro");
-//                    } else  {
-//                        mensaje = "Error";
-//                    }
-//                    alert(mensaje);
                 }, error: function (jqXHR, exception) {
                     var msg = '';
                     if (jqXHR.status === 0) {

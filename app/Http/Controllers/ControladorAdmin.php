@@ -204,15 +204,16 @@ class ControladorAdmin extends Controller {
         $id = $_POST['id'];
         $nick = $_POST['nick'];
         $nombre = $_POST['nombre'];
-        $role = $_POST['rol'];
+        $rol = $_POST['rol'];
         $clave = $_POST['clave'];
         
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
         
-        $rol = Usuario_Rol::where('Id_usuario', $id)->first();
-        $rol->Id_rol = $role;
+        $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
+        $usuRol->Id_rol = $rol;
+        $usuRol->save();
         
         if ($clave != null) {
             $claveCod = md5($clave);
