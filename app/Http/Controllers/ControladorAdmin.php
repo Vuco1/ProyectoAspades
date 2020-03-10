@@ -76,12 +76,12 @@ class ControladorAdmin extends Controller {
         if ($req->file('imagen')) {
             $req->validate([
                 'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+            ]);           
             $foto = $req->file('imagen');
-            $nomimagen = $foto->getClientOriginalName();
-            $req->imagen->move(public_path('images/users/'), $nomimagen);
+            $nomImagen = time() . '.' . $foto->extension();
+            $req->imagen->move(public_path('images/users/'), $nomImagen);
         } else {
-            $nomimagen = 'general.jpg';
+            $nomImagen = 'general.jpg';
         }
 
         if ($req->has('rol')) {
@@ -93,7 +93,7 @@ class ControladorAdmin extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->Nombre = $nombre;
-        $usuario->Foto = 'images/users/' . $nomimagen;
+        $usuario->Foto = 'images/users/' . $nomImagen;
         $usuario->save();
 
         $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
@@ -217,8 +217,8 @@ class ControladorAdmin extends Controller {
             $req->validate([
                 'imagenmod' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $foto = $req->file('imagenmod');
-            $nomImagen = $foto->getClientOriginalName();
+            $foto = $req->file('imagenmod');           
+            $nomImagen = time() . '.' . $foto->extension();
             $req->imagenmod->move(public_path('images/users/'), $nomImagen);
             $usuario->Foto = 'images/users/' . $nomImagen;
         }
