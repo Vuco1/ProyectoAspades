@@ -56,32 +56,32 @@ Perfil
                     <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
                 </div>
                 <div class="custom-file">
-                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen">
-                    <label class="custom-file-label" for="imagen">Selecciona tu nueva imagen...</label>
+                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
+                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona tu nueva imagen...</label>
                 </div>
             </div>
         </div>           
         <div class="form-group">
-            <label class="sr-only" for="clave">Contraseña</label>
+            <label class="sr-only" for="claveperfil">Contraseña</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                 </div>
-                <input type="password" name="clave" id="clave" placeholder="Escribe tu nueva contraseña" class="form-control">
+                <input type="password" name="clave" id="claveperfil" placeholder="Escribe tu nueva contraseña" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="claverepe">Confirmar</label>
+            <label class="sr-only" for="claverepeperfil">Confirmar</label>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                 </div>
-                <input type="password" name="claverep" id="claverepe" placeholder="Repite la nueva contraseña" class="form-control">
+                <input type="password" name="claverepe" id="claverepeperfil" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('perfil')">
             </div>
         </div>
-        <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-orange w-100">
+        <div id="mensajeperfil" class="text-center my-3 <?php if (isset($color)) { echo $color; }?>"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
+        <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-orange w-100">
     </form>
-    <div id="mensaje" class="text-center mt-3 <?php if (isset($color)) { echo $color; }?>"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
 <?php } ?>
 </main>
 @include('plantillas/footer')
