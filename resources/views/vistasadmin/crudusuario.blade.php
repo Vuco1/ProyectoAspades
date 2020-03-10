@@ -105,8 +105,8 @@ Gestión
                                     <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen">
-                                    <label class="custom-file-label" for="imagen">Selecciona una imagen...</label>
+                                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
+                                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona una imagen...</label>
                                 </div>
                             </div>
                         </div>
@@ -168,10 +168,21 @@ Gestión
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form method="post" enctype="multipart/form-data">
+                    <form action="updateusuario" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="idusumod" id="idusumod" value="">
                         <input type="hidden" name="idrol" id="idrol" value=""/>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input name="imagenmod" id="imagenmod" type="file" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                    <label id="imagenmodlabel" for="imagenmod" class="custom-file-label">Selecciona una imagen...</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label class="sr-only" for="usuariomod">Usuario</label>
                             <div class="input-group">

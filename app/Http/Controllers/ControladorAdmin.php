@@ -14,7 +14,7 @@ class ControladorAdmin extends Controller {
     /**
      * Edita los datos de perfil del administrador.
      * @param Request $req Recibe los datos del formulario del perfil.
-     * @author Isabel
+     * @author Isabel y Laura
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
@@ -27,7 +27,6 @@ class ControladorAdmin extends Controller {
             ]);
         }
         $imagen = $req->file('imagen');
-        $color = 'text-success';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
             $usuario->Nombre = $nombre;
@@ -49,7 +48,6 @@ class ControladorAdmin extends Controller {
             $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';
-            $color = 'text-danger';
         }
 
         $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -57,8 +55,7 @@ class ControladorAdmin extends Controller {
 
         $datos = [
             'usuario' => $usuario,
-            'mensaje' => $mensaje,
-            'color' => $color
+            'mensaje' => $mensaje
         ];
 
         return view('vistasadmin/perfiladmin', $datos);
@@ -79,12 +76,12 @@ class ControladorAdmin extends Controller {
         if ($req->file('imagen')) {
             $req->validate([
                 'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
+            ]);           
             $foto = $req->file('imagen');
-            $nomimagen = $foto->getClientOriginalName();
-            $req->imagen->move(public_path('images/users/'), $nomimagen);
+            $nomImagen = time() . '.' . $foto->extension();
+            $req->imagen->move(public_path('images/users/'), $nomImagen);
         } else {
-            $nomimagen = 'general.jpg';
+            $nomImagen = 'general.jpg';
         }
 
         if ($req->has('rol')) {
@@ -96,7 +93,7 @@ class ControladorAdmin extends Controller {
         $usuario->Nick = $nick;
         $usuario->Clave = $clave;
         $usuario->Nombre = $nombre;
-        $usuario->Foto = 'images/users/' . $nomimagen;
+        $usuario->Foto = 'images/users/' . $nomImagen;
         $usuario->save();
 
         $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
@@ -200,21 +197,35 @@ class ControladorAdmin extends Controller {
      * Modifica los datos de un usuario de la BBDD teniendo en cuenta su id único.
      * @author Victor y Laura
      */
-    public function updateUsuario() {
-        $id = $_POST['id'];
-        $nick = $_POST['nick'];
-        $nombre = $_POST['nombre'];
-        $rol = $_POST['rol'];
-        $clave = $_POST['clave'];
+    public function updateUsuario(Request $req) {
+//        $id = $_POST['id'];
+//        $nick = $_POST['nick'];
+//        $nombre = $_POST['nombre'];
+//        $rol = $_POST['rol'];
+//        $clave = $_POST['clave'];
+        $id = $req->get('idusumod');
+        $nick = $req->get('usuariomod');
+        $nombre = $req->get('nombremod');
+        $rol = $req->get('rolmod');
+        $clave = $req->get('clavemod');
         
+        //Nick de login y nombre
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
+
+        //Imagen de perfil
+        if ($req->file('imagenmod')) {
+            $req->validate([
+                'imagenmod' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $foto = $req->file('imagenmod');           
+            $nomImagen = time() . '.' . $foto->extension();
+            $req->imagenmod->move(public_path('images/users/'), $nomImagen);
+            $usuario->Foto = 'images/users/' . $nomImagen;
+        }
         
-        $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
-        $usuRol->Id_rol = $rol;
-        $usuRol->save();
-        
+        //Clave
         if ($clave != null) {
             $claveCod = md5($clave);
             $usuario->clave = $claveCod;
@@ -222,12 +233,15 @@ class ControladorAdmin extends Controller {
         
         $usuario->save();
         
-        echo("ok");
+        //Rol
+        $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
+        $usuRol->Id_rol = $rol;
+        $usuRol->save();
         
-//        $datos = self::selectUsuarios();
-//        $datos2 = self::selectRoles();
+        $datos = self::selectUsuarios();
+        $datos2 = self::selectRoles();
         
-//        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
+        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
     /**

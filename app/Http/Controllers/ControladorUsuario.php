@@ -340,7 +340,6 @@ class ControladorUsuario extends Controller {
             ]);
         }
         $imagen = $req->file('imagen');
-        $color = 'text-success';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
             $usuario->Nombre = $nombre;
@@ -362,7 +361,6 @@ class ControladorUsuario extends Controller {
             $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';
-            $color = 'text-danger';
         }
 
         $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -370,8 +368,7 @@ class ControladorUsuario extends Controller {
 
         $datos = [
             'usuario' => $usuario,
-            'mensaje' => $mensaje,
-            'color' => $color
+            'mensaje' => $mensaje
         ];
 
         return view('vistasusuario/perfilusuario', $datos);

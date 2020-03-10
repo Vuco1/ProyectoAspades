@@ -75,7 +75,7 @@ $(document).ready(function () {
 /**
  * Valida el contenido de los campos de clave y repetir clave del perfil de administrador.
  * @author Laura
- * @version 2.0
+ * @version 2.1
  */
 function validarClave(accion) {
     var mensaje = "Las contraseñas no coinciden";
@@ -85,12 +85,16 @@ function validarClave(accion) {
     
     if (clave !== claverepe && claverepe.length >= longitud) {
         $("#mensaje" + accion).html(mensaje);
+        $("#mensaje" + accion).removeClass("text-success");
+        $("#mensaje" + accion).addClass("text-danger"); 
         $("#guardar" + accion).attr('disabled', true);
     } else {
         if (clave !== claverepe && claverepe.length <= longitud) {
             $("#guardar" + accion).attr('disabled', true);
         } else {
             $("#mensaje" + accion).empty();
+            $("#mensaje" + accion).removeClass("text-danger");
+            $("#mensaje" + accion).addClass("text-success");
             $("#guardar" + accion).attr('disabled', false);
         }
     }
