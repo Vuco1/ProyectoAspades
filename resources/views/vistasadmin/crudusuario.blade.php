@@ -1,5 +1,5 @@
 @extends('plantillas/maestra')
-<meta name="csrf-token" content="{{ csrf_token() }}" />
+<meta name="csrf_token" content="{{ csrf_token() }}" />
 @section('titulo')
 Gestión
 @endsection
@@ -167,7 +167,7 @@ Gestión
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="updateusuario" method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="idusumod" id="idusumod" value="">
                         <input type="hidden" name="idrol" id="idrol" value=""/>
