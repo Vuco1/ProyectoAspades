@@ -72,7 +72,7 @@ $(document).ready(function () {
 
     /**
      * Todas las funciones que usamos con ajax.
-     * @author Victor;
+     * @author Victor
      */
     $('form').submit(function (evt) {
         //Funciones de las imagenes
@@ -194,39 +194,41 @@ $(document).ready(function () {
             }, 1800);
         }
         //Modificar usuarios en el CRUD de usuarios
-        if (buttonpressed === 'guardarmod') {
-            evt.preventDefault();           
-            var id = $('#idusumod').val();
-            var nick = $('#usuariomod').val();
-            var nombre = $('#nombremod').val();
-            var rol = $('#rolmod').val();
-            var clave = $('#clavemod').val();
-            $.ajax({
-                url: 'updateusuario',
-                type: 'post',
-                data: {_token: CSRF_TOKEN, "id": id, "nick": nick, "nombre": nombre, "rol": rol, "clave": clave},
-                success: function (response) {
-                    location.reload();
-                }, error: function (jqXHR, exception) {
-                    var msg = '';
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    } else if (jqXHR.status === 404) {
-                        msg = 'Requested page not found. [404]';
-                    } else if (jqXHR.status === 500) {
-                        msg = 'Internal Server Error [500].';
-                    } else if (exception === 'parsererror') {
-                        msg = 'Requested JSON parse failed.';
-                    } else if (exception === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (exception === 'abort') {
-                        msg = 'Ajax request aborted.';
-                    } else {
-                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
-                    }
-                },
-            });
-        }
+//        if (buttonpressed === 'guardarmod') {
+//            evt.preventDefault();           
+//            var id = $('#idusumod').val();
+//            var nick = $('#usuariomod').val();
+//            var nombre = $('#nombremod').val();
+//            var rol = $('#rolmod').val();
+//            var clave = $('#clavemod').val();
+//            var imagen = $('#imagenmod').val();
+//            $.ajax({
+//                url: 'updateusuario',
+//                type: 'post',
+//                data: {_token: CSRF_TOKEN, "id": id, "nick": nick, "nombre": nombre, "rol": rol, "clave": clave, "imagen": imagen},
+//                success: function (response) {
+//                    alert(response);
+//                    location.reload();
+//                }, error: function (jqXHR, exception) {
+//                    var msg = '';
+//                    if (jqXHR.status === 0) {
+//                        msg = 'Not connect.\n Verify Network.';
+//                    } else if (jqXHR.status === 404) {
+//                        msg = 'Requested page not found. [404]';
+//                    } else if (jqXHR.status === 500) {
+//                        msg = 'Internal Server Error [500].';
+//                    } else if (exception === 'parsererror') {
+//                        msg = 'Requested JSON parse failed.';
+//                    } else if (exception === 'timeout') {
+//                        msg = 'Time out error.';
+//                    } else if (exception === 'abort') {
+//                        msg = 'Ajax request aborted.';
+//                    } else {
+//                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+//                    }
+//                },
+//            });
+//        }
         //Eliminar elementos del CRUD de usuarios
         if (buttonpressed === 'eliminar') {
             evt.preventDefault();

@@ -197,16 +197,31 @@ class ControladorAdmin extends Controller {
      * Modifica los datos de un usuario de la BBDD teniendo en cuenta su id único.
      * @author Victor y Laura
      */
-    public function updateUsuario() {
-        $id = $_POST['id'];
-        $nick = $_POST['nick'];
-        $nombre = $_POST['nombre'];
-        $rol = $_POST['rol'];
-        $clave = $_POST['clave'];
+    public function updateUsuario(Request $req) {
+//        $id = $_POST['id'];
+//        $nick = $_POST['nick'];
+//        $nombre = $_POST['nombre'];
+//        $rol = $_POST['rol'];
+//        $clave = $_POST['clave'];
+        $id = $req->get('idusumod');
+        $nick = $req->get('usuariomod');
+        $nombre = $req->get('nombremod');
+        $rol = $req->get('rolmod');
+        $clave = $req->get('clavemod');
         
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
+
+        if ($req->file('imagenmod')) {
+            $req->validate([
+                'imagenmod' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $foto = $req->file('imagenmod');
+            $nomImagen = $foto->getClientOriginalName();
+            $req->imagenmod->move(public_path('images/users/'), $nomImagen);
+            $usuario->Foto = 'images/users/' . $nomImagen;
+        }
         
         $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
         $usuRol->Id_rol = $rol;
@@ -219,12 +234,10 @@ class ControladorAdmin extends Controller {
         
         $usuario->save();
         
-        echo("ok");
+        $datos = self::selectUsuarios();
+        $datos2 = self::selectRoles();
         
-//        $datos = self::selectUsuarios();
-//        $datos2 = self::selectRoles();
-        
-//        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
+        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
     /**
