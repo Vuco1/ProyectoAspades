@@ -16,6 +16,7 @@ Gestión
                 <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item active"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Gestión</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle = "modal" data-target = "#ayuda_crud"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -248,6 +249,29 @@ Gestión
             </div>
         </div>
     </section>
+    
+          <!--VENTANA MODAL DE AYUDA-->
+    <section class="modal fade" id="ayuda_crud">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-title">Ayuda</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body p-4">
+                <ul>
+                    <li><p>Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.</p></li>
+                    <li><p>Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón Borrar.</p></li>
+                    <li><p>Para modificar los datos de algún usuario, escribimos el dato que queramos modificar y pulsamos en Editar.</p></li>
+                    <li><p>Para añadir nuevos usuarios, pulsamos en Añadir usuario. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.</p></li>
+                </ul> 
+            </div>
+        </div>
+    </div>
+</section>
+    
 </main>
 @include('plantillas/footer')
 @endsection
