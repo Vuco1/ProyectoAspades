@@ -198,8 +198,7 @@ class ControladorAdmin extends Controller {
 
     /**
      * Modifica los datos de un usuario de la BBDD teniendo en cuenta su id único.
-     * @param Request $request
-     * @author Victor
+     * @author Victor y Laura
      */
     public function updateUsuario() {
         $id = $_POST['id'];
@@ -207,14 +206,14 @@ class ControladorAdmin extends Controller {
         $nombre = $_POST['nombre'];
         $role = $_POST['rol'];
         $clave = $_POST['clave'];
-
+        
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
-
+        
         $rol = Usuario_Rol::where('Id_usuario', $id)->first();
         $rol->Id_rol = $role;
-       
+        
         if ($clave != null) {
             $claveCod = md5($clave);
             $usuario->clave = $claveCod;
