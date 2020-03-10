@@ -75,7 +75,7 @@ $(document).ready(function () {
 /**
  * Valida el contenido de los campos de clave y repetir clave del perfil de administrador.
  * @author Laura
- * @version 2.0
+ * @version 2.1
  */
 function validarClave(accion) {
     var mensaje = "Las contraseñas no coinciden";
