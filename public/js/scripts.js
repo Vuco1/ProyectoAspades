@@ -85,12 +85,16 @@ function validarClave(accion) {
     
     if (clave !== claverepe && claverepe.length >= longitud) {
         $("#mensaje" + accion).html(mensaje);
+        $("#mensaje" + accion).removeClass("text-success");
+        $("#mensaje" + accion).addClass("text-danger"); 
         $("#guardar" + accion).attr('disabled', true);
     } else {
         if (clave !== claverepe && claverepe.length <= longitud) {
             $("#guardar" + accion).attr('disabled', true);
         } else {
             $("#mensaje" + accion).empty();
+            $("#mensaje" + accion).removeClass("text-danger");
+            $("#mensaje" + accion).addClass("text-success");
             $("#guardar" + accion).attr('disabled', false);
         }
     }

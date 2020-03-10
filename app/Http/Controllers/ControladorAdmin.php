@@ -14,7 +14,7 @@ class ControladorAdmin extends Controller {
     /**
      * Edita los datos de perfil del administrador.
      * @param Request $req Recibe los datos del formulario del perfil.
-     * @author Isabel
+     * @author Isabel y Laura
      */
     public function editarPerfil(Request $req) {
         $id = $req->get('id');
@@ -27,7 +27,6 @@ class ControladorAdmin extends Controller {
             ]);
         }
         $imagen = $req->file('imagen');
-        $color = 'text-success';
         try {
             $usuario = Usuario::where('Id_usuario', $id)->first();
             $usuario->Nombre = $nombre;
@@ -49,7 +48,6 @@ class ControladorAdmin extends Controller {
             $usuario->save();
         } catch (Exception $ex) {
             $mensaje = 'Error al modificar el perfil';
-            $color = 'text-danger';
         }
 
         $usuario = Usuario::where('Id_usuario', $id)->first();
@@ -57,8 +55,7 @@ class ControladorAdmin extends Controller {
 
         $datos = [
             'usuario' => $usuario,
-            'mensaje' => $mensaje,
-            'color' => $color
+            'mensaje' => $mensaje
         ];
 
         return view('vistasadmin/perfiladmin', $datos);

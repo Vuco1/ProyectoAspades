@@ -79,7 +79,7 @@ Perfil
                 <input type="password" name="claverepe" id="claverepeperfil" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('perfil')">
             </div>
         </div>
-        <div id="mensajeperfil" class="text-center my-3 <?php if (isset($color)) { echo $color; }?>"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
+        <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-orange w-100">
     </form>
 <?php } ?>
