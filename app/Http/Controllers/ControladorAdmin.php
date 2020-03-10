@@ -209,10 +209,12 @@ class ControladorAdmin extends Controller {
         $rol = $req->get('rolmod');
         $clave = $req->get('clavemod');
         
+        //Nick de login y nombre
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
         $usuario->Nombre = $nombre;
 
+        //Imagen de perfil
         if ($req->file('imagenmod')) {
             $req->validate([
                 'imagenmod' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -223,16 +225,18 @@ class ControladorAdmin extends Controller {
             $usuario->Foto = 'images/users/' . $nomImagen;
         }
         
-        $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
-        $usuRol->Id_rol = $rol;
-        $usuRol->save();
-        
+        //Clave
         if ($clave != null) {
             $claveCod = md5($clave);
             $usuario->clave = $claveCod;
         }
         
         $usuario->save();
+        
+        //Rol
+        $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
+        $usuRol->Id_rol = $rol;
+        $usuRol->save();
         
         $datos = self::selectUsuarios();
         $datos2 = self::selectRoles();
