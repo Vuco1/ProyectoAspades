@@ -14,7 +14,7 @@ SubContextos
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle = "modal" data-target = "#ayuda_tablero"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_tablero"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-th icono"></i>Administrar panel</a>
                     <div class="dropdown-menu w-100" aria-labelledby="navbarDropdown">

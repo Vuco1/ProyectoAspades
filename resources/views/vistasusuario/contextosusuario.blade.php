@@ -15,7 +15,7 @@ Contextos
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir panel</button></li>
-                <li class="nav-item"><a class="nav-link" data-toggle = "modal" data-target = "#ayuda_panel"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_panel"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
