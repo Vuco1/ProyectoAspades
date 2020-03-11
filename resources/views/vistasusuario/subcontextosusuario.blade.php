@@ -342,14 +342,14 @@ SubContextos
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Aquí podemos ver, modificar, añadir y eliminar tableros.</p></li>
-                    <li><p>Para añadir un tablero debemos pulsar en "Añadir". Eligiremos la foto de nuestra galería de imágenes, su nombre, la acción que le queremos asignar y el tamaño en la ventana.</p></li>
+                    <li><p>Para añadir un tablero debemos pulsar en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2 icono"></i>Añadir</span>. Eligiremos la foto de nuestra galería de imágenes, su nombre, la acción que le queremos asignar y el tamaño en la ventana.</p></li>
                     <li><p>También podemos elegir la foto de portada entre los pictogramas de la base de datos de ARASAAC poniendo una palabra clave y descargando el que más nos guste para poder cargarlo desde la galería.</p></li>
-                    <li><p>Para modificar, pulsamos en "Editar" y cambiamos la información que queramos modificar.</p></li>
-                    <li><p>Para eliminar un tablero, pulsamos en "Borrar" y se nos recargará la página sin el tablero eliminado.</p></li>
-                    <li><p>En el menú de "Administrar panel" podemos: añadir una página con "Añadir página", eliminar la página en la que nos encontramos con "Eliminar página" o vaciar el tablero por completo con "Vaciar tablero".</p></li>
+                    <li><p>Para modificar, pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span> y cambiamos la información que queramos modificar.</p></li>
+                    <li><p>Para eliminar un tablero, pulsamos en <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span> y se nos recargará la página sin el tablero eliminado.</p></li>
+                    <li><p>En el menú de <span class="text-secondary px-1"><i class="fas fa-th icono"></i>Administrar panel</span> podemos: añadir una página con <span class="text-secondary px-1"><i class="fas fa-plus-circle icono"></i>Añadir página</span>, eliminar la página en la que nos encontramos con <span class="text-secondary px-1"><i class="fas fa-minus-circle icono"></i>Eliminar página</span> o vaciar el tablero por completo con <span class="text-secondary px-1"><i class="fas fa-times-circle icono"></i>Vaciar tablero</span>.</p></li>
                 </ul> 
             </div>
         </div>

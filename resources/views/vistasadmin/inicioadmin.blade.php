@@ -41,7 +41,7 @@ Login
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Si pulsamos sobre <span><img src="../public/images/icons/Screenshot_20200305_122931.png" width="30px"></span> o <span class="text-secondary px-1"><i class="fas fa-users-cog icono"></i>Gestión</span>, podremos ver una lista de todos los usuarios de la aplicación.</p></li>
                     <li><p>Si pulsamos sobre <span class="text-secondary px-1"><i class="fas fa-user-circle icono"></i>Perfil</span>, podremos modificar nuestro perfil.</p></li>

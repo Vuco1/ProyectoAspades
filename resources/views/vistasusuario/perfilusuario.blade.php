@@ -94,7 +94,7 @@ Perfil
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
                     <li><p>Podemos cambiar nuestro nombre y nuestro nombre de usuario.</p></li>
