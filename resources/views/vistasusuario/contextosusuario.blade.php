@@ -238,7 +238,7 @@ Contextos
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Aquí podemos ver, modificar, añadir y eliminar paneles.</p></li>
                     <li><p>Para añadir paneles debemos pulsar en <span class="text-secondary px-1"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> . Eligiremos la foto de portada de nuestra galería de imágenes, su nombre y el tamaño en la ventana.</p></li>

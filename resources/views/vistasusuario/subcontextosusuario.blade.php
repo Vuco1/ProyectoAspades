@@ -342,7 +342,7 @@ SubContextos
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body p-4">
+            <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Aquí podemos ver, modificar, añadir y eliminar tableros.</p></li>
                     <li><p>Para añadir un tablero debemos pulsar en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2 icono"></i>Añadir</span>. Eligiremos la foto de nuestra galería de imágenes, su nombre, la acción que le queremos asignar y el tamaño en la ventana.</p></li>
