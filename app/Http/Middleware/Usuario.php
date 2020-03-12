@@ -15,7 +15,7 @@ class Usuario {
      */
     public function handle($request, Closure $next) {
         $usuario_rol = \Session::get('rol');
-        if ($usuario_rol == 0) {
+        if ($usuario_rol === 0) {
             return $next($request);
         } else {
             return response()->view('errors/errorpermisos', [], 401);
