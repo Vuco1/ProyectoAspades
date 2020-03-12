@@ -71,7 +71,8 @@ class ControladorAdmin extends Controller {
         $miusuario = session()->get('usuario');
 
         $nick = $req->get('usuario');
-        $clave = md5($req->get('clave'));
+        $clave = $req->get('clavenuevo');
+        $claveCod = md5($clave);
         $nombre = $req->get('nombre');
         if ($req->file('imagen')) {
             $req->validate([
@@ -91,12 +92,12 @@ class ControladorAdmin extends Controller {
         }
         $usuario = new Usuario;
         $usuario->Nick = $nick;
-        $usuario->Clave = $clave;
+        $usuario->Clave = $claveCod;
         $usuario->Nombre = $nombre;
         $usuario->Foto = 'images/users/' . $nomImagen;
         $usuario->save();
 
-        $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $clave)->first();
+        $usuarioadd = Usuario::where('Nick', '=', $nick)->where('Clave', '=', $claveCod)->first();
 
         $usurol = new Usuario_Rol;
         $usurol->Id_rol = $rol;
