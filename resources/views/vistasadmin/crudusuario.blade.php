@@ -275,8 +275,8 @@ Gestión
                 <ul>
                     <li><p>Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.</p></li>
                     <li><p>Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span>.</p></li>
-                    <li><p>Para modificar los datos de algún usuario, escribimos el dato que queramos modificar y pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>.</p></li>
-                    <li><p>Para añadir nuevos usuarios, pulsamos en <span class="btn-orange px-1 md-3">Añadir usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.</p></li>
+                    <li><p>Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.</p></li>
+                    <li><p>Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.</p></li>
                 </ul> 
             </div>
         </div>

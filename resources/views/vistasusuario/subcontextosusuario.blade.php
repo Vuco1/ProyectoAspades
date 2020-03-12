@@ -322,8 +322,8 @@ SubContextos
                 <div class="modal-body p-4">
                     <form action="vaciartablero" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas vaciar este subcontexto?</p>
-                        <p>(Esto eliminara todos los tableros dentro de este subcontexto)</p>
+                        <p>¿Estás seguro de que deseas vaciar este tablero?</p>
+                        <p>(Esto eliminara todos los tableros dentro de este tablero)</p>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
                     </form>
