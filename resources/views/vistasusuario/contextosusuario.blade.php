@@ -47,7 +47,7 @@ Contextos
             <?php if (!$contextos) { ?>
                 <div class="text-center">
                     <h2 class="m-auto">Todavía no tienes ningún panel</h2>
-                    <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir contexto</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
+                    <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
                 </div>
                 <?php
             } else {
