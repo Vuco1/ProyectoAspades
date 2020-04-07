@@ -1,4 +1,4 @@
-@extends('plantillas/maestra')
+@extends('en/plantillas/maestra')
 @section('titulo')
 SubContextos
 @endsection
@@ -357,5 +357,5 @@ SubContextos
 </section>
     
 </main>
-@include('plantillas/footer')
+@include('en/plantillas/footer')
 @endsection

@@ -1,4 +1,4 @@
-@extends('plantillas/maestra')
+@extends('en/plantillas/maestra')
 @section('titulo')
 Login
 @endsection
@@ -28,7 +28,7 @@ Login
     <form id="form0" name="formtablero" action="obtenercontextos" method="post" class="m-auto text-center">
         @csrf
         <button name="btninicio" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
-        <h1 id="leer0">Hola <?php echo $usuario->Nick ?></h1>
+        <h1 id="leer0">Hello <?php echo $usuario->Nick ?></h1>
     </form>
     <div id="mensaje" class="mt-3"><?php
         if (isset($mensaje)) {
@@ -60,5 +60,5 @@ Login
 </section>
     
 </main>
-@include('plantillas/footer')
+@include('en/plantillas/footer')
 @endsection

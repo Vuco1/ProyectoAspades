@@ -1,4 +1,4 @@
-@extends('plantillas/maestra')
+@extends('en/plantillas/maestra')
 @section('titulo')
 Login
 @endsection
@@ -27,7 +27,7 @@ Login
             $usuario = session()->get('usuario'); ?>
             <div class="m-auto text-center">
                 <a href="gestionusuarios" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></a>
-                <h1>Hola <?php echo $usuario->Nick ?></h1>  
+                <h1>Hello <?php echo $usuario->Nick ?></h1>  
             </div>
             <?php } ?>
             
@@ -54,6 +54,6 @@ Login
 </section>
             
         </main>
-@include('plantillas/footer')
+@include('en/plantillas/footer')
 @endsection
 

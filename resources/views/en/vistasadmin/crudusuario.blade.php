@@ -1,4 +1,4 @@
-@extends('plantillas/maestra')
+@extends('en/plantillas/maestra')
 <meta name="csrf_token" content="{{ csrf_token() }}" />
 @section('titulo')
 Gestión
@@ -284,5 +284,5 @@ Gestión
 </section>
     
 </main>
-@include('plantillas/footer')
+@include('en/plantillas/footer')
 @endsection

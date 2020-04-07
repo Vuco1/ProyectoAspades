@@ -1,4 +1,4 @@
-@extends('plantillas/maestra')
+@extends('en/plantillas/maestra')
 @section('titulo')
 Perfil
 @endsection
@@ -109,5 +109,5 @@ Perfil
 </section>
     
 </main>
-@include('plantillas/footer')
+@include('en/plantillas/footer')
 @endsection
