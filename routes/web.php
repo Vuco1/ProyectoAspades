@@ -12,7 +12,7 @@
  */
 
 Route::get('/', function () {
-    return view('index');
+    return view('es/index');
 })->middleware('Sesion');
 /*
   |--------------------------------------------------------------------------
@@ -33,6 +33,8 @@ Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
 Route::get('comprobar', function () {
     return view('index');
 });
+
+Route::get('idioma', 'ControladorGeneral@idioma');
 /**
  * Ruta paracerrar la Sesion
  */

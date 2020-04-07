@@ -33,10 +33,20 @@ class ControladorGeneral extends Controller {
             $rol = $usurol->Id_rol;
             switch ($rol) {
                 case 0:
-                    $vista = 'vistasusuario/iniciousuario';
+                    if (session()->has('idioma')) {
+                        $vista = 'en/vistasusuario/iniciousuario';
+                    } else {
+                        $vista = 'es/vistasusuario/iniciousuario';
+                    }
                     break;
                 case 1:
-                    $vista = 'vistasadmin/inicioadmin';
+                    if (session()->has('idioma')) {
+
+                        $vista = 'en/vistasadmin/inicioadmin';
+                    } else {
+
+                        $vista = 'es/vistasadmin/inicioadmin';
+                    }
             }
             $mensaje = "";
             session()->put('usuario', $usuario);
@@ -45,7 +55,6 @@ class ControladorGeneral extends Controller {
             $mensaje = "<p class='m-0'>Error. Usuario o clave incorrectos</p><p class='m-0'>Si has olvidado la clave, contacta con un administrador</p>";
             $vista = 'index';
         }
-
         return view($vista, ['mensaje' => $mensaje]);
     }
 
@@ -57,7 +66,21 @@ class ControladorGeneral extends Controller {
     public function cerrarSesion() {
         session()->flush();
         session()->regenerate();
-        return view('index');
+        if (session()->has('idioma')) {
+            return view('en/index');
+        } else {
+            return view('es/index');
+        }
+    }
+
+    public function idioma() {
+        if (session()->has('idioma')) {
+            session()->flush('idioma');
+            return view('es/index');
+        } else {
+            session()->put('idioma', 'ola');
+            return view('en/index');
+        }
     }
 
 }

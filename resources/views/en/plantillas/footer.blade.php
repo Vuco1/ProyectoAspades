@@ -10,12 +10,12 @@
         }
         if ($rol == 0) {
             ?>
-            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginoculto"><i class="fas fa-lock h2 m-0"></i></a>
+            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginoculto"><i id="candado" class="fas fa-lock h2 m-0"></i></a>
             <?php
         }
     } else {
         ?>
-        <a class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/United-Kingdom.svg" style="width:40px;"></a>
+        <a href="idioma" class="py-2 px-3 text-secondary float-left"><img src="{{asset('images/icons/United-Kingdom.svg')}}" style="width:40px;"></a>    
         <a class = "py-2 px-3 text-secondary float-right" data-toggle = "modal" data-target = "#info"><i class = "fas fa-info-circle h2 m-0"></i></a>
     <?php }
     ?>  

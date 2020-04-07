@@ -50,7 +50,12 @@ class ControladorUsuario extends Controller {
 
     public function obtenerContextos() {
         $datos = self::cargarContextos();
-        return view('vistasusuario/contextosusuario', $datos);
+
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/contextosusuario', $datos);
+        } else {
+            return view('es/vistasusuario/contextosusuario', $datos);
+        }
     }
 
     /**
@@ -127,7 +132,12 @@ class ControladorUsuario extends Controller {
 
     public function obtenerSubcontextos(Request $req) {
         $datos = self::cargarSubcontextos($req);
-        return view('vistasusuario/subcontextosusuario', $datos);
+
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/subcontextosusuario', $datos);
+        } else {
+            return view('es/vistasusuario/subcontextosusuario', $datos);
+        }
     }
 
     /**
@@ -172,10 +182,20 @@ class ControladorUsuario extends Controller {
         $tadi->save();
         if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
-            return view('vistasusuario/subcontextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/subcontextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/subcontextosusuario', $datos);
+            }
         } else {
             $datos = self::cargarContextos();
-            return view('vistasusuario/contextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/contextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/contextosusuario', $datos);
+            }
         }
     }
 
@@ -219,10 +239,20 @@ class ControladorUsuario extends Controller {
         $tablero->save();
         if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
-            return view('vistasusuario/subcontextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/subcontextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/subcontextosusuario', $datos);
+            }
         } else {
             $datos = self::cargarContextos();
-            return view('vistasusuario/contextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/contextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/contextosusuario', $datos);
+            }
         }
     }
 
@@ -238,10 +268,20 @@ class ControladorUsuario extends Controller {
         }
         if (\Session::has('actual')) {
             $datos = self::cargarSubcontextos($req);
-            return view('vistasusuario/subcontextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/subcontextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/subcontextosusuario', $datos);
+            }
         } else {
             $datos = self::cargarContextos();
-            return view('vistasusuario/contextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/contextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/contextosusuario', $datos);
+            }
         }
     }
 
@@ -256,10 +296,20 @@ class ControladorUsuario extends Controller {
 
         if ($tablero->Puntero == null) {
             $datos = self::cargarContextos();
-            return view('vistasusuario/contextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/contextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/contextosusuario', $datos);
+            }
         } else {
             $datos = self::cargarSubcontextos($req);
-            return view('vistasusuario/subcontextosusuario', $datos);
+
+            if (session()->has('idioma')) {
+                return view('en/vistasusuario/subcontextosusuario', $datos);
+            } else {
+                return view('es/vistasusuario/subcontextosusuario', $datos);
+            }
         }
     }
 
@@ -297,7 +347,12 @@ class ControladorUsuario extends Controller {
                     ->delete();
         }
         $datos = self::cargarSubcontextos($req);
-        return view('vistasusuario/subcontextosusuario', $datos);
+
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/subcontextosusuario', $datos);
+        } else {
+            return view('es/vistasusuario/subcontextosusuario', $datos);
+        }
     }
 
     /**
@@ -310,7 +365,12 @@ class ControladorUsuario extends Controller {
                 ->increment('Paginas', 1);
 
         $datos = self::cargarSubcontextos($req);
-        return view('vistasusuario/subcontextosusuario', $datos);
+
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/subcontextosusuario', $datos);
+        } else {
+            return view('es/vistasusuario/subcontextosusuario', $datos);
+        }
     }
 
     /**
@@ -326,7 +386,12 @@ class ControladorUsuario extends Controller {
         $tablero->Paginas = 1;
         $tablero->save();
         $datos = self::cargarSubcontextos($req);
-        return view('vistasusuario/subcontextosusuario', $datos);
+
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/subcontextosusuario', $datos);
+        } else {
+            return view('es/vistasusuario/subcontextosusuario', $datos);
+        }
     }
 
     public function editarPerfilUsuario(Request $req) {
@@ -371,7 +436,11 @@ class ControladorUsuario extends Controller {
             'mensaje' => $mensaje
         ];
 
-        return view('vistasusuario/perfilusuario', $datos);
+        if (session()->has('idioma')) {
+            return view('en/vistasusuario/perfilusuario', $datos);
+        } else {
+            return view('es/vistasusuario/perfilusuario', $datos);
+        }
     }
 
 }

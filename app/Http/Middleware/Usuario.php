@@ -18,7 +18,11 @@ class Usuario {
         if ($usuario_rol === 0) {
             return $next($request);
         } else {
-            return response()->view('errors/errorpermisos', [], 401);
+            if (session()->has('idioma')) {
+                return response()->view('errors/errorpermisosEn', [], 401);
+            } else {
+                return response()->view('errors/errorpermisos', [], 401);
+            }
         }
     }
 
