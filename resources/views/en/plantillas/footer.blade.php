@@ -14,8 +14,8 @@
             <?php
         }
     } else {
-        ?>
-        <a href="idioma" class="py-2 px-3 text-secondary float-left"><img src="{{asset('images/icons/United-Kingdom.svg')}}" style="width:40px;"></a>    
+        ?> 
+        <a href="idioma" class="py-2 px-3 text-secondary float-left"><img src="{{asset('images/icons/bandera-spain.jpg')}}" style="width:35px;"></a>
         <a class = "py-2 px-3 text-secondary float-right" data-toggle = "modal" data-target = "#info"><i class = "fas fa-info-circle h2 m-0"></i></a>
     <?php }
     ?>  
