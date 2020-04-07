@@ -10,7 +10,7 @@
         }
         if ($rol == 0) {
             ?>
-            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginoculto"><i class="fas fa-lock h2 m-0"></i></a>
+            <a class="py-2 px-3 text-secondary float-left" data-toggle="modal" data-target="#loginoculto"><i id="candado" class="fas fa-lock h2 m-0"></i></a>
             <?php
         }
     } else {
