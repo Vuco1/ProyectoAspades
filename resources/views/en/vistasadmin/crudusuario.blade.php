@@ -1,7 +1,7 @@
 @extends('en/plantillas/maestra')
 <meta name="csrf_token" content="{{ csrf_token() }}" />
 @section('titulo')
-Gestión
+Users management
 @endsection
 @section('contenido')
 <!-- HEADER -->
@@ -13,10 +13,10 @@ Gestión
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Inicio</a></li>
-                <li class="nav-item active"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Gestión</a></li>
-                <li class="nav-item"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_crud"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Welcome page</a></li>
+                <li class="nav-item active"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Users management</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>My profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_crud"><i class="fas fa-question-circle icono"></i>Help</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -35,28 +35,28 @@ Gestión
                             <img id="img<?php echo $dato->Id_usuario ?>" src="<?php echo $dato->Foto ?>" alt="Foto de perfil" class="card-img-top img-contexto">
                             <div class="card-body p-2">
                                 <div class="form-group">
-                                    <label class="sr-only" for="nick<?php echo $dato->Id_usuario ?>">Usuario</label>
+                                    <label class="sr-only" for="nick<?php echo $dato->Id_usuario ?>">Nick name</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Nick name</div>
                                         </div>
-                                        <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control" readonly>
+                                        <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Nick name" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Nombre</label>
+                                    <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Name</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Name</div>
                                         </div>
-                                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control" readonly>
+                                        <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Name" class="form-control" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
-                                    <label class="sr-only" for="rol<?php echo $dato->Id_usuario ?>">Rol</label>
+                                    <label class="sr-only" for="rol<?php echo $dato->Id_usuario ?>">Role</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Role</div>
                                         </div>
                                         <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="custom-select" disabled>
                                             <?php foreach ($datos2 as $da2) { ?>
@@ -69,8 +69,8 @@ Gestión
                         </form>
                         <div class="card-footer">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" onclick="editarUsuario(<?php echo ($dato->Id_usuario . ', ' . $dato->Id_rol) ?>)" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" onclick="editarUsuario(<?php echo ($dato->Id_usuario . ', ' . $dato->Id_rol) ?>)" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Modify</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Delete</span></button>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ Gestión
         </div>
     </div>
     <div class="text-center">
-        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</button>
+        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>Add new user</button>
     </div>
     <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-3">
         {{ $datos->links() }}
@@ -91,7 +91,7 @@ Gestión
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Añadir Usuario</div>
+                    <div class="modal-title">Add new user</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,56 +102,56 @@ Gestión
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
+                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Picture</span>
                                 </div>
                                 <div class="custom-file">
                                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona una imagen...</label>
+                                    <label id="imagenlabel" for="imagen" class="custom-file-label">Choose a picture...</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="usuario">Usuario</label>
+                            <label class="sr-only" for="usuario">Nick name</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Nick name</div>
                                 </div>
-                                <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control" required>
+                                <input type="text" name="usuario" id="usuario" placeholder="Nicka name" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="nombre">Nombre</label>
+                            <label class="sr-only" for="nombre">Name</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Name</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" required>
+                                <input type="text" name="nombre" id="nombre" placeholder="Name" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="clavenuevo">Contraseña</label>
+                            <label class="sr-only" for="clavenuevo">Password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Password</div>
                                 </div>
-                                <input type="password" name="clavenuevo" id="clavenuevo" placeholder="Escribe una contraseña" class="form-control" required>
+                                <input type="password" name="clavenuevo" id="clavenuevo" placeholder="Choose a password" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="claverepenuevo">Confirmar</label>
+                            <label class="sr-only" for="claverepenuevo">Repeat password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Repeat</div>
                                 </div>
-                                <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repite la contraseña" class="form-control" onkeyup="validarClave('nuevo')" required>
+                                <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repeat password" class="form-control" onkeyup="validarClave('nuevo')" required>
                             </div>
                         </div>   
                         <div id="mensajenuevo" class="text-center text-danger"></div>
                         <div class="custom-control custom-checkbox mb-3 mt-3 text-center">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
-                            <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
+                            <label for="rol" class="custom-control-label">¿Manager?</label>                              
                         </div>
-                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Accept" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -162,7 +162,7 @@ Gestión
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Editar usuario</div>
+                    <div class="modal-title">Modify data</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -175,37 +175,37 @@ Gestión
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Picture</span>
                                 </div>
                                 <div class="custom-file">
                                     <input name="imagenmod" id="imagenmod" type="file" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
-                                    <label id="imagenmodlabel" for="imagenmod" class="custom-file-label">Selecciona una imagen...</label>
+                                    <label id="imagenmodlabel" for="imagenmod" class="custom-file-label">Choose a picture...</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="usuariomod">Usuario</label>
+                            <label class="sr-only" for="usuariomod">Nick name</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Nick name</div>
                                 </div>
-                                <input type="text" name="usuariomod" id="usuariomod" placeholder="Usuario" value="" class="form-control" required>
+                                <input type="text" name="usuariomod" id="usuariomod" placeholder="Nick name" value="" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="nombremod">Nombre</label>
+                            <label class="sr-only" for="nombremod">Name</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Name</div>
                                 </div>
-                                <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
+                                <input type="text" name="nombremod" id="nombremod" placeholder="Name" class="form-control" value="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="rolmod">Rol</label>
+                            <label class="sr-only" for="rolmod">Role</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Role</div>
                                 </div>
                                 <select name="rolmod" id="rolmod" class="custom-select">
                                     <?php foreach ($datos2 as $da2) { ?>
@@ -215,25 +215,25 @@ Gestión
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="clavemod">Contraseña</label>
+                            <label class="sr-only" for="clavemod">Password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Password</div>
                                 </div>
-                                <input type="password" name="clavemod" id="clavemod" placeholder="Escribe la nueva contraseña" class="form-control">
+                                <input type="password" name="clavemod" id="clavemod" placeholder="Write a new password" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="claverepemod">Confirmar</label>
+                            <label class="sr-only" for="claverepemod">Repeat password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Repeat</div>
                                 </div>
-                                <input type="password" name="claverepemod" id="claverepemod" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('mod')">
+                                <input type="password" name="claverepemod" id="claverepemod" placeholder="Repeat new password" class="form-control" onkeyup="validarClave('mod')">
                             </div>
                         </div>
                         <div id="mensajemod" class="text-center text-danger mb-3"></div>
-                        <input type="submit" name="guardarmod" id="guardarmod" value="Guardar" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardarmod" id="guardarmod" value="Accept" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -244,7 +244,7 @@ Gestión
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-orange text-white px-4">
-                    <div class="modal-title">Borrar usuario</div>
+                    <div class="modal-title">Delete user</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -252,9 +252,9 @@ Gestión
                 <div class="modal-body p-4">
                     <form action="eliminarUsuario" method="post" enctype="multipart/form-data" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                        <p>Are you sure you want to delete this user?</p>
                         <input type="hidden" name="idusuelim" id="idusuelim" value="">
-                        <input type="submit" name="eliminar" id="eliminar" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="eliminar" id="eliminar" value="Delete" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -266,17 +266,17 @@ Gestión
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Ayuda</div>
+                <div class="modal-title">Help</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4 text-justify">
                 <ul>
-                    <li><p>Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.</p></li>
-                    <li><p>Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span>.</p></li>
-                    <li><p>Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.</p></li>
-                    <li><p>Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.</p></li>
+                    <li><p>Here we can see all the data from the registered users and modify it if we want. We can also delete or add new users.</p></li>
+                    <li><p>If we want to delete any user we have to click on <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Delete</span> and accept.</p></li>
+                    <li><p>To modify any user's data, we have to click on <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Modify</span>. This will open a new window where we have to write anything we want to change.</p></li>
+                    <li><p>If we want to add a new user, we have to click on <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Add new user</span>. This will open a new window where we have to write all the data for the new user.</p></li>
                 </ul> 
             </div>
         </div>

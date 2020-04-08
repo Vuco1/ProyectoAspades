@@ -1,6 +1,6 @@
 @extends('en/plantillas/maestra')
 @section('titulo')
-Perfil
+My profile
 @endsection
 @section('contenido')
 <!-- HEADER -->
@@ -12,10 +12,10 @@ Perfil
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Gestión</a></li>
-                <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Welcome page</a></li>
+                <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Users management</a></li>
+                <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>My profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>Help</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -27,61 +27,61 @@ Perfil
         $usuario = session()->get('usuario');
         ?>
     <div class="text-center">
-        <h2>Mi perfil</h2>
+        <h2>My profile</h2>
         <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
     <form action="editarperfil" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
         <input type="text" name="id" value="<?= $usuario->Id_usuario ?>" hidden>              
         <div class="form-group">
-            <label class="sr-only" for="usuario">Usuario</label>
+            <label class="sr-only" for="usuario">Nick name</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Nick name</div>
                 </div>
-                <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick ?>" placeholder="Usuario" class="form-control">
+                <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick ?>" placeholder="Nick name" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="nombre">Nombre</label>
+            <label class="sr-only" for="nombre">Name</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Name</div>
                 </div>
-                <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre ?>" placeholder="Nombre" class="form-control">
+                <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre ?>" placeholder="Name" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
+                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Picture</span>
                 </div>
                 <div class="custom-file">
                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona tu nueva imagen...</label>
+                    <label id="imagenlabel" for="imagen" class="custom-file-label">Choose a picture...</label>
                 </div>
             </div>
         </div>           
         <div class="form-group">
-            <label class="sr-only" for="claveperfil">Contraseña</label>
+            <label class="sr-only" for="claveperfil">Password</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Password</div>
                 </div>
-                <input type="password" name="clave" id="claveperfil" placeholder="Escribe tu nueva contraseña" class="form-control">
+                <input type="password" name="clave" id="claveperfil" placeholder="Write a new password" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only" for="claverepeperfil">Confirmar</label>
+            <label class="sr-only" for="claverepeperfil">Repeat password</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
+                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Repeat</div>
                 </div>
-                <input type="password" name="claverepe" id="claverepeperfil" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('perfil')">
+                <input type="password" name="claverepe" id="claverepeperfil" placeholder="Repeat new password" class="form-control" onkeyup="validarClave('perfil')">
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardarperfil" value="Accept" class="btn btn-orange w-100">
     </form>
 <?php } ?>
     
@@ -90,18 +90,18 @@ Perfil
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Ayuda</div>
+                <div class="modal-title">Help</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4 text-justify">
                 <ul>
-                    <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
-                    <li><p>Podemos cambiar nuestro nombre y nuestro nombre de usuario.</p></li>
-                    <li><p>Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.</p></li>
-                    <li><p>Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
-                La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>
+                    <li><p>Here we can modify our personal data.</p></li>
+                    <li><p>We can change our nick name and name.</p></li>
+                    <li><p>If we want to change our profile picture, we need to choose a new one.</p></li>
+                    <li><p>If we want to change our password, we need to write it twice (in "password" and "repeat").
+                The password will be change only if both times is the same.</p></li>
                 </ul>
             </div>
         </div>

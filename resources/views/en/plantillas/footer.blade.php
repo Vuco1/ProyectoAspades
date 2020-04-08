@@ -26,13 +26,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Información</div>
+                <div class="modal-title">Info</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
-                Creado por:
+                Developed by:
                 <ul>
                     <li>Laura Mª Fernández Cambronero</li>
                     <li>Isabel de Marcos López</li>
@@ -40,7 +40,7 @@
                     <li>Víctor Úbeda Castilla</li>
                 </ul>
                 <hr>
-                Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>
+                Icons from <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>
             </div>
         </div>
     </div>
@@ -51,22 +51,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Login Administración de tableros</div>
+                <div class="modal-title">Board management</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
                 <div id="divpass" class="form-group">
-                    <label class="sr-only" for="passw">Contraseña</label>
+                    <label class="sr-only" for="passw">Password</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
-                        <input type="password" name="passw" id="passw" placeholder="Contraseña" class="form-control">
+                        <input type="password" name="passw" id="passw" placeholder="Password" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="loginadmin" id="loginadmin" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close">
+                <input type="submit" name="loginadmin" id="loginadmin" value="Show menu" class="btn btn-orange w-100 simplemodal-close">
             </div>
         </div>
     </div>
