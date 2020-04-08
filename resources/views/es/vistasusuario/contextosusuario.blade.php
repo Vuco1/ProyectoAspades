@@ -1,6 +1,6 @@
 @extends('es/plantillas/maestra')
 @section('titulo')
-Contextos
+Paneles
 @endsection
 @section('contenido')
 <!-- HEADER -->

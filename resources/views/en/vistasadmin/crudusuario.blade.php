@@ -141,7 +141,7 @@ Users management
                             <label class="sr-only" for="claverepenuevo">Repeat password</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Repeat</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Repeat</div>
                                 </div>
                                 <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repeat password" class="form-control" onkeyup="validarClave('nuevo')" required>
                             </div>

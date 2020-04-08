@@ -81,7 +81,7 @@ My profile
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardarperfil" value="Accept" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardarperfil" value="Save changes" class="btn btn-orange w-100">
     </form>
 <?php } ?>
     

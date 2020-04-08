@@ -141,7 +141,7 @@ Gestión
                             <label class="sr-only" for="claverepenuevo">Confirmar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                                 </div>
                                 <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repite la contraseña" class="form-control" onkeyup="validarClave('nuevo')" required>
                             </div>
