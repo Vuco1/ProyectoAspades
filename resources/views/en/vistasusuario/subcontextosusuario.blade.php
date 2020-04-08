@@ -66,7 +66,7 @@ Gallery
                     <form id="form<?php echo $i ?>" name="formtablero" action="obtenersubcontextos" method="post" class="m-0">
                         @csrf
                         <button name="btnsubcon" class="btn p-0 w-100">                    
-                            <img src="{{ $subcontextos[$i]->Imagen }}" alt="Imagen del contexto" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimension->Filas }}) - 2.75rem)">
+                            <img src="{{ $subcontextos[$i]->Imagen }}" alt="Gallery picture" class="card-img-top img-subcontexto" style="height: calc((100vh / {{ $dimension->Filas }}) - 2.75rem)">
                             <div class="card-body p-2">
                                 <input  type="hidden" name="nombre" value="{{ $subcontextos[$i]->Nombre }}" id="nombre<?php echo $i ?>">
                                 <input type="hidden" name="posicion" id="posicion<?php echo $i ?>" value="<?php echo $i ?>">

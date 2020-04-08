@@ -67,7 +67,7 @@ Board
                             @csrf
                             <input type="hidden" name="actual" value="{{ $c->Id_tablero }}">
                             <button name="btncon" class="btn p-0 w-100">
-                                <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Imagen del panel" class="card-img-top img-contexto">
+                                <img id="img{{ $c->Id_tablero }}" src="{{ $c->Imagen }}" alt="Board picture" class="card-img-top img-contexto">
                                 <div class="card-body p-2">
                                     <input  type="hidden" name="nombre" value="{{ $c->Nombre }}" id="nombre{{ $c->Id_tablero }}">
                                     <input  type="hidden" name="actualtablero" value="{{ $c->Id_tablero }}" id="actual{{ $c->Id_tablero }}">
