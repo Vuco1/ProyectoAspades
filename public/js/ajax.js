@@ -18,9 +18,11 @@ $(document).ready(function () {
         var menu = $("#menuoculto");
         var botones = $(".card-footer");
         var numFilas = $("input[name=numfilas]").val();
+        var candado = $("#candado");
         $("#divpass").addClass('d-none');
         $("#passw").val("aspades");
         $("#loginadmin").val("Ocultar menú");
+        candado.removeClass("fa-lock").addClass("fa-unlock");
         menu.removeClass("d-none").addClass("d-block");
         botones.removeClass("d-none").addClass("d-block");
         $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");

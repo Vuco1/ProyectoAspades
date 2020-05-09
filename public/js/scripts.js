@@ -27,13 +27,14 @@ $(document).ready(function () {
         var menu = $("#menuoculto");
         var botones = $(".card-footer");
         var numFilas = $("input[name=numfilas]").val();
-
+        var candado = $("#candado");
         if (clave === "aspades") {
             localStorage.setItem('admin', true);
             if (menu.hasClass("d-none")) {
                 $("#divpass").addClass('d-none');
                 $("#loginadmin").val("Ocultar menú");
                 menu.removeClass("d-none").addClass("d-block");
+                candado.removeClass("fa-lock").addClass("fa-unlock");                
                 botones.removeClass("d-none").addClass("d-block");
                 $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 6.775rem)");
             } else {
@@ -41,6 +42,7 @@ $(document).ready(function () {
                 localStorage.removeItem('admin');
                 $("#loginadmin").val("Mostrar menú");
                 menu.removeClass("d-block").addClass("d-none");
+                candado.removeClass("fa-unlock").addClass("fa-lock");
                 botones.removeClass("d-block").addClass("d-none");
                 $(".card-img-top").css("height", "calc(100vh / " + numFilas + " - 2.75rem)");
                 $("#passw").val("");
