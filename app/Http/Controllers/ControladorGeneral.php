@@ -59,5 +59,11 @@ class ControladorGeneral extends Controller {
         session()->regenerate();
         return view('index');
     }
-
+    
+    public function rutaLogo(){
+        $datos = \DB::table('temas')
+                ->select('Logo')
+                ->first();        
+        return $datos->Logo;
+    }
 }

@@ -26,7 +26,7 @@ Login
             <?php if (session()->has('usuario')) {
             $usuario = session()->get('usuario'); ?>
             <div class="m-auto text-center">
-                <a href="gestionusuarios" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></a>
+                <a href="gestionusuarios" class="btn btn-color rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></a>
                 <h1>Hola <?php echo $usuario->Nick ?></h1>  
             </div>
             <?php } ?>
@@ -35,7 +35,7 @@ Login
     <section class="modal fade" id="ayuda_ini_adm">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>

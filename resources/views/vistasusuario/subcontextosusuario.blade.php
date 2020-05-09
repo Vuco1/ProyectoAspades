@@ -6,7 +6,7 @@ SubContextos
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img id="logo" src="" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -109,7 +109,7 @@ SubContextos
     <section class="modal fade" id="nuevosub">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Nuevo tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -185,7 +185,7 @@ SubContextos
                         </div>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="posiadd" name="posiadd" value="">
-                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -195,7 +195,7 @@ SubContextos
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Modificar tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -258,7 +258,7 @@ SubContextos
                         <input type="hidden" id="actual" name="actual" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="posimo" name="posimo" value="">
-                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -268,7 +268,7 @@ SubContextos
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Eliminar tablero</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -280,7 +280,7 @@ SubContextos
                         <p>¿Estás seguro de que deseas eliminar este tablero?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
-                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -290,7 +290,7 @@ SubContextos
     <section class="modal fade" id="eliminarpagina">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Eliminar Subcontexto</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -302,7 +302,7 @@ SubContextos
                         <p>¿Estás seguro de que deseas eliminar esta página?</p>
                         <input type="hidden" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="elimpagina" name="pagina" value="">     
-                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -313,7 +313,7 @@ SubContextos
     <section class="modal fade" id="vaciarpagina">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Eliminar Subcontexto</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -325,7 +325,7 @@ SubContextos
                         <p>¿Estás seguro de que deseas vaciar este tablero?</p>
                         <p>(Esto eliminara todos los tableros dentro de este tablero)</p>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
-                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -336,7 +336,7 @@ SubContextos
     <section class="modal fade" id="ayuda_tablero">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>

@@ -27,7 +27,7 @@ Perfil
         $usuario = session()->get('usuario');?>
     <div class="text-center">
         <h2>Mi perfil</h2>
-        <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <button class="btn btn-color rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
     <form action="editarperfilusuario" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
@@ -80,7 +80,7 @@ Perfil
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardar" value="Guardar cambios" class="btn btn-color w-100">
     </form>
 <?php } ?>
     
@@ -88,7 +88,7 @@ Perfil
     <section class="modal fade" id="ayuda_perf_usu">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
