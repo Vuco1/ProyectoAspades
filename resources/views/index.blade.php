@@ -16,7 +16,7 @@ Login
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-user"></i></div>
                         </div>
-                        <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control">
+                        <input type="text" name="usuario" id="usuario" placeholder="@lang('messages.Holis')" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">

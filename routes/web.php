@@ -14,6 +14,16 @@
 Route::get('/', function () {
     return view('index');
 })->middleware('Sesion');
+
+//Pruebas para el Localization
+Route::get('/', 'LocalizationControlador@index')->middleware('Sesion');
+
+//Route::get('/{locale}', function ($locale) {
+//    if (in_array($locale, ['en', 'es', 'fr'])) {        
+//        \App::setLocale($locale);
+//    }
+//    return view('index');
+//});
 /*
   |--------------------------------------------------------------------------
   | PRUEBAS/TESTING
@@ -63,7 +73,7 @@ Route::group(['middleware' => 'Administrador'], function() {
      * Ruta para Modificar los Usuarios
      * Estaba con post
      */
-    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');    
+    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
     Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
     /**
      * Ruta para eliminar un Usuario
