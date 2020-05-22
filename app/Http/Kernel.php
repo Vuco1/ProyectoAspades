@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'Usuario' => \App\Http\Middleware\Usuario::class,
         'Sesion' => \App\Http\Middleware\Sesion::class,
         'RutasGet' => \App\Http\Middleware\RutasGet::class,
+        'Idioma' => \App\Http\Middleware\Idioma::class,
     ];
 
     /**

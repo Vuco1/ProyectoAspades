@@ -1,5 +1,31 @@
 <?php
 
 return [
-    'Holis' => 'Hola'
+    'LoginUsuario' => 'Usuario',
+    'LoginClave' => 'Contraseña',
+    'NavInicio' => 'Inicio',
+    'NavGestion' => 'Gestion',
+    'NavAyuda' => 'Ayuda llamada',
+    'NavPerfil' => 'Perfil',
+    'SaludoAdmin' => 'Hola',
+    'ModalAyuda' => 'Ayuda',
+    'ModalInicioAyudaP1' => 'Si pulsamos sobre <span><img src="../public/images/icons/Screenshot_20200305_122931.png" width="30px"></span> o <span class="text-secondary px-1"><i class="fas fa-users-cog icono"></i>Gestión</span>, podremos ver una lista de todos los usuarios de la aplicación.',
+    'ModalInicioAyudaP2' => 'Si pulsamos sobre <span class="text-secondary px-1"><i class="fas fa-user-circle icono"></i>Perfil</span>, podremos modificar nuestro perfil.',
+    'ModalInicioAyudaP3' => 'Si pulsamos sobre <span class="text-secondary px-1"><i class="fas fa-home icono"></i>Inicio</span> o sobre el logo, volveremos a esta misma página desde cualquier parte de la aplicación en la que estemos.',
+    'ModalInicioAyudaP4' => 'Si pulsamos sobre <span class="text-secondary pl-1"><i class="fas fa-power-off icono"></i></span>, saldremos de la aplicación y tendremos que volver a iniciar sesión para acceder de nuevo.',
+    'PerfilAdminUsuario' => 'Usuario',
+    'PerfilAdminNombre' => 'Nombre',
+    'PerfilAdminImagen' => 'Selecciona tu nueva imagen...',
+    'PerfilAdminClave' => 'Escribe tu nueva contraseña',
+    'PerfilAdminConfirmar' => 'Repite la nueva contraseña',
+    'PerfilAdminGuardarCambios' => 'Guardar cambios',
+    'ModalPerfilAdminAyudaP1' => 'Aquí podemos modificar nuestros datos personales.',
+    'ModalPerfilAdminAyudaP2' => 'Podemos cambiar nuestro nombre y nuestro nombre de usuario.',
+    'ModalPerfilAdminAyudaP3' => 'Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.',
+    'ModalPerfilAdminAyudaP4' => 'Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
+                La contraseña sólo se cambiará si coincide en estos dos campos.',
+    'ModalCrudAyudaP1' => 'Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.',
+    'ModalCrudAyudaP2' => 'Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span>.',
+    'ModalCrudAyudaP3' => 'Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.',
+    'ModalCrudAyudaP4' => 'Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.',
 ];

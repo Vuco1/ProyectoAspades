@@ -15,6 +15,8 @@
         }
     } else {
         ?>
+        <a href="{{ url('lang', ['en']) }}" class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/United-Kingdom.svg" style="width:40px;"></a>
+        <a href="{{ url('lang', ['es']) }}" class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/logo_aspades.svg" style="width:40px;"></a>
         <a class = "py-2 px-3 text-secondary float-right" data-toggle = "modal" data-target = "#info"><i class = "fas fa-info-circle h2 m-0"></i></a>
     <?php }
     ?>  

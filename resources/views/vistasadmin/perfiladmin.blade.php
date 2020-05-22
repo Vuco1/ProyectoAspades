@@ -12,10 +12,10 @@ Perfil
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Gestión</a></li>
-                <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>@lang('messages.NavInicio')</a></li>
+                <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>@lang('messages.NavGestion')</a></li>
+                <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>@lang('messages.NavPerfil')</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>@lang('messages.NavAyuda')</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -39,7 +39,7 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
                 </div>
-                <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick ?>" placeholder="Usuario" class="form-control">
+                <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick ?>" placeholder="@lang('messages.PerfilAdminUsuario')" class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -48,7 +48,7 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
                 </div>
-                <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre ?>" placeholder="Nombre" class="form-control">
+                <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre ?>" placeholder="@lang('messages.PerfilAdminNombre')" class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -58,7 +58,7 @@ Perfil
                 </div>
                 <div class="custom-file">
                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona tu nueva imagen...</label>
+                    <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.PerfilAdminImagen')</label>
                 </div>
             </div>
         </div>           
@@ -68,7 +68,7 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
                 </div>
-                <input type="password" name="clave" id="claveperfil" placeholder="Escribe tu nueva contraseña" class="form-control">
+                <input type="password" name="clave" id="claveperfil" placeholder="@lang('messages.PerfilAdminClave')" class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -77,11 +77,11 @@ Perfil
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
                 </div>
-                <input type="password" name="claverepe" id="claverepeperfil" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('perfil')">
+                <input type="password" name="claverepe" id="claverepeperfil" placeholder="@lang('messages.PerfilAdminConfirmar')" class="form-control" onkeyup="validarClave('perfil')">
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardarperfil" value="@lang('messages.PerfilAdminGuardarCambios')" class="btn btn-orange w-100">
     </form>
 <?php } ?>
     
@@ -90,18 +90,17 @@ Perfil
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Ayuda</div>
+                <div class="modal-title">@lang('messages.ModalAyuda')</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4 text-justify">
                 <ul>
-                    <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
-                    <li><p>Podemos cambiar nuestro nombre y nuestro nombre de usuario.</p></li>
-                    <li><p>Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.</p></li>
-                    <li><p>Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
-                La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>
+                    <li><p>@lang('messages.ModalPerfilAdminAyudaP1')</p></li>
+                    <li><p>@lang('messages.ModalPerfilAdminAyudaP2')</p></li>
+                    <li><p>@lang('messages.ModalPerfilAdminAyudaP3')</p></li>
+                    <li><p>@lang('messages.ModalPerfilAdminAyudaP4')</p></li>
                 </ul>
             </div>
         </div>

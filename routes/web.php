@@ -11,13 +11,26 @@
   |
  */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware('Sesion');
+//Route::get('/', function () {
+//    return view('index');
+//})->middleware('Sesion');
+
+Route::group(['middleware' => 'Idioma'], function () {
+
+    Route::get('/', function () {
+        return view('index');
+    })->middleware('Sesion');
+
+    Route::get('lang/{lang}', function ($lang) {
+        session()->put('lang', $lang);
+        $lang = session()->get('lang');
+        return \Redirect::back();
+    })->where([
+        'lang' => 'en|es'
+    ]);
 
 //Pruebas para el Localization
-Route::get('/', 'LocalizationControlador@index')->middleware('Sesion');
-
+//Route::get('/', 'LocalizationControlador@index')->middleware('Sesion');
 //Route::get('/{locale}', function ($locale) {
 //    if (in_array($locale, ['en', 'es', 'fr'])) {        
 //        \App::setLocale($locale);
@@ -183,6 +196,8 @@ Route::group(['middleware' => 'Usuario'], function() {
     Route::post('vaciartablero', 'ControladorUsuario@DOOOOM');
 });
 
+
+});
 Route::group(['middleware' => 'RutasGet'], function() {
     /**
      * Ruta para obtener los Subcontextos del Usuario
