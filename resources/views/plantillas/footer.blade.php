@@ -27,13 +27,13 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Información</div>
+                <div class="modal-title">@lang('messages.ModalInformacion')</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
-                Creado por:
+                @lang('messages.ModalCreadores')
                 <ul>
                     <li>Laura Mª Fernández Cambronero</li>
                     <li>Isabel de Marcos López</li>
@@ -41,7 +41,7 @@
                     <li>Víctor Úbeda Castilla</li>
                 </ul>
                 <hr>
-                Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>
+                @lang('messages.ModalIconos')
             </div>
         </div>
     </div>

@@ -37,7 +37,7 @@ Perfil
             <label class="sr-only" for="usuario">Usuario</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>@lang('messages.PerfilAdminUsuario')</div>
                 </div>
                 <input type="text" name="usuario" id="usuario" value="<?= $usuario->Nick ?>" placeholder="@lang('messages.PerfilAdminUsuario')" class="form-control">
             </div>
@@ -46,7 +46,7 @@ Perfil
             <label class="sr-only" for="nombre">Nombre</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>@lang('messages.PerfilAdminNombre')</div>
                 </div>
                 <input type="text" name="nombre" id="nombre" value="<?= $usuario->Nombre ?>" placeholder="@lang('messages.PerfilAdminNombre')" class="form-control">
             </div>
@@ -54,11 +54,11 @@ Perfil
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Imagen</span>
+                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.PerfilAdminImagen')</span>
                 </div>
                 <div class="custom-file">
                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                    <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.PerfilAdminImagen')</label>
+                    <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.PerfilAdminImagenPH')</label>
                 </div>
             </div>
         </div>           
@@ -66,18 +66,18 @@ Perfil
             <label class="sr-only" for="claveperfil">Contraseña</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>@lang('messages.PerfilAdminClave')</div>
                 </div>
-                <input type="password" name="clave" id="claveperfil" placeholder="@lang('messages.PerfilAdminClave')" class="form-control">
+                <input type="password" name="clave" id="claveperfil" placeholder="@lang('messages.PerfilAdminClavePH')" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label class="sr-only" for="claverepeperfil">Confirmar</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
+                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>@lang('messages.PerfilAdminConfirmar')</div>
                 </div>
-                <input type="password" name="claverepe" id="claverepeperfil" placeholder="@lang('messages.PerfilAdminConfirmar')" class="form-control" onkeyup="validarClave('perfil')">
+                <input type="password" name="claverepe" id="claverepeperfil" placeholder="@lang('messages.PerfilAdminConfirmarPH')" class="form-control" onkeyup="validarClave('perfil')">
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>

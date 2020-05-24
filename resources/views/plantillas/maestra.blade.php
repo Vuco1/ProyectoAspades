@@ -7,9 +7,26 @@
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-               
+
         <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
-        <script src="{{ asset('js/ajax.js') }}"></script>
+        <?php
+        if (session()->has('lang')) {
+            $lang = session()->get('lang');
+            if (strcmp($lang, "es")=== 0) {
+                ?>
+                <script src="{{ asset('js/ajax.js') }}"></script>
+                <?php
+            } else {
+                ?>
+                <script src="{{ asset('js/ajax_en.js') }}"></script>
+                <?php
+            }
+        } else {
+            ?>
+            <script src="{{ asset('js/ajax.js') }}"></script>
+            <?php
+        }
+        ?>
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
     <body>
