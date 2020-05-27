@@ -1,14 +1,14 @@
 @extends('plantillas/maestra')
 @section('titulo')
-Login
+@lang('messages.ErroresTitulo')
 @endsection
 @section('contenido')
 <header></header>
 <main class="d-flex">
     <div class="m-auto text-center">
-        <h2>Acceso denegado</h2> 
-        <h3 class="mb-5">No tienes permisos para ver esta página</h3>
-        <button class="btn btn-orange" onclick="volver()">Volver</button>
+        <h2>@lang('messages.ErroresH1')</h2> 
+        <h3 class="mb-5">@lang('messages.ErroresParrafo')</h3>
+        <button class="btn btn-orange" onclick="volver()">@lang('messages.ErroresBoton')</button>
     </div>
 </main>
 @include('plantillas/footer')

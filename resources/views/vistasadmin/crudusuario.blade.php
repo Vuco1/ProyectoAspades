@@ -1,7 +1,7 @@
 @extends('plantillas/maestra')
 <meta name="csrf_token" content="{{ csrf_token() }}" />
 @section('titulo')
-Gestión
+@lang('messages.CrudAdminTitulo')
 @endsection
 @section('contenido')
 <!-- HEADER -->
