@@ -126,7 +126,13 @@
                                 <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.4rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
                                 <div class="custom-file">
+                                <?php 
+                                    $lang = session()->get('lang');
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="submit" name="Buscar" value="" >
+                                <?php } else {?> 
                                     <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                <?php }?>
                                     <label class="custom-file-label rounded-right" for="image"></label>
                                 </div>
                                 <input type="hidden" name="buscar_por" value="1">
@@ -142,7 +148,12 @@
                                     <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalNuevoTableroImagen')</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required>
+                                <?php 
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="file" name="image" id="image" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required>
+                                <?php } else { ?>
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required> 
+                                <?php }?>
                                     <label id="imagelabel" class="custom-file-label" for="image">@lang('messages.ModalNuevoTableroImagenLB')</label>
                                 </div>
                             </div>
@@ -212,7 +223,13 @@
                                 <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.4rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
                                 <div class="custom-file">
+                                <?php 
+                                    $lang = session()->get('lang');
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="submit" name="Buscar" value="" >
+                                <?php } else {?> 
                                     <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                <?php }?>
                                     <label class="custom-file-label rounded-right" for="image"></label>
                                 </div>
                                 <input type="hidden" name="buscar_por" value="1">
@@ -228,7 +245,12 @@
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalModificarTableroImagen')</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                <?php 
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="file" name="image" id="image" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                <?php } else { ?>
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)"> 
+                                <?php }?>
                                     <label id="imagecontextolabel" class="custom-file-label" for="imagecontexto">@lang('messages.ModalModificarTableroImagenLB')</label>
                                 </div>
                             </div>

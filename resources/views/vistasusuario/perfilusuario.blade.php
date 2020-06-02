@@ -56,7 +56,13 @@
                     <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.PerfilUsuImagen')</span>
                 </div>
                 <div class="custom-file">
-                    <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
+                    <?php 
+                        $lang = session()->get('lang');
+                        if ( $lang == 'en' ){ ?>
+                        <input type="file" name="image" id="image" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
+                    <?php } else { ?>
+                        <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)"> 
+                    <?php }?>
                     <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.PerfilUsuImagenPH')</label>
                 </div>
             </div>

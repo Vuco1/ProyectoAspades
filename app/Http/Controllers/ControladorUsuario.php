@@ -357,10 +357,19 @@ class ControladorUsuario extends Controller {
                 $usuario->Foto = 'images/users/' . $nomimagen;
                 $req->imagen->move(public_path('images/users'), $nomimagen);
             }
-            $mensaje = 'Perfil modificado con éxito';
+            $lang = session()->get('lang');
+            if ( $lang == 'en' ){
+                $mensaje = 'Profile data succesfully modified';
+            } else {
+                $mensaje = 'Perfil modificado con éxito';  
+            } 
             $usuario->save();
         } catch (Exception $ex) {
-            $mensaje = 'Error al modificar el perfil';
+            if ( $lang == 'en' ){
+                $mensaje = 'There was an error. Profile data not modified';
+            } else {
+                $mensaje = 'Error al modificar el perfil';  
+            } 
         }
 
         $usuario = Usuario::where('Id_usuario', $id)->first();

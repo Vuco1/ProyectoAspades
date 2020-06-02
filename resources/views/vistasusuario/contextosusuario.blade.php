@@ -105,7 +105,7 @@
                 </div>
                 <div class="modal-body p-4">
                     <form method=get action="http://www.arasaac.org/buscar.php?s=casa&idiomasearch=0&Buscar=Buscar&buscar_por=1&pictogramas_color=1" target="_blank">
-                        <div class="form-group">
+                            <div class="form-group">
                             <label class="sr-only" for="buscador">Buscar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -114,14 +114,20 @@
                                 <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.4rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
                                 <div class="custom-file">
+                                <?php 
+                                $lang = session()->get('lang');
+                                if ( $lang == 'en' ){ ?>
+                                    <input type="submit" name="Buscar" value="" >
+                                <?php } else {?> 
                                     <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                <?php }?>
                                     <label class="custom-file-label rounded-right" for="Buscar"></label>
                                 </div>
                                 <input type="hidden" name="buscar_por" value="1">
                                 <input type="hidden" name="pictogramas_color" value="1">
                             </div>
                         </div>
-                    </form>
+                    </form>  
                     <form action="subirTablero" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
@@ -130,7 +136,12 @@
                                     <span id="descripcionimagennuevo" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalNuevoImagen')</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required>
+                                <?php 
+                                if ( $lang == 'en' ){ ?>
+                                    <input type="file" name="image" id="image" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required>
+                                <?php } else { ?>
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagennuevo" onchange="cambiarTexto(this.id)" required> 
+                                <?php }?>
                                     <label id="imagelabel" class="custom-file-label" for="image">@lang('messages.ModalNuevoImagenLB')</label>
                                 </div>
                             </div>
@@ -185,7 +196,13 @@
                                 <input type="text" name="s" maxlength="255" value="" class="form-control" style="width: 10.4rem;">
                                 <input type="hidden" name="idiomasearch" value="0">
                                 <div class="custom-file">
+                                <?php 
+                                    $lang = session()->get('lang');
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="submit" name="Buscar" value="" >
+                                <?php } else {?> 
                                     <input type="submit" name="Buscar" value="Buscar" class="custom-file-input">
+                                <?php }?>
                                     <label class="custom-file-label rounded-right" for="Buscar"></label>
                                 </div>
                                 <input type="hidden" name="buscar_por" value="1">
@@ -201,7 +218,12 @@
                                     <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalModificarImagen')</span>
                                 </div>
                                 <div class="custom-file">
-                                    <input type="file" name="image" id="imagecontexto" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                <?php 
+                                    if ( $lang == 'en' ){ ?>
+                                    <input type="file" name="image" id="image" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
+                                <?php } else { ?>
+                                    <input type="file" name="image" id="image" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)"> 
+                                <?php }?>
                                     <label id="imagecontextolabel" class="custom-file-label" for="imagecontexto">@lang('messages.ModalModificarImagenLB')</label>
                                 </div>
                             </div>
