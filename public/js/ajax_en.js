@@ -21,7 +21,7 @@ $(document).ready(function () {
         var candado = $("#candado");
         $("#divpass").addClass('d-none');
         $("#passw").val("aspades");
-        $("#loginadmin").val("Ocultar menú");
+        $("#loginadmin").val("Hide menu");
         candado.removeClass("fa-lock").addClass("fa-unlock");
         menu.removeClass("d-none").addClass("d-block");
         botones.removeClass("d-none").addClass("d-block");

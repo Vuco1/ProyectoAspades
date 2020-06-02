@@ -16,7 +16,7 @@
     } else {
         ?>
         <a href="{{ url('lang', ['en']) }}" class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/United-Kingdom.svg" style="width:40px;"></a>
-        <a href="{{ url('lang', ['es']) }}" class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/logo_aspades.svg" style="width:40px;"></a>
+        <a href="{{ url('lang', ['es']) }}" class="py-2 px-3 text-secondary float-left"><img src="../public/images/icons/bandera-spain.jpg" style="width:40px;"></a>
         <a class = "py-2 px-3 text-secondary float-right" data-toggle = "modal" data-target = "#info"><i class = "fas fa-info-circle h2 m-0"></i></a>
     <?php }
     ?>  
@@ -52,22 +52,22 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-orange text-white px-4">
-                <div class="modal-title">Login Administración de tableros</div>
+                <div class="modal-title">@lang('messages.ModalAdminTableros')</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4">
                 <div id="divpass" class="form-group">
-                    <label class="sr-only" for="passw">Contraseña</label>
+                    <label class="sr-only" for="passw">@lang('messages.ModalAdminTablerosContraseña')</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
-                        <input type="password" name="passw" id="passw" placeholder="Contraseña" class="form-control">
+                        <input type="password" name="passw" id="passw" placeholder="@lang('messages.ModalAdminTablerosContraseña')" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="loginadmin" id="loginadmin" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close">
+                <input type="submit" name="loginadmin" id="loginadmin" value="@lang('messages.ModalAdminTablerosBoton')" class="btn btn-orange w-100 simplemodal-close">
             </div>
         </div>
     </div>
