@@ -5,19 +5,19 @@ return [
 //Mensajes de la zona de administración
 
 //Ventana modal información
-    'ModalInformacion' => 'Información',
-    'ModalCreadores' => 'Creado por:',
+    'ModalInformacion' => 'Information',
+    'ModalCreadores' => 'Created by:',
     'ModalIconos' => 'Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>',
     
 //Login
-    'LoginUsuario' => 'Usuario',
-    'LoginClave' => 'Contraseña',
+    'LoginUsuario' => 'User',
+    'LoginClave' => 'Password',
     
 //Menú
-    'NavInicio' => 'Inicio',
-    'NavGestion' => 'Gestion',
-    'NavAyuda' => 'Ayuda',
-    'NavPerfil' => 'Perfil',
+    'NavInicio' => 'Homepage',
+    'NavGestion' => 'Management',
+    'NavAyuda' => 'Help',
+    'NavPerfil' => 'Profile',
     'NavAdd' => 'Add new board',
     'NavAdministrarPanel' => 'Gallery management',
     'NavAddPagina' => 'Add new page',
@@ -25,14 +25,14 @@ return [
     'NavVaciarPanel' => 'Empty gallery',
     
 //Inicio administrador
-    'SaludoAdmin' => 'Hola',
-    'ModalAyuda' => 'Ayuda',
+    'SaludoAdmin' => 'Hi',
+    'ModalAyuda' => 'Help',
     
 //Ventana modal de ayuda inicio
-    'ModalInicioAyudaP1' => 'Si pulsamos sobre <span><img src="../public/images/icons/Screenshot_20200305_122931.png" width="30px"></span> o <span class="text-secondary px-1"><i class="fas fa-users-cog icono"></i>Gestión</span>, podremos ver una lista de todos los usuarios de la aplicación.',
-    'ModalInicioAyudaP2' => 'Si pulsamos sobre <span class="text-secondary px-1"><i class="fas fa-user-circle icono"></i>Perfil</span>, podremos modificar nuestro perfil.',
-    'ModalInicioAyudaP3' => 'Si pulsamos sobre <span class="text-secondary px-1"><i class="fas fa-home icono"></i>Inicio</span> o sobre el logo, volveremos a esta misma página desde cualquier parte de la aplicación en la que estemos.',
-    'ModalInicioAyudaP4' => 'Si pulsamos sobre <span class="text-secondary pl-1"><i class="fas fa-power-off icono"></i></span>, saldremos de la aplicación y tendremos que volver a iniciar sesión para acceder de nuevo.',
+    'ModalInicioAyudaP1' => 'If we click on <span><img src="../public/images/icons/Screenshot_20200305_122931.png" width="30px"></span> or click on <span class="text-secondary px-1"><i class="fas fa-users-cog icono"></i>Gestión</span>,we will see a list of all users of the application.',
+    'ModalInicioAyudaP2' => 'If we click on <span class="text-secondary px-1"><i class="fas fa-user-circle icono"></i>Perfil</span>, podremos modificar nuestro perfil.',
+    'ModalInicioAyudaP3' => 'If we click on <span class="text-secondary px-1"><i class="fas fa-home icono"></i>Inicio</span> o sobre el logo, volveremos a esta misma página desde cualquier parte de la aplicación en la que estemos.',
+    'ModalInicioAyudaP4' => 'If we click on <span class="text-secondary pl-1"><i class="fas fa-power-off icono"></i></span>, saldremos de la aplicación y tendremos que volver a iniciar sesión para acceder de nuevo.',
     
 //Perfil del administrador
     'PerfilAdmin' => 'Mi perfil',
