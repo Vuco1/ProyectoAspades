@@ -13,6 +13,7 @@ return [
     'InicioTitulo' =>'Inicio',
     'LoginUsuario' => 'Usuario',
     'LoginClave' => 'Contraseña',
+    'LoginBtn'=>'Iniciar Sesion',
     
 //Menú
     'NavInicio' => 'Inicio',
