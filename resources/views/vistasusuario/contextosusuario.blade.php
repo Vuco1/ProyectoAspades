@@ -163,9 +163,9 @@
                                     <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>@lang('messages.ModalNuevoDimension')</div>
                                 </div>
                                 <select name="dimension" class="custom-select" id="dimension">
-                                    <?php foreach ($dimensiones as $d) { ?>
-                                        <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
-                                    <?php } ?>
+                                        <option value="1">@lang('messages.ModalNuevoSize1')</option>
+                                        <option value="2">@lang('messages.ModalNuevoSize2')</option>
+                                        <option value="3">@lang('messages.ModalNuevoSize3')</option>
                                 </select>
                             </div> 
                         </div>
