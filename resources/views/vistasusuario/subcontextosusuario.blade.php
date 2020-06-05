@@ -175,9 +175,10 @@
                                     <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>@lang('messages.ModalNuevoTableroAccion')</div>
                                 </div>
                                 <select name="accion" class="custom-select" id="accion">
-                                    <?php foreach ($acciones as $accion) { ?>
-                                        <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
-                                    <?php } ?>
+                                        <option value="1">@lang('messages.ModalNuevoTableroAccion1')</option>
+                                        <option value="2">@lang('messages.ModalNuevoTableroAccion2')</option>
+                                        <option value="3">@lang('messages.ModalNuevoTableroAccion3')</option>
+                                        <option value="4">@lang('messages.ModalNuevoTableroAccion4')</option>
                                 </select>
                             </div> 
                         </div>
@@ -188,9 +189,9 @@
                                     <div class="input-group-text w-8"><i class="fas fa-th-large icono"></i>@lang('messages.ModalNuevoTableroDimension')</div>
                                 </div>
                                 <select name="dimension" class="custom-select" id="dimension">
-                                    <?php foreach ($dimensiones as $d) { ?>
-                                        <option value="<?= $d->Id_dimension ?>"><?= $d->Nombre ?></option>
-                                    <?php } ?>
+                                        <option value="1">@lang('messages.ModalNuevoSize1')</option>
+                                        <option value="2">@lang('messages.ModalNuevoSize2')</option>
+                                        <option value="3">@lang('messages.ModalNuevoSize3')</option>
                                 </select>
                             </div> 
                         </div>
@@ -271,9 +272,10 @@
                                     <div class="input-group-text w-8"><i class="fas fa-play-circle icono"></i>@lang('messages.ModalNuevoTableroAccion')</div>
                                 </div>
                                 <select name="accionlist" class="custom-select" id="accionlist">
-                                    <?php foreach ($acciones as $accion) { ?>
-                                        <option value="<?= $accion->Id_accion ?>"><?= $accion->Nombre ?></option>
-                                    <?php } ?>
+                                        <option value="1">@lang('messages.ModalNuevoTableroAccion1')</option>
+                                        <option value="2">@lang('messages.ModalNuevoTableroAccion2')</option>
+                                        <option value="3">@lang('messages.ModalNuevoTableroAccion3')</option>
+                                        <option value="4">@lang('messages.ModalNuevoTableroAccion4')</option>
                                 </select>
                             </div> 
                         </div>
