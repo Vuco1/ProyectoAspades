@@ -146,9 +146,9 @@ return [
     'ModalNuevoNombre' => 'Nombre',
     'ModalNuevoDimension' => 'Tamaño',
     'ModalNuevoBoton' => 'Añadir',
-    'ModalNuevoSize1' => '',
-    'ModalNuevoSize2' => '',
-    'ModalNuevoSize3' => '',
+    'ModalNuevoSize1' => 'Pequeño',
+    'ModalNuevoSize2' => 'Mediano',
+    'ModalNuevoSize3' => 'Grande',
     
 //Modal modificar panel
     'ModalModificarPanel' => 'Modificar panel',
@@ -184,9 +184,10 @@ return [
     'ModalNuevoTableroImagenLB' => 'Selecciona una imagen...',
     'ModalNuevoTableroNombre' => 'Nombre',
     'ModalNuevoTableroAccion' => 'Acción',
-    'ModalNuevoTableroAccion1' => 'Acción',
-    'ModalNuevoTableroAccion2' => 'Acción',
-    'ModalNuevoTableroAccion3' => 'Acción',
+    'ModalNuevoTableroAccion1' => 'Nada',
+    'ModalNuevoTableroAccion2' => 'Ir hacia tablero siguiente',
+    'ModalNuevoTableroAccion3' => 'Ir al anterior',
+    'ModalNuevoTableroAccion4' => 'Volver al inicio',
     'ModalNuevoTableroDimension' => 'Tamaño',
     'ModalNuevoTableroBoton' => 'Añadir',
     

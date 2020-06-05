@@ -101,7 +101,7 @@ return [
 //Mensajes de la zona de usuario
     
 //Ventana modal de menú oculto
-    'ModalAdminTableros' => 'Galleries management',
+    'ModalAdminTableros' => 'Board management',
     'ModalAdminTablerosContraseña' => 'Password',
     'ModalAdminTablerosBoton' => 'Show menu',
     
@@ -130,7 +130,7 @@ return [
 //Paneles usuario
     'TituloPanel' => 'Board',
     'PanelH2' => "You don't have any boards yet.",
-    'PanelH3' => 'Add one from the <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Add new board</span> option from the menu <span class="text-orange"><i class="fas fa-lock icono"></i>Board management</span>.',
+    'PanelH3' => 'Add one from the <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Add new board</span> option from the <span class="text-orange"><i class="fas fa-lock icono"></i>Board management</span> menu.',
     'EditarPanel' => 'Modify',
     'BorrarPanel' => 'Delete', 
     'PanelImagenAlt' => 'Board picture',
@@ -143,9 +143,9 @@ return [
     'ModalNuevoNombre' => 'Name',
     'ModalNuevoDimension' => 'Size',
     'ModalNuevoBoton' => 'Add new board',
-    'ModalNuevoSize1' => '',
-    'ModalNuevoSize2' => '',
-    'ModalNuevoSize3' => '',
+    'ModalNuevoSize1' => 'Small',
+    'ModalNuevoSize2' => 'Medium',
+    'ModalNuevoSize3' => 'Large',
     
 //Modal modificar panel
     'ModalModificarPanel' => 'Modify board',
@@ -181,9 +181,10 @@ return [
     'ModalNuevoTableroImagenLB' => 'Choose a picture...',
     'ModalNuevoTableroNombre' => 'Name',
     'ModalNuevoTableroAccion' => 'Action',
-    'ModalNuevoTableroAccion1' => '',
-    'ModalNuevoTableroAccion2' => '',
-    'ModalNuevoTableroAccion3' => '',
+    'ModalNuevoTableroAccion1' => 'Nothing',
+    'ModalNuevoTableroAccion2' => 'Go to the next gallery',
+    'ModalNuevoTableroAccion3' => 'Go back',
+    'ModalNuevoTableroAccion4' => 'Go to the begining',
     'ModalNuevoTableroDimension' => 'Size',
     'ModalNuevoTableroBoton' => 'Add new gallery',
     
