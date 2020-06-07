@@ -10,8 +10,10 @@ return [
     'ModalIconos' => 'Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>',
     
 //Login
+    'InicioTitulo' =>'Inicio',
     'LoginUsuario' => 'Usuario',
     'LoginClave' => 'Contraseña',
+    'LoginBtn'=>'Iniciar Sesion',
     
 //Menú
     'NavInicio' => 'Inicio',
@@ -25,6 +27,7 @@ return [
     'NavVaciarPanel' => 'Vaciar página',
     
 //Inicio administrador
+    'InicioAdminTitulo' =>'Administrador',
     'SaludoAdmin' => 'Hola',
     'ModalAyuda' => 'Ayuda',
     
@@ -54,6 +57,7 @@ return [
                 La contraseña sólo se cambiará si coincide en estos dos campos.',
     
 //Gestión de usuarios
+    'CrudAdminTitulo'=>'Gestion',
     'CrudAdminUsuario' =>'Usuario',
     'CrudAdminNombre' =>'Nombre',
     'CrudAdminRol' =>'Rol',

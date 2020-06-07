@@ -1,6 +1,6 @@
 @extends('plantillas/maestra')
 @section('titulo')
-Login
+@lang('messages.InicioTitulo')
 @endsection
 @section('contenido')
     <header></header>
@@ -28,7 +28,7 @@ Login
                         <input type="password" name="clave" id="clave" placeholder="@lang('messages.LoginClave')" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-orange w-100" onclick="vaciarstorage()">
+                <input type="submit" name="login" id="login" value="@lang('messages.LoginBtn')" class="btn btn-orange w-100" onclick="vaciarstorage()">
             </form>
             <div id="mensaje" class="text-center pt-2 text-danger"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         </section>
