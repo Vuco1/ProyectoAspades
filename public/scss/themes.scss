@@ -1,0 +1,361 @@
+/* 
+    Created on : Jun 7, 2020, 7:19:11 PM
+    Author     : Laura Mª Fernández Cambronero
+*/
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------- COLORES DE LOS TEMAS ---------------------------*/
+/*----------------------------------------------------------------------------*/
+$themes: (
+    default: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #343a40,
+        buttonBorder: 1px solid #23272b,
+        buttonHoverColor: #23272b,
+        buttonShadow: 0 0 0 0.2rem #343a4050,
+    ),
+    blue: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #007bff,
+        buttonBorder: 1px solid #0069d9,
+        buttonHoverColor: #0069d9,
+        buttonShadow: 0 0 0 0.2rem #007bff50,
+    ),
+    aqua: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #36a4a4,
+        buttonBorder: 1px solid #1c7c81,
+        buttonHoverColor: #1c7c81,
+        buttonShadow: 0 0 0 0.2rem #36a4a450,
+    ),
+    green: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #28a745,
+        buttonBorder: 1px solid #218838,
+        buttonHoverColor: #218838,
+        buttonShadow: 0 0 0 0.2rem #28a74550,
+    ),
+        yellow: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #ffc107,
+        buttonBorder: 1px solid #e0a800,
+        buttonHoverColor: #e0a800,
+        buttonShadow: 0 0 0 0.2rem #ffc10750,
+    ),
+    orange: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #f39932,
+        buttonBorder: 1px solid #dc821b,
+        buttonHoverColor: #dc821b,
+        buttonShadow: 0 0 0 0.2rem #f3993250,
+    ),
+    red: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #e12d24,
+        buttonBorder: 1px solid #c4241c,
+        buttonHoverColor: #c4241c,
+        buttonShadow: 0 0 0 0.2rem #e12d2450,
+    ),
+    pink: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #dc3574,
+        buttonBorder: 1px solid #c51d5d,
+        buttonHoverColor: #c51d5d,
+        buttonShadow: 0 0 0 0.2rem #dc357450,
+    ),
+    lavender: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #cca0ce,
+        buttonBorder: 1px solid #b892ba,
+        buttonHoverColor: #b892ba,
+        buttonShadow: 0 0 0 0.2rem #cca0ce50,
+    ),
+    purple: (
+        backgroundColor: #fff,
+        textColor: #212529,
+        buttonTextColor: #fff,
+        buttonColor: #6b1c81,
+        buttonBorder: 1px solid #4d145d,
+        buttonHoverColor: #4d145d,
+        buttonShadow: 0 0 0 0.2rem #6b1c8150,
+    ),
+);
+
+/*
+ * Implementación de los temas
+ */
+@mixin themify($themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- FUENTES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap');
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- ESTILOS ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif!important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    @include themify($themes) {
+        color: themed('textColor');  
+        background-color: themed('backgroundColor');  
+    }
+}
+
+main {
+    min-height: calc(100vh - 3.5rem);
+    min-width: 20rem;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1020;
+}
+
+footer {
+    height: 3.5rem!important;
+}
+
+h1 {
+    margin: auto;
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 3rem 0 1rem;
+}
+
+a, a:hover {
+    text-decoration: none!important;
+}
+
+.w-8 {
+    width: 8.5rem;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------ IMÁGENES, LOGOS E ICONOS --------------------------*/
+/*----------------------------------------------------------------------------*/
+.logo-nav { width: 7.5rem; }
+
+.logo-login {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.icono { padding-right: 0.5rem; }
+
+.icono-crud {
+    height: 1.5rem;
+    width: 2rem;
+}
+
+.img-perfil {
+    height: 18rem;
+    width: 18rem;
+    object-fit: cover;
+}
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------- NAV ------------------------------------*/
+/*----------------------------------------------------------------------------*/
+.nav-link { padding: 1rem 1.5rem!important; }
+
+.nav-link.active {
+    @include themify($themes) {
+        color: themed('buttonTextColor'); 
+        background-color: themed('buttonColor');
+        &:hover {
+            background-color: themed('buttonHoverColor');
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- BOTONES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.btn-color {
+    outline: none;
+    @include themify($themes) {
+        color: themed('buttonTextColor'); 
+        background-color: themed('buttonColor');
+        border: themed('buttonBorder');
+        &:hover {
+            background-color: themed('buttonHoverColor');
+        }
+        &:focus {
+            background-color: themed('buttonHoverColor');
+            box-shadow: themed('buttonShadow');
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ FORMULARIOS ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+.custom-file-input:lang(es)~.custom-file-label::after { content: "Buscar"; }
+
+.form-control::-webkit-input-placeholder { color: #cccccc; }
+
+.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+        @include themify($themes) {
+            background-color: themed('buttonColor');
+            border: themed('buttonBorder');
+        }
+    }
+    .custom-control-input:focus~.custom-control-label::before {
+        @include themify($themes) {
+            box-shadow: themed('buttonShadow');
+            border: themed('buttonBorder');
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------- PAGINACIÓN ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Crud de usuarios */
+#paginacion nav { margin: auto; }
+
+/* Contextos y subcontextos */
+.carousel-indicators {
+    bottom: -4.2rem;
+    li {
+        border-radius: 100%;
+        height: 30px;
+        @include themify($themes) {
+            background-color: themed('buttonColor');
+        }
+    }
+}
+
+.page-link {
+    @include themify($themes) {
+        color: themed('buttonTextColor');
+        background-color: themed('buttonColor');
+        border: themed('buttonBorder');
+        &:hover {
+            background-color: themed('buttonHoverColor');
+        }
+        &:focus {
+            background-color: themed('buttonHoverColor');
+            box-shadow: themed('buttonShadow');
+        }
+    }
+}
+
+.page-item.active {
+    .page-link {
+        @include themify($themes) {
+            color: themed('buttonTextColor');
+            background-color: themed('buttonHoverColor');
+            border: themed('buttonBorder');
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------------- CARDS -----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.card {
+    border-radius: 0;
+}
+
+.card-body {
+    min-height: 2.5rem;
+}
+
+.card-contexto {
+    max-width: 20rem;
+}
+
+.img-contexto {
+    height: 22rem;
+    object-fit: cover;
+}
+
+.img-subcontexto {
+    object-fit: cover;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------- DISTRIBUCIÓN DE TABLEROS -------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Estos son los presets de los posibles tamaños de los subcontextos */
+
+/* Preset pequeño (4x3) */
+.grid-sm {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Preset mediano (3x2) */
+.grid-md {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Preset grande (3x1) */
+.grid-lg {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ MEDIA QUERIES -------------------------------*/
+/*----------------------------------------------------------------------------*/
+@media (max-width: 768px){
+    .container {
+        max-width: 768px;
+        
+    }
+}
