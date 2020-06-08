@@ -32,7 +32,7 @@ $(document).ready(function () {
             localStorage.setItem('admin', true);
             if (menu.hasClass("d-none")) {
                 $("#divpass").addClass('d-none');
-                $("#loginadmin").val("Ocultar menú");
+                $("#loginadmin").val("Hide menu");
                 menu.removeClass("d-none").addClass("d-block");
                 candado.removeClass("fa-lock").addClass("fa-unlock");                
                 botones.removeClass("d-none").addClass("d-block");
@@ -40,7 +40,7 @@ $(document).ready(function () {
             } else {
                 $("#divpass").removeClass('d-none');
                 localStorage.removeItem('admin');
-                $("#loginadmin").val("Mostrar menú");
+                $("#loginadmin").val("Show menu");
                 menu.removeClass("d-block").addClass("d-none");
                 candado.removeClass("fa-unlock").addClass("fa-lock");
                 botones.removeClass("d-block").addClass("d-none");
@@ -80,7 +80,7 @@ $(document).ready(function () {
  * @version 2.1
  */
 function validarClave(accion) {
-    var mensaje = "Las contraseñas no coinciden";
+    var mensaje = "Passwords don't match";
     var longitud = $("#clave" + accion).val().length;
     var clave = $("#clave" + accion).val();
     var claverepe = $("#claverepe" + accion).val();

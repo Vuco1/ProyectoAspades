@@ -15,19 +15,22 @@
             if (strcmp($lang, "es")=== 0) {
                 ?>
                 <script src="{{ asset('js/ajax.js') }}"></script>
+                <script src="{{ asset('js/scripts.js') }}"></script>
                 <?php
             } else {
                 ?>
                 <script src="{{ asset('js/ajax_en.js') }}"></script>
+                <script src="{{ asset('js/scripts_en.js') }}"></script>
                 <?php
             }
         } else {
             ?>
             <script src="{{ asset('js/ajax.js') }}"></script>
+            <script src="{{ asset('js/scripts.js') }}"></script>
             <?php
         }
         ?>
-        <script src="{{ asset('js/scripts.js') }}"></script>
+        
     </head>
     <body>
         <div id="contenido">@yield('contenido')</div>
