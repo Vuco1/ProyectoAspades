@@ -51,11 +51,11 @@ return [
     'PerfilAdminGuardarCambios' => 'Save changes',
     
 //Ventana modal de ayuda perfil
-    'ModalPerfilAdminAyudaP1' => 'Aquí podemos modificar nuestros datos personales.',
-    'ModalPerfilAdminAyudaP2' => 'Podemos cambiar nuestro nombre y nuestro nombre de usuario.',
-    'ModalPerfilAdminAyudaP3' => 'Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.',
-    'ModalPerfilAdminAyudaP4' => 'Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
-                La contraseña sólo se cambiará si coincide en estos dos campos.',
+    'ModalPerfilAdminAyudaP1' => 'Here we can modify our personal data',
+    'ModalPerfilAdminAyudaP2' => 'We can change our name and username.',
+    'ModalPerfilAdminAyudaP3' => 'If we want to change our profile photo, we must choose a new one.',
+    'ModalPerfilAdminAyudaP4' => 'If we want to put a new password, we have to write it in the two fields that ask for it.
+The password will only be changed if it matches in these two fields.',
     
 //Gestión de usuarios
     'CrudAdminTitulo' =>'   Management',
@@ -73,7 +73,7 @@ return [
     'ModalCrudAddUsuario' =>'User',
     'ModalCrudAddNombre' =>'User Name',
     'ModalCrudAddClave' =>'Password',
-    'ModalCrudAddClavePH' =>'Write a new password',     
+    'ModalCrudAddClavePH' =>'Write a password',     
     'ModalCrudAddConfirmar' =>'Repeat',
     'ModalCrudAddConfirmarPH' =>'Repeat password',
     'ModalCrudAddAdmin' =>'Be an Admin?',
@@ -98,10 +98,10 @@ return [
     'ModalCrudEliminarBoton' =>'Delete',
     
 //Ventana modal de ayuda gestión de usuarios
-    'ModalCrudAyudaP1' => 'Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.',
-    'ModalCrudAyudaP2' => 'Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span>.',
-    'ModalCrudAyudaP3' => 'Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.',
-    'ModalCrudAyudaP4' => 'Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.',
+    'ModalCrudAyudaP1' => 'Here we can see and modify the information of all the registered users in the application. We can also remove or add users.',
+    'ModalCrudAyudaP2' => 'If we want to remove any user from the application, we just have to press the <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Delete</span> button.',
+    'ModalCrudAyudaP3' => 'To modify the data of any user, click on <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Edit</span>. A modal window will open in which we have to enter the data we want to change.',
+    'ModalCrudAyudaP4' => "To add new users, click on <span class='btn-success px-1 md-3'><i class='fas fa-plus pr-md-2'></i>Add User</span>. A window will open with a form that we must complete with the user's data.",
     
 //Mensajes de la zona de usuario
     
