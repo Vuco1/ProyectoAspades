@@ -12,7 +12,7 @@
         <script src="{{ asset('js/ajax.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
-    <body>
+    <body class="<?php if (isset($tema)) { echo "theme-".$tema; } else { echo "theme-default"; }?>">
         <div id="contenido">@yield('contenido')</div>
         <!-- SCRIPTS -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS --> 
