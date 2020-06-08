@@ -250,7 +250,7 @@
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="eliminarUsuario" method="post" enctype="multipart/form-data" class="text-center">
+                    <form action="eliminarUsuario" method="post" class="text-center">
                         @csrf
                         <p>@lang('messages.ModalCrudEliminarP')</p>
                         <input type="hidden" name="idusuelim" id="idusuelim" value="">

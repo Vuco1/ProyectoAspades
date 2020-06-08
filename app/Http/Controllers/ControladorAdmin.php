@@ -251,9 +251,13 @@ class ControladorAdmin extends Controller {
      * @author Victor
      */
     public function deleteUsuario(Request $request) {
-        $id = $request->input('id');
+        $id = $request->input('idusuelim');
         $usuario = Usuario::where('Id_usuario', $id)->delete();
-        exit;
+        
+        $datos = self::selectUsuarios();
+        $datos2 = self::selectRoles();
+        
+        return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
 }
