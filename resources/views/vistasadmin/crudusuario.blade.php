@@ -250,7 +250,7 @@ Gestión
                     </button>
                 </div>
                 <div class="modal-body p-4">
-                    <form action="eliminarUsuario" method="post" enctype="multipart/form-data" class="text-center">
+                    <form action="eliminarUsuario" method="post" class="text-center">
                         @csrf
                         <p>¿Estás seguro de que deseas eliminar este usuario?</p>
                         <input type="hidden" name="idusuelim" id="idusuelim" value="">
