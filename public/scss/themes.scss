@@ -14,7 +14,7 @@ $themes: (
         buttonColor: #343a40,
         buttonBorder: 1px solid #23272b,
         buttonHoverColor: #23272b,
-        buttonShadow: 0 0 0 0.2rem #343a4050,
+        buttonShadow: 0 0 0 0.2rem rgba(52, 58, 64, .3),
     ),
     blue: (
         backgroundColor: #fff,
@@ -23,7 +23,7 @@ $themes: (
         buttonColor: #007bff,
         buttonBorder: 1px solid #0069d9,
         buttonHoverColor: #0069d9,
-        buttonShadow: 0 0 0 0.2rem #007bff50,
+        buttonShadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.3),
     ),
     aqua: (
         backgroundColor: #fff,
@@ -32,7 +32,7 @@ $themes: (
         buttonColor: #36a4a4,
         buttonBorder: 1px solid #1c7c81,
         buttonHoverColor: #1c7c81,
-        buttonShadow: 0 0 0 0.2rem #36a4a450,
+        buttonShadow: 0 0 0 0.2rem rgba(54, 164, 164, 0.3),
     ),
     green: (
         backgroundColor: #fff,
@@ -41,7 +41,7 @@ $themes: (
         buttonColor: #28a745,
         buttonBorder: 1px solid #218838,
         buttonHoverColor: #218838,
-        buttonShadow: 0 0 0 0.2rem #28a74550,
+        buttonShadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.3),
     ),
         yellow: (
         backgroundColor: #fff,
@@ -50,7 +50,7 @@ $themes: (
         buttonColor: #ffc107,
         buttonBorder: 1px solid #e0a800,
         buttonHoverColor: #e0a800,
-        buttonShadow: 0 0 0 0.2rem #ffc10750,
+        buttonShadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.3),
     ),
     orange: (
         backgroundColor: #fff,
@@ -59,7 +59,7 @@ $themes: (
         buttonColor: #f39932,
         buttonBorder: 1px solid #dc821b,
         buttonHoverColor: #dc821b,
-        buttonShadow: 0 0 0 0.2rem #f3993250,
+        buttonShadow: 0 0 0 0.2rem rgba(243, 153, 50, 0.3),
     ),
     red: (
         backgroundColor: #fff,
@@ -68,7 +68,7 @@ $themes: (
         buttonColor: #e12d24,
         buttonBorder: 1px solid #c4241c,
         buttonHoverColor: #c4241c,
-        buttonShadow: 0 0 0 0.2rem #e12d2450,
+        buttonShadow: 0 0 0 0.2rem rgba(225, 45, 36, 0.3),
     ),
     pink: (
         backgroundColor: #fff,
@@ -77,7 +77,7 @@ $themes: (
         buttonColor: #dc3574,
         buttonBorder: 1px solid #c51d5d,
         buttonHoverColor: #c51d5d,
-        buttonShadow: 0 0 0 0.2rem #dc357450,
+        buttonShadow: 0 0 0 0.2rem rgba(220, 53, 116, 0.3),
     ),
     lavender: (
         backgroundColor: #fff,
@@ -86,7 +86,7 @@ $themes: (
         buttonColor: #cca0ce,
         buttonBorder: 1px solid #b892ba,
         buttonHoverColor: #b892ba,
-        buttonShadow: 0 0 0 0.2rem #cca0ce50,
+        buttonShadow: 0 0 0 0.2rem rgba(204, 160, 206, 0.3),
     ),
     purple: (
         backgroundColor: #fff,
@@ -95,7 +95,7 @@ $themes: (
         buttonColor: #6b1c81,
         buttonBorder: 1px solid #4d145d,
         buttonHoverColor: #4d145d,
-        buttonShadow: 0 0 0 0.2rem #6b1c8150,
+        buttonShadow: 0 0 0 0.2rem rgba(107, 28, 129, 0.3),
     ),
 );
 
@@ -132,7 +132,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif!important;
+    font-family: 'Rubik', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
