@@ -6,14 +6,14 @@ Perfil
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img id="logo" src="" alt="Logo" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="divnav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
+                <li class="nav-item active"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_usu"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary" href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
@@ -97,10 +97,10 @@ Perfil
             <div class="modal-body p-4 text-justify">
                 <ul>
                     <li><p>Aquí podemos modificar nuestros datos personales.</p></li>
-                    <li><p>Podemos cambiar nuestro nombre y nuestro nombre de usuario.</p></li>
+                    <li><p>Podemos cambiar nuestro nuestro nombre de usuario y nuestro nombre personal.</p></li>
                     <li><p>Si queremos cambiar nuestra foto de perfil, debemos elegir una nueva.</p></li>
                     <li><p>Si queremos poner una contraseña nueva, tenemos que escribirla en los dos campos que nos la piden.
-                La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>
+                    La contraseña sólo se cambiará si coincide en estos dos campos.</p></li>
                 </ul>
             </div>
         </div>

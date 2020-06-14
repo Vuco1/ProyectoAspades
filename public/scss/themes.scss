@@ -1,6 +1,6 @@
 /* 
-    Created on : Jun 7, 2020, 7:19:11 PM
-    Author     : Laura Mª Fernández Cambronero
+*    Created on : Jun 7, 2020, 7:19:11 PM
+*    Author     : Laura Mª Fernández Cambronero
 */
 
 /*----------------------------------------------------------------------------*/
@@ -175,6 +175,13 @@ a, a:hover {
     width: 8.5rem;
 }
 
+.modal-header {
+    @include themify($themes) {
+        color: themed('buttonTextColor'); 
+        background-color: themed('buttonColor');
+    }
+}
+
 /*----------------------------------------------------------------------------*/
 /*------------------------ IMÁGENES, LOGOS E ICONOS --------------------------*/
 /*----------------------------------------------------------------------------*/
@@ -201,12 +208,15 @@ a, a:hover {
 /*----------------------------------------------------------------------------*/
 /*----------------------------------- NAV ------------------------------------*/
 /*----------------------------------------------------------------------------*/
-.nav-link { padding: 1rem 1.5rem!important; }
+.nav-link {
+    padding: 1rem 1.5rem!important;
+    cursor: pointer!important;
+}
 
-.nav-link.active {
+.nav-item.active .nav-link {
     @include themify($themes) {
-        color: themed('buttonTextColor'); 
-        background-color: themed('buttonColor');
+        color: themed('buttonTextColor')!important; 
+        background-color: themed('buttonColor')!important;
         &:hover {
             background-color: themed('buttonHoverColor');
         }

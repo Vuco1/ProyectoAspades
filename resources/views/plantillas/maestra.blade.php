@@ -6,8 +6,9 @@
         <title>@yield('titulo')</title>
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('files/bootstrap-4.3.1-dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/general-styles.css') }}">
-               
+        <!--link rel="stylesheet" href="{{ asset('css/general-styles.css') }}"-->
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <!-- Scripts -->
         <script src="{{ asset('js/jquery-3.4.1.js') }}"></script>
         <script src="{{ asset('js/ajax.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>

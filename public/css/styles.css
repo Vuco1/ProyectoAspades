@@ -1,0 +1,879 @@
+/* 
+    Created on : Jun 14, 2020, 6:00:29 PM
+    Author     : laumf
+*/
+
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- FUENTES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap");
+
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- ESTILOS ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.theme-default body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-blue body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-aqua body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-green body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-yellow body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-orange body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-red body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-pink body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-lavender body {
+    color: #212529;
+    background-color: #fff;
+}
+
+.theme-purple body {
+    color: #212529;
+    background-color: #fff;
+}
+
+main {
+    min-height: calc(100vh - 3.5rem);
+    min-width: 20rem;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1020;
+}
+
+footer {
+    height: 3.5rem !important;
+}
+
+h1 {
+    margin: auto;
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 3rem 0 1rem;
+}
+
+a, a:hover {
+    text-decoration: none !important;
+}
+
+.w-8 {
+    width: 8.5rem;
+}
+
+.theme-default .modal-header {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.theme-blue .modal-header {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.theme-aqua .modal-header {
+    color: #fff;
+    background-color: #36a4a4;
+}
+
+.theme-green .modal-header {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.theme-yellow .modal-header {
+    color: #fff;
+    background-color: #ffc107;
+}
+
+.theme-orange .modal-header {
+    color: #fff;
+    background-color: #f39932;
+}
+
+.theme-red .modal-header {
+    color: #fff;
+    background-color: #e12d24;
+}
+
+.theme-pink .modal-header {
+    color: #fff;
+    background-color: #dc3574;
+}
+
+.theme-lavender .modal-header {
+    color: #fff;
+    background-color: #cca0ce;
+}
+
+.theme-purple .modal-header {
+    color: #fff;
+    background-color: #6b1c81;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------ IMÁGENES, LOGOS E ICONOS --------------------------*/
+/*----------------------------------------------------------------------------*/
+.logo-nav {
+    width: 7.5rem;
+}
+
+.logo-login {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.icono {
+    padding-right: 0.5rem;
+}
+
+.icono-crud {
+    height: 1.5rem;
+    width: 2rem;
+}
+
+.img-perfil {
+    height: 18rem;
+    width: 18rem;
+    object-fit: cover;
+}
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------- NAV ------------------------------------*/
+/*----------------------------------------------------------------------------*/
+.nav-link {
+    padding: 1rem 1.5rem !important;
+    cursor: pointer !important;
+}
+
+.theme-default .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #343a40 !important;
+}
+
+.theme-default .nav-item.active .nav-link:hover {
+    background-color: #23272b;
+}
+
+.theme-blue .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #007bff !important;
+}
+
+.theme-blue .nav-item.active .nav-link:hover {
+    background-color: #0069d9;
+}
+
+.theme-aqua .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #36a4a4 !important;
+}
+
+.theme-aqua .nav-item.active .nav-link:hover {
+    background-color: #1c7c81;
+}
+
+.theme-green .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #28a745 !important;
+}
+
+.theme-green .nav-item.active .nav-link:hover {
+    background-color: #218838;
+}
+
+.theme-yellow .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #ffc107 !important;
+}
+
+.theme-yellow .nav-item.active .nav-link:hover {
+    background-color: #e0a800;
+}
+
+.theme-orange .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #f39932 !important;
+}
+
+.theme-orange .nav-item.active .nav-link:hover {
+    background-color: #dc821b;
+}
+
+.theme-red .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #e12d24 !important;
+}
+
+.theme-red .nav-item.active .nav-link:hover {
+    background-color: #c4241c;
+}
+
+.theme-pink .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #dc3574 !important;
+}
+
+.theme-pink .nav-item.active .nav-link:hover {
+    background-color: #c51d5d;
+}
+
+.theme-lavender .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #cca0ce !important;
+}
+
+.theme-lavender .nav-item.active .nav-link:hover {
+    background-color: #b892ba;
+}
+
+.theme-purple .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #6b1c81 !important;
+}
+
+.theme-purple .nav-item.active .nav-link:hover {
+    background-color: #4d145d;
+}
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- BOTONES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.btn-color {
+    outline: none;
+}
+
+.theme-default .btn-color {
+    color: #fff;
+    background-color: #343a40;
+    border: 1px solid #23272b;
+}
+
+.theme-default .btn-color:hover {
+    background-color: #23272b;
+}
+
+.theme-default .btn-color:focus {
+    background-color: #23272b;
+    box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.3);
+}
+
+.theme-blue .btn-color {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #0069d9;
+}
+
+.theme-blue .btn-color:hover {
+    background-color: #0069d9;
+}
+
+.theme-blue .btn-color:focus {
+    background-color: #0069d9;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.3);
+}
+
+.theme-aqua .btn-color {
+    color: #fff;
+    background-color: #36a4a4;
+    border: 1px solid #1c7c81;
+}
+
+.theme-aqua .btn-color:hover {
+    background-color: #1c7c81;
+}
+
+.theme-aqua .btn-color:focus {
+    background-color: #1c7c81;
+    box-shadow: 0 0 0 0.2rem rgba(54, 164, 164, 0.3);
+}
+
+.theme-green .btn-color {
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #218838;
+}
+
+.theme-green .btn-color:hover {
+    background-color: #218838;
+}
+
+.theme-green .btn-color:focus {
+    background-color: #218838;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.3);
+}
+
+.theme-yellow .btn-color {
+    color: #fff;
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+}
+
+.theme-yellow .btn-color:hover {
+    background-color: #e0a800;
+}
+
+.theme-yellow .btn-color:focus {
+    background-color: #e0a800;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.3);
+}
+
+.theme-orange .btn-color {
+    color: #fff;
+    background-color: #f39932;
+    border: 1px solid #dc821b;
+}
+
+.theme-orange .btn-color:hover {
+    background-color: #dc821b;
+}
+
+.theme-orange .btn-color:focus {
+    background-color: #dc821b;
+    box-shadow: 0 0 0 0.2rem rgba(243, 153, 50, 0.3);
+}
+
+.theme-red .btn-color {
+    color: #fff;
+    background-color: #e12d24;
+    border: 1px solid #c4241c;
+}
+
+.theme-red .btn-color:hover {
+    background-color: #c4241c;
+}
+
+.theme-red .btn-color:focus {
+    background-color: #c4241c;
+    box-shadow: 0 0 0 0.2rem rgba(225, 45, 36, 0.3);
+}
+
+.theme-pink .btn-color {
+    color: #fff;
+    background-color: #dc3574;
+    border: 1px solid #c51d5d;
+}
+
+.theme-pink .btn-color:hover {
+    background-color: #c51d5d;
+}
+
+.theme-pink .btn-color:focus {
+    background-color: #c51d5d;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 116, 0.3);
+}
+
+.theme-lavender .btn-color {
+    color: #fff;
+    background-color: #cca0ce;
+    border: 1px solid #b892ba;
+}
+
+.theme-lavender .btn-color:hover {
+    background-color: #b892ba;
+}
+
+.theme-lavender .btn-color:focus {
+    background-color: #b892ba;
+    box-shadow: 0 0 0 0.2rem rgba(204, 160, 206, 0.3);
+}
+
+.theme-purple .btn-color {
+    color: #fff;
+    background-color: #6b1c81;
+    border: 1px solid #4d145d;
+}
+
+.theme-purple .btn-color:hover {
+    background-color: #4d145d;
+}
+
+.theme-purple .btn-color:focus {
+    background-color: #4d145d;
+    box-shadow: 0 0 0 0.2rem rgba(107, 28, 129, 0.3);
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ FORMULARIOS ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+.custom-file-input:lang(es) ~ .custom-file-label::after {
+    content: "Buscar";
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #cccccc;
+}
+
+.theme-default .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #343a40;
+    border: 1px solid #23272b;
+}
+
+.theme-blue .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #007bff;
+    border: 1px solid #0069d9;
+}
+
+.theme-aqua .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #36a4a4;
+    border: 1px solid #1c7c81;
+}
+
+.theme-green .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #28a745;
+    border: 1px solid #218838;
+}
+
+.theme-yellow .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+}
+
+.theme-orange .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #f39932;
+    border: 1px solid #dc821b;
+}
+
+.theme-red .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #e12d24;
+    border: 1px solid #c4241c;
+}
+
+.theme-pink .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #dc3574;
+    border: 1px solid #c51d5d;
+}
+
+.theme-lavender .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #cca0ce;
+    border: 1px solid #b892ba;
+}
+
+.theme-purple .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #6b1c81;
+    border: 1px solid #4d145d;
+}
+
+.theme-default .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.3);
+    border: 1px solid #23272b;
+}
+
+.theme-blue .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.3);
+    border: 1px solid #0069d9;
+}
+
+.theme-aqua .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(54, 164, 164, 0.3);
+    border: 1px solid #1c7c81;
+}
+
+.theme-green .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.3);
+    border: 1px solid #218838;
+}
+
+.theme-yellow .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.3);
+    border: 1px solid #e0a800;
+}
+
+.theme-orange .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(243, 153, 50, 0.3);
+    border: 1px solid #dc821b;
+}
+
+.theme-red .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(225, 45, 36, 0.3);
+    border: 1px solid #c4241c;
+}
+
+.theme-pink .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 116, 0.3);
+    border: 1px solid #c51d5d;
+}
+
+.theme-lavender .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(204, 160, 206, 0.3);
+    border: 1px solid #b892ba;
+}
+
+.theme-purple .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(107, 28, 129, 0.3);
+    border: 1px solid #4d145d;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------- PAGINACIÓN ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Crud de usuarios */
+#paginacion nav {
+    margin: auto;
+}
+
+/* Contextos y subcontextos */
+.carousel-indicators {
+    bottom: -4.2rem;
+}
+
+.carousel-indicators li {
+    border-radius: 100%;
+    height: 30px;
+}
+
+.theme-default .carousel-indicators li {
+    background-color: #343a40;
+}
+
+.theme-blue .carousel-indicators li {
+    background-color: #007bff;
+}
+
+.theme-aqua .carousel-indicators li {
+    background-color: #36a4a4;
+}
+
+.theme-green .carousel-indicators li {
+    background-color: #28a745;
+}
+
+.theme-yellow .carousel-indicators li {
+    background-color: #ffc107;
+}
+
+.theme-orange .carousel-indicators li {
+    background-color: #f39932;
+}
+
+.theme-red .carousel-indicators li {
+    background-color: #e12d24;
+}
+
+.theme-pink .carousel-indicators li {
+    background-color: #dc3574;
+}
+
+.theme-lavender .carousel-indicators li {
+    background-color: #cca0ce;
+}
+
+.theme-purple .carousel-indicators li {
+    background-color: #6b1c81;
+}
+
+.theme-default .page-link {
+    color: #fff;
+    background-color: #343a40;
+    border: 1px solid #23272b;
+}
+
+.theme-default .page-link:hover {
+    background-color: #23272b;
+}
+
+.theme-default .page-link:focus {
+    background-color: #23272b;
+    box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.3);
+}
+
+.theme-blue .page-link {
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #0069d9;
+}
+
+.theme-blue .page-link:hover {
+    background-color: #0069d9;
+}
+
+.theme-blue .page-link:focus {
+    background-color: #0069d9;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.3);
+}
+
+.theme-aqua .page-link {
+    color: #fff;
+    background-color: #36a4a4;
+    border: 1px solid #1c7c81;
+}
+
+.theme-aqua .page-link:hover {
+    background-color: #1c7c81;
+}
+
+.theme-aqua .page-link:focus {
+    background-color: #1c7c81;
+    box-shadow: 0 0 0 0.2rem rgba(54, 164, 164, 0.3);
+}
+
+.theme-green .page-link {
+    color: #fff;
+    background-color: #28a745;
+    border: 1px solid #218838;
+}
+
+.theme-green .page-link:hover {
+    background-color: #218838;
+}
+
+.theme-green .page-link:focus {
+    background-color: #218838;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.3);
+}
+
+.theme-yellow .page-link {
+    color: #fff;
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+}
+
+.theme-yellow .page-link:hover {
+    background-color: #e0a800;
+}
+
+.theme-yellow .page-link:focus {
+    background-color: #e0a800;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.3);
+}
+
+.theme-orange .page-link {
+    color: #fff;
+    background-color: #f39932;
+    border: 1px solid #dc821b;
+}
+
+.theme-orange .page-link:hover {
+    background-color: #dc821b;
+}
+
+.theme-orange .page-link:focus {
+    background-color: #dc821b;
+    box-shadow: 0 0 0 0.2rem rgba(243, 153, 50, 0.3);
+}
+
+.theme-red .page-link {
+    color: #fff;
+    background-color: #e12d24;
+    border: 1px solid #c4241c;
+}
+
+.theme-red .page-link:hover {
+    background-color: #c4241c;
+}
+
+.theme-red .page-link:focus {
+    background-color: #c4241c;
+    box-shadow: 0 0 0 0.2rem rgba(225, 45, 36, 0.3);
+}
+
+.theme-pink .page-link {
+    color: #fff;
+    background-color: #dc3574;
+    border: 1px solid #c51d5d;
+}
+
+.theme-pink .page-link:hover {
+    background-color: #c51d5d;
+}
+
+.theme-pink .page-link:focus {
+    background-color: #c51d5d;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 116, 0.3);
+}
+
+.theme-lavender .page-link {
+    color: #fff;
+    background-color: #cca0ce;
+    border: 1px solid #b892ba;
+}
+
+.theme-lavender .page-link:hover {
+    background-color: #b892ba;
+}
+
+.theme-lavender .page-link:focus {
+    background-color: #b892ba;
+    box-shadow: 0 0 0 0.2rem rgba(204, 160, 206, 0.3);
+}
+
+.theme-purple .page-link {
+    color: #fff;
+    background-color: #6b1c81;
+    border: 1px solid #4d145d;
+}
+
+.theme-purple .page-link:hover {
+    background-color: #4d145d;
+}
+
+.theme-purple .page-link:focus {
+    background-color: #4d145d;
+    box-shadow: 0 0 0 0.2rem rgba(107, 28, 129, 0.3);
+}
+
+.theme-default .page-item.active .page-link {
+    color: #fff;
+    background-color: #23272b;
+    border: 1px solid #23272b;
+}
+
+.theme-blue .page-item.active .page-link {
+    color: #fff;
+    background-color: #0069d9;
+    border: 1px solid #0069d9;
+}
+
+.theme-aqua .page-item.active .page-link {
+    color: #fff;
+    background-color: #1c7c81;
+    border: 1px solid #1c7c81;
+}
+
+.theme-green .page-item.active .page-link {
+    color: #fff;
+    background-color: #218838;
+    border: 1px solid #218838;
+}
+
+.theme-yellow .page-item.active .page-link {
+    color: #fff;
+    background-color: #e0a800;
+    border: 1px solid #e0a800;
+}
+
+.theme-orange .page-item.active .page-link {
+    color: #fff;
+    background-color: #dc821b;
+    border: 1px solid #dc821b;
+}
+
+.theme-red .page-item.active .page-link {
+    color: #fff;
+    background-color: #c4241c;
+    border: 1px solid #c4241c;
+}
+
+.theme-pink .page-item.active .page-link {
+    color: #fff;
+    background-color: #c51d5d;
+    border: 1px solid #c51d5d;
+}
+
+.theme-lavender .page-item.active .page-link {
+    color: #fff;
+    background-color: #b892ba;
+    border: 1px solid #b892ba;
+}
+
+.theme-purple .page-item.active .page-link {
+    color: #fff;
+    background-color: #4d145d;
+    border: 1px solid #4d145d;
+}
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------------- CARDS -----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.card {
+    border-radius: 0;
+}
+
+.card-body {
+    min-height: 2.5rem;
+}
+
+.card-contexto {
+    max-width: 20rem;
+}
+
+.img-contexto {
+    height: 22rem;
+    object-fit: cover;
+}
+
+.img-subcontexto {
+    object-fit: cover;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------- DISTRIBUCIÓN DE TABLEROS -------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Estos son los presets de los posibles tamaños de los subcontextos */
+/* Preset pequeño (4x3) */
+.grid-sm {
+    height: 100vh;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Preset mediano (3x2) */
+.grid-md {
+    height: 100vh;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Preset grande (3x1) */
+.grid-lg {
+    height: 100vh;
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ MEDIA QUERIES -------------------------------*/
+/*----------------------------------------------------------------------------*/
+@media (max-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
