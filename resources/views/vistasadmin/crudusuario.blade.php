@@ -81,7 +81,7 @@
         </div>
     </div>
     <div class="text-center">
-        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>@lang('messages.CrudAdminBotonAñadir') Usuario</button>
+        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>@lang('messages.CrudAdminBotonAñadir')</button>
     </div>
     <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-3">
         {{ $datos->links() }}

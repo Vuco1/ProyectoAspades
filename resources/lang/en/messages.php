@@ -64,7 +64,7 @@ The password will only be changed if it matches in these two fields.',
     'CrudAdminRol' =>'Role',
     'CrudAdminBotonModificar' =>'Edit',
     'CrudAdminBotonEliminar' =>'Delete',
-    'CrudAdminBotonAñadir' =>'Add',
+    'CrudAdminBotonAñadir' =>'Add user',
     
 //Nuevo usuario
     'ModalCrudAdd' =>'Add User',    

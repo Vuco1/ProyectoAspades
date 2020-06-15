@@ -22,8 +22,9 @@ Route::group(['middleware' => 'Idioma'], function () {
     })->middleware('Sesion');
 
     Route::get('lang/{lang}', function ($lang) {
+        session()->flush();
         session()->put('lang', $lang);
-        $lang = session()->get('lang');
+        $langu = session()->get('lang');
         return \Redirect::back();
     })->where([
         'lang' => 'en|es'
@@ -37,195 +38,196 @@ Route::group(['middleware' => 'Idioma'], function () {
 //    }
 //    return view('index');
 //});
-/*
-  |--------------------------------------------------------------------------
-  | PRUEBAS/TESTING
-  |--------------------------------------------------------------------------
- */
-
-/*
-  |--------------------------------------------------------------------------
-  |GENERALES
-  |--------------------------------------------------------------------------
- */
-/**
- * Ruta para saber si eres admin o Usuario o si no existes
- */
-Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
-
-Route::get('comprobar', function () {
-    return view('index');
-});
-/**
- * Ruta paracerrar la Sesion
- */
-Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
-
-/*
-  |--------------------------------------------------------------------------
-  |Administrador
-  |--------------------------------------------------------------------------
- */
-
-/**
- * Ruta para registrar un Usuario
- */
-Route::post('registrar', 'ControladorAdmin@addUsuario')->name('gestionusuarios');
-
-Route::group(['middleware' => 'Administrador'], function() {
-    /**
-     * Ruta para cargar los perfiles del pagination
+    /*
+      |--------------------------------------------------------------------------
+      | PRUEBAS/TESTING
+      |--------------------------------------------------------------------------
      */
-    Route::get('registrar', 'ControladorAdmin@crudUsuarios');
-    /**
-     * Editar el perfil del administrador.
-     * Post
+
+    /*
+      |--------------------------------------------------------------------------
+      |GENERALES
+      |--------------------------------------------------------------------------
      */
-    Route::any('editarperfil', 'ControladorAdmin@editarPerfil');
     /**
-     * Ruta para Modificar los Usuarios
-     * Estaba con post
+     * Ruta para saber si eres admin o Usuario o si no existes
      */
-    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
-    Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
-    /**
-     * Ruta para eliminar un Usuario
-     * Estaba con post
-     */
-    Route::any('eliminarUsuario', 'ControladorAdmin@deleteUsuario');
-    /**
-     * Ruta que te lleva a la vista del inicio del Admin
-     * Estaba con get
-     */
-    Route::any('inicioadmin', function () {
-        return view('vistasadmin/inicioadmin', ['usuario' => session()->get('usuario')]);
+    Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
+
+    Route::get('comprobar', function () {
+        return view('index');
     });
     /**
-     * Ruta para ir al Perfil del Admin
-     * Estaba con get
+     * Ruta paracerrar la Sesion
      */
-    Route::any('perfil', function () {
-        return view('vistasadmin/perfiladmin', ['usuario' => session()->get('usuario')]);
-    });
-    /**
-     * Te lleva a la vista del Crud de Usuarios
-     * Estaba con get
-     */
-    Route::any('gestionusuarios', 'ControladorAdmin@crudUsuarios');
-    /**
-     * LLena la BBDD con informacion random
-     * Estaba con get
-     */
-    Route::any('kabum', 'ControladorAdmin@llenarBase');
-    /**
-     * Ruta para añadir un Usuario
-     * Estaba con get
-     */
-});
+    Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
-/*
-  |--------------------------------------------------------------------------
-  |Usuario
-  |--------------------------------------------------------------------------
- */
-Route::group(['middleware' => 'Usuario'], function() {
-    /**
-     * Redirige a la vista de inicio del usuario
+    /*
+      |--------------------------------------------------------------------------
+      |Administrador
+      |--------------------------------------------------------------------------
      */
-    Route::get('iniciousuario', function () {
-        return view('vistasusuario/iniciousuario');
-    });
+
     /**
-     * Ruta para obtener los Contextos del Usuario
-     * Estaba con post
+     * Ruta para registrar un Usuario
      */
-    Route::any('obtenercontextos', 'ControladorUsuario@obtenerContextos');
-    /**
-     * Editar el perfil del usuario.
-     * Post
-     */
-    Route::any('editarperfilusuario', 'ControladorUsuario@editarPerfilUsuario');
-    /**
-     * Ruta para obtener los Subcontextos del Usuario
-     * Estaba con post
-     */
-    Route::post('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
-    /**
-     * Estaba con get
-     */
-    Route::any('addContexto', function () {
-        return view('vistasusuario/addcontexto');
-    });
-    /**
-     * 
-     * Estaba con post
-     */
-    Route::post('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
-    /**
-     * Ruta para subir un Tablero
-     * Estaba con post
-     */
-    Route::post('subirTablero', 'ControladorUsuario@subirTablero');
-    /**
-     * 
-     * Estaba con post
-     */
-    Route::post('vistaimagen', function () {
-        return view('vistasusuario/vistaimagen');
-    });
-    /**
-     * Ruta para volver al perfil del Usuario
-     * Estaba con get
-     */
-    Route::any('perfilusuario', function () {
-        return view('vistasusuario/perfilusuario');
+    Route::post('registrar', 'ControladorAdmin@addUsuario')->name('gestionusuarios');
+
+    Route::group(['middleware' => 'Administrador'], function() {
+        /**
+         * Ruta para cargar los perfiles del pagination
+         */
+        Route::get('registrar', 'ControladorAdmin@crudUsuarios');
+        /**
+         * Editar el perfil del administrador.
+         * Post
+         */
+        Route::any('editarperfil', 'ControladorAdmin@editarPerfil');
+        /**
+         * Ruta para Modificar los Usuarios
+         * Estaba con post
+         */
+        Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
+        Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
+        /**
+         * Ruta para eliminar un Usuario
+         * Estaba con post
+         */
+        Route::any('eliminarUsuario', 'ControladorAdmin@deleteUsuario');
+        /**
+         * Ruta que te lleva a la vista del inicio del Admin
+         * Estaba con get
+         */
+        Route::any('inicioadmin', function () {
+            return view('vistasadmin/inicioadmin', ['usuario' => session()->get('usuario')]);
+        });
+        /**
+         * Ruta para ir al Perfil del Admin
+         * Estaba con get
+         */
+        Route::any('perfil', function () {
+            return view('vistasadmin/perfiladmin', ['usuario' => session()->get('usuario')]);
+        });
+        /**
+         * Te lleva a la vista del Crud de Usuarios
+         * Estaba con get
+         */
+        Route::any('gestionusuarios', 'ControladorAdmin@crudUsuarios');
+        /**
+         * LLena la BBDD con informacion random
+         * Estaba con get
+         */
+        Route::any('kabum', 'ControladorAdmin@llenarBase');
+        /**
+         * Ruta para añadir un Usuario
+         * Estaba con get
+         */
     });
 
-    /**
-     * Ruta para ir al tablero anterior
-     * @author Victor
+    /*
+      |--------------------------------------------------------------------------
+      |Usuario
+      |--------------------------------------------------------------------------
      */
-    Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
+    Route::group(['middleware' => 'Usuario'], function() {
+        /**
+         * Redirige a la vista de inicio del usuario
+         */
+        Route::get('iniciousuario', function () {
+            return view('vistasusuario/iniciousuario');
+        });
+        /**
+         * Ruta para obtener los Contextos del Usuario
+         * Estaba con post
+         */
+        Route::any('obtenercontextos', 'ControladorUsuario@obtenerContextos');
+        /**
+         * Editar el perfil del usuario.
+         * Post
+         */
+        Route::any('editarperfilusuario', 'ControladorUsuario@editarPerfilUsuario');
+        /**
+         * Ruta para obtener los Subcontextos del Usuario
+         * Estaba con post
+         */
+        Route::post('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
+        /**
+         * Estaba con get
+         */
+        Route::any('addContexto', function () {
+            return view('vistasusuario/addcontexto');
+        });
+        /**
+         * 
+         * Estaba con post
+         */
+        Route::post('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
+        /**
+         * Ruta para subir un Tablero
+         * Estaba con post
+         */
+        Route::post('subirTablero', 'ControladorUsuario@subirTablero');
+        /**
+         * 
+         * Estaba con post
+         */
+        Route::post('vistaimagen', function () {
+            return view('vistasusuario/vistaimagen');
+        });
+        /**
+         * Ruta para volver al perfil del Usuario
+         * Estaba con get
+         */
+        Route::any('perfilusuario', function () {
+            return view('vistasusuario/perfilusuario');
+        });
 
-    Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
+        /**
+         * Ruta para ir al tablero anterior
+         * @author Victor
+         */
+        Route::post('modificarTablero', 'ControladorUsuario@modificarTablero');
 
-    Route::post('addpagina', 'ControladorUsuario@addPagina');
+        Route::post('eliminarTablero', 'ControladorUsuario@eliminarTablero');
 
-    Route::post('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+        Route::post('addpagina', 'ControladorUsuario@addPagina');
 
-    Route::post('vaciartablero', 'ControladorUsuario@DOOOOM');
-});
+        Route::post('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+
+        Route::post('vaciartablero', 'ControladorUsuario@DOOOOM');
+    });
 
 
-});
-Route::group(['middleware' => 'RutasGet'], function() {
-    /**
-     * Ruta para obtener los Subcontextos del Usuario
-     * Estaba con post
-     */
-    Route::get('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
-    /**
-     * 
-     * Estaba con post
-     */
-    Route::get('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
-    /**
-     * Ruta para subir un Tablero
-     * Estaba con post
-     */
-    Route::get('subirTablero', 'ControladorUsuario@subirTablero');
 
-    /**
-     * Ruta para ir al tablero anterior
-     * @author Victor
-     */
-    Route::get('modificarTablero', 'ControladorUsuario@modificarTablero');
+    Route::group(['middleware' => 'RutasGet'], function() {
+        /**
+         * Ruta para obtener los Subcontextos del Usuario
+         * Estaba con post
+         */
+        Route::get('obtenersubcontextos', 'ControladorUsuario@obtenerSubcontextos');
+        /**
+         * 
+         * Estaba con post
+         */
+        Route::get('modificacionContextos', 'ControladorUsuario@eleccionFuncion');
+        /**
+         * Ruta para subir un Tablero
+         * Estaba con post
+         */
+        Route::get('subirTablero', 'ControladorUsuario@subirTablero');
 
-    Route::get('eliminarTablero', 'ControladorUsuario@eliminarTablero');
+        /**
+         * Ruta para ir al tablero anterior
+         * @author Victor
+         */
+        Route::get('modificarTablero', 'ControladorUsuario@modificarTablero');
 
-    Route::get('addpagina', 'ControladorUsuario@addPagina');
+        Route::get('eliminarTablero', 'ControladorUsuario@eliminarTablero');
 
-    Route::get('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+        Route::get('addpagina', 'ControladorUsuario@addPagina');
 
-    Route::get('vaciartablero', 'ControladorUsuario@DOOOOM');
+        Route::get('eliminarpagina', 'ControladorUsuario@eliminarPagina');
+
+        Route::get('vaciartablero', 'ControladorUsuario@DOOOOM');
+    });
 });

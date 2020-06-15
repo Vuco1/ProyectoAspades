@@ -63,7 +63,7 @@ return [
     'CrudAdminRol' =>'Rol',
     'CrudAdminBotonModificar' =>'Editar',
     'CrudAdminBotonEliminar' =>'Borrar',
-    'CrudAdminBotonAñadir' =>'Añadir',
+    'CrudAdminBotonAñadir' =>'Añadir Usuario',
     
 //Nuevo usuario
     'ModalCrudAdd' =>'Añadir Usuario',
