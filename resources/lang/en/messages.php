@@ -116,7 +116,7 @@ The password will only be changed if it matches in these two fields.',
 //Ventana modal de ayuda inicio
     'ModalInicioAyudaUsuP1' => 'If we click on <span><img src="../public/images/icons/Screenshot_20200305_122931.png" width="30px"></span>, we will see our board.',
     'ModalInicioAyudaUsuP2' => 'If we click on <span class="text-secondary px-1"><i class="fas fa-user-circle icono"></i>My profile</span>, we will be able to modify our own profile data.',
-    'ModalInicioAyudaUsuP3' => 'If we click on <span class="text-secondary px-1"><i class="fas fa-home icono"></i>Welcome page</span> or on the logo, we will come back to the welcome page.',
+    'ModalInicioAyudaUsuP3' => 'If we click on <span class="text-secondary px-1"><i class="fas fa-home icono"></i>Homepage</span> or on the logo, we will come back to the welcome page.',
     'ModalInicioAyudaUsuP4' => 'If we click on <span class="text-secondary pl-1"><i class="fas fa-power-off icono"></i></span>, we will log out the web and we will need to log in if we want to access again.',
     
 //Perfil usuario
