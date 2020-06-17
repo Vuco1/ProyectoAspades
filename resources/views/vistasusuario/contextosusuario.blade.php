@@ -6,7 +6,7 @@ Contextos
 <!-- HEADER -->
 <header id="menuoculto" class="d-none">
     <nav id="menu" class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="iniciousuario"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="iniciousuario"><img id="logo" src="" alt="Logo" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,7 +14,7 @@ Contextos
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="iniciousuario"><i class="fas fa-home icono"></i>Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="perfilusuario"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><button class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir panel</button></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#nuevo"><i class="fas fa-plus-circle icono"></i>Añadir panel</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_panel"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
@@ -47,7 +47,7 @@ Contextos
             <?php if (!$contextos) { ?>
                 <div class="text-center">
                     <h2 class="m-auto">Todavía no tienes ningún panel</h2>
-                    <h3 class="m-auto">Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
+                    <h3 class="m-auto">Añade alguno desde la opción <span class="text-color"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> del menú de <span class="text-color"><i class="fas fa-lock icono"></i>Administración de tableros</span>.</h3>
                 </div>
                 <?php
             } else {
@@ -97,7 +97,7 @@ Contextos
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Nuevo panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -158,7 +158,7 @@ Contextos
                                 </select>
                             </div> 
                         </div>
-                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="nuevo" value="Añadir" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -168,7 +168,7 @@ Contextos
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Modificar panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -217,7 +217,7 @@ Contextos
                                 <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
                             </div>
                         </div> 
-                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="Guardar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -227,7 +227,7 @@ Contextos
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Eliminar panel</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -239,7 +239,7 @@ Contextos
                         <p>¿Estás seguro de que deseas eliminar este panel?</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="actual" name="actual" value="">
-                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="Eliminar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -250,7 +250,7 @@ Contextos
     <section class="modal fade" id="ayuda_panel">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>

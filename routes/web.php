@@ -33,6 +33,12 @@ Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
 Route::get('comprobar', function () {
     return view('index');
 });
+
+/**
+ * Ruta para obtener el logo a cargar
+ */
+Route::get('rutalogo', 'ControladorGeneral@rutaLogo');
+
 /**
  * Ruta paracerrar la Sesion
  */
@@ -63,7 +69,7 @@ Route::group(['middleware' => 'Administrador'], function() {
      * Ruta para Modificar los Usuarios
      * Estaba con post
      */
-    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');    
+    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
     Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
     /**
      * Ruta para eliminar un Usuario

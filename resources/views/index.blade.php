@@ -7,7 +7,7 @@ Login
     <!-- MAIN -->
     <main class="d-flex">
         <section class="col-lg-4 col-md-5 col-sm-6 m-auto pt-5">
-            <img src="{{asset('images/icons/logo_aspades.svg')}}" class="logo-login"/>
+            <img id="logo" src="" class="logo-login"/>
             <form action="comprobar" method="post">
                 @csrf
                 <div class="form-group">
@@ -28,7 +28,7 @@ Login
                         <input type="password" name="clave" id="clave" placeholder="Contraseña" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-orange w-100" onclick="vaciarstorage()">
+                <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-color w-100" onclick="vaciarstorage()">
             </form>
             <div id="mensaje" class="text-center pt-2 text-danger"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         </section>

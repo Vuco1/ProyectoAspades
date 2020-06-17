@@ -7,7 +7,7 @@ Gestión
 <!-- HEADER -->
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="inicioadmin"><img id="logo" src="" alt="Logo" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -90,7 +90,7 @@ Gestión
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Añadir Usuario</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -151,7 +151,7 @@ Gestión
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
                             <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
                         </div>
-                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Añadir" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Añadir" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -161,7 +161,7 @@ Gestión
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Editar usuario</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -233,7 +233,7 @@ Gestión
                             </div>
                         </div>
                         <div id="mensajemod" class="text-center text-danger mb-3"></div>
-                        <input type="submit" name="guardarmod" id="guardarmod" value="Guardar" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardarmod" id="guardarmod" value="Guardar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -243,7 +243,7 @@ Gestión
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-header bg-color text-white px-4">
                     <div class="modal-title">Borrar usuario</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
@@ -254,7 +254,7 @@ Gestión
                         @csrf
                         <p>¿Estás seguro de que deseas eliminar este usuario?</p>
                         <input type="hidden" name="idusuelim" id="idusuelim" value="">
-                        <input type="submit" name="eliminar" id="eliminar" value="Eliminar" class="btn btn-orange w-100">  
+                        <input type="submit" name="eliminar" id="eliminar" value="Eliminar" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -265,7 +265,7 @@ Gestión
     <section class="modal fade" id="ayuda_crud">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>

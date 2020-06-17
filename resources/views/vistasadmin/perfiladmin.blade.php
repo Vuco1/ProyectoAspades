@@ -6,7 +6,7 @@ Perfil
 <!-- HEADER -->
 <header>
     <nav class="navbar navbar-expand-md navbar-light bg-light p-0">
-        <a class="py-2 px-3" href="inicioadmin"><img src="{{ asset('images/icons/logo_aspades.svg') }}" alt="Logo de Aspades la Laguna" class="logo-nav"/></a>
+        <a class="py-2 px-3" href="inicioadmin"><img id="logo" src="" alt="Logo" class="logo-nav"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@ Perfil
         ?>
     <div class="text-center">
         <h2>Mi perfil</h2>
-        <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <button class="btn btn-color rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
     <form action="editarperfil" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
@@ -81,7 +81,7 @@ Perfil
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardarperfil" value="Guardar cambios" class="btn btn-color w-100">
     </form>
 <?php } ?>
     
@@ -89,7 +89,7 @@ Perfil
     <section class="modal fade" id="ayuda_perf_admin">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Ayuda</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>

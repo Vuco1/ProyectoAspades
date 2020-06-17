@@ -1,0 +1,141 @@
+/*----------------------------------------------------------------------------*/
+/*---------------------------------- TEMAS -----------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Variables de todos los temas de color que el usuario puede elegir. Para añadir
+más opciones simplemente se copia uno de los existentes y se modifica la terminación
+del nombre de las variables y sus valores */
+:root {
+    
+    /* Por defecto */
+    --bg-color: #343a40;
+    --hover: #23272b;
+    --shadows: rgba(82,88,93,0.5);
+    
+    /* Azul */
+    --bg-color-blue: #007bff;
+    --hover-blue: #0069d9;
+    --shadows-blue: rgba(38,143,255,0.5);
+    
+    /* Turquesa */
+    --bg-color-aqua: #36a4a4;
+    --hover-aqua: #1c7c81;
+    --shadows-aqua: rgba(124,192,195,0.5);
+    
+    /* Verde */
+    --bg-color-green: #28a745;
+    --hover-green: #218838;
+    --shadows-green: rgba(72,180,97,0.5);
+    
+    /* Amarillo */
+    --bg-color-yellow: #ffc107;
+    --hover-yellow: #e0a800;
+    --shadows-yellow: rgba(222,170,12,0.5);
+    
+    /* Naranja */
+    --bg-color-orange: #f39932;
+    --hover-orange: #dc821b;
+    --shadows-orange: rgba(243,153,50,0.5);
+    
+    /* Rojo */
+    --bg-color-red: #e12d24;
+    --hover-red: #c4241c;
+    --shadows-red: rgba(223,47,38,0.5);
+    
+    /* Rosa */
+    --bg-color-pink: #dc3574;
+    --hover-pink: #c51d5d;
+    --shadows-pink: rgba(226,73,130,0.5);
+    
+    /* Morado */
+    --bg-color-purple: #6b1c81;
+    --hover-purple: #4d145d;
+    --shadows-purple: rgba(157,73,226,0.5);
+    
+}
+
+
+
+
+/*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ TEMA POR DEFECTO \\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/*\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+/*
+Este es el tema que se utilizará por defecto si el usuario no establece ninguno.
+*/
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ FONDOS Y TEXO -------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*Color de fondo que puede aplicarse a elementos en general. Para botones se usará la clase btn-color en su lugar.*/
+.bg-color { background-color: var(--bg-color); }
+
+/*Color para resaltar textos. No debe usarse junto a la clase bg-color en el mismo elemento*/
+.text-color { color: var(--bg-color); }
+
+/*Color del efecto de hover para los textos con la clase text-color*/
+.text-color:hover { color: var(--hover)!important; }
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------- NAV ------------------------------------*/
+/*----------------------------------------------------------------------------*/
+/*Color del link de la barra de navegación activo*/
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    background-color: var(--bg-color);
+}
+
+/*Color de hover del link de la barra de navegación activo*/
+.navbar-light .navbar-nav .active>.nav-link:hover, .navbar-light .navbar-nav .nav-link.active:hover {
+    background-color: var(--hover);
+}
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- BOTONES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.btn-color {
+    background-color: var(--bg-color);
+    border-color: var(--bg-color);
+}
+
+.btn-color:hover, .btn-color:not(:disabled):not(.disabled).active, .btn-color:not(:disabled):not(.disabled):active, .show>.btn-color.dropdown-toggle {
+    background-color: var(--hover);
+    border-color: var(--hover);
+}
+
+.btn-color.focus, .btn-color:focus, .page-link:focus {
+    box-shadow: 0 0 0 0.2rem var(--shadows);
+}
+
+.btn-color:not(:disabled):not(.disabled).active:focus, .btn-color:not(:disabled):not(.disabled):active:focus, .show>.btn-color.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem var(--shadows);
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ FORMULARIOS ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+.form-control::-webkit-input-placeholder { color: #cccccc; }
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+    background-color: var(--hover);
+    border: 1px solid var(--hover);
+}
+
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before{
+    box-shadow: 0 0 0 0.2rem var(--shadows);
+    border: 1px solid var(--hover);
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------- PAGINACIÓN ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+.page-link { color: var(--bg-color); }
+
+.page-item.active .page-link {
+    background-color: var(--bg-color);
+    border-color: var(--bg-color);
+}
+
+.page-link:hover { color: var(--hover); }
+
+.page-link:hover { color: var(--hover); }
+
+.carousel-indicators li { background-color: var(--bg-color); }

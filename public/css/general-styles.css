@@ -1,0 +1,161 @@
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- GENERAL ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700&display=swap');
+/* Temas de color */
+@import url('color-styles.css');
+
+body {
+    height: 100vh;
+    font-family: 'Rubik', sans-serif!important;
+}
+
+main {
+    min-height: calc(100vh - 3.5rem);
+    min-width: 20rem;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 1020;
+}
+
+footer { height: 3.5rem!important; }
+
+h1 {
+    margin: auto;
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 3rem 0 1rem;
+}
+
+a:hover {
+    text-decoration: none!important;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------ IMÁGENES, LOGOS E ICONOS --------------------------*/
+/*----------------------------------------------------------------------------*/
+.logo-nav { width: 7.5rem; }
+
+.logo-login {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.icono { padding-right: 0.5rem; }
+
+.icono-crud {
+    height: 1.5rem;
+    width: 2rem;
+}
+
+.img-perfil {
+    height: 18rem;
+    width: 18rem;
+    object-fit: cover;
+}
+
+/*----------------------------------------------------------------------------*/
+/*----------------------------------- NAV ------------------------------------*/
+/*----------------------------------------------------------------------------*/
+.navbar-nav .nav-link { padding: 1rem 1.5rem!important; }
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #fff;
+}
+
+/*----------------------------------------------------------------------------*/
+/*--------------------------------- BOTONES ----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.btn-color { color: #fff; }
+
+.btn-color:hover, .btn-color:not(:disabled):not(.disabled).active, .btn-color:not(:disabled):not(.disabled):active, .show>.btn-color.dropdown-toggle {
+    color: #fff;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ FORMULARIOS ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Traduce el texto del botón de búsqueda si el idioma de la vista es español */
+.w-8 { width: 8.5rem; }
+
+.custom-file-input:lang(es) ~ .custom-file-label::after { content: "Buscar"; }
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------- PAGINACIÓN ---------------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Crud de usuarios */
+#paginacion nav { margin: auto; }
+
+/* Contextos y subcontextos */
+.carousel-indicators { bottom: -4.2rem; }
+
+.carousel-indicators li {
+    border-radius: 100%;
+    height: 30px;
+}
+
+/*----------------------------------------------------------------------------*/
+/*---------------------------------- CARDS -----------------------------------*/
+/*----------------------------------------------------------------------------*/
+.card { border-radius: 0; }
+
+.card-body { min-height: 2.5rem; }
+
+.card-contexto { max-width: 20rem; }
+
+.img-contexto {
+    height: 22rem;
+    object-fit: cover;
+}
+
+.img-subcontexto { object-fit: cover; }
+
+/*----------------------------------------------------------------------------*/
+/*------------------------- DISTRIBUCIÓN DE TABLEROS -------------------------*/
+/*----------------------------------------------------------------------------*/
+/* Estos son los presets de los posibles tamaños de los subcontextos */
+
+/* Preset pequeño (4x3) */
+.grid-sm {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+/* Preset mediano (3x2) */
+.grid-md {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Preset grande (3x1) */
+.grid-lg {
+    height: 100vh;
+    display: grid!important;
+    grid-template-columns: 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+/*----------------------------------------------------------------------------*/
+/*------------------------------ MEDIA QUERIES -------------------------------*/
+/*----------------------------------------------------------------------------*/
+@media (max-width: 768px){
+    .container {
+        max-width: 768px;
+        
+    }
+}
+
+
+
+

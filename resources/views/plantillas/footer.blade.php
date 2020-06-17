@@ -25,7 +25,7 @@
 <section class="modal fade" id="info">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Información</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
@@ -40,7 +40,7 @@
                     <li>Víctor Úbeda Castilla</li>
                 </ul>
                 <hr>
-                Iconos de <a href="https://fontawesome.com/license" class="text-orange">Fontawesome</a>
+                Iconos de <a href="https://fontawesome.com/license" class="text-color">Fontawesome</a>
             </div>
         </div>
     </div>
@@ -50,7 +50,7 @@
 <section class="modal fade" id="loginoculto">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-orange text-white px-4">
+            <div class="modal-header bg-color text-white px-4">
                 <div class="modal-title">Login Administración de tableros</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
@@ -66,7 +66,7 @@
                         <input type="password" name="passw" id="passw" placeholder="Contraseña" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="loginadmin" id="loginadmin" value="Mostrar menú" class="btn btn-orange w-100 simplemodal-close">
+                <input type="submit" name="loginadmin" id="loginadmin" value="Mostrar menú" class="btn btn-color w-100 simplemodal-close">
             </div>
         </div>
     </div>
