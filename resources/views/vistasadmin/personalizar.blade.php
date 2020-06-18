@@ -1,6 +1,6 @@
 @extends('plantillas/maestra')
 @section('titulo')
-Personalizar
+@lang('messages.PersonalizarAdminTitulo')
 @endsection
 @section('contenido')
 <!-- HEADER -->
@@ -25,7 +25,7 @@ Personalizar
 <!-- MAIN -->
 <main class="pt-5">
     <div class="text-center">
-        <h2>Personalizar</h2>
+        <h2>@lang('messages.PersonalizarAdminTitulo')</h2>
         <img class="logo-nav p-3 mb-4" src="<?php $tema = session()->get('temas'); echo $tema->Logo;  ?>"/>
     </div>
     <form action="personalizarweb" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
@@ -33,28 +33,28 @@ Personalizar
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Logo</span>
+                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.PersonalizarLogo')</span>
                 </div>
                 <div class="custom-file">
                     <input name="imagenlogo" id="imagenlogo" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona tu nueva imagen...</label>
+                    <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.PersonalizarLogoPH')</label>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <label class="sr-only">Color</label>
+            <label class="sr-only">@lang('messages.PersonalizarColor')</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8">Color</div>
+                    <div class="input-group-text w-8">@lang('messages.PersonalizarColor')</div>
                 </div>
                 <select name="color" id="color">
-                    <option value="blue">Azul</option>
-                    <option value="green">Verde</option>
-                    <option value="red">Rojo</option>
+                    <option value="blue">@lang('messages.PersonalizarColor1')</option>
+                    <option value="green">@lang('messages.PersonalizarColor2')</option>
+                    <option value="red">@lang('messages.PersonalizarColor3')</option>
                 </select>
             </div>
         </div>
-        <input type="submit" name="guardar" id="guardarpersonalizacion" value="Guardar cambios" class="btn btn-color w-100">
+        <input type="submit" name="guardar" id="guardarpersonalizacion" value="@lang('messages.PersonalizarEditarBoton')" class="btn btn-color w-100">
     </form>
 
     <!--VENTANA MODAL DE AYUDA-->
@@ -62,7 +62,7 @@ Personalizar
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-color text-white px-4">
-                    <div class="modal-title">Ayuda</div>
+                    <div class="modal-title">@lang('messages.ModalAyuda')</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>

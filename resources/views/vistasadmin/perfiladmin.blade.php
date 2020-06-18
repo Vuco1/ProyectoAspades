@@ -1,6 +1,6 @@
 @extends('plantillas/maestra')
 @section('titulo')
-Perfil
+@lang('messages.PerfilAdmin')
 @endsection
 @section('contenido')
 <!-- HEADER -->

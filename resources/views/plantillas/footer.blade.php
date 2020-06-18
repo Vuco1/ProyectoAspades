@@ -67,7 +67,7 @@
                         <input type="password" name="passw" id="passw" placeholder="@lang('messages.ModalAdminTablerosContraseña')" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="loginadmin" id="loginadmin" value="@lang('messages.ModalAdminTablerosBoton')" class="btn btn-orange w-100 simplemodal-close">
+                <input type="submit" name="loginadmin" id="loginadmin" value="@lang('messages.ModalAdminTablerosBoton')" class="btn btn-color w-100 simplemodal-close">
             </div>
         </div>
     </div>

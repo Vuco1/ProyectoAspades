@@ -103,6 +103,17 @@ return [
     'ModalCrudAyudaP3' => 'Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.',
     'ModalCrudAyudaP4' => 'Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.',
     
+//Personalizar
+    'PersonalizarAdminTitulo'=>'Personalizacion',
+    'PersonalizarLogo'=>'Logo',
+    'PersonalizarLogoPH' =>'Selecciona el nuevo logo...',
+    'PersonalizarColor'=>'Color',
+    'PersonalizarColor1'=>'Azul',
+    'PersonalizarColor2'=>'Verde',
+    'PersonalizarColor4'=>'Rojo',
+    'PersonalizarEditarBoton' =>'Guardar Cambios',
+
+
 //Mensajes de la zona de usuario
     
 //Ventana modal de menú oculto
@@ -135,7 +146,7 @@ return [
 //Paneles usuario
     'TituloPanel' => 'Paneles',
     'PanelH2' => 'Todavía no tienes ningún panel.',
-    'PanelH3' => 'Añade alguno desde la opción <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> del menú de <span class="text-orange"><i class="fas fa-lock icono"></i>Administración de tableros</span>.',
+    'PanelH3' => 'Añade alguno desde la opción <span class="text-color"><i class="fas fa-plus-circle icono"></i>Añadir panel</span> del menú de <span class="text-color"><i class="fas fa-lock icono"></i>Administración de tableros</span>.',
     'EditarPanel' => 'Editar',
     'BorrarPanel' => 'Borrar', 
     'PanelImagenAlt' => 'Imagen del panel',

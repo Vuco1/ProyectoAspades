@@ -20,7 +20,7 @@ return [
     'NavGestion' => 'Management',
     'NavAyuda' => 'Help',
     'NavPerfil' => 'My Profile',
-    'NavPersonalizar' =>'',
+    'NavPersonalizar' =>'Customize',
     'NavAdd' => 'Add new board',
     'NavAdministrarPanel' => 'Gallery management',
     'NavAddPagina' => 'Add new page',
@@ -104,6 +104,17 @@ The password will only be changed if it matches in these two fields.',
     'ModalCrudAyudaP3' => 'To modify the data of any user, click on <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Edit</span>. A modal window will open in which we have to enter the data we want to change.',
     'ModalCrudAyudaP4' => "To add new users, click on <span class='btn-success px-1 md-3'><i class='fas fa-plus pr-md-2'></i>Add User</span>. A window will open with a form that we must complete with the user's data.",
     
+//Personalizar
+    'PersonalizarAdminTitulo'=>'Customize',
+    'PersonalizarLogo'=>'Logo',
+    'PersonalizarLogoPH' =>'Choose a new logo...',
+    'PersonalizarColor'=>'Color',
+    'PersonalizarColor1'=>'Blue',
+    'PersonalizarColor2'=>'Green',
+    'PersonalizarColor4'=>'Red',
+    'PersonalizarEditarBoton' =>'Save changes',
+
+
 //Mensajes de la zona de usuario
     
 //Ventana modal de menú oculto
@@ -136,7 +147,7 @@ The password will only be changed if it matches in these two fields.',
 //Paneles usuario
     'TituloPanel' => 'Board',
     'PanelH2' => "You don't have any boards yet.",
-    'PanelH3' => 'Add one from the <span class="text-orange"><i class="fas fa-plus-circle icono"></i>Add new board</span> option from the <span class="text-orange"><i class="fas fa-lock icono"></i>Board management</span> menu.',
+    'PanelH3' => 'Add one from the <span class="text-color"><i class="fas fa-plus-circle icono"></i>Add new board</span> option from the <span class="text-color"><i class="fas fa-lock icono"></i>Board management</span> menu.',
     'EditarPanel' => 'Modify',
     'BorrarPanel' => 'Delete', 
     'PanelImagenAlt' => 'Board picture',
