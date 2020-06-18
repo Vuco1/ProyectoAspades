@@ -20,6 +20,7 @@ return [
     'NavGestion' => 'Management',
     'NavAyuda' => 'Help',
     'NavPerfil' => 'My Profile',
+    'NavPersonalizar' =>'',
     'NavAdd' => 'Add new board',
     'NavAdministrarPanel' => 'Gallery management',
     'NavAddPagina' => 'Add new page',

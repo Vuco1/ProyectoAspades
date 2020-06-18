@@ -27,7 +27,7 @@
         $usuario = session()->get('usuario');?>
     <div class="text-center">
         <h2>@lang('messages.PerfilUsuario')</h2>
-        <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <button class="btn btn-color rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
     <form action="editarperfilusuario" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardar" value="@lang('messages.PerfilUsuGuardarCambios')" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardar" value="@lang('messages.PerfilUsuGuardarCambios')" class="btn btn-color w-100">
     </form>
 <?php } ?>
     

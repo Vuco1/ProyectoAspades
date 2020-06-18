@@ -27,7 +27,7 @@
     <?php $usuario = session()->get('usuario'); ?>        
     <form id="form0" name="formtablero" action="obtenercontextos" method="post" class="m-auto text-center">
         @csrf
-        <button name="btninicio" class="btn btn-orange rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <button name="btninicio" class="btn btn-color rounded-circle p-3"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
         <h1 id="leer0">@lang('messages.SaludoAdmin') <?php echo $usuario->Nick ?></h1>
     </form>
     <div id="mensaje" class="mt-3"><?php

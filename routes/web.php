@@ -11,9 +11,6 @@
   |
  */
 
-Route::get('/', function () {
-    return view('index');
-})->middleware(['Sesion','Temas']); 
 /*
   |--------------------------------------------------------------------------
   | PRUEBAS/TESTING
@@ -21,23 +18,27 @@ Route::get('/', function () {
  */
 
 Route::group(['middleware' => 'Idioma'], function () {
+    Route::get('/', function () {
+        return view('index');
+    })->middleware(['Temas', 'Sesion']);
 
-Route::get('comprobar', function () {
-    return view('index');
-});
+    Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
 
-/**
- * Ruta para obtener el logo a cargar
- */
-Route::get('rutalogo', 'ControladorGeneral@rutaLogo');
+    Route::get('comprobar', function () {
+        return view('index');
+    });
 
-/**
- * Ruta paracerrar la Sesion
- */
-Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
+    /**
+     * Ruta para obtener el logo a cargar
+     */
+    Route::get('rutalogo', 'ControladorGeneral@rutaLogo');
+
+    /**
+     * Ruta paracerrar la Sesion
+     */
+    Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
 
     Route::get('lang/{lang}', function ($lang) {
-        session()->flush();
         session()->put('lang', $lang);
         $langu = session()->get('lang');
         return \Redirect::back();
@@ -64,56 +65,61 @@ Route::get('cerrarsesion', 'ControladorGeneral@cerrarSesion');
       |GENERALES
       |--------------------------------------------------------------------------
      */
-    /**
-     * Ruta para saber si eres admin o Usuario o si no existes
-     */
-    Route::any('editarperfil', 'ControladorAdmin@editarPerfil');
-    /**
-     * Ruta para Modificar los Usuarios
-     * Estaba con post
-     */
-    Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
-    Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
-    /**
-     * Ruta para eliminar un Usuario
-     * Estaba con post
-     */
-    Route::any('eliminarUsuario', 'ControladorAdmin@deleteUsuario');
-    /**
-     * Ruta que te lleva a la vista del inicio del Admin
-     * Estaba con get
-     */
-    Route::any('inicioadmin', function () {
-        return view('vistasadmin/inicioadmin', ['usuario' => session()->get('usuario')]);
-    });
-    /**
-     * Ruta paracerrar la Sesion
-     */
-    Route::any('perfil', function () {
-        return view('vistasadmin/perfiladmin', ['usuario' => session()->get('usuario')]);
-    });
-    /**
-     * Te lleva a la vista del Crud de Usuarios
-     * Estaba con get
-     */
-    Route::any('gestionusuarios', 'ControladorAdmin@crudUsuarios');
-    /**
-     * LLena la BBDD con informacion random
-     * Estaba con get
-     */
-    Route::any('kabum', 'ControladorAdmin@llenarBase');
-    
-    Route::get('personalizar', function () {
-    return view('vistasadmin/personalizar');
-});
 
-Route::post('personalizarweb', 'ControladorAdmin@personalizarweb');
+    Route::group(['middleware' => 'Administrador'], function() {
 
-    /*
-      |--------------------------------------------------------------------------
-      |Administrador
-      |--------------------------------------------------------------------------
-     */
+        Route::post('registrar', 'ControladorAdmin@addUsuario')->name('gestionusuarios');
+        /**
+         * Ruta para saber si eres admin o Usuario o si no existes
+         */
+        Route::any('editarperfil', 'ControladorAdmin@editarPerfil');
+        /**
+         * Ruta para Modificar los Usuarios
+         * Estaba con post
+         */
+        Route::post('updateusuario', 'ControladorAdmin@updateUsuario');
+        Route::get('updateusuario', 'ControladorAdmin@crudUsuarios');
+        /**
+         * Ruta para eliminar un Usuario
+         * Estaba con post
+         */
+        Route::any('eliminarUsuario', 'ControladorAdmin@deleteUsuario');
+        /**
+         * Ruta que te lleva a la vista del inicio del Admin
+         * Estaba con get
+         */
+        Route::any('inicioadmin', function () {
+            return view('vistasadmin/inicioadmin', ['usuario' => session()->get('usuario')]);
+        });
+        /**
+         * Ruta paracerrar la Sesion
+         */
+        Route::any('perfil', function () {
+            return view('vistasadmin/perfiladmin', ['usuario' => session()->get('usuario')]);
+        });
+        /**
+         * Te lleva a la vista del Crud de Usuarios
+         * Estaba con get
+         */
+        Route::any('gestionusuarios', 'ControladorAdmin@crudUsuarios');
+        /**
+         * LLena la BBDD con informacion random
+         * Estaba con get
+         */
+        Route::any('kabum', 'ControladorAdmin@llenarBase');
+
+        Route::get('personalizar', function () {
+            return view('vistasadmin/personalizar');
+        });
+
+        Route::post('personalizarweb', 'ControladorAdmin@personalizarweb');
+
+        /*
+          |--------------------------------------------------------------------------
+          |Administrador
+          |--------------------------------------------------------------------------
+         */
+    });
 
     /**
      * Ruta para registrar un Usuario

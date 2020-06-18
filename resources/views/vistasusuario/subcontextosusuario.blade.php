@@ -197,7 +197,7 @@
                         </div>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="posiadd" name="posiadd" value="">
-                        <input type="submit" name="guardar" id="nuevo" value="@lang('messages.ModalNuevoTableroBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="nuevo" value="@lang('messages.ModalNuevoTableroBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                         <input type="hidden" id="actual" name="actual" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="posimo" name="posimo" value="">
-                        <input type="submit" name="guardar" id="guardar" value="@lang('messages.ModalModificarTableroBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="@lang('messages.ModalModificarTableroBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -304,7 +304,7 @@
                         <p>@lang('messages.ModalEliminarTableroMensaje')</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
-                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarTableroBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarTableroBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -326,7 +326,7 @@
                         <p>@lang('messages.ModalEliminarPaginaMensaje')</p>
                         <input type="hidden" name="anterior" value="{{ \Session::get('actual') }}">
                         <input type="hidden" id="elimpagina" name="pagina" value="">     
-                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarPaginaBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarPaginaBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -349,7 +349,7 @@
                         <p>@lang('messages.ModalVaciarPaginaMensaje1')</p>
                         <p>@lang('messages.ModalVaciarPaginaMensaje2')</p>
                         <input type="hidden" id="anterior" name="anterior" value="{{ \Session::get('actual') }}">
-                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalVaciarPaginaBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalVaciarPaginaBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>

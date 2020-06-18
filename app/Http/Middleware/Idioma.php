@@ -18,7 +18,6 @@ class Idioma
         if (session()->has('lang')) {
             $lang = session()->get('lang');
             \App::setLocale($lang);
-            app()->setLocale(session('lang'));
         }
         return $next($request);
     }

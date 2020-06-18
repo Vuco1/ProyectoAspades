@@ -19,6 +19,7 @@ class Temas
                 ->select('*')
                 ->first();
         session()->put('temas', $temas);
+        
         return $next($request);
     }
 }

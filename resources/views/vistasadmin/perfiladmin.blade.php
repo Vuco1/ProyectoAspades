@@ -15,12 +15,8 @@ Perfil
                 <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>@lang('messages.NavInicio')</a></li>
                 <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>@lang('messages.NavGestion')</a></li>
                 <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>@lang('messages.NavPerfil')</a></li>
+                <li class="nav-item"><a class="nav-link" href="personalizar"><i class="fas fa-user-cog icono"></i>@lang('messages.NavPersonalizar')</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>@lang('messages.NavAyuda')</a></li>
-                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>Gestión</a></li>
-                <li class="nav-item active"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
-                <li class="nav-item"><a class="nav-link" href="personalizar"><i class="fas fa-user-cog icono"></i>Personalizacion</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_perf_admin"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -33,7 +29,7 @@ Perfil
         ?>
     <div class="text-center">
         <h2>@lang('messages.PerfilAdmin')</h2>
-        <button class="btn btn-orange rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
+        <button class="btn btn-color rounded-circle p-3 mb-4"><img src="<?php echo $usuario->Foto; ?>" class="img-perfil rounded-circle"/></button>
     </div>
     <form action="editarperfil" method="post" class="col-md-6 m-auto" enctype="multipart/form-data">
         @csrf
@@ -86,7 +82,7 @@ Perfil
             </div>
         </div>
         <div id="mensajeperfil" class="text-center my-3 text-success"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
-        <input type="submit" name="guardar" id="guardarperfil" value="@lang('messages.PerfilAdminGuardarCambios')" class="btn btn-orange w-100">
+        <input type="submit" name="guardar" id="guardarperfil" value="@lang('messages.PerfilAdminGuardarCambios')" class="btn btn-color w-100">
     </form>
 <?php } ?>
     

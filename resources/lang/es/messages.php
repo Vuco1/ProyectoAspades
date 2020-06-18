@@ -20,6 +20,7 @@ return [
     'NavGestion' => 'Gestion',
     'NavAyuda' => 'Ayuda',
     'NavPerfil' => 'Perfil',
+    'NavPersonalizar' =>'Personalizar',
     'NavAdd' => 'Añadir panel',
     'NavAdministrarPanel' => 'Administrar panel',
     'NavAddPagina' => 'Añadir página',

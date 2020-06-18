@@ -72,9 +72,9 @@ class ControladorGeneral extends Controller {
         session()->put('temas', $temas);
         
         if(strcmp(\App::getLocale(), "en")=== 0){
-            session()->put('idioma', "en");
+            session()->put('lang', "en");
         }else{
-            session()->put('idioma', "es");
+            session()->put('lang', "es");
         }
         return view('index');
     }

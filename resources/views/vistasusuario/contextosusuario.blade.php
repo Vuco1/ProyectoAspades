@@ -169,7 +169,7 @@
                                 </select>
                             </div> 
                         </div>
-                        <input type="submit" name="guardar" id="nuevo" value="@lang('messages.ModalNuevoBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="nuevo" value="@lang('messages.ModalNuevoBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -239,7 +239,7 @@
                                 <input type="text" name="nombremod" id="nombremod" placeholder="@lang('messages.ModalModificarNombre')" class="form-control" value="">
                             </div>
                         </div> 
-                        <input type="submit" name="guardar" id="guardar" value="@lang('messages.ModalModificarBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="guardar" id="guardar" value="@lang('messages.ModalModificarBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
@@ -261,7 +261,7 @@
                         <p>@lang('messages.ModalEliminarPanelMensaje')</p>
                         <input type="hidden" name="idelim" id="idelim" value="">
                         <input type="hidden" id="actual" name="actual" value="">
-                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarBoton')" class="btn btn-orange w-100">  
+                        <input type="submit" name="delete" id="delete" value="@lang('messages.ModalEliminarBoton')" class="btn btn-color w-100">  
                     </form>
                 </div>
             </div>
