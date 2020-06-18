@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('index');
-})->middleware('Sesion');
+})->middleware(['Sesion','Temas']); 
 /*
   |--------------------------------------------------------------------------
   | PRUEBAS/TESTING
@@ -28,7 +28,7 @@ Route::get('/', function () {
 /**
  * Ruta para saber si eres admin o Usuario o si no existes
  */
-Route::post('comprobar', 'ControladorGeneral@iniciarSesion');
+Route::post('comprobar', 'ControladorGeneral@iniciarSesion')->middleware('Temas'); 
 
 Route::get('comprobar', function () {
     return view('index');
@@ -100,10 +100,12 @@ Route::group(['middleware' => 'Administrador'], function() {
      * Estaba con get
      */
     Route::any('kabum', 'ControladorAdmin@llenarBase');
-    /**
-     * Ruta para añadir un Usuario
-     * Estaba con get
-     */
+    
+    Route::get('personalizar', function () {
+    return view('vistasadmin/personalizar');
+});
+
+Route::post('personalizarweb', 'ControladorAdmin@personalizarweb');
 });
 
 /*

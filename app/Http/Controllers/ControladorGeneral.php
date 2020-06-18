@@ -57,6 +57,10 @@ class ControladorGeneral extends Controller {
     public function cerrarSesion() {
         session()->flush();
         session()->regenerate();
+        $temas = \DB::table('temas')
+                ->select('*')
+                ->first();
+        session()->put('temas', $temas);
         return view('index');
     }
     

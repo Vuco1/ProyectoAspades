@@ -77,7 +77,7 @@ class ControladorAdmin extends Controller {
         if ($req->file('imagen')) {
             $req->validate([
                 'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);           
+            ]);
             $foto = $req->file('imagen');
             $nomImagen = time() . '.' . $foto->extension();
             $req->imagen->move(public_path('images/users/'), $nomImagen);
@@ -209,7 +209,7 @@ class ControladorAdmin extends Controller {
         $nombre = $req->get('nombremod');
         $rol = $req->get('rolmod');
         $clave = $req->get('clavemod');
-        
+
         //Nick de login y nombre
         $usuario = Usuario::where('Id_usuario', $id)->first();
         $usuario->Nick = $nick;
@@ -220,28 +220,28 @@ class ControladorAdmin extends Controller {
             $req->validate([
                 'imagenmod' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-            $foto = $req->file('imagenmod');           
+            $foto = $req->file('imagenmod');
             $nomImagen = time() . '.' . $foto->extension();
             $req->imagenmod->move(public_path('images/users/'), $nomImagen);
             $usuario->Foto = 'images/users/' . $nomImagen;
         }
-        
+
         //Clave
         if ($clave != null) {
             $claveCod = md5($clave);
             $usuario->clave = $claveCod;
         }
-        
+
         $usuario->save();
-        
+
         //Rol
         $usuRol = Usuario_Rol::where('Id_usuario', $id)->first();
         $usuRol->Id_rol = $rol;
         $usuRol->save();
-        
+
         $datos = self::selectUsuarios();
         $datos2 = self::selectRoles();
-        
+
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
     }
 
@@ -253,11 +253,36 @@ class ControladorAdmin extends Controller {
     public function deleteUsuario(Request $request) {
         $id = $request->input('idusuelim');
         $usuario = Usuario::where('Id_usuario', $id)->delete();
-        
+
         $datos = self::selectUsuarios();
         $datos2 = self::selectRoles();
-        
+
         return view('vistasadmin/crudusuario', ['datos' => $datos, 'datos2' => $datos2]);
+    }
+
+    public function personalizarweb(Request $req) {
+
+
+        $color = $req->color;
+        if ($req->file('imagenlogo')) {
+            $req->validate([
+                'imagenlogo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            $foto = $req->file('imagenlogo');
+            $nomImagen = time() . '.' . $foto->extension();
+            $req->imagenlogo->move(public_path('images/icons/'), $nomImagen);
+            \DB::table('temas')->update(['Tema' => $color, 'Logo' => 'images/icons/' . $nomImagen]);
+        } else {
+            \DB::table('temas')->update(['Tema' => $color]);
+        }
+
+        $temas = \DB::table('temas')
+                ->select('*')
+                ->first();
+        session()->put('temas', $temas);
+
+
+        return view('vistasadmin/inicioadmin');
     }
 
 }

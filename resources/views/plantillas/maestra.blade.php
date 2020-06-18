@@ -13,7 +13,7 @@
         <script src="{{ asset('js/ajax.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
     </head>
-    <body class="<?php if (isset($tema)) { echo "theme-".$tema; } else { echo "theme-default"; }?>">
+    <body class="<?php if (session()->has('temas')) { $tema = session()->get('temas'); echo "theme-".$tema->Tema; } else { echo "theme-default"; }?>">
         <div id="contenido">@yield('contenido')</div>
         <!-- SCRIPTS -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS --> 
