@@ -1,7 +1,7 @@
 @extends('plantillas/maestra')
 <meta name="csrf_token" content="{{ csrf_token() }}" />
 @section('titulo')
-Gestión
+@lang('messages.CrudAdminTitulo')
 @endsection
 @section('contenido')
 <!-- HEADER -->
@@ -18,6 +18,10 @@ Gestión
                 <li class="nav-item"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>Perfil</a></li>
                 <li class="nav-item"><a class="nav-link" href="personalizar"><i class="fas fa-user-cog icono"></i>Personalizacion</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_crud"><i class="fas fa-question-circle icono"></i>Ayuda</a></li>
+                <li class="nav-item"><a class="nav-link" href="inicioadmin"><i class="fas fa-home icono"></i>@lang('messages.NavInicio')</a></li>
+                <li class="nav-item active"><a class="nav-link" href="gestionusuarios"><i class="fas fa-users-cog icono"></i>@lang('messages.NavGestion')</a></li>
+                <li class="nav-item"><a class="nav-link" href="perfil"><i class="fas fa-user-circle icono"></i>@lang('messages.NavPerfil')</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle = "modal" data-target = "#ayuda_crud"><i class="fas fa-question-circle icono"></i>@lang('messages.NavAyuda')</a></li>
             </ul>
             <a class="text-secondary " href="cerrarsesion"><i class="fas fa-power-off h2 m-0 p-2 px-3"></i></a>
         </div>
@@ -39,7 +43,7 @@ Gestión
                                     <label class="sr-only" for="nick<?php echo $dato->Id_usuario ?>">Usuario</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-user icono"></i>@lang('messages.CrudAdminUsuario')</div>
                                         </div>
                                         <input type="text" name="Nick" id="nick<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nick ?>" placeholder="Usuario" class="form-control" readonly>
                                     </div>
@@ -48,7 +52,7 @@ Gestión
                                     <label class="sr-only" for="nombre<?php echo $dato->Id_usuario ?>">Nombre</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>@lang('messages.CrudAdminNombre')</div>
                                         </div>
                                         <input type="text" name="Nombre" id="nombre<?php echo $dato->Id_usuario ?>" value="<?php echo $dato->Nombre ?>" placeholder="Nombre" class="form-control" readonly>
                                     </div>
@@ -57,7 +61,7 @@ Gestión
                                     <label class="sr-only" for="rol<?php echo $dato->Id_usuario ?>">Rol</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                            <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>@lang('messages.CrudAdminRol')</div>
                                         </div>
                                         <select name="Rol" id="rol<?php echo $dato->Id_usuario ?>" class="custom-select" disabled>
                                             <?php foreach ($datos2 as $da2) { ?>
@@ -70,8 +74,8 @@ Gestión
                         </form>
                         <div class="card-footer">
                             <div class="row px-2">
-                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" onclick="editarUsuario(<?php echo ($dato->Id_usuario . ', ' . $dato->Id_rol) ?>)" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">Editar</span></button>
-                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">Borrar</span></button>
+                                <button data-toggle="modal" data-target="#modificar" name="modificar" id="modificar<?php echo $dato->Id_usuario ?>" onclick="editarUsuario(<?php echo ($dato->Id_usuario . ', ' . $dato->Id_rol) ?>)" class="btn btn-info col mr-md-3"><i class="fas fa-pen pr-md-2"></i><span class="d-none d-md-inline">@lang('messages.CrudAdminBotonModificar')</span></button>
+                                <button data-toggle="modal" data-target="#eliminar" name="eliminar" id="eliminar<?php echo $dato->Id_usuario ?>" onclick="eliminarUsuario(<?php echo $dato->Id_usuario ?>)" class="btn btn-danger col"><i class="fas fa-minus pr-md-2"></i><span class="d-none d-md-inline">@lang('messages.CrudAdminBotonEliminar')</span></button>
                             </div>
                         </div>
                     </div>
@@ -82,7 +86,7 @@ Gestión
         </div>
     </div>
     <div class="text-center">
-        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</button>
+        <button data-toggle="modal" data-target="#nuevo" class="btn btn-success"><i class="fas fa-plus pr-md-2"></i>@lang('messages.CrudAdminBotonAñadir')</button>
     </div>
     <div id="paginacion" class="d-inline-flex w-100 align-content-center mt-3">
         {{ $datos->links() }}
@@ -91,8 +95,8 @@ Gestión
     <section class="modal fade" id="nuevo">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-color text-white px-4">
-                    <div class="modal-title">Añadir Usuario</div>
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">@lang('messages.ModalCrudAdd')</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -103,11 +107,11 @@ Gestión
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
+                                    <span id="descripcionimagen" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalCrudAddImagen')</span>
                                 </div>
                                 <div class="custom-file">
                                     <input name="imagen" id="imagen" type="file" class="custom-file-input" aria-describedby="descripcionimagen" onchange="cambiarTexto(this.id)">
-                                    <label id="imagenlabel" for="imagen" class="custom-file-label">Selecciona una imagen...</label>
+                                    <label id="imagenlabel" for="imagen" class="custom-file-label">@lang('messages.ModalCrudAddImagenPH')</label>
                                 </div>
                             </div>
                         </div>
@@ -115,44 +119,44 @@ Gestión
                             <label class="sr-only" for="usuario">Usuario</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>@lang('messages.ModalCrudAddUsuario')</div>
                                 </div>
-                                <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control" required>
+                                <input type="text" name="usuario" id="usuario" placeholder="@lang('messages.ModalCrudAddUsuario')" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="nombre">Nombre</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>@lang('messages.ModalCrudAddNombre')</div>
                                 </div>
-                                <input type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" required>
+                                <input type="text" name="nombre" id="nombre" placeholder="@lang('messages.ModalCrudAddNombre')" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="clavenuevo">Contraseña</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>@lang('messages.ModalCrudAddClave')</div>
                                 </div>
-                                <input type="password" name="clavenuevo" id="clavenuevo" placeholder="Escribe una contraseña" class="form-control" required>
+                                <input type="password" name="clavenuevo" id="clavenuevo" placeholder="@lang('messages.ModalCrudAddClavePH')" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="claverepenuevo">Confirmar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>Confirmar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-copy icono"></i>@lang('messages.ModalCrudAddConfirmar')</div>
                                 </div>
-                                <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="Repite la contraseña" class="form-control" onkeyup="validarClave('nuevo')" required>
+                                <input type="password" name="claverepenuevo" id="claverepenuevo" placeholder="@lang('messages.ModalCrudAddConfirmarPH')" class="form-control" onkeyup="validarClave('nuevo')" required>
                             </div>
                         </div>   
                         <div id="mensajenuevo" class="text-center text-danger"></div>
                         <div class="custom-control custom-checkbox mb-3 mt-3 text-center">
                             <input id="rol" type="checkbox" name="rol" value="Admin" class="custom-control-input">
-                            <label for="rol" class="custom-control-label">¿Hacer Administrador?</label>                              
+                            <label for="rol" class="custom-control-label">@lang('messages.ModalCrudAddAdmin')</label>                              
                         </div>
-                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="Añadir" class="btn btn-color w-100">  
+                        <input type="submit" name="guardarnuevo" id="guardarnuevo" value="@lang('messages.ModalCrudAddBoton')" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -162,8 +166,8 @@ Gestión
     <section class="modal fade" id="modificar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-color text-white px-4">
-                    <div class="modal-title">Editar usuario</div>
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">@lang('messages.ModalCrudEditar')</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -176,11 +180,11 @@ Gestión
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>Foto</span>
+                                    <span id="descripcionimagenmod" class="input-group-text w-8"><i class="fas fa-image icono"></i>@lang('messages.ModalCrudEditarImagen')</span>
                                 </div>
                                 <div class="custom-file">
                                     <input name="imagenmod" id="imagenmod" type="file" class="custom-file-input" aria-describedby="descripcionimagenmod" onchange="cambiarTexto(this.id)">
-                                    <label id="imagenmodlabel" for="imagenmod" class="custom-file-label">Selecciona una imagen...</label>
+                                    <label id="imagenmodlabel" for="imagenmod" class="custom-file-label">@lang('messages.ModalCrudEditarImagenPH')</label>
                                 </div>
                             </div>
                         </div>
@@ -188,25 +192,25 @@ Gestión
                             <label class="sr-only" for="usuariomod">Usuario</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>Usuario</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-user icono"></i>@lang('messages.ModalCrudEditarUsuario')</div>
                                 </div>
-                                <input type="text" name="usuariomod" id="usuariomod" placeholder="Usuario" value="" class="form-control" required>
+                                <input type="text" name="usuariomod" id="usuariomod" placeholder="@lang('messages.ModalCrudEditarUsuario')" value="" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="nombremod">Nombre</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>Nombre</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-address-card icono"></i>@lang('messages.ModalCrudEditarNombre')</div>
                                 </div>
-                                <input type="text" name="nombremod" id="nombremod" placeholder="Nombre" class="form-control" value="">
+                                <input type="text" name="nombremod" id="nombremod" placeholder="@lang('messages.ModalCrudEditarNombre')" class="form-control" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="rolmod">Rol</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>Rol</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-tag icono"></i>@lang('messages.ModalCrudEditarRol')</div>
                                 </div>
                                 <select name="rolmod" id="rolmod" class="custom-select">
                                     <?php foreach ($datos2 as $da2) { ?>
@@ -219,22 +223,22 @@ Gestión
                             <label class="sr-only" for="clavemod">Contraseña</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>Contraseña</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-key icono"></i>@lang('messages.ModalCrudEditarClave')</div>
                                 </div>
-                                <input type="password" name="clavemod" id="clavemod" placeholder="Escribe la nueva contraseña" class="form-control">
+                                <input type="password" name="clavemod" id="clavemod" placeholder="@lang('messages.ModalCrudEditarClavePH')" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="sr-only" for="claverepemod">Confirmar</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>Confirmar</div>
+                                    <div class="input-group-text w-8"><i class="fas fa-check-double icono"></i>@lang('messages.ModalCrudEditarConfirmar')</div>
                                 </div>
-                                <input type="password" name="claverepemod" id="claverepemod" placeholder="Repite la nueva contraseña" class="form-control" onkeyup="validarClave('mod')">
+                                <input type="password" name="claverepemod" id="claverepemod" placeholder="@lang('messages.ModalCrudEditarConfirmarPH')" class="form-control" onkeyup="validarClave('mod')">
                             </div>
                         </div>
                         <div id="mensajemod" class="text-center text-danger mb-3"></div>
-                        <input type="submit" name="guardarmod" id="guardarmod" value="Guardar" class="btn btn-color w-100">  
+                        <input type="submit" name="guardarmod" id="guardarmod" value="@lang('messages.ModalCrudEditarBoton')" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -244,8 +248,8 @@ Gestión
     <section class="modal fade" id="eliminar">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-color text-white px-4">
-                    <div class="modal-title">Borrar usuario</div>
+                <div class="modal-header bg-orange text-white px-4">
+                    <div class="modal-title">@lang('messages.ModalCrudEliminar')</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -253,9 +257,9 @@ Gestión
                 <div class="modal-body p-4">
                     <form action="eliminarUsuario" method="post" class="text-center">
                         @csrf
-                        <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                        <p>@lang('messages.ModalCrudEliminarP')</p>
                         <input type="hidden" name="idusuelim" id="idusuelim" value="">
-                        <input type="submit" name="eliminar" id="eliminar" value="Eliminar" class="btn btn-color w-100">  
+                        <input type="submit" name="eliminar" id="eliminar" value="@lang('messages.ModalCrudEliminarBoton')" class="btn btn-orange w-100">  
                     </form>
                 </div>
             </div>
@@ -266,18 +270,18 @@ Gestión
     <section class="modal fade" id="ayuda_crud">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header bg-color text-white px-4">
-                <div class="modal-title">Ayuda</div>
+            <div class="modal-header bg-orange text-white px-4">
+                <div class="modal-title">@lang('messages.ModalAyuda')</div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body p-4 text-justify">
                 <ul>
-                    <li><p>Aquí podemos ver y modificar la información de todos los usuarios registrados en la aplicación. También podemos eliminar o añadir usuarios.</p></li>
-                    <li><p>Si queremos eliminar a algún usuario de la aplicación, sólo tenemos que pulsar en el botón <span class="btn-danger px-1 md-3"><i class="fas fa-minus pr-md-2 icono"></i>Borrar</span>.</p></li>
-                    <li><p>Para modificar los datos de algún usuario pulsamos en <span class="btn-info px-1 md-3"><i class="fas fa-pen pr-md-2 icono"></i>Editar</span>. Se nos abrirá una ventana modal en la que tenemos que introducir los datos que queramos cambiar.</p></li>
-                    <li><p>Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.</p></li>
+                    <li><p>@lang('messages.ModalCrudAyudaP1')</p></li>
+                    <li><p>@lang('messages.ModalCrudAyudaP2')</p></li>
+                    <li><p>@lang('messages.ModalCrudAyudaP3')</p></li>
+                    <li><p>@lang('messages.ModalCrudAyudaP4')</p></li>
                 </ul> 
             </div>
         </div>

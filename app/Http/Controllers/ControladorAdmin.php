@@ -132,6 +132,10 @@ class ControladorAdmin extends Controller {
      */
     private function selectRoles() {
         $datos2 = \DB::Select('Select * from rol');
+        if(strcmp(\App::getLocale(), "en")=== 0){
+            $datos2[0]->Descripcion='User';
+            $datos2[1]->Descripcion='Admin';
+        }
         return $datos2;
     }
 
@@ -261,8 +265,6 @@ class ControladorAdmin extends Controller {
     }
 
     public function personalizarweb(Request $req) {
-
-
         $color = $req->color;
         if ($req->file('imagenlogo')) {
             $req->validate([

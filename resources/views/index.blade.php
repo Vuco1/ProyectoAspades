@@ -1,6 +1,6 @@
 @extends('plantillas/maestra')
 @section('titulo')
-Login
+@lang('messages.InicioTitulo')
 @endsection
 @section('contenido')
     <header></header>
@@ -16,7 +16,7 @@ Login
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-user"></i></div>
                         </div>
-                        <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control">
+                        <input type="text" name="usuario" id="usuario" placeholder="@lang('messages.LoginUsuario')" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -25,10 +25,10 @@ Login
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-key"></i></div>
                         </div>
-                        <input type="password" name="clave" id="clave" placeholder="Contraseña" class="form-control">
+                        <input type="password" name="clave" id="clave" placeholder="@lang('messages.LoginClave')" class="form-control">
                     </div>
                 </div>
-                <input type="submit" name="login" id="login" value="Iniciar sesión" class="btn btn-color w-100" onclick="vaciarstorage()">
+                <input type="submit" name="login" id="login" value="@lang('messages.LoginBtn')" class="btn btn-orange w-100" onclick="vaciarstorage()">
             </form>
             <div id="mensaje" class="text-center pt-2 text-danger"><?php if (isset($mensaje)) { echo $mensaje; } ?></div>
         </section>

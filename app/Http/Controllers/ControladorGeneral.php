@@ -42,7 +42,16 @@ class ControladorGeneral extends Controller {
             session()->put('usuario', $usuario);
             session()->put('rol', $rol);
         } else {
-            $mensaje = "<p class='m-0'>Error. Usuario o clave incorrectos</p><p class='m-0'>Si has olvidado la clave, contacta con un administrador</p>";
+            if (session()->has('lang')) {
+                $lang = session()->get('lang');
+                if (strcmp($lang, "es") === 0) {
+                    $mensaje = "<p class='m-0'>Error. Usuario o clave incorrectos</p><p class='m-0'>Si has olvidado la clave, contacta con un administrador</p>";
+                } else {
+                    $mensaje = "<p class='m-0'>Error. Incorrect username or password</p><p class='m-0'>If you have forgotten the password, contact an admin.</p>";
+                }
+            } else {
+                $mensaje = "<p class='m-0'>Error. Usuario o clave incorrectos</p><p class='m-0'>Si has olvidado la clave, contacta con un administrador</p>";
+            }
             $vista = 'index';
         }
 
@@ -61,6 +70,12 @@ class ControladorGeneral extends Controller {
                 ->select('*')
                 ->first();
         session()->put('temas', $temas);
+        
+        if(strcmp(\App::getLocale(), "en")=== 0){
+            session()->put('idioma', "en");
+        }else{
+            session()->put('idioma', "es");
+        }
         return view('index');
     }
     
