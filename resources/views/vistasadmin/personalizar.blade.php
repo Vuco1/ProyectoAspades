@@ -69,7 +69,7 @@
                 </div>
                 <div class="modal-body p-4 text-justify">
                     <ul>
-                        <li></li>
+                        <li>@lang('messages.PersonalizarModalAyuda')</li>
                     </ul>
                 </div>
             </div>

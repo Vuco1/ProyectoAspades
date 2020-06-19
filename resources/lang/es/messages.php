@@ -112,6 +112,7 @@ return [
     'PersonalizarColor2'=>'Verde',
     'PersonalizarColor3'=>'Rojo',
     'PersonalizarEditarBoton' =>'Guardar Cambios',
+    'PersonalizarModalAyuda' =>'Aquí puedes personalizar tu perfil con los colores y el logo del centro.',
 
 
 //Mensajes de la zona de usuario
