@@ -45,7 +45,7 @@
             <label class="sr-only">@lang('messages.PersonalizarColor')</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-text w-8">@lang('messages.PersonalizarColor')</div>
+                    <div class="input-group-text w-8"><i class="fas fa-palette icono"></i>@lang('messages.PersonalizarColor')</div>
                 </div>
                 <select name="color" class="custom-select" id="color">
                     <option value="" selected disabled>@lang('messages.PersonalizarColor0')</option>
