@@ -265,7 +265,11 @@ class ControladorAdmin extends Controller {
     }
 
     public function personalizarweb(Request $req) {
-        $color = $req->color;
+        if ($req->color != null) {
+           $color = $req->color;
+           \DB::table('temas')->update(['Tema' => $color]);
+        }
+        
         if ($req->file('imagenlogo')) {
             $req->validate([
                 'imagenlogo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -273,10 +277,11 @@ class ControladorAdmin extends Controller {
             $foto = $req->file('imagenlogo');
             $nomImagen = time() . '.' . $foto->extension();
             $req->imagenlogo->move(public_path('images/icons/'), $nomImagen);
-            \DB::table('temas')->update(['Tema' => $color, 'Logo' => 'images/icons/' . $nomImagen]);
-        } else {
-            \DB::table('temas')->update(['Tema' => $color]);
+            \DB::table('temas')->update(['Logo' => 'images/icons/' . $nomImagen]);
         }
+//        else {
+//            \DB::table('temas')->update(['Tema' => $color]);
+//        }
 
         $temas = \DB::table('temas')
                 ->select('*')

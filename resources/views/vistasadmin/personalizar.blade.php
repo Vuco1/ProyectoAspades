@@ -48,9 +48,17 @@
                     <div class="input-group-text w-8">@lang('messages.PersonalizarColor')</div>
                 </div>
                 <select name="color" class="custom-select" id="color">
-                    <option value="blue">@lang('messages.PersonalizarColor1')</option>
-                    <option value="green">@lang('messages.PersonalizarColor2')</option>
-                    <option value="red">@lang('messages.PersonalizarColor3')</option>
+                    <option value="" selected disabled>@lang('messages.PersonalizarColor0')</option>
+                    <option value="default">@lang('messages.PersonalizarColor1')</option>
+                    <option value="blue">@lang('messages.PersonalizarColor2')</option>
+                    <option value="aqua">@lang('messages.PersonalizarColor3')</option>
+                    <option value="green">@lang('messages.PersonalizarColor4')</option>
+                    <option value="yellow">@lang('messages.PersonalizarColor5')</option>
+                    <option value="orange">@lang('messages.PersonalizarColor6')</option>
+                    <option value="red">@lang('messages.PersonalizarColor7')</option>
+                    <option value="pink">@lang('messages.PersonalizarColor8')</option>
+                    <option value="lavender">@lang('messages.PersonalizarColor9')</option>
+                    <option value="purple">@lang('messages.PersonalizarColor10')</option>
                 </select>
             </div>
         </div>
