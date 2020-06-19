@@ -13,11 +13,11 @@ return [
     'InicioTitulo' =>'Inicio',
     'LoginUsuario' => 'Usuario',
     'LoginClave' => 'Contraseña',
-    'LoginBtn'=>'Iniciar Sesion',
+    'LoginBtn'=>'Iniciar sesión',
     
 //Menú
     'NavInicio' => 'Inicio',
-    'NavGestion' => 'Gestion',
+    'NavGestion' => 'Gestión',
     'NavAyuda' => 'Ayuda',
     'NavPerfil' => 'Perfil',
     'NavPersonalizar' =>'Personalizar',
@@ -58,16 +58,16 @@ return [
                 La contraseña sólo se cambiará si coincide en estos dos campos.',
     
 //Gestión de usuarios
-    'CrudAdminTitulo'=>'Gestion',
+    'CrudAdminTitulo'=>'Gestión',
     'CrudAdminUsuario' =>'Usuario',
     'CrudAdminNombre' =>'Nombre',
     'CrudAdminRol' =>'Rol',
     'CrudAdminBotonModificar' =>'Editar',
     'CrudAdminBotonEliminar' =>'Borrar',
-    'CrudAdminBotonAñadir' =>'Añadir Usuario',
+    'CrudAdminBotonAñadir' =>'Añadir usuario',
     
 //Nuevo usuario
-    'ModalCrudAdd' =>'Añadir Usuario',
+    'ModalCrudAdd' =>'Añadir usuario',
     'ModalCrudAddImagen' =>'Imagen',
     'ModalCrudAddImagenPH' =>'Selecciona una imagen...',
     'ModalCrudAddUsuario' =>'Usuario',
@@ -80,7 +80,7 @@ return [
     'ModalCrudAddBoton' =>'Añadir',
     
 //Editar usuario
-    'ModalCrudEditar' =>'Editar Usuario',    
+    'ModalCrudEditar' =>'Editar usuario',    
     'ModalCrudEditarImagen' =>'Foto',
     'ModalCrudEditarImagenPH' =>'Selecciona una imagen...',
     'ModalCrudEditarUsuario' =>'Usuario',
@@ -93,7 +93,7 @@ return [
     'ModalCrudEditarBoton' =>'Guardar',
     
 //Eliminar usuario
-    'ModalCrudEliminar' =>'Borrar Usuario',
+    'ModalCrudEliminar' =>'Borrar usuario',
     'ModalCrudEliminarP' =>'¿Estás seguro de que deseas eliminar este usuario?',
     'ModalCrudEliminarBoton' =>'Eliminar',
     
@@ -104,14 +104,14 @@ return [
     'ModalCrudAyudaP4' => 'Para añadir nuevos usuarios, pulsamos en <span class="btn-success px-1 md-3"><i class="fas fa-plus pr-md-2"></i>Añadir Usuario</span>. Se nos abrirá una ventana con un formulario que debemos rellenar con los datos del usuario.',
     
 //Personalizar
-    'PersonalizarAdminTitulo'=>'Personalizacion',
+    'PersonalizarAdminTitulo'=>'Personalización',
     'PersonalizarLogo'=>'Logo',
     'PersonalizarLogoPH' =>'Selecciona el nuevo logo...',
     'PersonalizarColor'=>'Color',
     'PersonalizarColor1'=>'Azul',
     'PersonalizarColor2'=>'Verde',
     'PersonalizarColor3'=>'Rojo',
-    'PersonalizarEditarBoton' =>'Guardar Cambios',
+    'PersonalizarEditarBoton' =>'Guardar cambios',
 
 
 //Mensajes de la zona de usuario

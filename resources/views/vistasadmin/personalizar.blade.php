@@ -47,7 +47,7 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text w-8">@lang('messages.PersonalizarColor')</div>
                 </div>
-                <select name="color" id="color">
+                <select name="color" class="custom-select" id="color">
                     <option value="blue">@lang('messages.PersonalizarColor1')</option>
                     <option value="green">@lang('messages.PersonalizarColor2')</option>
                     <option value="red">@lang('messages.PersonalizarColor3')</option>
