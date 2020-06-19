@@ -110,7 +110,7 @@ return [
     'PersonalizarColor'=>'Color',
     'PersonalizarColor1'=>'Azul',
     'PersonalizarColor2'=>'Verde',
-    'PersonalizarColor4'=>'Rojo',
+    'PersonalizarColor3'=>'Rojo',
     'PersonalizarEditarBoton' =>'Guardar Cambios',
 
 

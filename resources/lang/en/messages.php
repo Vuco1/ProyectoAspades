@@ -111,7 +111,7 @@ The password will only be changed if it matches in these two fields.',
     'PersonalizarColor'=>'Color',
     'PersonalizarColor1'=>'Blue',
     'PersonalizarColor2'=>'Green',
-    'PersonalizarColor4'=>'Red',
+    'PersonalizarColor3'=>'Red',
     'PersonalizarEditarBoton' =>'Save changes',
 
 
