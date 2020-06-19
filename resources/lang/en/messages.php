@@ -113,6 +113,7 @@ The password will only be changed if it matches in these two fields.',
     'PersonalizarColor2'=>'Green',
     'PersonalizarColor3'=>'Red',
     'PersonalizarEditarBoton' =>'Save changes',
+    'PersonalizarModalAyuda' =>'Here you can customize the app appearance by changing the accent color and the logo to the ones from your centre.',
 
 
 //Mensajes de la zona de usuario

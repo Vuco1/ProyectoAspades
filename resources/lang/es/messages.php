@@ -112,6 +112,7 @@ return [
     'PersonalizarColor2'=>'Verde',
     'PersonalizarColor3'=>'Rojo',
     'PersonalizarEditarBoton' =>'Guardar cambios',
+    'PersonalizarModalAyuda' =>'Aquí puedes personalizar el aspecto de la aplicación con el color de acento y el logo de tu elección.',
 
 
 //Mensajes de la zona de usuario
